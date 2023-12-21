@@ -1,5 +1,5 @@
 # ![Hephaestus](Resources/Logos/Readme.png) Hephaestus
-Hephaestus é um projeto de software da empresa SIW Kits Eólicos que tem como objetivo migrar o Sistema de Controle da Produção para uma versão totalmente na Web e aplicar oportunidades de melhoria aprendidas durante o ciclo de vida da primeira versão.
+Hephaestus é um projeto de software da empresa SIW Kits Eólicos que tem como objetivo migrar o Sistema de Controle da Produção atual para uma versão totalmente na Web e aplicar oportunidades de melhoria aprendidas durante o ciclo de vida da primeira versão.
 
 ### Objetivos do Projeto
 - Dar maior flexibilidade aos usuários para executar suas tarefas (apontamentos, inspeções etc.);
