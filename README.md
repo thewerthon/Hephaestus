@@ -1,6 +1,13 @@
 # ![Hephaestus](Resources/Logos/Readme.png) Hephaestus
 Hephaestus é um projeto de software da empresa SIW Kits Eólicos que tem como objetivo migrar o Sistema de Controle da Produção atual para uma versão totalmente na Web e aplicar oportunidades de melhoria aprendidas durante o ciclo de vida da primeira versão.
 
+### Produto do Projeto
+O produto final do projeto Hephaestus é o software **SCP 2.0**:
+<br><br>
+[![Product](Resources/Logos/Product.png)](http://scp.siw.ind.br)
+<br>
+[http://scp.siw.ind.br](http://scp.siw.ind.br)
+
 ### Objetivos do Projeto
 - Dar maior flexibilidade aos usuários para executar suas tarefas (apontamentos, inspeções etc.);
 - Integrar novas funções implicitamente necessárias (controle de qualidade, previsões de estoque);
