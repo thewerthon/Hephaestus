@@ -1,0 +1,27 @@
+﻿@inject VersionService VersionService
+
+<RadzenStack AlignItems="Radzen.AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0" class="rz-pt-2 rz-pb-4">
+	@if (InSidebar) {
+		<RadzenText Text="@("Ⓒ" + year + " - " + version)" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="color:var(--rz-sidebar-label-color)" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+		<RadzenText Text="SIW Kits Eólicos Ltda." TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="color:var(--rz-sidebar-label-color)" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+	} else {
+		<RadzenText Text="@("Ⓒ" + year + " - SIW Kits Eólicos Ltda. - " + version)" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+	}
+</RadzenStack>
+
+@code {
+
+	[Parameter]
+	public bool InSidebar { get; set; } = true;
+
+	private string version = "v2.0.0";
+	private string year = DateTime.Now.Year.ToString();
+
+	protected override void OnInitialized() {
+
+		var localVersion = VersionService.GetLocalVersion();
+		version = localVersion.Version;
+
+	}
+
+}

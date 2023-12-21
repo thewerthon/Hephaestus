@@ -1,0 +1,67 @@
+{
+	"name": "SCP 2.0",
+	"short_name": "SCP 2.0",
+	"id": "scp.siw.ind.br",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"description": "Sistema de Controle de Produção - SIW Kits Eólicos Ltda.",
+	"start_url": "/",
+	"scope": "/",
+	"lang": "pt",
+	"display_override": [
+		"standalone",
+		"minimal-ui",
+		"window-controls-overlay"
+	],
+	"categories": [
+		"business",
+		"productivity"
+	],
+	"icons": [
+		{
+			"src": "images/icons/icon-512-any.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "images/icons/icon-512-mask.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "images/icons/icon-512-mono.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "images/screenshots/desktop-light.png",
+			"form_factor": "wide",
+			"sizes": "1365x718",
+			"type": "image/png"
+		},
+		{
+			"src": "images/screenshots/mobile-light.png",
+			"form_factor": "narrow",
+			"sizes": "529x803",
+			"type": "image/png"
+		},
+		{
+			"src": "images/screenshots/desktop-dark.png",
+			"form_factor": "wide",
+			"sizes": "1365x718",
+			"type": "image/png"
+		},
+		{
+			"src": "images/screenshots/mobile-dark.png",
+			"form_factor": "narrow",
+			"sizes": "529x803",
+			"type": "image/png"
+		}
+	]
+}

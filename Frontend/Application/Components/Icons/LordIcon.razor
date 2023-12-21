@@ -1,0 +1,77 @@
+﻿<div style="display:flex; align-items:center; justify-content:center;">
+	<lord-icon src=@("lordicon" + @Icon) state="@State" intro="@Intro" trigger="@Trigger" loading="@Loading" stroke="@Stroke" style="width:@Size;height:@Size;" target="@Target" title="@Title" id="@Id" class="lord-icon" />
+</div>
+
+@code {
+
+	/// <summary>
+	/// Path to json icon.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Icon { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Name of the icon's animation state.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string State { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Name of the icon's intro animation state.
+	/// Defaults to "in-reveal".
+	/// </summary>
+	[Parameter]
+	public string Intro { get; set; } = "in-reveal";
+
+	/// <summary>
+	/// The trigger for the icon's animation.
+	/// Accepts: "in", "hover", "click", "morph", "loop", "loop-on-hover" and "boomerang".
+	/// Can combine some of these as "in-hover-click".
+	/// Defaults to "click".
+	/// </summary>
+	[Parameter]
+	public string Trigger { get; set; } = "click";
+
+	/// <summary>
+	/// Loading type of the animation.
+	/// Accepts: "lazy" or "interaction".
+	/// </summary>
+	[Parameter]
+	public string Loading { get; set; } = "lazy";
+
+	/// <summary>
+	/// Stroke type (line weight) of the icon.
+	/// Accepts: "light" "regular" or "bold".
+	/// Defaults to "regular".
+	/// </summary>
+	[Parameter]
+	public string Stroke { get; set; } = "regular";
+
+	/// <summary>
+	/// Sets the icon size via style tag.
+	/// Example: "96px" (default).
+	/// </summary>
+	[Parameter]
+	public string Size { get; set; } = "96px";
+
+	/// <summary>
+	/// Sets the animation target element for the trigger.
+	/// It's a name of a css class like '.default'.
+	/// Defaults to icon itself.
+	/// </summary>
+	[Parameter]
+	public string Target { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Sets the 'title' of the icon element.
+	/// </summary>
+	[Parameter]
+	public string Title { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Sets the 'id' of the icon element.
+	/// </summary>
+	[Parameter]
+	public string Id { get; set; } = string.Empty;
+
+}

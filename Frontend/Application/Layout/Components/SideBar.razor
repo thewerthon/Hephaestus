@@ -1,0 +1,167 @@
+﻿@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<!-- Logo -->
+<RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0px" Style="padding:var(--rz-panel-menu-item-padding);border-bottom:var(--rz-panel-menu-item-border);cursor:pointer" class="app-sidebar-logo rz-pt-4 rz-pb-2" @onclick="@OnToggle">
+	<RadzenRow AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Gap="10px" Style="flex-wrap:nowrap">
+		<RadzenIcon Icon="arrow_back_ios" Style="display:none" class="back-icon" title="Alternar Menu" />
+		<RadzenImage style="width:fit-content;height:38px;" class="logo logo-dark" title="Sistema de Controle da Produção"></RadzenImage>
+	</RadzenRow>
+</RadzenStack>
+
+<!-- Panel Menu -->
+<RadzenPanelMenu Style="height:100%" class="sidebar-scrollbox scrollbar-hidden">
+
+	<!-- Início -->
+	<RadzenText Text="Menu" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
+	<RadzenPanelMenuItem Text="Início" Image="images/menus/inicio.svg" Path="/inicio" Click="@OnNavigate" />
+
+	<!-- Sistema -->
+	<RadzenPanelMenuItem Text="Sistema" Image="images/menus/sistema.svg" Click="@(() => eSis = OnExpand(eSis))" @bind-Expanded="@eSis">
+		<RadzenPanelMenuItem Text="Teste1" Path="/teste1" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste2" Path="/teste2" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste3" Path="/teste3" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste4" Path="/teste4" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste5" Path="/teste5" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Relatórios" Path="/relatorios" Icon="description" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Dashboards" Path="/dashboards" Icon="leaderboard" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Configurações" Path="/configuracoes" Icon="settings" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Engenharia -->
+	<RadzenText Text="Módulos" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
+	<RadzenPanelMenuItem Text="Engenharia" Image="images/menus/engenharia.svg" Click="@(() => eEng = OnExpand(eEng))" @bind-Expanded="@eEng">
+		<RadzenPanelMenuItem Text="Fichas Técnicas" Path="/engenharia/fichastecnicas" Icon="fact_check" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Processos" Path="/engenharia/processos" Icon="account_tree" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Máquinas" Path="/engenharia/maquinas" Icon="precision_manufacturing" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Produtos" Path="/engenharia/produtos" Icon="inventory" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Almoxarifado -->
+	<RadzenPanelMenuItem Text="Almoxarifado" Image="images/menus/almoxarifado.svg" Click="@(() => eAlm = OnExpand(eAlm))" @bind-Expanded="@eAlm">
+		<RadzenPanelMenuItem Text="Recebimentos" Path="/almoxarifado/recebimentos" Icon="archive" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Separações" Path="/almoxarifado/separacoes" Icon="unarchive" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Devoluções" Path="/almoxarifado/devolucoes" Icon="move_to_inbox" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Transferências" Path="/almoxarifado/transferencias" Icon="swap_horiz" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Descartes" Path="/almoxarifado/descartes" Icon="delete_forever" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Etiquetas" Path="/almoxarifado/etiquetas" Icon="style" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Planejamento -->
+	<RadzenPanelMenuItem Text="Planejamento" Image="images/menus/planejamento.svg" Click="@(() => ePcp = OnExpand(ePcp))" @bind-Expanded="@ePcp">
+		<RadzenPanelMenuItem Text="Controle de Estoque" Path="/planejamento/controleestoque" Icon="warehouse" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Ordens de Produção" Path="/planejamento/ordensproducao" Icon="assignment" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Ordens de Serviço" Path="/planejamento/ordensservico" Icon="assignment_ind" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Ordens de Compra" Path="/planejamento/orndescompra" Icon="assignment_returned" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Ordens de Venda" Path="/planejamento/ordensvenda" Icon="assignment_turned_in" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Produção -->
+	<RadzenPanelMenuItem Text="Produção" Image="images/menus/producao.svg" Click="@(() => ePrd = OnExpand(ePrd))" @bind-Expanded="@ePrd">
+		<RadzenPanelMenuItem Text="Apontamentos" Path="/producao/apontamentos" Icon="note_alt" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Ordens de Produção" Path="/producao/ordensproducao" Icon="assignment" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Ordens de Serviço" Path="/producao/ordensservico" Icon="assignment_ind" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Etiquetas" Path="/producao/etiquetas" Icon="style" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Qualidade -->
+	<RadzenPanelMenuItem Text="Qualidade" Image="images/menus/qualidade.svg" Click="@(() => eQua= OnExpand(eQua))" @bind-Expanded="@eQua">
+		<RadzenPanelMenuItem Text="Inspeções" Path="/qualidade/inspecoes" Icon="find_in_page" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Padrões" Path="/qualidade/padroes" Icon="policy" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Parâmetros" Path="/qualidade/parametros" Icon="privacy_tip" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Bloqueios" Path="/qualidade/bloqueios" Icon="security" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Liberações" Path="/qualidade/liberacoes" Icon="verified_user" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Certificados" Path="/qualidade/certificados" Icon="workspace_premium" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Fiscal -->
+	<RadzenPanelMenuItem Text="Fiscal" Image="images/menus/fiscal.svg" Click="@(() => eFis= OnExpand(eFis))" @bind-Expanded="@eFis">
+		<RadzenPanelMenuItem Text="Pedidos de Venda" Path="/fiscal/pedidosvenda" Icon="shopping_basket" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Tabelas de Preço" Path="/fiscal/tabelaspreco" Icon="local_atm" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Cenários Fiscais" Path="/fiscal/cenariosfiscais" Icon="calculate" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Notas de Entrada" Path="/fiscal/notasentrada" Icon="receipt" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Notas de Saída" Path="/fiscal/notassaida" Icon="receipt" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Logística -->
+	<RadzenPanelMenuItem Text="Logística" Image="images/menus/logistica.svg" Click="@(() => eLog= OnExpand(eLog))" @bind-Expanded="@eLog">
+		<RadzenPanelMenuItem Text="Recebimentos" Path="/logistica/recebimentos" Icon="warehouse" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Expedições" Path="/logistica/expedicoes" Icon="local_shipping" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Segurança -->
+	<RadzenText Text="Suporte" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
+	<RadzenPanelMenuItem Text="Segurança" Image="images/menus/seguranca.svg" Click="@(() => eSeg = OnExpand(eSeg))" @bind-Expanded="@eSeg">
+		<RadzenPanelMenuItem Text="Controle de EPIs" Path="/seguranca/epis" Icon="masks" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+	<!-- Manutenção -->
+	<RadzenPanelMenuItem Text="Manutenção" Image="images/menus/manutencao.svg" Click="@(() => eMan = OnExpand(eMan))" @bind-Expanded="@eMan">
+		<RadzenPanelMenuItem Text="Controle de Insumos" Path="/manutencao/insumos" Icon="home_repair_service" Click="@OnNavigate" />
+	</RadzenPanelMenuItem>
+
+</RadzenPanelMenu>
+
+<!-- Footer -->
+<Footer InSidebar="true" />
+
+@code {
+
+	[Parameter]
+	public EventCallback<EventArgs> Toggle { get; set; }
+	private bool eSis, eEng, eAlm, ePcp, ePrd, eQua, eFis, eLog, eSeg, eMan;
+
+	protected override void OnInitialized() {
+		NavigationManager.LocationChanged += OnLocationChanged;
+	}
+
+	public void Dispose() {
+		NavigationManager.LocationChanged -= OnLocationChanged;
+	}
+
+	private void OnLocationChanged(object? sender, LocationChangedEventArgs args) {
+
+		base.InvokeAsync(async () => {
+
+			await Task.Delay(1);
+			var uri = NavigationManager.Uri;
+
+			OnExpand(false);
+			eSis = uri.Contains("/teste");
+			eEng = uri.Contains("/engenharia");
+			eAlm = uri.Contains("/almoxarifado");
+			ePcp = uri.Contains("/planejamento");
+			ePrd = uri.Contains("/producao");
+			eQua = uri.Contains("/qualidade");
+			eFis = uri.Contains("/fiscal");
+			eLog = uri.Contains("/logistica");
+			eSeg = uri.Contains("/seguranca");
+			eMan = uri.Contains("/manutencao");
+			StateHasChanged();
+
+			_ = JSRuntime.InvokeVoidAsync("fireIconAnim", "icon-error-anim");
+
+		});
+
+	}
+
+	public async Task OnToggle(EventArgs args) {
+		await Toggle.InvokeAsync(args);
+	}
+
+	public async Task OnNavigate(EventArgs args) {
+
+		var dimensions = await JSRuntime.InvokeAsync<WindowDimension>("getWindowDimensions");
+
+		if (dimensions.Width <= 768) {
+			await Toggle.InvokeAsync(args);
+		}
+
+	}
+
+	private bool OnExpand(bool eGpr) {
+		eSis = eEng = eAlm = ePcp = ePrd = eQua = eFis = eLog = eSeg = eMan = false;
+		return eGpr;
+	}
+
+}

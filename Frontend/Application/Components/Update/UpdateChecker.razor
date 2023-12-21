@@ -1,0 +1,109 @@
+﻿@inject IJSRuntime JSRuntime
+@inject DialogService DialogService
+@inject VersionService VersionService
+@inject ISessionStorageService SessionStorage
+
+<NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
+<RadzenAlert Title="Atualização disponível" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="false" Visible="@(DisplayBanner && updateAvailable)" class="update-banner">
+	<p class="m-0">Utilize o botão no topo da página para atualizar.</p>
+	@if (serverVersion != null) {
+		<p class="mt-2 mb-0">Novidades da @serverVersion.Version:</p>
+		<pre style="white-space:pre-line;" class="mb-0">@serverVersion.Notes</pre>
+	}
+</RadzenAlert>
+
+@code {
+
+	/// <summary>
+	/// Defines whether the component should check for updates.
+	/// Defaults to true.
+	/// </summary>
+	[Parameter]
+	public bool CheckUpdate { get; set; } = true;
+
+	/// <summary>
+	/// Defines whether the update banner will be displayed.
+	/// Defaults to false.
+	/// </summary>
+	[Parameter]
+	public bool DisplayBanner { get; set; } = false;
+
+	/// <summary>
+	/// Defines whether the component should block user navigation until updating.
+	/// Defaults to false.
+	/// </summary>
+	[Parameter]
+	public bool BlockNavigation { get; set; } = false;
+
+	private VersionInfo localVersion = new();
+	private VersionInfo serverVersion = new();
+	private DateTime? lastChecked = DateTime.UtcNow;
+	private bool updateAvailable = false;
+	private bool blockNavigation = false;
+
+	protected override async Task OnInitializedAsync() {
+
+		lastChecked = await SessionStorage.GetItemAsync<DateTime>("UpdateLastChecked");
+		updateAvailable = await SessionStorage.GetItemAsync<bool>("UpdateAvailable");
+		blockNavigation = await SessionStorage.GetItemAsync<bool>("UpdateForced");
+
+		if (CheckUpdate && !updateAvailable) {
+
+			if (DateTime.UtcNow >= lastChecked.Value.AddSeconds(60)) {
+
+				localVersion = VersionService.GetLocalVersion();
+				serverVersion = await VersionService.GetServerVersionAsync();
+				await SessionStorage.SetItemAsync<DateTime>("UpdateLastChecked", DateTime.UtcNow);
+
+				if (localVersion != null && serverVersion != null) {
+
+					if (localVersion.Build < serverVersion.Build) {
+
+						if (localVersion.Forced < serverVersion.Forced) {
+
+							await SessionStorage.SetItemAsync<bool>("UpdateForced", true);
+							blockNavigation = true;
+
+						}
+
+						await SessionStorage.SetItemAsync<bool>("UpdateAvailable", true);
+						await JSRuntime.InvokeVoidAsync("newUpdate");
+						updateAvailable = true;
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	private async Task OnBeforeInternalNavigationAsync(LocationChangingContext locationChangingContext) {
+
+		if (BlockNavigation && blockNavigation && updateAvailable) {
+
+			var result = await DialogService.Confirm("É necessária uma atualização do aplicativo para prosseguir. Deseja atualizar agora?", "Atualização Necessária", new ConfirmOptions() {
+					OkButtonText = "Atualizar",
+					CancelButtonText = "Cancelar",
+					AutoFocusFirstElement = false,
+					CloseDialogOnOverlayClick = true,
+					CloseDialogOnEsc = true
+				});
+
+			if (result ?? false) {
+
+				await JSRuntime.InvokeVoidAsync("update");
+
+			} else {
+
+				locationChangingContext.PreventNavigation();
+
+			}
+
+		}
+
+	}
+
+}

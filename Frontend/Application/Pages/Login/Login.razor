@@ -1,0 +1,15 @@
+﻿@page "/login"
+@layout LoginLayout
+@attribute [AllowAnonymous]
+@inject NavigationManager NavigationManager
+
+<PageTitle>Login</PageTitle>
+<RadzenButton Text="Fazer Login" Click="@DoLogin" />
+
+@code {
+
+	protected void DoLogin() {
+		NavigationManager.NavigateToLogin("authentication/login");
+	}
+
+}

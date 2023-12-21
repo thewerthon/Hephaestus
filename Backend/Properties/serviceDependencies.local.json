@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "identityapp1": {
+      "connectionInfo": "Registro do aplicativo: SCP 2.0 (API), Locatário: SIW Kits Eólicos (siw.ind.br - Microsoft Entra ID)",
+      "type": "identityapp.default"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<NoWarn>CS8601,CS8602</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="Application\Models\VersionInfo.cs" Link="Version.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="MainModules\Almoxarifado\" />
+		<Folder Include="MainModules\Engenharia\" />
+		<Folder Include="MainModules\Fiscal\" />
+		<Folder Include="MainModules\Logistica\" />
+		<Folder Include="MainModules\Manutencao\" />
+		<Folder Include="MainModules\Planejamento\" />
+		<Folder Include="MainModules\Producao\" />
+		<Folder Include="MainModules\Qualidade\" />
+		<Folder Include="MainModules\Seguranca\" />
+		<Folder Include="SideModules\Configuracoes\" />
+		<Folder Include="SideModules\Dashboards\" />
+		<Folder Include="SideModules\Relatorios\" />
+	</ItemGroup>
+
+</Project>

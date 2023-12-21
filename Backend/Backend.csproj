@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<NoWarn>CS8601,CS8602</NoWarn>
+		<InvariantGlobalization>true</InvariantGlobalization>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<UserSecretsId>Hephaestus.Backend.Debug</UserSecretsId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<UserSecretsId>Hephaestus.Backend.Release</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Architect\Architect.csproj" />
+		<ProjectReference Include="..\Frontend\Frontend.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Identity.Web" Version="2.16.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" NoWarn="NU1605" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.0" NoWarn="NU1605" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="MainModules\Almoxarifado\" />
+		<Folder Include="MainModules\Engenharia\" />
+		<Folder Include="MainModules\Fiscal\" />
+		<Folder Include="MainModules\Logistica\" />
+		<Folder Include="MainModules\Manutencao\" />
+		<Folder Include="MainModules\Planejamento\" />
+		<Folder Include="MainModules\Producao\" />
+		<Folder Include="MainModules\Qualidade\" />
+		<Folder Include="MainModules\Seguranca\" />
+		<Folder Include="SideModules\Configuracoes\" />
+		<Folder Include="SideModules\Dashboards\" />
+		<Folder Include="SideModules\Relatorios\" />
+	</ItemGroup>
+
+</Project>

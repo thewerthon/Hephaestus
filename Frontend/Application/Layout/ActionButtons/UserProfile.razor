@@ -1,0 +1,159 @@
+﻿@using System.Security.Claims
+@inject IJSRuntime JSRuntime
+@inject DialogService DialogService
+@inject NavigationManager NavigationManager
+@inject IHttpClientFactory ClientFactory
+@inject ILocalStorageService LocalStorage
+
+<RadzenProfileMenu Click="@ProfileMenuClick" class="rz-p-2">
+
+	<!-- Profile Info -->
+	<Template>
+		<RadzenStack Orientation="Orientation.Horizontal" Gap="10px" class="rz-mr-2">
+			<RadzenStack AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center">
+				<RadzenStack Style="width:38px; height:38px; position:absolute; background:#ffffff77;" Visible="@(!visible)" class="rounded-circle" />
+				<RadzenProgressBarCircular ProgressBarStyle="ProgressBarStyle.Light" Size="ProgressBarCircularSize.ExtraSmall" Value="100" Visible="@(!visible)" ShowValue="false" Mode="ProgressBarMode.Indeterminate" Style="width:24px; height:24px; position:absolute; background:#ffffff00;" class="rounded-circle" />
+				<RadzenImage Path="@cUser.Photo" Style="width:38px;height:38px" class="user-size rounded-circle" />
+			</RadzenStack>
+			<RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Center" Gap="0px" class="small-none">
+				<RadzenText Text="@cUser.Name" TextStyle="TextStyle.Body1" class="rz-mb-0 rz-text-nowrap" style="color:var(--rz-text-primary-color);font-size:14px"></RadzenText>
+				<RadzenText Text="@cUser.Role" TextStyle="TextStyle.Caption" class="rz-my-0 rz-text-nowrap" style="color:var(--rz-text-tertiary-color);font-size:11px"></RadzenText>
+			</RadzenStack>
+		</RadzenStack>
+	</Template>
+
+	<!-- Menu Items -->
+	<ChildContent>
+		<RadzenProfileMenuItem Text="Meu Perfil" Icon="account_circle" Path="usuario" />
+		<RadzenProfileMenuItem Text="Notas da Versão" Icon="auto_awesome" Path="versao" />
+		<RadzenProfileMenuItem Text="Instalar Aplicativo" Icon="system_update_alt" Value="AppInstall" Style="display:none" id="app-install" />
+		<RadzenProfileMenuItem Text="Forçar Atualização" Icon="autorenew" Value="Update" />
+		<RadzenProfileMenuItem Text="Sobre o Sistema" Icon="info" Path="sobre" />
+		<RadzenProfileMenuItem Text="Obter Ajuda" Icon="help" Path="ajuda" />
+		<RadzenProfileMenuItem Text="Fazer Logout" Icon="logout" Value="Logout" />
+	</ChildContent>
+
+</RadzenProfileMenu>
+
+@code {
+
+	[CascadingParameter]
+	public Task<AuthenticationState>? AuthTask { get; set; }
+	private ClaimsPrincipal? user;
+	private UserInfo? cUser;
+	private UserInfo? sUser;
+	private byte[]? photo;
+	private bool visible;
+
+	protected override async Task OnInitializedAsync() {
+
+		var authState = await AuthTask;
+		this.user = authState.User;
+		this.cUser = new UserInfo();
+		this.sUser = new UserInfo();
+
+		if (user is not null && user.Identity.IsAuthenticated) {
+
+			cUser.Email = user.FindFirst("email")?.Value;
+			var sUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo");
+
+			if (cUser?.Email == sUser?.Email) {
+
+				cUser = sUser;
+				visible = true;
+
+			} else {
+
+				var client = ClientFactory.CreateClient("GraphAPI");
+				cUser = await client.GetFromJsonAsync<UserInfo>("v1.0/me");
+				photo = await client.GetByteArrayAsync("v1.0/me/photos/96x96/$value");
+
+				cUser.Role = user.FindFirst("role")?.Value ?? "Acesso Padrão";
+				cUser.Photo = "data:image/jpeg;base64," + Convert.ToBase64String(photo);
+
+				switch (cUser.Role) {
+					case "Administrator":
+						cUser.Role = "Administrador";
+						break;
+
+					case "Moderator":
+						cUser.Role = "Moderador";
+						break;
+
+					case "User":
+						cUser.Role = "Acesso Padrão";
+						break;
+
+				}
+
+				await LocalStorage.SetItemAsync<UserInfo>("UserInfo", cUser);
+				visible = true;
+
+			}
+
+		}
+
+	}
+
+	protected override Task OnAfterRenderAsync(bool firstRender) {
+
+		if (firstRender) _ = JSRuntime.InvokeVoidAsync("isAppInstalled");
+		return base.OnAfterRenderAsync(firstRender);
+
+	}
+
+	protected async void ProfileMenuClick(RadzenProfileMenuItem args) {
+
+		if (args.Value == "AppInstall") {
+			await AppInstall();
+		}
+
+		if (args.Value == "Logout") {
+			await LogoutConfirm();
+		}
+
+		if (args.Value == "Update") {
+			await ForceUpdate();
+		}
+
+	}
+
+	private async Task AppInstall() {
+
+		await JSRuntime.InvokeVoidAsync("appInstall");
+
+	}
+
+	private async Task ForceUpdate() {
+
+		var result = await DialogService.Confirm("Forçar atualização do aplicativo?", "Forçar Atualização", new ConfirmOptions() {
+				OkButtonText = "Confirmar",
+				CancelButtonText = "Cancelar",
+				AutoFocusFirstElement = false,
+				CloseDialogOnOverlayClick = true,
+				CloseDialogOnEsc = true
+			});
+
+		if (result ?? false) {
+			await JSRuntime.InvokeVoidAsync("update");
+		}
+
+	}
+
+	private async Task LogoutConfirm() {
+
+		var result = await DialogService.Confirm("Confirmar saída do aplicativo?", "Fazer Logout", new ConfirmOptions() {
+				OkButtonText = "Confirmar",
+				CancelButtonText = "Cancelar",
+				AutoFocusFirstElement = false,
+				CloseDialogOnOverlayClick = true,
+				CloseDialogOnEsc = true
+			});
+
+		if (result ?? false) {
+			NavigationManager.NavigateToLogout("authentication/logout");
+		}
+
+	}
+
+}
