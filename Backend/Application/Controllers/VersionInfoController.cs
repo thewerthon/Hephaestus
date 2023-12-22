@@ -4,7 +4,7 @@ using Architect.Application.Models;
 namespace Backend.Application.Controllers {
 
 	[ApiController]
-	[Route("api/[controller]")]
+	[Route("api/application/[controller]")]
 	public class VersionInfoController : ControllerBase {
 
 		[HttpGet(Name = "GetVersionInfo")]

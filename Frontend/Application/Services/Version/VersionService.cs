@@ -16,7 +16,7 @@ namespace Frontend.Application.Services.Version {
 		}
 
 		public async Task<VersionInfo> GetServerVersionAsync() {
-			ServerVersion = await _httpClient?.GetFromJsonAsync<VersionInfo>("api/versioninfo") ?? new();
+			ServerVersion = await _httpClient?.GetFromJsonAsync<VersionInfo>("api/application/versioninfo") ?? new();
 			if (ServerVersion.Notes == string.Empty) ServerVersion.Notes = "- Melhorias de usabilidade e correções gerais.";
 			return ServerVersion;
 		}

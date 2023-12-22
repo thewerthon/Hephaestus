@@ -14,15 +14,15 @@
 
 	<!-- Início -->
 	<RadzenText Text="Menu" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
-	<RadzenPanelMenuItem Text="Início" Image="images/menus/inicio.svg" Path="/inicio" Click="@OnNavigate" />
+	<RadzenPanelMenuItem Text="Início" Image="images/menus/inicio.svg" Path="/home" Click="@OnNavigate" />
 
 	<!-- Sistema -->
 	<RadzenPanelMenuItem Text="Sistema" Image="images/menus/sistema.svg" Click="@(() => eSis = OnExpand(eSis))" @bind-Expanded="@eSis">
-		<RadzenPanelMenuItem Text="Teste1" Path="/teste1" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste2" Path="/teste2" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste3" Path="/teste3" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste4" Path="/teste4" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste5" Path="/teste5" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste1" Path="/tests/test1" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste2" Path="/tests/test2" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste3" Path="/tests/test3" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste4" Path="/tests/test4" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Teste5" Path="/tests/test5" Icon="science" Click="@OnNavigate" />
 		<RadzenPanelMenuItem Text="Relatórios" Path="/relatorios" Icon="description" Click="@OnNavigate" />
 		<RadzenPanelMenuItem Text="Dashboards" Path="/dashboards" Icon="leaderboard" Click="@OnNavigate" />
 		<RadzenPanelMenuItem Text="Configurações" Path="/configuracoes" Icon="settings" Click="@OnNavigate" />

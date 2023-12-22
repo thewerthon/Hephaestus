@@ -2,7 +2,7 @@
 @inject IJSRuntime JSRuntime
 
 <RadzenButton @ref=button Variant="Variant.Text" class="topbar-icon" title="Mudar Tema" Click="@(args => popup.ToggleAsync(button.Element))">
-	<LordIcon Icon="/system/solid/bolt.json" Trigger="click" State="hover-bolt" Size="24px" Target=".rz-button" Title="Alterar Tema" />
+	<LordIcon Icon="/system/solid/bulb.json" Trigger="click" State="morph-bulb-OFF" Size="24px" Target=".rz-button" Title="Alterar Tema" />
 </RadzenButton>
 
 <Popup @ref=popup Lazy=true class="popup-frame">

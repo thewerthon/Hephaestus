@@ -1,7 +1,7 @@
 ﻿<RadzenRow>
 	<RadzenColumn Size="12" style="margin-top: 5rem; margin-bottom: 5rem;" class="">
 		<LordIcon Icon="/wired/outline/padlock.json" Trigger="in-hover-click" State="hover-loked" Stroke="bold" Size="120px" Id="icon-error-anim" />
-		<RadzenText Text="Não Autorizado" TextStyle="TextStyle.DisplayH3" style="margin: 0; margin-bottom: 2rem;" TextAlign="TextAlign.Center" class="error-fadein rz-mb-2" />
-		<RadzenText Text="Você não tem permissão para visualizar esta página." TextStyle="TextStyle.H6" style="margin: 0;" TextAlign="TextAlign.Center" TagName="Radzen.Blazor.TagName.P" class="error-fadein" />
+		<RadzenText Text="@AppLang["App.Errors.Error401.Title"]" TextStyle="TextStyle.DisplayH3" style="margin: 0; margin-bottom: 2rem;" TextAlign="TextAlign.Center" class="error-fadein rz-mb-2" />
+		<RadzenText Text="@AppLang["App.Errors.Error401.Message"]" TextStyle="TextStyle.H6" style="margin: 0;" TextAlign="TextAlign.Center" TagName="Radzen.Blazor.TagName.P" class="error-fadein" />
 	</RadzenColumn>
 </RadzenRow>

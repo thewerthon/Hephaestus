@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Frontend.Application.Services.Account;
 using Frontend.Application.Services.Version;
 using Frontend.Application.Services.Graph;
+using System.Globalization;
+using Microsoft.JSInterop;
 
 // WebAssembly Host Builder
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -47,5 +49,22 @@ builder.Logging.SetMinimumLevel(LogLevel.Warning);
 // Version Service
 builder.Services.AddScoped<VersionService>();
 
-// Build and Run
-await builder.Build().RunAsync();
+// Localization Service
+builder.Services.AddLocalization();
+
+// Build Host
+var host = builder.Build();
+
+// Get Culture
+CultureInfo culture;
+var js = host.Services.GetRequiredService<IJSRuntime>();
+var lang = await js.InvokeAsync<string>("getLang") ?? "pt-BR";
+culture = new CultureInfo(lang);
+
+// Set Culture
+await js.InvokeVoidAsync("setLang", lang);
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+// Run Host
+await host.RunAsync();

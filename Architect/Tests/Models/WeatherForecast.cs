@@ -1,4 +1,4 @@
-namespace Architect.SideModules.Testes.Models {
+namespace Architect.Tests.Models {
 
 	public class WeatherForecast {
 

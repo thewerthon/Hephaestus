@@ -1,19 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 using Microsoft.AspNetCore.Authorization;
-using Architect.SideModules.Testes.Models;
+using Architect.Tests.Models;
 
-namespace Backend.SideModules.Testes.Controllers {
+namespace Backend.Tests.Controllers {
 
 	[Authorize]
 	[ApiController]
-	[Route("api/testes/[controller]")]
+	[Route("api/tests/[controller]")]
 	[RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 	public class WeatherForecastController : ControllerBase {
 
 		private static readonly string[] Summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
 
-		[HttpGet(Name = "GetWeatherForecast")]
+		[HttpGet(Name = "GetWeatherForecasts")]
 		public IEnumerable<WeatherForecast> Get() {
 
 			return Enumerable.Range(1, 50).Select(index => new WeatherForecast {

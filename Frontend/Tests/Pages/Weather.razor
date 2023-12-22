@@ -1,6 +1,6 @@
-﻿@page "/weather"
+﻿@page "/tests/weatherforecast"
 @inject HttpClient Http
-@using Architect.SideModules.Testes.Models
+@    using Architect.SideModules.Testes.Models
 
 <PageTitle>Weather</PageTitle>
 
@@ -38,7 +38,7 @@
 
 	protected override async Task OnInitializedAsync() {
 		try {
-			forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("api/testes/weatherforecast");
+			forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("api/tests/weatherforecasts");
 		} catch (AccessTokenNotAvailableException exception) {
 			exception.Redirect();
 		}
