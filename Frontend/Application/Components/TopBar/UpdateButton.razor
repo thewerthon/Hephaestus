@@ -1,17 +1,14 @@
-﻿@inject IJSRuntime JSRuntime
-@inject DialogService DialogService
-
-<RadzenButton Variant="Variant.Text" Style="display: none;" Click="@(() => Update())" class="topbar-icon" id="update-button">
-	<LordIcon Icon="/system/solid/autorenew.json" Trigger="loop-on-hover" State="hover-autorenew" Size="24px" Target=".rz-button" Title="Atualizar Aplicativo" />
+﻿<RadzenButton Variant="Variant.Text" Style="display: none;" Click="@(() => Update())" class="topbar-icon" id="update-button">
+	<LordIcon Icon="/system/solid/autorenew.json" Trigger="loop-on-hover" State="hover-autorenew" Size="24px" Target=".rz-button" Title="@AppText["0007"]" />
 </RadzenButton>
 
 @code {
 
 	private async Task Update() {
 
-		var result = await DialogService.Confirm("Uma atualização do aplicativo está disponível, deseja atualizar agora? Dados não salvos serão perdidos.", "Atualizar Aplicativo", new ConfirmOptions() {
-				OkButtonText = "Atualizar",
-				CancelButtonText = "Cancelar",
+		var result = await DialogService.Confirm(AppText["0010"], AppText["0007"], new ConfirmOptions() {
+				OkButtonText = AppButton["Update"],
+				CancelButtonText = AppButton["Cancel"],
 				AutoFocusFirstElement = false,
 				CloseDialogOnOverlayClick = true,
 				CloseDialogOnEsc = true

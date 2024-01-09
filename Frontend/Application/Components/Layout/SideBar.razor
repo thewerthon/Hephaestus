@@ -1,11 +1,8 @@
-﻿@inject IJSRuntime JSRuntime
-@inject NavigationManager NavigationManager
-
-<!-- Logo -->
+﻿<!-- Logo -->
 <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0px" Style="padding:var(--rz-panel-menu-item-padding);border-bottom:var(--rz-panel-menu-item-border);cursor:pointer" class="app-sidebar-logo rz-pt-4 rz-pb-2" @onclick="@OnToggle">
 	<RadzenRow AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Gap="10px" Style="flex-wrap:nowrap">
-		<RadzenIcon Icon="arrow_back_ios" Style="display:none" class="back-icon" title="Alternar Menu" />
-		<RadzenImage style="width:fit-content;height:38px;" class="logo logo-dark" title="Sistema de Controle da Produção"></RadzenImage>
+		<RadzenIcon Icon="arrow_back_ios" Style="display:none" class="back-icon" title="@AppText["0006"]" />
+		<RadzenImage style="width:fit-content;height:38px;" class="logo logo-dark" title="@AppInfo["Fullname"]"></RadzenImage>
 	</RadzenRow>
 </RadzenStack>
 
@@ -13,91 +10,93 @@
 <RadzenPanelMenu Style="height:100%" class="sidebar-scrollbox scrollbar-hidden">
 
 	<!-- Início -->
-	<RadzenText Text="Menu" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
-	<RadzenPanelMenuItem Text="Início" Image="images/menus/inicio.svg" Path="/home" Click="@OnNavigate" />
+	<RadzenText Text="@AppMenu["0000"]" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
+	<RadzenPanelMenuItem Text="@AppMenu["0200"]" Path="@AppPath["0200"]" Image="@AppIcon["0200"]" Click="@OnNavigate" />
 
-	<!-- Sistema -->
-	<RadzenPanelMenuItem Text="Sistema" Image="images/menus/sistema.svg" Click="@(() => eSis = OnExpand(eSis))" @bind-Expanded="@eSis">
-		<RadzenPanelMenuItem Text="Teste1" Path="/tests/test1" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste2" Path="/tests/test2" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste3" Path="/tests/test3" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste4" Path="/tests/test4" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Teste5" Path="/tests/test5" Icon="science" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Relatórios" Path="/relatorios" Icon="description" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Dashboards" Path="/dashboards" Icon="leaderboard" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Configurações" Path="/configuracoes" Icon="settings" Click="@OnNavigate" />
+	<!-- Application -->
+	<RadzenPanelMenuItem Text="@AppMenu["1000"]" Image="@AppIcon["1000"]" Click="@(() => eApp = OnExpand(eApp))" @bind-Expanded="@eApp">
+		<RadzenPanelMenuItem Text="Test 1" Path="/tests/test1" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Test 2" Path="/tests/test2" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Test 3" Path="/tests/test3" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Test 4" Path="/tests/test4" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="Test 5" Path="/tests/test5" Icon="science" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["1100"]" Path="@AppPath["1100"]" Icon="@AppIcon["1100"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["1200"]" Path="@AppPath["1200"]" Icon="@AppIcon["1200"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["1300"]" Path="@AppPath["1300"]" Icon="@AppIcon["1300"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Engenharia -->
-	<RadzenText Text="Módulos" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
-	<RadzenPanelMenuItem Text="Engenharia" Image="images/menus/engenharia.svg" Click="@(() => eEng = OnExpand(eEng))" @bind-Expanded="@eEng">
-		<RadzenPanelMenuItem Text="Fichas Técnicas" Path="/engenharia/fichastecnicas" Icon="fact_check" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Processos" Path="/engenharia/processos" Icon="account_tree" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Máquinas" Path="/engenharia/maquinas" Icon="precision_manufacturing" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Produtos" Path="/engenharia/produtos" Icon="inventory" Click="@OnNavigate" />
+	<!-- Engineering -->
+	<RadzenText Text="@AppMenu["2000"]" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
+	<RadzenPanelMenuItem Text="@AppMenu["2100"]" Image="@AppIcon["2100"]" Click="@(() => eEng = OnExpand(eEng))" @bind-Expanded="@eEng">
+		<RadzenPanelMenuItem Text="@AppMenu["2110"]" Path="@AppPath["2110"]" Icon="@AppIcon["2110"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2120"]" Path="@AppPath["2120"]" Icon="@AppIcon["2120"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2130"]" Path="@AppPath["2130"]" Icon="@AppIcon["2130"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2140"]" Path="@AppPath["2140"]" Icon="@AppIcon["2140"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Almoxarifado -->
-	<RadzenPanelMenuItem Text="Almoxarifado" Image="images/menus/almoxarifado.svg" Click="@(() => eAlm = OnExpand(eAlm))" @bind-Expanded="@eAlm">
-		<RadzenPanelMenuItem Text="Recebimentos" Path="/almoxarifado/recebimentos" Icon="archive" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Separações" Path="/almoxarifado/separacoes" Icon="unarchive" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Devoluções" Path="/almoxarifado/devolucoes" Icon="move_to_inbox" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Transferências" Path="/almoxarifado/transferencias" Icon="swap_horiz" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Descartes" Path="/almoxarifado/descartes" Icon="delete_forever" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Etiquetas" Path="/almoxarifado/etiquetas" Icon="style" Click="@OnNavigate" />
+	<!-- Warehouse -->
+	<RadzenPanelMenuItem Text="@AppMenu["2200"]" Image="@AppIcon["2200"]" Click="@(() => eWar = OnExpand(eWar))" @bind-Expanded="@eWar">
+		<RadzenPanelMenuItem Text="@AppMenu["2210"]" Path="@AppPath["2210"]" Icon="@AppIcon["2210"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2220"]" Path="@AppPath["2220"]" Icon="@AppIcon["2220"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2230"]" Path="@AppPath["2230"]" Icon="@AppIcon["2230"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2240"]" Path="@AppPath["2240"]" Icon="@AppIcon["2240"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2250"]" Path="@AppPath["2250"]" Icon="@AppIcon["2250"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2260"]" Path="@AppPath["2260"]" Icon="@AppIcon["2260"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Planejamento -->
-	<RadzenPanelMenuItem Text="Planejamento" Image="images/menus/planejamento.svg" Click="@(() => ePcp = OnExpand(ePcp))" @bind-Expanded="@ePcp">
-		<RadzenPanelMenuItem Text="Controle de Estoque" Path="/planejamento/controleestoque" Icon="warehouse" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Ordens de Produção" Path="/planejamento/ordensproducao" Icon="assignment" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Ordens de Serviço" Path="/planejamento/ordensservico" Icon="assignment_ind" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Ordens de Compra" Path="/planejamento/orndescompra" Icon="assignment_returned" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Ordens de Venda" Path="/planejamento/ordensvenda" Icon="assignment_turned_in" Click="@OnNavigate" />
+	<!-- Planning -->
+	<RadzenPanelMenuItem Text="@AppMenu["2300"]" Image="@AppIcon["2300"]" Click="@(() => ePln = OnExpand(ePln))" @bind-Expanded="@ePln">
+		<RadzenPanelMenuItem Text="@AppMenu["2310"]" Path="@AppPath["2310"]" Icon="@AppIcon["2310"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2320"]" Path="@AppPath["2320"]" Icon="@AppIcon["2320"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2330"]" Path="@AppPath["2330"]" Icon="@AppIcon["2330"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2340"]" Path="@AppPath["2340"]" Icon="@AppIcon["2340"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2350"]" Path="@AppPath["2350"]" Icon="@AppIcon["2350"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Produção -->
-	<RadzenPanelMenuItem Text="Produção" Image="images/menus/producao.svg" Click="@(() => ePrd = OnExpand(ePrd))" @bind-Expanded="@ePrd">
-		<RadzenPanelMenuItem Text="Apontamentos" Path="/producao/apontamentos" Icon="note_alt" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Ordens de Produção" Path="/producao/ordensproducao" Icon="assignment" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Ordens de Serviço" Path="/producao/ordensservico" Icon="assignment_ind" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Etiquetas" Path="/producao/etiquetas" Icon="style" Click="@OnNavigate" />
+	<!-- Production -->
+	<RadzenPanelMenuItem Text="@AppMenu["2400"]" Image="@AppIcon["2400"]" Click="@(() => ePrd = OnExpand(ePrd))" @bind-Expanded="@ePrd">
+		<RadzenPanelMenuItem Text="@AppMenu["2410"]" Path="@AppPath["2410"]" Icon="@AppIcon["2410"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2420"]" Path="@AppPath["2420"]" Icon="@AppIcon["2420"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2430"]" Path="@AppPath["2430"]" Icon="@AppIcon["2430"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2440"]" Path="@AppPath["2440"]" Icon="@AppIcon["2440"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Qualidade -->
-	<RadzenPanelMenuItem Text="Qualidade" Image="images/menus/qualidade.svg" Click="@(() => eQua= OnExpand(eQua))" @bind-Expanded="@eQua">
-		<RadzenPanelMenuItem Text="Inspeções" Path="/qualidade/inspecoes" Icon="find_in_page" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Padrões" Path="/qualidade/padroes" Icon="policy" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Parâmetros" Path="/qualidade/parametros" Icon="privacy_tip" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Bloqueios" Path="/qualidade/bloqueios" Icon="security" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Liberações" Path="/qualidade/liberacoes" Icon="verified_user" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Certificados" Path="/qualidade/certificados" Icon="workspace_premium" Click="@OnNavigate" />
+	<!-- Quality -->
+	<RadzenPanelMenuItem Text="@AppMenu["2500"]" Image="@AppIcon["2500"]" Click="@(() => eQua= OnExpand(eQua))" @bind-Expanded="@eQua">
+		<RadzenPanelMenuItem Text="@AppMenu["2510"]" Path="@AppPath["2510"]" Icon="@AppIcon["2510"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2520"]" Path="@AppPath["2520"]" Icon="@AppIcon["2520"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2530"]" Path="@AppPath["2530"]" Icon="@AppIcon["2530"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2540"]" Path="@AppPath["2540"]" Icon="@AppIcon["2540"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2550"]" Path="@AppPath["2550"]" Icon="@AppIcon["2550"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2560"]" Path="@AppPath["2560"]" Icon="@AppIcon["2560"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
 	<!-- Fiscal -->
-	<RadzenPanelMenuItem Text="Fiscal" Image="images/menus/fiscal.svg" Click="@(() => eFis= OnExpand(eFis))" @bind-Expanded="@eFis">
-		<RadzenPanelMenuItem Text="Pedidos de Venda" Path="/fiscal/pedidosvenda" Icon="shopping_basket" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Tabelas de Preço" Path="/fiscal/tabelaspreco" Icon="local_atm" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Cenários Fiscais" Path="/fiscal/cenariosfiscais" Icon="calculate" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Notas de Entrada" Path="/fiscal/notasentrada" Icon="receipt" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Notas de Saída" Path="/fiscal/notassaida" Icon="receipt" Click="@OnNavigate" />
+	<RadzenPanelMenuItem Text="@AppMenu["2600"]" Image="@AppIcon["2600"]" Click="@(() => eFis= OnExpand(eFis))" @bind-Expanded="@eFis">
+		<RadzenPanelMenuItem Text="@AppMenu["2610"]" Path="@AppPath["2610"]" Icon="@AppIcon["2610"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2620"]" Path="@AppPath["2620"]" Icon="@AppIcon["2620"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2630"]" Path="@AppPath["2630"]" Icon="@AppIcon["2630"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2640"]" Path="@AppPath["2640"]" Icon="@AppIcon["2640"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2650"]" Path="@AppPath["2650"]" Icon="@AppIcon["2650"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Logística -->
-	<RadzenPanelMenuItem Text="Logística" Image="images/menus/logistica.svg" Click="@(() => eLog= OnExpand(eLog))" @bind-Expanded="@eLog">
-		<RadzenPanelMenuItem Text="Recebimentos" Path="/logistica/recebimentos" Icon="warehouse" Click="@OnNavigate" />
-		<RadzenPanelMenuItem Text="Expedições" Path="/logistica/expedicoes" Icon="local_shipping" Click="@OnNavigate" />
+	<!-- Logistics -->
+	<RadzenPanelMenuItem Text="@AppMenu["2700"]" Image="@AppIcon["2700"]" Click="@(() => eLog= OnExpand(eLog))" @bind-Expanded="@eLog">
+		<RadzenPanelMenuItem Text="@AppMenu["2710"]" Path="@AppPath["2710"]" Icon="@AppIcon["2710"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["2720"]" Path="@AppPath["2720"]" Icon="@AppIcon["2720"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Segurança -->
-	<RadzenText Text="Suporte" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
-	<RadzenPanelMenuItem Text="Segurança" Image="images/menus/seguranca.svg" Click="@(() => eSeg = OnExpand(eSeg))" @bind-Expanded="@eSeg">
-		<RadzenPanelMenuItem Text="Controle de EPIs" Path="/seguranca/epis" Icon="masks" Click="@OnNavigate" />
+	<!-- Safety -->
+	<RadzenText Text="@AppMenu["3000"]" TextStyle="TextStyle.Overline" TagName="TagName.P" class="rz-my-0 rz-ml-4 rz-pb-2 rz-pt-4" style="color:var(--rz-sidebar-label-color)" />
+	<RadzenPanelMenuItem Text="@AppMenu["3100"]" Image="@AppIcon["3100"]" Click="@(() => eSaf = OnExpand(eSaf))" @bind-Expanded="@eSaf">
+		<RadzenPanelMenuItem Text="@AppMenu["3110"]" Path="@AppPath["3110"]" Icon="@AppIcon["3110"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["3120"]" Path="@AppPath["3120"]" Icon="@AppIcon["3120"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
-	<!-- Manutenção -->
-	<RadzenPanelMenuItem Text="Manutenção" Image="images/menus/manutencao.svg" Click="@(() => eMan = OnExpand(eMan))" @bind-Expanded="@eMan">
-		<RadzenPanelMenuItem Text="Controle de Insumos" Path="/manutencao/insumos" Icon="home_repair_service" Click="@OnNavigate" />
+	<!-- Maintenance -->
+	<RadzenPanelMenuItem Text="@AppMenu["3200"]" Image="@AppIcon["3200"]" Click="@(() => eMan = OnExpand(eMan))" @bind-Expanded="@eMan">
+		<RadzenPanelMenuItem Text="@AppMenu["3210"]" Path="@AppPath["3210"]" Icon="@AppIcon["3210"]" Click="@OnNavigate" />
+		<RadzenPanelMenuItem Text="@AppMenu["3220"]" Path="@AppPath["3220"]" Icon="@AppIcon["3220"]" Click="@OnNavigate" />
 	</RadzenPanelMenuItem>
 
 </RadzenPanelMenu>
@@ -109,7 +108,7 @@
 
 	[Parameter]
 	public EventCallback<EventArgs> Toggle { get; set; }
-	private bool eSis, eEng, eAlm, ePcp, ePrd, eQua, eFis, eLog, eSeg, eMan;
+	private bool eApp, eEng, eWar, ePln, ePrd, eQua, eFis, eLog, eSaf, eMan;
 
 	protected override void OnInitialized() {
 		NavigationManager.LocationChanged += OnLocationChanged;
@@ -127,16 +126,16 @@
 			var uri = NavigationManager.Uri;
 
 			OnExpand(false);
-			eSis = uri.Contains("/teste");
-			eEng = uri.Contains("/engenharia");
-			eAlm = uri.Contains("/almoxarifado");
-			ePcp = uri.Contains("/planejamento");
-			ePrd = uri.Contains("/producao");
-			eQua = uri.Contains("/qualidade");
-			eFis = uri.Contains("/fiscal");
-			eLog = uri.Contains("/logistica");
-			eSeg = uri.Contains("/seguranca");
-			eMan = uri.Contains("/manutencao");
+			eApp = uri.Contains(AppPath["1400"]);
+			eEng = uri.Contains(AppPath["2100"]);
+			eWar = uri.Contains(AppPath["2200"]);
+			ePln = uri.Contains(AppPath["2300"]);
+			ePrd = uri.Contains(AppPath["2400"]);
+			eQua = uri.Contains(AppPath["2500"]);
+			eFis = uri.Contains(AppPath["2600"]);
+			eLog = uri.Contains(AppPath["2700"]);
+			eSaf = uri.Contains(AppPath["3100"]);
+			eMan = uri.Contains(AppPath["3200"]);
 			StateHasChanged();
 
 			_ = JSRuntime.InvokeVoidAsync("fireIconAnim", "icon-error-anim");
@@ -160,7 +159,7 @@
 	}
 
 	private bool OnExpand(bool eGpr) {
-		eSis = eEng = eAlm = ePcp = ePrd = eQua = eFis = eLog = eSeg = eMan = false;
+		eApp = eEng = eWar = ePln = ePrd = eQua = eFis = eLog = eSaf = eMan = false;
 		return eGpr;
 	}
 

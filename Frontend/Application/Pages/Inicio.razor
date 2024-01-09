@@ -1,15 +1,16 @@
 ﻿@page "/"
 @page "/home"
+@page "/inicio"
 
 <PageTitle>
-	@AppLang["Home.PageTitle"]
+	@AppMenu["0200"]
 </PageTitle>
 
 <UpdateChecker DisplayBanner="true" BlockNavigation="true" />
 
 <RadzenRow Gap="5" RowGap="5">
 	<RadzenColumn Size="12">
-		<RadzenText Text="@AppLang["Home.WelcomeTitle"]" TextStyle="Radzen.Blazor.TextStyle.DisplayH2" TagName="Radzen.Blazor.TagName.Auto"></RadzenText>
+		<RadzenText Text="@AppText["0000"]" TextStyle="Radzen.Blazor.TextStyle.DisplayH2" TagName="Radzen.Blazor.TagName.Auto"></RadzenText>
 		<RadzenText Text="@(dt + " - " + @number.ToString("N2"))" TextStyle="Radzen.Blazor.TextStyle.H4" TagName="Radzen.Blazor.TagName.H2" class="mt-5"></RadzenText>
 		<RadzenText Text="With Radzen Blazor Studio, application development is just one-click away." TextStyle="Radzen.Blazor.TextStyle.Body1" TagName="Radzen.Blazor.TagName.Auto" class="mt-4" Style="font-size: 20px; line-height: 24px"></RadzenText>
 		<RadzenText Text="Simple to setup, maintain and update." TextStyle="Radzen.Blazor.TextStyle.Body1" TagName="Radzen.Blazor.TagName.Auto" class="mt-0" Style="font-size: 20px; line-height: 24px"></RadzenText>

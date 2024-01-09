@@ -1,6 +1,7 @@
 ﻿// Radzen
 @using Radzen
 @using Radzen.Blazor
+@using Radzen.Blazor.Rendering
 @inject DialogService DialogService
 @inject TooltipService TooltipService
 @inject ContextMenuService ContextMenuService
@@ -37,15 +38,26 @@
 @using Frontend.Application.Layouts
 @using Frontend.Application.Components.Errors
 @using Frontend.Application.Components.Icons
+@using Frontend.Application.Components.Layout
+@using Frontend.Application.Components.Login
+@using Frontend.Application.Components.TopBar
 @using Frontend.Application.Components.Update
 
 // Frontend Services
 @using Frontend.Application.Services.Graph
 @using Frontend.Application.Services.Account
 @using Frontend.Application.Services.Version
+@inject VersionService VersionService
 
 // Localization Service
-@inject IStringLocalizer<AppLang> AppLang
+@inject IStringLocalizer<AppInfo> AppInfo
+@inject IStringLocalizer<AppRole> AppRole
+@inject IStringLocalizer<AppPath> AppPath
+@inject IStringLocalizer<AppMenu> AppMenu
+@inject IStringLocalizer<AppIcon> AppIcon
+@inject IStringLocalizer<AppText> AppText
+@inject IStringLocalizer<AppError> AppError
+@inject IStringLocalizer<AppButton> AppButton
 
 // Authorization
 @attribute [Authorize]

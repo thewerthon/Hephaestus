@@ -1,25 +1,22 @@
-﻿@using System.Globalization
-@using Radzen.Blazor.Rendering
-
-<RadzenButton @ref=button Variant="Variant.Text" class="topbar-icon" title="Mudar Tema" Click="@(args => popup.ToggleAsync(button.Element))">
-	<LordIcon Icon="/system/solid/language.json" Trigger="click" State="hover-language" Size="24px" Target=".rz-button" Title="Alterar Idioma" />
+﻿<RadzenButton @ref=button Variant="Variant.Text" class="topbar-icon" title="Mudar Tema" Click="@(args => popup.ToggleAsync(button.Element))">
+	<LordIcon Icon="/system/solid/language.json" Trigger="click" State="hover-language" Size="24px" Target=".rz-button" Title="@AppText["0014"]" />
 </RadzenButton>
 
 <Popup @ref=popup Lazy=true class="popup-frame">
 
 	<RadzenStack Gap="6px" class="rz-p-2">
 
-		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("pt-BR"))" Style="text-align:start" class="rz-px-2" title="Portugês (Brasileiro)">
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("pt"))" Style="text-align:start" class="rz-px-2" title="Portugês (Brasileiro)">
 			<RadzenIcon Icon="translate" Style="font-size:24px" />
 			<RadzenText Text="Portugês" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
 		</RadzenButton>
 
-		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("en-US"))" Style="text-align:start" class="rz-px-2" title="Inglês (Internacional)">
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("en"))" Style="text-align:start" class="rz-px-2" title="English (International)">
 			<RadzenIcon Icon="translate" Style="font-size:24px" />
 			<RadzenText Text="English" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
 		</RadzenButton>
 
-		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("es-ES"))" Style="text-align:start" class="rz-px-2" title="Espanhol (Internacional)">
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("es"))" Style="text-align:start" class="rz-px-2" title="Español (Internacional)">
 			<RadzenIcon Icon="translate" Style="font-size:24px" />
 			<RadzenText Text="Español" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
 		</RadzenButton>
@@ -34,10 +31,8 @@
 	Popup? popup;
 
 	private async Task SetLang(string lang) {
-		//CultureInfo culture = new CultureInfo(lang);
+		await LocalStorage.RemoveItemAsync("UserInfo");
 		await JSRuntime.InvokeVoidAsync("setLang", lang);
-		//CultureInfo.DefaultThreadCurrentCulture = culture;
-		//CultureInfo.DefaultThreadCurrentUICulture = culture;
 		NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
 	}
 

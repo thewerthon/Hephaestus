@@ -58,7 +58,7 @@ var host = builder.Build();
 // Get Culture
 CultureInfo culture;
 var js = host.Services.GetRequiredService<IJSRuntime>();
-var lang = await js.InvokeAsync<string>("getLang") ?? "pt-BR";
+var lang = await js.InvokeAsync<string>("getLang") ?? "pt";
 culture = new CultureInfo(lang);
 
 // Set Culture

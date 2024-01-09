@@ -1,13 +1,8 @@
-﻿@inject IJSRuntime JSRuntime
-@inject DialogService DialogService
-@inject VersionService VersionService
-@inject ISessionStorageService SessionStorage
-
-<NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
-<RadzenAlert Title="Atualização disponível" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="false" Visible="@(DisplayBanner && updateAvailable)" class="update-banner">
-	<p class="m-0">Utilize o botão no topo da página para atualizar.</p>
+﻿<NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
+<RadzenAlert Title="@AppText["0008"]" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="false" Visible="@(DisplayBanner && updateAvailable)" class="update-banner">
+	<p class="m-0">@AppText["0012"]</p>
 	@if (serverVersion != null) {
-		<p class="mt-2 mb-0">Novidades da @serverVersion.Version:</p>
+		<p class="mt-2 mb-0">@(AppText["0013"] + " " + @serverVersion.Version)</p>
 		<pre style="white-space:pre-line;" class="mb-0">@serverVersion.Notes</pre>
 	}
 </RadzenAlert>
@@ -35,6 +30,7 @@
 	[Parameter]
 	public bool BlockNavigation { get; set; } = false;
 
+	private const int TIME_INTERVAL = 60;
 	private VersionInfo localVersion = new();
 	private VersionInfo serverVersion = new();
 	private DateTime? lastChecked = DateTime.UtcNow;
@@ -49,7 +45,7 @@
 
 		if (CheckUpdate && !updateAvailable) {
 
-			if (DateTime.UtcNow >= lastChecked.Value.AddSeconds(60)) {
+			if (DateTime.UtcNow >= lastChecked.Value.AddSeconds(TIME_INTERVAL)) {
 
 				localVersion = VersionService.GetLocalVersion();
 				serverVersion = await VersionService.GetServerVersionAsync();
@@ -84,9 +80,9 @@
 
 		if (BlockNavigation && blockNavigation && updateAvailable) {
 
-			var result = await DialogService.Confirm("É necessária uma atualização do aplicativo para prosseguir. Deseja atualizar agora?", "Atualização Necessária", new ConfirmOptions() {
-					OkButtonText = "Atualizar",
-					CancelButtonText = "Cancelar",
+			var result = await DialogService.Confirm(AppText["0011"], AppText["0009"], new ConfirmOptions() {
+					OkButtonText = AppButton["Update"],
+					CancelButtonText = AppButton["Cancel"],
 					AutoFocusFirstElement = false,
 					CloseDialogOnOverlayClick = true,
 					CloseDialogOnEsc = true

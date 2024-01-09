@@ -1,5 +1,5 @@
 ﻿<div style="display:flex; align-items:center; justify-content:center;">
-	<lord-icon src=@("lordicon" + @Icon) state="@State" intro="@Intro" trigger="@Trigger" loading="@Loading" stroke="@Stroke" style="width:@Size;height:@Size;" target="@Target" title="@Title" id="@Id" class="lord-icon" />
+	<lord-icon src=@("lordicon" + @Icon) trigger="@Trigger" state="@State" intro="@Intro" outro="@Outro" delay="@Delay" wait="@Wait" repeats="@Repeats" loading="@Loading" stroke="@Stroke" style="width:@Size;height:@Size;" target="@Target" title="@Title" id="@Id" class="lord-icon" />
 </div>
 
 @code {
@@ -11,26 +11,53 @@
 	public string Icon { get; set; } = string.Empty;
 
 	/// <summary>
-	/// Name of the icon's animation state.
+	/// The trigger for the icon's animation.
+	/// Accepts: "in", "loop", "morph", "boomerang", "hover", "click", "out".
+	/// Can combine some of these as "in-loop-click-out".
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Trigger { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Name of the icon's default animation.
 	/// </summary>
 	[Parameter, EditorRequired]
 	public string State { get; set; } = string.Empty;
 
 	/// <summary>
-	/// Name of the icon's intro animation state.
+	/// Name of the icon's intro animation.
 	/// Defaults to "in-reveal".
 	/// </summary>
 	[Parameter]
 	public string Intro { get; set; } = "in-reveal";
 
 	/// <summary>
-	/// The trigger for the icon's animation.
-	/// Accepts: "in", "hover", "click", "morph", "loop", "loop-on-hover" and "boomerang".
-	/// Can combine some of these as "in-hover-click".
-	/// Defaults to "click".
+	/// Name of the icon's outro animation.
+	/// Defaults to "in-reveal".
 	/// </summary>
 	[Parameter]
-	public string Trigger { get; set; } = "click";
+	public string Outro { get; set; } = "in-reveal";
+
+	/// <summary>
+	/// The delay (in milliseconds) for the icon's animation to start.
+	/// Only affects intro and outro animations.
+	/// </summary>
+	[Parameter]
+	public int Delay { get; set; } = 0;
+
+	/// <summary>
+	/// The wait time (in milliseconds) for the icon's animation to start.
+	/// Only affects state animation.
+	/// </summary>
+	[Parameter]
+	public int Wait { get; set; } = 0;
+
+	/// <summary>
+	/// The number of repeats of the state animation.
+	/// Defaults to 0 (infinite repeats).
+	/// </summary>
+	[Parameter]
+	public int Repeats { get; set; } = 0;
 
 	/// <summary>
 	/// Loading type of the animation.

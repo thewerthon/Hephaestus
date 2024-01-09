@@ -7,23 +7,23 @@
 <RadzenLayout class="login-bg">
 	<RadzenBody>
 		<RadzenStack JustifyContent="Radzen.JustifyContent.Center" Class="rz-mx-auto rz-p-4" Style="max-width: 700px; height: 100%;">
-			<RadzenCard class="rz-shadow-3 rz-border-radius-4" style="padding: 0; overflow: hidden; background-color: var(--rz-base-background-color);">
+			<RadzenCard style="padding: 0; overflow: hidden; background-color: var(--rz-base-background-color);" class="rz-shadow-3 rz-border-radius-4 target">
 				<RadzenRow Gap="0" RowGap="0">
 					<RadzenColumn Size="12" SizeSM="5" Class="rz-background-color-primary rz-p-8 sidebar-gradient-login">
-						<RadzenImage Path="images/logos/logo-dark.svg" style="width: 140px"></RadzenImage>
-						<RadzenText Text="Bem-vindo(a)!" TextStyle="Radzen.Blazor.TextStyle.H2" class="rz-mt-4 rz-mt-md-12 rz-pt-0 rz-pt-md-12 rz-mb-6 rz-color-white rz-display-none rz-display-sm-block" />
-						<RadzenText Text="Faça login para prosseguir." TextStyle="Radzen.Blazor.TextStyle.Body1" class="rz-mb-12 rz-pb-0 rz-pb-md-12 rz-color-white rz-display-none rz-display-sm-block">
+						<RadzenImage Path="images/logos/logo-dark.svg" style="width: 140px" title="@AppInfo["Fullname"]"></RadzenImage>
+						<RadzenText Text="@AppText["0000"]" TextStyle="Radzen.Blazor.TextStyle.H2" class="rz-mt-4 rz-mt-md-12 rz-pt-0 rz-pt-md-12 rz-mb-6 rz-color-white rz-display-none rz-display-sm-block" />
+						<RadzenText Text="@AppText["0001"]" TextStyle="Radzen.Blazor.TextStyle.Body1" class="rz-mb-12 rz-pb-0 rz-pb-md-12 rz-color-white rz-display-none rz-display-sm-block">
 						</RadzenText>
 					</RadzenColumn>
 					<RadzenColumn Size="12" SizeSM="7" class="rz-p-12">
-						<RadzenStack AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Style="width:100%;height:100%" class="target">
+						<RadzenStack AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Style="width:100%;height:100%">
 							<LordIcon Icon="/wired/outline/avatar.json" Trigger="in-hover-click" State="hover-looking-around" Stroke="bold" Size="120px" Target=".target" />
 							@Body
-							<RadzenText Text="Ao fazer login, você concorda com:" TextStyle="Radzen.Blazor.TextStyle.Caption" style="font-size:12px" class="rz-pt-6 rz-mb-0" />
+							<RadzenText Text="@AppText["0002"]" TextStyle="Radzen.Blazor.TextStyle.Caption" style="font-size:12px" class="rz-pt-6 rz-mb-0" />
 							<RadzenRow Gap="5px">
-								<RadzenLink Text="termos de uso" Path="/termos" Target="_blank" style="font-size:12px"></RadzenLink>
-								<RadzenText Text=" e " TextStyle="Radzen.Blazor.TextStyle.Caption" style="font-size:12px" class="rz-link-text" />
-								<RadzenLink Text="política de privacidade" Path="/politica" Target="_blank" style="font-size:12px"></RadzenLink>
+								<RadzenLink Text="@AppText["0003"]" Path="@AppPath["1001"]" Target="_blank" style="font-size:12px"></RadzenLink>
+								<RadzenText Text="@AppText["0004"]" TextStyle="Radzen.Blazor.TextStyle.Caption" style="font-size:12px;padding-top: 1px" class="rz-link-text rz-m-0" />
+								<RadzenLink Text="@AppText["0005"]" Path="@AppPath["1002"]" Target="_blank" style="font-size:12px"></RadzenLink>
 							</RadzenRow>
 						</RadzenStack>
 					</RadzenColumn>
