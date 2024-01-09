@@ -117,11 +117,11 @@
 	--rz-base-700: #395374;
 	--rz-base-800: #30445f;
 	--rz-base-900: #2b3a50;
-	--rz-primary: #395374;
-	--rz-primary-light: #576d89;
-	--rz-primary-lighter: #39537433;
-	--rz-primary-dark: #2b3e57;
-	--rz-primary-darker: #1c293a;
+	--rz-primary: #182d46;
+	--rz-primary-light: #4b576a;
+	--rz-primary-lighter: #2b3a5033;
+	--rz-primary-dark: #202b3c;
+	--rz-primary-darker: #151d28;
 	--rz-secondary: #08a88a;
 	--rz-secondary-light: #39cda1;
 	--rz-secondary-lighter: #08a88a33;
@@ -9832,10 +9832,10 @@ p-button[type] {
 	--rz-button-line-height: 1.25rem;
 	--rz-button-vertical-align: top;
 	--rz-button-hover-shadow: none;
-	--rz-button-hover-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+	--rz-button-hover-gradient: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 	--rz-button-hover-background-size: auto;
 	--rz-button-focus-shadow: none;
-	--rz-button-focus-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+	--rz-button-focus-gradient: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 	--rz-button-focus-background-size: auto;
 	--rz-button-focus-outline: none;
 	--rz-button-active-shadow: none;
@@ -12616,7 +12616,7 @@ li.rz-navigation-item.rz-state-disabled {
 	--rz-profile-menu-padding: 0.625rem 1rem;
 	--rz-profile-menu-border-radius: var(--rz-border-radius);
 	--rz-profile-menu-toggle-button-color: var(--rz-text-color);
-	--rz-profile-menu-item-hover-background-color: var(--rz-secondary);
+	--rz-profile-menu-item-hover-background-color: var(--rz-primary);
 	--rz-profile-menu-item-icon-width: var(--rz-icon-size);
 	--rz-profile-menu-item-icon-height: var(--rz-icon-size);
 	--rz-profile-menu-item-icon-font-size: var(--rz-icon-size);

@@ -1,0 +1,25 @@
+﻿<RadzenButton Variant="Variant.Text" Style="display: none;" Click="@(() => Update())" class="topbar-icon" id="update-button">
+	<LordIcon Icon="/system/solid/autorenew.json" Trigger="loop-on-hover" State="hover-autorenew" Size="24px" Target=".rz-button" Title="@AppText["0007"]" />
+</RadzenButton>
+
+@code {
+
+	private async Task Update() {
+
+		var result = await DialogService.Confirm(AppText["0010"], AppText["0007"], new ConfirmOptions() {
+				OkButtonText = AppButton["Update"],
+				CancelButtonText = AppButton["Cancel"],
+				AutoFocusFirstElement = false,
+				CloseDialogOnOverlayClick = true,
+				CloseDialogOnEsc = true
+			});
+
+		if (result ?? false) {
+
+			await JSRuntime.InvokeVoidAsync("update");
+
+		}
+
+	}
+
+}

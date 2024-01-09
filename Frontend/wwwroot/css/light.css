@@ -9839,7 +9839,7 @@ p-button[type] {
 	--rz-button-focus-background-size: auto;
 	--rz-button-focus-outline: none;
 	--rz-button-active-shadow: none;
-	--rz-button-active-gradient: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+	--rz-button-active-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
 	--rz-button-active-background-size: auto;
 	--rz-button-disabled-opacity: 0.2;
 	--rz-button-empty-opacity: 0.4;
@@ -12615,8 +12615,8 @@ li.rz-navigation-item.rz-state-disabled {
 	--rz-profile-menu-border: var(--rz-border-base-200);
 	--rz-profile-menu-padding: 0.625rem 1rem;
 	--rz-profile-menu-border-radius: var(--rz-border-radius);
-	--rz-profile-menu-toggle-button-color: var(--rz-secondary);
-	--rz-profile-menu-item-hover-background-color: var(--rz-secondary);
+	--rz-profile-menu-toggle-button-color: var(--rz-text-color);
+	--rz-profile-menu-item-hover-background-color: var(--rz-primary);
 	--rz-profile-menu-item-icon-width: var(--rz-icon-size);
 	--rz-profile-menu-item-icon-height: var(--rz-icon-size);
 	--rz-profile-menu-item-icon-font-size: var(--rz-icon-size);

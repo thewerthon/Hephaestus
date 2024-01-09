@@ -1,0 +1,46 @@
+﻿@inherits LayoutComponentBase
+
+<!-- Components -->
+<RadzenComponents />
+
+<!-- Layout -->
+<RadzenLayout class="app-layout">
+
+	<!-- Header -->
+	<RadzenHeader>
+		<Header Toggle="@SidebarToggle" DisplayLogo="@sidebarExpanded" />
+	</RadzenHeader>
+
+	<!-- Sidebar -->
+	<RadzenSidebar Responsive="true" @bind-Expanded="@sidebarExpanded" class="app-sidebar sidebar-gradient-menu">
+		<SideBar Toggle="@SidebarToggle" />
+	</RadzenSidebar>
+
+	<!-- Body -->
+	<RadzenBody>
+		<RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
+			<RadzenColumn Size="12">
+				@Body
+			</RadzenColumn>
+		</RadzenRow>
+	</RadzenBody>
+
+	@if (sidebarExpanded) {
+		<div @onclick="@(() => sidebarExpanded = false)" class="app-sidebar-backdrop"></div>
+	}
+
+</RadzenLayout>
+
+@code {
+
+	bool sidebarExpanded = true;
+
+	protected override void OnInitialized() {
+		SessionStorage.RemoveItemAsync("ReturnPath");
+	}
+
+	private void SidebarToggle() {
+		sidebarExpanded = !sidebarExpanded;
+	}
+
+}

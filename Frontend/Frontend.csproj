@@ -7,6 +7,7 @@
 		<NoWarn>CS8601,CS8602</NoWarn>
 		<PublishTrimmed>true</PublishTrimmed>
 		<BlazorEnableCompression>true</BlazorEnableCompression>
+		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,6 +27,7 @@
 		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
 	</ItemGroup>
@@ -44,18 +46,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="MainModules\Almoxarifado\" />
-		<Folder Include="MainModules\Engenharia\" />
-		<Folder Include="MainModules\Fiscal\" />
-		<Folder Include="MainModules\Logistica\" />
-		<Folder Include="MainModules\Manutencao\" />
-		<Folder Include="MainModules\Planejamento\" />
-		<Folder Include="MainModules\Producao\" />
-		<Folder Include="MainModules\Qualidade\" />
-		<Folder Include="MainModules\Seguranca\" />
-		<Folder Include="SideModules\Configuracoes\" />
-		<Folder Include="SideModules\Dashboards\" />
-		<Folder Include="SideModules\Relatorios\" />
+		<None Include="..\Architect\Application\Models\VersionInfo.cs" Link="Version.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Engineering\" />
+		<Folder Include="Fiscal\" />
+		<Folder Include="Logistics\" />
+		<Folder Include="Configuration\" />
+		<Folder Include="Dashboards\" />
+		<Folder Include="Maintenance\" />
+		<Folder Include="Planning\" />
+		<Folder Include="Production\" />
+		<Folder Include="Quality\" />
+		<Folder Include="Reports\" />
+		<Folder Include="Safety\" />
+		<Folder Include="Warehouse\" />
 	</ItemGroup>
 
 </Project>

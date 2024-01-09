@@ -11,6 +11,10 @@ window.addEventListener('appinstalled', () => {
   isAppInstalled();
 });
 
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    var theme = event.matches ? "dark" : "light";
+});
+
 function isAppInstalled() {
 	
 	var appInstallButton = document.getElementById('app-install');
@@ -28,6 +32,23 @@ function isAppInstalled() {
 function appInstall() {
 	
 	deferredPrompt.prompt();
+	
+}
+
+async function toggleTheme() {
+
+	var theme = localStorage.getItem('UserTheme');
+	
+	if (theme == "auto") {
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			theme = "dark"
+		} else {
+			theme = "light"
+		}
+	}
+	
+	if (theme == "light") { setTheme("dark"); }
+	if (theme == "dark") { setTheme("light"); }
 	
 }
 
