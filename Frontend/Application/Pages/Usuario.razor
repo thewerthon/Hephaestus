@@ -1,0 +1,42 @@
+﻿@page "/user"
+@page "/usuario"
+@using System.Security.Claims
+
+<PageTitle>Perfil do Usuário</PageTitle>
+<RadzenText Text="Perfil do Usuário" TextStyle="Radzen.Blazor.TextStyle.DisplayH3" TagName="Radzen.Blazor.TagName.Auto"></RadzenText>
+
+@if (user is not null) {
+
+	<div style="word-wrap:break-word">
+		<h3>@user.Identity.Name</h3>
+		<div>
+			<p>Is Authenticated: @user.Identity.IsAuthenticated</p>
+			<p>Authentication Type: @user.Identity.AuthenticationType</p>
+			<p>Admin Role: @user.IsInRole("System.Admin")</p><br />
+			<h5>Claims</h5>
+			@foreach (var claim in user.Claims) {
+				<p>@claim.Type: @claim.Value</p>
+			}
+		</div>
+	</div>
+
+} else {
+
+	<div>
+		<h3>No actual user</h3>
+	</div>
+
+}
+
+@code {
+
+	[CascadingParameter] public Task<AuthenticationState>? AuthTask { get; set; }
+
+	private ClaimsPrincipal? user;
+
+	protected async override Task OnInitializedAsync() {
+		var authState = await AuthTask;
+		this.user = authState.User;
+	}
+
+}

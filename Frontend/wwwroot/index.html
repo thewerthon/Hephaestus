@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Meta -->
+	<base href="/" />
+	<title>SCP 2.0</title>
+	<meta charset="utf-8" />
+	<meta name="color-scheme" content="light dark" />
+	<meta name="author" content="Éwerton Ferreira" />
+	<meta name="creator" content="SIW Kits Eólicos Ltda.">
+	<meta name="publisher" content="SIW Kits Eólicos Ltda.">
+	<meta name="description" content="Sistema de Controle da Produção">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="application-name" content="SCP 2.0">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/svg" href="favicon.ico" />
+
+	<!-- Manifest -->
+	<link rel="manifest" href="manifest/manifest.webmanifest" />
+
+	<!-- Styles -->
+	<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#1b324e" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/light.css" media="(prefers-color-scheme: light)">
+	<link rel="stylesheet" href="css/dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="css/app.css">
+
+	<script src="scripts/theme.js" id="theme"></script>
+
+</head>
+<body>
+
+	<div id="app">
+		<svg class="loading-progress">
+			<circle r="40%" cx="50%" cy="50%" />
+			<circle r="40%" cx="50%" cy="50%" />
+		</svg>
+		<div class="loading-progress-text"></div>
+	</div>
+
+	<div id="blazor-error-ui">
+		An unknown error has occurred.
+		<a href="" class="reload">Reload</a>
+		<a class="dismiss">🗙</a>
+	</div>
+
+	<!-- Framework -->
+	<script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
+	<script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+	<script src="_framework/blazor.webassembly.js"></script>
+
+	<!-- Scripts -->
+	<script src="lordicon/lordicon.js"></script>
+	<script src="scripts/lang.js"></script>
+	<script src="scripts/app.js"></script>
+
+	<!-- Service Worker -->
+	<script>navigator.serviceWorker.register('service-worker.js');</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿// Radzen
+@using Radzen
+@using Radzen.Blazor
+@using Radzen.Blazor.Rendering
+@inject DialogService DialogService
+@inject TooltipService TooltipService
+@inject ContextMenuService ContextMenuService
+@inject NotificationService NotificationService
+
+// Blazored
+@using Blazored.LocalStorage
+@using Blazored.SessionStorage
+@inject ILocalStorageService LocalStorage
+@inject ISessionStorageService SessionStorage
+
+// Dotnet
+@using System.Net.Http
+@using System.Net.Http.Json
+@using System.Globalization
+@using Microsoft.JSInterop
+@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using System.Runtime.Serialization;
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+// Architect
+@using Architect.Application.Models
+@using Architect.Application.Localization
+
+// Frontend Components
+@using Frontend.Application.Layouts
+@using Frontend.Application.Components.Errors
+@using Frontend.Application.Components.Icons
+@using Frontend.Application.Components.Layout
+@using Frontend.Application.Components.Login
+@using Frontend.Application.Components.TopBar
+@using Frontend.Application.Components.Update
+
+// Frontend Services
+@using Frontend.Application.Services.Graph
+@using Frontend.Application.Services.Account
+@using Frontend.Application.Services.Version
+@inject VersionService VersionService
+
+// Localization Service
+@inject IStringLocalizer<AppInfo> AppInfo
+@inject IStringLocalizer<AppRole> AppRole
+@inject IStringLocalizer<AppPath> AppPath
+@inject IStringLocalizer<AppMenu> AppMenu
+@inject IStringLocalizer<AppIcon> AppIcon
+@inject IStringLocalizer<AppText> AppText
+@inject IStringLocalizer<AppError> AppError
+@inject IStringLocalizer<AppButton> AppButton
+
+// Authorization
+@attribute [Authorize]

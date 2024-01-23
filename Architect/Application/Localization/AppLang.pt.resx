@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="App.Errors.Error401.Message" xml:space="preserve">
+    <value>Você não tem permissão para visualizar esta página.</value>
+  </data>
+  <data name="App.Errors.Error401.Title" xml:space="preserve">
+    <value>Não Autorizado</value>
+  </data>
+  <data name="App.Errors.Error403.Message" xml:space="preserve">
+    <value>Tente acessar esta página depois.</value>
+  </data>
+  <data name="App.Errors.Error403.Title" xml:space="preserve">
+    <value>Em Construção</value>
+  </data>
+  <data name="App.Errors.Error404.Message" xml:space="preserve">
+    <value>A página que você tentou acessar não existe.</value>
+  </data>
+  <data name="App.Errors.Error404.Title" xml:space="preserve">
+    <value>Não Encontrado</value>
+  </data>
+  <data name="App.Errors.Error410.Message" xml:space="preserve">
+    <value>Tente acessar esta página depois.</value>
+  </data>
+  <data name="App.Errors.Error410.Title" xml:space="preserve">
+    <value>Em Manutenção</value>
+  </data>
+  <data name="App.Home.PageTitle" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="App.Home.WelcomeTitle" xml:space="preserve">
+    <value>Bem-vindo!</value>
+  </data>
+  <data name="App.Name.Full" xml:space="preserve">
+    <value>Sistema de Controle da Produção</value>
+  </data>
+  <data name="App.Name.Short" xml:space="preserve">
+    <value>SCP 2.0</value>
+  </data>
+  <data name="0005" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="0006" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="0007" xml:space="preserve">
+    <value>Dashboards</value>
+  </data>
+  <data name="0008" xml:space="preserve">
+    <value>Relatórios</value>
+  </data>
+  <data name="0009" xml:space="preserve">
+    <value>Testes</value>
+  </data>
+  <data name="0010" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="0011" xml:space="preserve">
+    <value>Engenharia</value>
+  </data>
+  <data name="0012" xml:space="preserve">
+    <value>Almoxarifado</value>
+  </data>
+  <data name="0013" xml:space="preserve">
+    <value>Planejamento</value>
+  </data>
+  <data name="0014" xml:space="preserve">
+    <value>Produção</value>
+  </data>
+  <data name="0015" xml:space="preserve">
+    <value>Qualidade</value>
+  </data>
+  <data name="0016" xml:space="preserve">
+    <value>Fiscal</value>
+  </data>
+  <data name="0017" xml:space="preserve">
+    <value>Logística</value>
+  </data>
+  <data name="0018" xml:space="preserve">
+    <value>Segurança</value>
+  </data>
+  <data name="0019" xml:space="preserve">
+    <value>Manutenção</value>
+  </data>
+  <data name="0020" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="0021" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="0022" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="0023" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="0024" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="0025" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="0026" xml:space="preserve">
+    <value>Alternar Menu</value>
+  </data>
+  <data name="0027" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="0028" xml:space="preserve">
+    <value>Módulos</value>
+  </data>
+  <data name="0029" xml:space="preserve">
+    <value>Suporte</value>
+  </data>
+  <data name="0030" xml:space="preserve">
+    <value>Fichas Técnicas</value>
+  </data>
+  <data name="0031" xml:space="preserve">
+    <value>Processos</value>
+  </data>
+  <data name="0032" xml:space="preserve">
+    <value>Máquinas</value>
+  </data>
+  <data name="0033" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="0034" xml:space="preserve">
+    <value>Recebimentos</value>
+  </data>
+  <data name="0035" xml:space="preserve">
+    <value>Separações</value>
+  </data>
+  <data name="0036" xml:space="preserve">
+    <value>Devoluções</value>
+  </data>
+  <data name="0037" xml:space="preserve">
+    <value>Transferências</value>
+  </data>
+  <data name="0038" xml:space="preserve">
+    <value>Descartes</value>
+  </data>
+  <data name="0039" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
+  <data name="0040" xml:space="preserve">
+    <value>Controle de Estoque</value>
+  </data>
+  <data name="0041" xml:space="preserve">
+    <value>Ordens de Produção</value>
+  </data>
+  <data name="0042" xml:space="preserve">
+    <value>Ordens de Operação</value>
+  </data>
+  <data name="0043" xml:space="preserve">
+    <value>Ordens de Serviço</value>
+  </data>
+  <data name="0044" xml:space="preserve">
+    <value>Ordens de Compra</value>
+  </data>
+  <data name="0045" xml:space="preserve">
+    <value>Ordens de Venda</value>
+  </data>
+  <data name="0046" xml:space="preserve">
+    <value>Apontamentos</value>
+  </data>
+  <data name="0047" xml:space="preserve">
+    <value>Inspeções</value>
+  </data>
+  <data name="0048" xml:space="preserve">
+    <value>Padrões</value>
+  </data>
+  <data name="0049" xml:space="preserve">
+    <value>Parâmetros</value>
+  </data>
+  <data name="0050" xml:space="preserve">
+    <value>Bloqueios</value>
+  </data>
+  <data name="0051" xml:space="preserve">
+    <value>Liberações</value>
+  </data>
+  <data name="0052" xml:space="preserve">
+    <value>Certificados</value>
+  </data>
+  <data name="0053" xml:space="preserve">
+    <value>Pedidos de Venda</value>
+  </data>
+  <data name="0054" xml:space="preserve">
+    <value>Tabelas de Preço</value>
+  </data>
+  <data name="0055" xml:space="preserve">
+    <value>Cenários Fiscais</value>
+  </data>
+  <data name="0056" xml:space="preserve">
+    <value>Notas de Entrada</value>
+  </data>
+  <data name="0057" xml:space="preserve">
+    <value>Notas de Saída</value>
+  </data>
+  <data name="0058" xml:space="preserve">
+    <value>Recebimentos</value>
+  </data>
+  <data name="0059" xml:space="preserve">
+    <value>Expedições</value>
+  </data>
+  <data name="0060" xml:space="preserve">
+    <value>Controle de EPIs</value>
+  </data>
+  <data name="0061" xml:space="preserve">
+    <value>Controle de Insumos</value>
+  </data>
+  <data name="0062" xml:space="preserve">
+    <value>Notificações</value>
+  </data>
+  <data name="0063" xml:space="preserve">
+    <value>Alterar Idioma</value>
+  </data>
+  <data name="0064" xml:space="preserve">
+    <value>Alterar Tema</value>
+  </data>
+  <data name="0065" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="0066" xml:space="preserve">
+    <value>Exibir de acordo com o dispositivo.</value>
+  </data>
+  <data name="0067" xml:space="preserve">
+    <value>Tema Claro</value>
+  </data>
+  <data name="0068" xml:space="preserve">
+    <value>Exibir sempre no tema claro.</value>
+  </data>
+  <data name="0069" xml:space="preserve">
+    <value>Tema Escuro</value>
+  </data>
+  <data name="0070" xml:space="preserve">
+    <value>Exibir sempre no tema escuro.</value>
+  </data>
+  <data name="0071" xml:space="preserve">
+    <value>Atualizar Aplicativo</value>
+  </data>
+  <data name="0072" xml:space="preserve">
+    <value>Atualização Disponível</value>
+  </data>
+  <data name="0073" xml:space="preserve">
+    <value>Atualização Necessária</value>
+  </data>
+  <data name="0074" xml:space="preserve">
+    <value>Uma atualização do aplicativo está disponível, deseja atualizar agora? Dados não salvos serão perdidos.</value>
+  </data>
+  <data name="0075" xml:space="preserve">
+    <value>É necessária uma atualização do aplicativo para prosseguir. Deseja atualizar agora?</value>
+  </data>
+  <data name="0076" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="0077" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="0078" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="0079" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="0080" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="0081" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="0082" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="0083" xml:space="preserve">
+    <value>Utilize o botão no topo da página para atualizar.</value>
+  </data>
+  <data name="0084" xml:space="preserve">
+    <value>Novidades da</value>
+  </data>
+</root>

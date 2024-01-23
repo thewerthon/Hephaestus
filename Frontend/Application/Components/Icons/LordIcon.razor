@@ -1,0 +1,147 @@
+﻿<div style="display:flex; align-items:center; justify-content:center;">
+	<lord-icon src=@("lordicon" + @Icon) state="@State" morph="@Morph" intro="@Intro" outro="@Outro" anim="@Anim" trigger="@Trigger" triggers="@Triggers" repeats="@Repeats" delay="@Delay" wait="@Wait" loading="@Loading" stroke="@Stroke" style="width:@Size;height:@Size;" target="@Target" title="@Title" id="@Id" class="lord-icon" />
+</div>
+
+@code {
+
+	/// <summary>
+	/// Path to json icon.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Icon { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The state animation name.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string State { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The morph animation name.
+	/// Defaults to same as state.
+	/// </summary>
+	[Parameter]
+	public string Morph { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The intro animation name.
+	/// Defaults to "in-reveal".
+	/// </summary>
+	[Parameter]
+	public string Intro { get; set; } = "in-reveal";
+
+	/// <summary>
+	/// The outro animation name.
+	/// Defaults to same as intro.
+	/// </summary>
+	[Parameter]
+	public string Outro { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The icon's animation type.
+	/// Accepts: "in", "out", "state", "loop", "morph" "morphin", "morphout", "boomerang", "looprang", "custom".
+	/// If "custom" is used, the Triggers parameter must be set instead of Trigger.
+	/// Defaults to "state".
+	/// </summary>
+	[Parameter]
+	public string Anim { get; set; } = "state";
+
+	/// <summary>
+	/// The trigger for the icon's animation.
+	/// Accepts: "auto", "enter", "hover", "press", "loose", "click", "leave".
+	/// Defaults to "hover".
+	/// </summary>
+	[Parameter]
+	public string Trigger { get; set; } = "hover";
+
+	/// <summary>
+	/// Custom triggers for the icon's animation.
+	/// Must be set if Anim is set to "custom".
+	/// Accepts combinations of [Anim]-[Trigger] separated by comma.
+	/// Anims: "in", "out", "state", "loop", "morph" "morphin", "morphout", "boomerang", "looprang".
+	/// Triggers: "auto", "enter", "hover", "press", "loose", "click", "leave".
+	/// Example: "in-auto,state-auto,morphin-click,morphout-click,out-auto".
+	/// </summary>
+	[Parameter]
+	public string Triggers { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The number of repeats for the animation.
+	/// Defaults to 0 (infinite repeats).
+	/// </summary>
+	[Parameter]
+	public int Repeats { get; set; } = 0;
+
+	/// <summary>
+	/// The delay (in milliseconds) for the icon's animation to start.
+	/// Only affects 'in' and 'out' animations types.
+	/// </summary>
+	[Parameter]
+	public int Delay { get; set; } = 0;
+
+	/// <summary>
+	/// The wait time (in milliseconds) for the icon's animation to start.
+	/// Only affects state or morph animations.
+	/// </summary>
+	[Parameter]
+	public int Wait { get; set; } = 0;
+
+	/// <summary>
+	/// Loading type of the animation.
+	/// Accepts: "lazy" or "interaction".
+	/// Defaults to "lazy".
+	/// </summary>
+	[Parameter]
+	public string Loading { get; set; } = "lazy";
+
+	/// <summary>
+	/// Stroke type (line weight) of the icon.
+	/// Accepts: "light", "regular" or "bold".
+	/// Defaults to "regular".
+	/// </summary>
+	[Parameter]
+	public string Stroke { get; set; } = "regular";
+
+	/// <summary>
+	/// Sets the icon size via style tag.
+	/// Example: "96px" (default).
+	/// </summary>
+	[Parameter]
+	public string Size { get; set; } = "96px";
+
+	/// <summary>
+	/// Sets the animation target element for the trigger.
+	/// It's a name of a css class like '.default'.
+	/// Defaults to icon itself.
+	/// </summary>
+	[Parameter]
+	public string Target { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Sets the 'title' of the icon element.
+	/// </summary>
+	[Parameter]
+	public string Title { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Sets the 'id' of the icon element.
+	/// </summary>
+	[Parameter]
+	public string Id { get; set; } = string.Empty;
+
+	protected override void OnInitialized() {
+
+		if (Morph == string.Empty) Morph = State;
+		if (Outro == string.Empty) Outro = Intro;
+
+		if (Anim == "custom") {
+			Trigger = "custom";
+		} else {
+			Trigger = "hover";
+			//Trigger = Anim + "-" + Trigger;
+			Triggers = Trigger;
+		}
+
+	}
+
+}

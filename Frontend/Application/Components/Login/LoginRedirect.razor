@@ -1,0 +1,8 @@
+@code {
+
+	protected override void OnInitialized() {
+		SessionStorage.SetItemAsStringAsync("ReturnPath", NavigationManager.ToBaseRelativePath(NavigationManager.Uri));
+		NavigationManager.NavigateTo("login");
+	}
+
+}

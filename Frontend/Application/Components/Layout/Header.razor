@@ -1,0 +1,32 @@
+﻿<RadzenRow JustifyContent="JustifyContent.SpaceBetween" AlignItems="AlignItems.Center" Gap="0px" Style="height:60px;flex-wrap:nowrap">
+
+	<RadzenRow AlignItems="AlignItems.Center">
+		<SidebarButton Click="@OnClick" />
+		<RadzenImage @onclick="@OnClick" Style="@((DisplayLogo ? "visibility:hidden;" : "visibility:visible;") + "width:38px;height:38px;")" class="logo logo-size app-header-logo" title="@AppInfo["Fullname"]" />
+	</RadzenRow>
+
+	<RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="Radzen.JustifyContent.End" Gap="0px" class="topbar-gaps">
+
+		<UpdateButton />
+		<LangsButtons />
+		<ThemesButton />
+		<AlertsButton />
+		<UserProfile />
+
+	</RadzenStack>
+
+</RadzenRow>
+
+@code {
+
+	[Parameter]
+	public EventCallback<EventArgs> Toggle { get; set; }
+
+	[Parameter]
+	public bool DisplayLogo { get; set; }
+
+	public async Task OnClick(EventArgs args) {
+		await Toggle.InvokeAsync(args);
+	}
+
+}
