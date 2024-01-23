@@ -1,0 +1,233 @@
+:root {
+	--rz-base-50: #ffffff;
+	--rz-base-100: #f6f7fa;
+	--rz-base-200: #e9edf0;
+	--rz-base-300: #d9e1ea;
+	--rz-base-400: #87a4c4;
+	--rz-base-500: #7293b6;
+	--rz-base-600: #466791;
+	--rz-base-700: #395374;
+	--rz-base-800: #30445f;
+	--rz-base-900: #2b3a50;
+	
+	--rz-primary: #2b3a50;
+	--rz-primary-light: #4f6a92;
+	--rz-primary-lighter: #cad4e3;
+	--rz-primary-dark: #19222f;
+	--rz-primary-darker: #070a0e;
+	
+	--rz-on-primary: #ffffff;
+	--rz-on-primary-light: #ffffff;
+	--rz-on-primary-lighter: #222e40;
+	--rz-on-primary-dark: #ffffff;
+	--rz-on-primary-darker: #ffffff;
+	
+	--rz-secondary: #08a88a;
+	--rz-secondary-light: #0ad9b2;
+	--rz-secondary-lighter: #b4fbee;
+	--rz-secondary-dark: #067762;
+	--rz-secondary-darker: #03473a;
+	
+	--rz-on-secondary: #ffffff;
+	--rz-on-secondary-light: #ffffff;
+	--rz-on-secondary-lighter: #06866e;
+	--rz-on-secondary-dark: #ffffff;
+	--rz-on-secondary-darker: #ffffff;
+	
+	--rz-success: #198754;
+	--rz-success-light: #21b26f;
+	--rz-success-lighter: #aff0d2;
+	--rz-success-dark: #115c39;
+	--rz-success-darker: #09311e;
+	
+	--rz-on-success: #ffffff;
+	--rz-on-success-light: #ffffff;
+	--rz-on-success-lighter: #146c43;
+	--rz-on-success-dark: #ffffff;
+	--rz-on-success-darker: #ffffff;
+	
+	--rz-danger: #d64d42;
+	--rz-danger-light: #df746c;
+	--rz-danger-lighter: #f1c3c0;
+	--rz-danger-dark: #922820;
+	--rz-danger-darker: #3e110e;
+	
+	--rz-on-danger: #ffffff;
+	--rz-on-danger-light: #ffffff;
+	--rz-on-danger-lighter: #ab3e35;
+	--rz-on-danger-dark: #ffffff;
+	--rz-on-danger-darker: #ffffff;
+	
+	--rz-warning: #fab029;
+	--rz-warning-light: #fbc25b;
+	--rz-warning-lighter: #fde7bf;
+	--rz-warning-dark: #b97904;
+	--rz-warning-darker: #553802;
+	
+	--rz-on-warning: #ffffff;
+	--rz-on-warning-light: #ffffff;
+	--rz-on-warning-lighter: #c88d21;
+	--rz-on-warning-dark: #ffffff;
+	--rz-on-warning-darker: #ffffff;
+	
+	--rz-info: #3ba5fc;
+	--rz-info-light: #6dbcfd;
+	--rz-info-lighter: #d2eafe;
+	--rz-info-dark: #0372ce;
+	--rz-info-darker: #023b69;
+	
+	--rz-on-info: #ffffff;
+	--rz-on-info-light: #ffffff;
+	--rz-on-info-lighter: #2f84ca;
+	--rz-on-info-dark: #ffffff;
+	--rz-on-info-darker: #ffffff;
+}
+
+:root {
+	--rz-button-border-radius: 8px;
+	--rz-button-hover-shadow: none;
+	--rz-button-focus-shadow: none;
+	--rz-button-active-shadow: none;
+	--rz-button-hover-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+	--rz-button-focus-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+	--rz-button-active-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+:root {
+	--rz-splitbutton-border-radius: var(--rz-border-radius);
+}
+
+:root {
+	--rz-header-background-color: #ffffff;
+	--rz-header-border: var(--rz-border-base-200);
+}
+
+:root {
+	--rz-profile-menu-item-hover-background-color: var(--rz-primary);
+}
+
+:root {
+	--rz-sidebar-toggle-border: none;
+}
+
+:root {
+	--rz-sidebar-width: 250px;
+	--rz-sidebar-label-color: #ffffff44;
+	--rz-sidebar-border-right: var(--rz-border-base-800);
+	--rz-sidebar-background-color: #1e293b;
+	--rz-sidebar-background-color-top: #223b5a;
+	--rz-sidebar-background-color-down: #1e293b;
+	--rz-sidebar-color: #ffffffdd;
+}
+
+:root {
+	--rz-panel-menu-background-color: var(--rz-sidebar-background-color);
+	--rz-panel-menu-hover-background-color: rgba(0, 0, 0, 0.07);
+	--rz-panel-menu-item-padding: 0.60rem 1rem;
+	--rz-panel-menu-item-border: 0px solid #2b3a50;
+	--rz-panel-menu-item-active-background-color: rgba(0, 0, 0, 0.15);
+	--rz-panel-menu-item-background-color: rgba(125, 173, 249, 0.03);
+	--rz-panel-menu-item-2nd-level-padding: var(--rz-panel-menu-item-padding);
+	--rz-panel-menu-item-2nd-level-offset: 70px;
+	--rz-panel-menu-item-2nd-level-hover-background-color: rgba(125, 173, 249, 0.07);
+	--rz-panel-menu-item-2nd-level-background-color: rgba(125, 173, 249, 0.03);
+	--rz-panel-menu-item-2nd-level-active-background-color: rgba(125, 173, 249, 0.1);
+	--rz-panel-menu-item-3rd-level-hover-background-color: rgba(125, 173, 249, 0.07);
+	--rz-panel-menu-item-3rd-level-active-background-color: rgba(125, 173, 249, 0.1);
+	--rz-panel-menu-icon-width: 1.5rem;
+	--rz-panel-menu-icon-height: 1.5rem;
+	--rz-panel-menu-icon-margin: 0 0.8rem 0 0;
+	--rz-panel-menu-icon-2nd-level-icon-size: 20px;
+}
+
+:root {
+	--rz-scrollbar-background-color: transparent;
+	--rz-scrollbar-color: #00000033;
+	--rz-scrollbar-size: 12px;
+}
+
+:root {
+	--rz-dialog-title-background-color: #f6f7fa;
+	--rz-dialog-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+}
+
+:root {
+	--rz-text-selection-background-color: #00000015;
+	--rz-text-selection-color: inherit;
+}
+
+:root {
+	--lord-icon-primary: var(--rz-primary);
+	--lord-icon-secondary: var(--rz-secondary);
+}
+
+.rz-panel-menu .rz-navigation-item-link {
+	color: #ffffffdd;
+	font-weight: normal;
+}
+
+.rz-panel-menu .rz-navigation-item-text {
+	text-wrap: nowrap;
+}
+
+ul.rz-profile-menu {
+	background-color: var(--rz-header-background-color);
+	border-left: none;
+}
+
+@media (max-width: 576px) {
+	ul.rz-profile-menu .rz-navigation-item-icon-children {
+		display: none !important;
+	}
+}
+
+.rz-dialog {
+	top: 100px;
+}
+
+.rz-dialog-mask {
+	background: linear-gradient(#00000000, #00000044);
+	backdrop-filter: blur(5px);
+	opacity: 1;
+}
+
+.rz-button {
+	position: relative;
+	overflow: hidden
+}
+
+.rz-button:not(.rz-state-disabled):before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-position: center;
+	transition: background.8s, opacity.8s;
+	opacity: 0;
+	background: radial-gradient(circle, currentColor 1%, transparent 1%)center / 15000%
+}
+
+.rz-button:not(.rz-state-disabled):active:before {
+	transition: background 0s, opacity 0s;
+	background-size: 100%;
+	opacity: .3
+}
+
+.logo {
+	content: url("/images/logos/app-light.svg");
+	width: fit-content;
+}
+
+.login-bg {
+	background: radial-gradient(#ffffff10, #001F4055);
+	background-size: cover;
+}
+
+.sidebar-gradient-login {
+	background-image: radial-gradient(circle at 4rem 4rem, var(--rz-sidebar-background-color-top) 10%, var(--rz-sidebar-background-color-down) 80%);
+	position: relative;
+}
+
+.sidebar-gradient-menu {
+	background-image: radial-gradient(circle at 4rem 4rem, var(--rz-sidebar-background-color-top) 20%, var(--rz-sidebar-background-color-down) 80%);
+	position: relative;
+}
