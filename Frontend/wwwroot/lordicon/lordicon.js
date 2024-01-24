@@ -10814,8 +10814,8 @@
 					function substring(t, e) {
 						return "string" == typeof value ? void 0 === e ? value.substring(t) : value.substring(t, e) : ""
 					}
-					function substr(t, e) {
-						return "string" == typeof value ? void 0 === e ? value.substr(t) : value.substr(t, e) : ""
+					function substr(value, t, e) {
+						return typeof value === "string" ? (e ? value.slice(t, t + e) : value.slice(t)) : "";
 					}
 					function posterizeTime(t) {
 						time = 0 === t ? 0 : Math.floor(time * t) / t,

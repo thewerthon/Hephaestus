@@ -23,14 +23,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="bootstrap" Version="5.3.2" ExcludeAssets="all" />
-		<PackageReference Include="Radzen.Blazor" Version="4.24.2" />
-		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
-		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
+		<PackageReference Include="Bootstrap" Version="5.3.2" IncludeAssets="none" />
+		<PackageReference Include="Radzen.Blazor" Version="4.24.2" IncludeAssets="all" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" IncludeAssets="all" />
+		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.1" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.1" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" IncludeAssets="all" />
 	</ItemGroup>
 
 	<ItemGroup>

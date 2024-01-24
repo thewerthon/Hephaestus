@@ -1,5 +1,4 @@
 :root {
-	
 	--rz-base-50: #ffffff;
 	--rz-base-100: #f6f7fa;
 	--rz-base-200: #e9edf0;
@@ -10,79 +9,66 @@
 	--rz-base-700: #395374;
 	--rz-base-800: #30445f;
 	--rz-base-900: #2b3a50;
-	
 	--rz-primary: #395374;
 	--rz-primary-light: #4b6180;
 	--rz-primary-lighter: #47699255;
 	--rz-primary-dark: #354b69;
 	--rz-primary-darker: #30445e;
-	
 	--rz-on-primary: #ffffff;
 	--rz-on-primary-light: #ffffff;
 	--rz-on-primary-lighter: #c7ced8;
 	--rz-on-primary-dark: #ffffff;
 	--rz-on-primary-darker: #ffffff;
-	
 	--rz-secondary: #08a88a;
 	--rz-secondary-light: #39b094;
 	--rz-secondary-lighter: #08a88a55;
 	--rz-secondary-dark: #12977d;
 	--rz-secondary-darker: #17876f;
-	
 	--rz-on-secondary: #ffffff;
 	--rz-on-secondary-light: #ffffff;
 	--rz-on-secondary-lighter: #9bd4c3;
 	--rz-on-secondary-dark: #ffffff;
 	--rz-on-secondary-darker: #ffffff;
-	
 	--rz-success: #198754;
 	--rz-success-light: #389262;
 	--rz-success-lighter: #19875455;
 	--rz-success-dark: #1b7a4c;
 	--rz-success-darker: #1b6d45;
-	
 	--rz-on-success: #ffffff;
 	--rz-on-success-light: #ffffff;
 	--rz-on-success-lighter: #95c3a6;
 	--rz-on-success-dark: #ffffff;
 	--rz-on-success-darker: #ffffff;
-	
 	--rz-danger: #d64d42;
 	--rz-danger-light: #dc5f51;
 	--rz-danger-lighter: #d64d4255;
 	--rz-danger-dark: #c1473c;
 	--rz-danger-darker: #ac4137;
-	
 	--rz-on-danger: #ffffff;
 	--rz-on-danger-light: #ffffff;
 	--rz-on-danger-lighter: #f3a99c;
 	--rz-on-danger-dark: #ffffff;
 	--rz-on-danger-darker: #ffffff;
-	
 	--rz-warning: #fab029;
 	--rz-warning-light: #fcb742;
 	--rz-warning-lighter: #fab02955;
 	--rz-warning-dark: #e19f28;
 	--rz-warning-darker: #c88d26;
-	
 	--rz-on-warning: #ffffff;
 	--rz-on-warning-light: #ffffff;
 	--rz-on-warning-lighter: #ffd799;
 	--rz-on-warning-dark: #ffffff;
 	--rz-on-warning-darker: #ffffff;
-	
 	--rz-info: #3ba5fc;
 	--rz-info-light: #59adfd;
 	--rz-info-lighter: #3ba5fc55;
 	--rz-info-dark: #3995e2;
 	--rz-info-darker: #3685c9;
-	
 	--rz-on-info: #ffffff;
 	--rz-on-info-light: #ffffff;
 	--rz-on-info-lighter: #aed1fe;
 	--rz-on-info-dark: #ffffff;
 	--rz-on-info-darker: #ffffff;
-	
 }
 
 :root {
@@ -242,7 +228,7 @@ ul.rz-profile-menu {
 	color: var(--rz-white);
 }
 
-.rz-button:.rz-variant-text.rz-light .rzi {
+.rz-button.rz-variant-text.rz-light .rzi {
 	color: var(--rz-white);
 }
 
