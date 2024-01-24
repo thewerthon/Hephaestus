@@ -67,25 +67,26 @@ async function applyTheme(theme) {
 	switch (theme) {
 		case 'light':
 			addThemeColor("#ffffff");
-			addStylesheet('css/base.css');
-			addStylesheet('css/light.css');
-			addStylesheet('css/app.css');
+			addStylesheet('css/base-light.css');
+			addStylesheet('css/custom-light.css');
+			addStylesheet('css/default.css');
 			break;
 
 		case 'dark':
 			addThemeColor("#1b324e");
-			addStylesheet('css/base.css');
-			addStylesheet('css/dark.css');
-			addStylesheet('css/app.css');
+			addStylesheet('css/base-dark.css');
+			addStylesheet('css/custom-dark.css');
+			addStylesheet('css/default.css');
 			break;
 
 		default:
 			addThemeColor("#ffffff", '(prefers-color-scheme: light)');
 			addThemeColor("#1b324e", '(prefers-color-scheme: dark)');
-			addStylesheet('css/base.css');
-			addStylesheet('css/light.css', '(prefers-color-scheme: light)');
-			addStylesheet('css/dark.css', '(prefers-color-scheme: dark)');
-			addStylesheet('css/app.css');
+			addStylesheet('css/base-light.css', '(prefers-color-scheme: light)');
+			addStylesheet('css/base-dark.css', '(prefers-color-scheme: dark)');
+			addStylesheet('css/custom-light.css', '(prefers-color-scheme: light)');
+			addStylesheet('css/custom-dark.css', '(prefers-color-scheme: dark)');
+			addStylesheet('css/default.css');
 
 	}
 
