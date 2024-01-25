@@ -136,7 +136,7 @@
 
 :root {
 	--rz-dialog-title-background-color: #2d415c;
-	--rz-dialog-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+	--rz-dialog-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.4);
 }
 
 :root {

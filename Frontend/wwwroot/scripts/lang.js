@@ -1,11 +1,11 @@
 function getLang() {
-	
-	return localStorage.getItem('UserLang');
-	
+
+	return localStorage.getItem("UserLang") ?? "pt";
+
 }
 
 function setLang(lang) {
-	
-	localStorage.setItem('UserLang', lang);
-	
+
+	localStorage.setItem("UserLang", lang);
+
 }

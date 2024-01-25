@@ -1,7 +1,7 @@
 ﻿@using System.Security.Claims
 @inject IHttpClientFactory ClientFactory
 
-<RadzenProfileMenu Click="@ProfileMenuClick" class="rz-p-2">
+<RadzenProfileMenu Click="@ProfileMenuClick" ContextMenu="@(args => None())" class="rz-p-2">
 
 	<!-- Profile Info -->
 	<Template>
@@ -136,6 +136,10 @@
 			await LocalStorage.RemoveItemAsync("UserInfo");
 			NavigationManager.NavigateToLogout("authentication/logout");
 		}
+
+	}
+
+	private void None() {
 
 	}
 

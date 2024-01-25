@@ -1,5 +1,5 @@
-﻿<RadzenButton Variant="Variant.Text" Style="display: none;" Click="@(() => Update())" class="topbar-icon" id="update-button">
-	<LordIcon Icon="/system/solid/autorenew.json" Trigger="loop-on-hover" State="hover-autorenew" Size="24px" Target=".rz-button" Title="@AppText["0007"]" />
+﻿<RadzenButton Variant="Variant.Text" ContextMenu="@(args => None())" Style="display: none;" Click="@(() => Update())" class="topbar-icon" id="update-button">
+	<LordIcon Icon="/topbar/autorenew.json" Anim="state" Trigger="hover" Intro="in-autorenew" State="hover-autorenew" Size="24px" Target=".rz-button" Title="@AppText["0007"]" />
 </RadzenButton>
 
 @code {
@@ -19,6 +19,10 @@
 			await JSRuntime.InvokeVoidAsync("update");
 
 		}
+
+	}
+
+	private void None() {
 
 	}
 

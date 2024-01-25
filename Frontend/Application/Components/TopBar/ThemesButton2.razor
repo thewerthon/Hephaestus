@@ -1,0 +1,41 @@
+﻿<RadzenButton @ref=button Variant="Variant.Text" ContextMenu="@(args => None())" class="topbar-icon" title="Mudar Tema" Click="@(args => popup.ToggleAsync(button.Element))">
+	<LordIcon Icon="/topbar/bulb.json" Anim="boomerang" Trigger="click" State="morph-bulb-OFF" Size="24px" Target=".rz-button" Title="@AppText["0015"]" Id="theme-icon" />
+</RadzenButton>
+
+<Popup @ref=popup Lazy=true class="popup-frame">
+
+	<RadzenStack Gap="6px" class="rz-p-2">
+
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetTheme("auto"))" Style="text-align:start" class="rz-px-2" title="@AppText["0017"]">
+			<RadzenIcon Icon="brightness_4" Style="font-size:24px" />
+			<RadzenText Text="@AppText["0016"]" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
+		</RadzenButton>
+
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetTheme("light"))" Style="text-align:start" class="rz-px-2" title="@AppText["0019"]">
+			<RadzenIcon Icon="brightness_high" Style="font-size:24px" />
+			<RadzenText Text="@AppText["0018"]" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
+		</RadzenButton>
+
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetTheme("dark"))" Style="text-align:start" class="rz-px-2" title="@AppText["0021"]">
+			<RadzenIcon Icon="mode_night" Style="font-size:24px" />
+			<RadzenText Text="@AppText["0020"]" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
+		</RadzenButton>
+
+	</RadzenStack>
+
+</Popup>
+
+@code {
+
+	RadzenButton? button;
+	Popup? popup;
+
+	private async Task SetTheme(string theme) {
+		await JSRuntime.InvokeVoidAsync("applyTheme", theme);
+	}
+
+	private void None() {
+
+	}
+
+}

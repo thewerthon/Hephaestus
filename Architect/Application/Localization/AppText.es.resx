@@ -124,7 +124,7 @@
     <value>Inicie sesión para continuar.</value>
   </data>
   <data name="0002" xml:space="preserve">
-    <value>Al iniciar sesión, aceptas:</value>
+    <value>Al iniciar sesión, aceptas</value>
   </data>
   <data name="0003" xml:space="preserve">
     <value>terminos de uso</value>
@@ -226,5 +226,13 @@ Después de decirlo, necesitarás iniciar sesión de forma nueva.</value>
   </data>
   <data name="0035" xml:space="preserve">
     <value>Mas Opciones</value>
+  </data>
+  <data name="0036" xml:space="preserve">
+    <value>Cambiar el idioma hará que la aplicación se vuelva a cargar.&lt;br/&gt;
+Los datos no guardados se perderán.&lt;br/&gt;
+¿Desea continuar?</value>
+  </data>
+  <data name="0037" xml:space="preserve">
+    <value>Cambiar idioma</value>
   </data>
 </root>

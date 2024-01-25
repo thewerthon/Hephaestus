@@ -124,7 +124,7 @@
     <value>Faça login para prosseguir.</value>
   </data>
   <data name="0002" xml:space="preserve">
-    <value>Ao fazer login, você concorda com:</value>
+    <value>Ao fazer login, você concorda com</value>
   </data>
   <data name="0003" xml:space="preserve">
     <value>termos de uso</value>
@@ -226,5 +226,13 @@ Após sair, você precisará fazer login novamente.</value>
   </data>
   <data name="0035" xml:space="preserve">
     <value>Mais Opções</value>
+  </data>
+  <data name="0036" xml:space="preserve">
+    <value>Alterar o idioma fará com que o aplicativo seja recarregado.&lt;br/&gt;
+Dados não salvos serão perdidos.&lt;br/&gt;
+Deseja continuar?</value>
+  </data>
+  <data name="0037" xml:space="preserve">
+    <value>Alterar o Idioma</value>
   </data>
 </root>

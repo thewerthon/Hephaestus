@@ -15,7 +15,7 @@
 	/// Only apply to 'state' and 'loop' animations.
 	/// </summary>
 	[Parameter]
-	public string State { get; set; } = "none";
+	public string State { get; set; } = "default";
 
 	/// <summary>
 	/// The morph animation name.
@@ -34,7 +34,8 @@
 
 	/// <summary>
 	/// The animation trigger.
-	/// Accepts 'none', 'auto', 'hover', 'click', 'both'.
+	/// Accepts 'none', 'auto', 'hover', 'click'.
+	/// Can mix them as 'auto-hover-click'.
 	/// Defaults to 'click' if using state and defaults to 'hover' if using morph.
 	/// </summary>
 	[Parameter]
@@ -49,7 +50,8 @@
 
 	/// <summary>
 	/// The intro animation trigger.
-	/// Accepts 'none', 'auto', 'hover', 'click', 'both'.
+	/// Accepts 'none', 'auto', 'hover', 'click'.
+	/// Can mix them as 'auto-hover-click'.
 	/// Defaults to 'auto'.
 	/// </summary>
 	[Parameter]
@@ -64,7 +66,8 @@
 
 	/// <summary>
 	/// The outro animation trigger.
-	/// Accepts 'none', 'auto', 'hover', 'click', 'both'.
+	/// Accepts 'none', 'auto', 'hover', 'click'.
+	/// Can mix them as 'auto-hover-click'.
 	/// Defaults to 'none'.
 	/// </summary>
 	[Parameter]

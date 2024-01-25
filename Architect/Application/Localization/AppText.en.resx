@@ -124,7 +124,7 @@
     <value>Log in to proceed.</value>
   </data>
   <data name="0002" xml:space="preserve">
-    <value>By logging in, you agree to:</value>
+    <value>By logging in, you agree to</value>
   </data>
   <data name="0003" xml:space="preserve">
     <value>terms of use</value>
@@ -226,5 +226,13 @@ After leaving, you will need to log in again.</value>
   </data>
   <data name="0035" xml:space="preserve">
     <value>More Options</value>
+  </data>
+  <data name="0036" xml:space="preserve">
+    <value>Changing the language will cause the app to reload.&lt;br/&gt;
+Unsaved data will be lost.&lt;br/&gt;
+Do you wish to continue?</value>
+  </data>
+  <data name="0037" xml:space="preserve">
+    <value>Change Language</value>
   </data>
 </root>

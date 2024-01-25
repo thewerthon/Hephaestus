@@ -225,4 +225,10 @@
   <data name="0035" xml:space="preserve">
     <value>MoreOptions</value>
   </data>
+  <data name="0036" xml:space="preserve">
+    <value>ChangeLanguageConfirmMessage</value>
+  </data>
+  <data name="0037" xml:space="preserve">
+    <value>ChangeLanguage</value>
+  </data>
 </root>

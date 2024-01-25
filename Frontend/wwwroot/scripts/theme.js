@@ -2,19 +2,74 @@ loadTheme();
 
 function loadTheme() {
 
-	var theme = localStorage.getItem('UserTheme');
+	const theme = getTheme();
+	applyTheme(theme);
+
+}
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", event => {
+
+	const theme = getTheme();
+	if (theme == "auto") setToggle();
+
+});
+
+function getTheme() {
+
+	const theme = localStorage.getItem("UserTheme");
+	return theme === "light" || theme === "dark" ? theme : "auto";
+
+}
+
+function setTheme(theme) {
+
+	theme = theme !== "light" && theme !== "dark" ? "auto" : theme;
+	localStorage.setItem("UserTheme", theme);
+
+}
+
+function setToggle() {
+
+	const theme = getTheme();
+	const toggle = document.getElementById("theme-icon");
 
 	switch (theme) {
-		case 'light':
-			applyTheme('light');
+		case "light":
+			if (toggle) toggle.trigger = "morphout";
 			break;
 
-		case 'dark':
-			applyTheme('dark');
+		case "dark":
+			if (toggle) toggle.trigger = "morphin";
 			break;
 
 		default:
-			applyTheme('auto');
+			if (toggle && window.matchMedia("(prefers-color-scheme: light)").matches) toggle.trigger = "morphout";
+			if (toggle && window.matchMedia("(prefers-color-scheme: dark)").matches) toggle.trigger = "morphin";
+
+	}
+
+}
+
+async function toggleTheme() {
+
+	let theme = getTheme();
+	const toggle = document.getElementById("theme-icon");
+
+	if (theme == "auto") {
+		if (window.matchMedia("(prefers-color-scheme: light)").matches) theme = "light";
+		if (window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+	}
+
+	switch (theme) {
+		case "light":
+			setTimeout(() => { applyTheme("dark"); }, 250)
+			if (toggle) toggle.trigger = "morphin";
+			break;
+
+		case "dark":
+			setTimeout(() => { applyTheme("light"); }, 350)
+			if (toggle) toggle.trigger = "morphout";
+			break;
 
 	}
 
@@ -22,43 +77,48 @@ function loadTheme() {
 
 async function applyTheme(theme) {
 
-	var titles = document.head.querySelectorAll('meta[name="theme-color"]')
-	var styles = document.head.querySelectorAll('link[rel="stylesheet"]')
+	const titles = document.head.querySelectorAll("meta[name='theme-color']")
+	const styles = document.head.querySelectorAll("link[rel='stylesheet']")
 
 	switch (theme) {
-		case 'light':
+		case "light":
 			addThemeColor("#ffffff");
-			addStylesheet('css/base-light.css');
-			addStylesheet('css/custom-light.css');
-			addStylesheet('css/default.css');
+			addStylesheet("css/base-light.css");
+			addStylesheet("css/custom-light.css");
+			addStylesheet("css/default.css");
+			localStorage.setItem("UserTheme", "light");
+			setToggle();
 			break;
 
-		case 'dark':
+		case "dark":
 			addThemeColor("#1b324e");
-			addStylesheet('css/base-dark.css');
-			addStylesheet('css/custom-dark.css');
-			addStylesheet('css/default.css');
+			addStylesheet("css/base-dark.css");
+			addStylesheet("css/custom-dark.css");
+			addStylesheet("css/default.css");
+			localStorage.setItem("UserTheme", "dark");
+			setToggle();
 			break;
 
 		default:
-			addThemeColor("#ffffff", '(prefers-color-scheme: light)');
-			addThemeColor("#1b324e", '(prefers-color-scheme: dark)');
-			addStylesheet('css/base-light.css', '(prefers-color-scheme: light)');
-			addStylesheet('css/base-dark.css', '(prefers-color-scheme: dark)');
-			addStylesheet('css/custom-light.css', '(prefers-color-scheme: light)');
-			addStylesheet('css/custom-dark.css', '(prefers-color-scheme: dark)');
-			addStylesheet('css/default.css');
+			addThemeColor("#ffffff", "(prefers-color-scheme: light)");
+			addThemeColor("#1b324e", "(prefers-color-scheme: dark)");
+			addStylesheet("css/base-light.css", "(prefers-color-scheme: light)");
+			addStylesheet("css/base-dark.css", "(prefers-color-scheme: dark)");
+			addStylesheet("css/custom-light.css", "(prefers-color-scheme: light)");
+			addStylesheet("css/custom-dark.css", "(prefers-color-scheme: dark)");
+			addStylesheet("css/default.css");
+			localStorage.setItem("UserTheme", "auto");
+			setToggle();
 
 	}
 
 	await new Promise(r => setTimeout(r, 250));
-	document.getElementById('theme').remove();
 
-	styles.forEach(function (el) {
+	titles.forEach(function (el) {
 		document.head.removeChild(el);
 	});
 
-	titles.forEach(function (el) {
+	styles.forEach(function (el) {
 		document.head.removeChild(el);
 	});
 
@@ -66,8 +126,8 @@ async function applyTheme(theme) {
 
 function addThemeColor(color, media) {
 
-	var meta = document.createElement('meta');
-	meta.name = 'theme-color';
+	let meta = document.createElement("meta");
+	meta.name = "theme-color";
 	meta.content = color;
 	if (media) { meta.media = media; }
 	document.head.appendChild(meta);
@@ -76,8 +136,8 @@ function addThemeColor(color, media) {
 
 function addStylesheet(href, media) {
 
-	var link = document.createElement('link');
-	link.rel = 'stylesheet';
+	let link = document.createElement("link");
+	link.rel = "stylesheet";
 	link.href = href;
 	if (media) { link.media = media; }
 	document.head.appendChild(link);
