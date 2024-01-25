@@ -255,7 +255,7 @@
 		INTERSECTION_LOADING_EVENTS = ["click", "mouseenter", "mouseleave"],
 		ELEMENT_STYLE = "\n    :host {\n        position: relative;\n        display: inline-block;\n        width: 32px;\n        height: 32px;\n        transform: translate3d(0px, 0px, 0px);\n    }\n\n    :host(.current-color) svg path[fill] {\n        fill: currentColor;\n    }\n\n    :host(.current-color) svg path[stroke] {\n        stroke: currentColor;\n    }\n\n    svg {\n        position: absolute;\n        pointer-events: none;\n        display: block;\n        transform: unset!important;\n    }\n\n    ::slotted(*) {\n        position: absolute;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height: 100%;\n    }\n\n    .body.ready ::slotted(*) {\n        display: none;\n    }\n";
 	let styleSheet;
-	const OBSERVED_ATTRIBUTES = ["src", "icon", "state", "morph", "intro", "outro", "trigger", "triggers", "repears", "loading", "stroke", "target", "colors"];
+	const OBSERVED_ATTRIBUTES = ["src", "icon", "state", "morph", "anim", "animtrigger", "trigger", "intro", "introtrigger", "outro", "outrotrigger", "repears", "loading", "stroke", "target", "colors"];
 	class Element extends HTMLElement {
 		static _iconLoader;
 		static _playerFactory;
@@ -421,6 +421,12 @@
 		loadingChanged() {
 
 		}
+		animChanged() {
+			this.triggerChanged()
+		}
+		animtriggerChanged() {
+			this.triggerChanged()
+		}
 		triggerChanged() {
 			if (this._triggerInstance && (this._triggerInstance.onDisconnected && this._triggerInstance.onDisconnected(), this._triggerInstance = void 0, this._playerInstance?.pause()), !this.trigger || !this._playerInstance)
 				return;
@@ -431,9 +437,6 @@
 			this._triggerInstance = new t(this._playerInstance, this, e || this),
 				this._triggerInstance.onConnected && this._triggerInstance.onConnected(),
 				this._playerInstance.isReady && this._triggerInstance.onReady && this._triggerInstance.onReady()
-		}
-		triggersChanged() {
-			this.triggerChanged()
 		}
 		colorsChanged() {
 			this._playerInstance && (this._playerInstance.colors = l(this.colors) || null)
@@ -450,8 +453,14 @@
 		introChanged() {
 			this._playerInstance && (this._playerInstance.intro = this.intro)
 		}
+		introtriggerChanged() {
+			this.triggerChanged()
+		}
 		outroChanged() {
 			this._playerInstance && (this._playerInstance.outro = this.outro)
+		}
+		outrotriggerChanged() {
+			this.triggerChanged()
 		}
 		iconChanged() {
 			this._isConnected && (this.destroyPlayer(), this.createPlayer())
@@ -477,6 +486,18 @@
 		get src() {
 			return this.getAttribute("src")
 		}
+		set anim(t) {
+			t ? this.setAttribute("anim", t) : this.removeAttribute("anim")
+		}
+		get anim() {
+			return this.getAttribute("anim")
+		}
+		set animtrigger(t) {
+			t ? this.setAttribute("animtrigger", t) : this.removeAttribute("animtrigger")
+		}
+		get animtrigger() {
+			return this.getAttribute("animtrigger")
+		}
 		set state(t) {
 			t ? this.setAttribute("state", t) : this.removeAttribute("state")
 		}
@@ -495,11 +516,23 @@
 		get intro() {
 			return this.getAttribute("intro")
 		}
+		set introtrigger(t) {
+			t ? this.setAttribute("introtrigger", t) : this.removeAttribute("introtrigger")
+		}
+		get introtrigger() {
+			return this.getAttribute("introtrigger")
+		}
 		set outro(t) {
 			t ? this.setAttribute("outro", t) : this.removeAttribute("outro")
 		}
 		get outro() {
 			return this.getAttribute("outro")
+		}
+		set outrotrigger(t) {
+			t ? this.setAttribute("outrotrigger", t) : this.removeAttribute("outrotrigger")
+		}
+		get outrotrigger() {
+			return this.getAttribute("outrotrigger")
 		}
 		set colors(t) {
 			t ? this.setAttribute("colors", t) : this.removeAttribute("colors")
@@ -512,12 +545,6 @@
 		}
 		get trigger() {
 			return this.getAttribute("trigger")
-		}
-		set triggers(t) {
-			t ? this.setAttribute("triggers", t) : this.removeAttribute("triggers")
-		}
-		get triggers() {
-			return this.getAttribute("triggers")
 		}
 		set loading(t) {
 			t ? this.setAttribute("loading", t) : this.removeAttribute("loading")
@@ -854,79 +881,72 @@
 		}
 	}
 
-	class Default {
+	class Base {
 
 		player;
 		element;
-		triggers;
 		targetElement;
-		outer = true;
-		enter = false;
+		anim = "";
+		trigger = "";
+		introTrigger = "";
+		outroTrigger = "";
 		hover = false;
-		press = false;
-		loose = false;
 		click = false;
-		leave = false;
 		timeout = null;
-		playedCount = 0;
-		playedIntro = false;
-		playedState = false;
-		playedMorph = false;
-		playedOutro = false;
-		boomerang = false;
+		hasAnim = false;
 		hasIntro = false;
-		hasOutro = false;
+		hasIntro = false;
+		boomerang = false;
+		playedCount = 0;
+		playedAnim = false;
+		playedIntro = false;
+		playedOutro = false;
 		intersectionObserver;
 
 		constructor(player, element, targetElement) {
 			this.player = player;
 			this.element = element;
 			this.targetElement = targetElement;
-			this.triggers = this.element.triggers.split(',');
-			this.hasIntro = this.element.triggers.startsWith('in');
-			this.hasOutro = this.element.triggers.startsWith('out');
-			this.onOuter = this.onOuter.bind(this);
 			this.onEnter = this.onEnter.bind(this);
-			this.onHover = this.onHover.bind(this);
-			this.onPress = this.onPress.bind(this);
-			this.onLoose = this.onLoose.bind(this);
-			this.onClick = this.onClick.bind(this);
 			this.onLeave = this.onLeave.bind(this);
+			this.onClick = this.onClick.bind(this);
+			this.anim = this.element.getAttribute("trigger") ?? "none";
+			this.trigger = this.element.getAttribute("animtrigger") ?? "none";
+			this.introTrigger = this.element.getAttribute("introtrigger") ?? "none";
+			this.outroTrigger = this.element.getAttribute("outrotrigger") ?? "none";
+			this.hasAnim = (this.state != "none" || this.morph != "none") && this.trigger != "none";
+			this.hasIntro = this.intro != "none" && this.introTrigger != "none";
+			this.hasOutro = this.outro != "none" && this.outroTrigger != "none";
+			this.playedIntro = !this.hasIntro;
+			this.playedAnim = !this.hasAnim;
 		}
 
 		onConnected() {
-			if (!this.hasIntro) this.playedIntro = true;
-			this.targetElement.addEventListener("mouseleave", this.onOuter);
+			if (this.hasIntro) this.goToIntro();
+			if (this.hasOutro && !this.hasAnim && !this.hasIntro) this.goToOutro();
 			this.targetElement.addEventListener("mouseenter", this.onEnter);
-			this.targetElement.addEventListener("mouseenter", this.onHover);
-			this.targetElement.addEventListener("mousedown", this.onPress);
-			this.targetElement.addEventListener("touchstart", this.onPress, { passive: !0 });
-			this.targetElement.addEventListener("mouseup", this.onLoose);
-			this.targetElement.addEventListener("touchend", this.onLoose, { passive: !0 });
-			this.targetElement.addEventListener("mouseup", this.onClick);
-			this.targetElement.addEventListener("touchend", this.onClick);
 			this.targetElement.addEventListener("mouseleave", this.onLeave);
+			this.targetElement.addEventListener("touchend", this.onClick, { passive: !0 });
+			this.targetElement.addEventListener("mouseup", this.onClick);
 		}
 
 		onDisconnected() {
 			this.resetIntersectionObserver();
-			this.targetElement.removeEventListener("mouseleave", this.onOuter);
 			this.targetElement.removeEventListener("mouseenter", this.onEnter);
-			this.targetElement.removeEventListener("mouseenter", this.onHover);
-			this.targetElement.removeEventListener("mousedown", this.onPress);
-			this.targetElement.removeEventListener("touchstart", this.onPress);
-			this.targetElement.removeEventListener("mouseup", this.onLoose);
-			this.targetElement.removeEventListener("touchend", this.onLoose);
-			this.targetElement.removeEventListener("mouseup", this.onClick);
-			this.targetElement.removeEventListener("touchend", this.onClick);
 			this.targetElement.removeEventListener("mouseleave", this.onLeave);
+			this.targetElement.removeEventListener("touchend", this.onClick);
+			this.targetElement.removeEventListener("mouseup", this.onClick);
 			this.resetTimeout();
 		}
 
 		onReady() {
+			if (this.introTrigger == "auto") this.playIntroAnim();
+			if (this.outroTrigger == "auto") this.playOutroAnim();
 		}
 
 		onComplete() {
+			if (this.introTrigger == "auto") this.playIntroAnim();
+			if (this.outroTrigger == "auto") this.playOutroAnim();
 		}
 
 		resetTimeout() {
@@ -943,6 +963,18 @@
 			}
 		}
 
+		goToIntro() {
+			this.player.direction = +1;
+			this.player.state = this.intro;
+			this.player.goToFirstFrame();
+		}
+
+		goToOutro() {
+			this.player.direction = -1;
+			this.player.state = this.outro;
+			this.player.goToLastFrame();
+		}
+
 		playIntro() {
 			this.resetTimeout();
 			this.player.direction = +1;
@@ -950,43 +982,6 @@
 			this.player.goToFirstFrame();
 			this.timeout = setTimeout(() => this.player.play(), this.delay);
 			this.playedIntro = true;
-		}
-
-		playState(direction = 0, reset = false, interrupt = false) {
-			if (reset) this.playedCount = 0;
-			if (interrupt || !this.player.isPlaying) {
-				if (this.repeats == 0 || this.playedCount < this.repeats) {
-					this.resetTimeout();
-					this.player.state = this.state;
-					this.player.direction = this.cdir(direction);
-					this.timeout = setTimeout(() => this.player.play(), this.wait);
-					if (this.repeats > 0) this.playedCount++;
-					this.playedState = true;
-				} else {
-					if (this.click) this.click = false;
-				}
-			}
-		}
-
-		playMorph2(direction = 0, reset = false, interrupt = false) {
-			this.player.state = this.morph;
-			this.player.direction = this.cdir(direction, false);
-		}
-
-		playMorph(direction = 0, reset = false, interrupt = false) {
-			if (reset) this.playedCount = 0;
-			if (interrupt || !this.player.isPlaying) {
-				if (this.repeats == 0 || this.playedCount < this.repeats) {
-					this.resetTimeout();
-					this.player.state = this.morph;
-					this.player.direction = this.cdir(direction, false);
-					this.timeout = setTimeout(() => this.player.play(), this.wait);
-					if (this.repeats > 0 && this.player.direction == -1) this.playedCount++;
-					this.playedMorph = true;
-				} else {
-					if (this.click) this.click = false;
-				}
-			}
 		}
 
 		playOutro() {
@@ -998,8 +993,40 @@
 			this.playedOutro = true;
 		}
 
+		playState(direction = 0, reset = false, interrupt = false) {
+			if (reset) this.playedCount = 0;
+			if (interrupt || !this.player.isPlaying) {
+				if (this.repeats == 0 || this.playedCount < this.repeats) {
+					this.resetTimeout();
+					this.player.state = this.state;
+					this.player.direction = this.cdir(direction);
+					this.timeout = setTimeout(() => this.player.play(), this.wait);
+					if (this.repeats > 0) this.playedCount++;
+					this.playedAnim = true;
+				} else {
+					if (this.click) this.click = false;
+				}
+			}
+		}
+
+		playMorph(direction = 0, reset = false, interrupt = false) {
+			if (reset) this.playedCount = 0;
+			if (interrupt || !this.player.isPlaying) {
+				if (this.repeats == 0 || this.playedCount < this.repeats) {
+					this.resetTimeout();
+					this.player.state = this.morph;
+					this.player.direction = this.cdir(direction, false);
+					this.timeout = setTimeout(() => this.player.play(), this.wait);
+					if (this.repeats > 0 && !this.boomerang) this.playedCount++;
+					if (!this.boomerang) this.playedAnim = true;
+				} else {
+					if (this.click) this.click = false;
+				}
+			}
+		}
+
 		playIntroAnim() {
-			if (!this.playedIntro && !this.playedOutro) {
+			if (!this.playedIntro && !this.playedAnim && !this.playedOutro) {
 				if (this.loading) {
 					this.playIntro();
 				} else {
@@ -1007,6 +1034,25 @@
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								this.playIntro();
+								this.resetIntersectionObserver();
+							}
+						});
+					};
+					this.intersectionObserver = new IntersectionObserver(handleIntersection);
+					this.intersectionObserver.observe(this.element);
+				}
+			}
+		}
+
+		playOutroAnim() {
+			if (this.playedIntro && this.playedAnim && !this.playedOutro) {
+				if (this.loading) {
+					this.playOutro();
+				} else {
+					const handleIntersection = (entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								this.playOutro();
 								this.resetIntersectionObserver();
 							}
 						});
@@ -1055,29 +1101,6 @@
 			}
 		}
 
-		playOutroAnim() {
-			if (this.playedIntro && !this.playedOutro) {
-				if (this.loading) {
-					this.playOutro();
-				} else {
-					const handleIntersection = (entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								this.playOutro();
-								this.resetIntersectionObserver();
-							}
-						});
-					};
-					this.intersectionObserver = new IntersectionObserver(handleIntersection);
-					this.intersectionObserver.observe(this.element);
-				}
-			}
-		}
-
-		//async sleep(time = 100) {
-		//	await new Promise(resolve => setTimeout(resolve, time));
-		//}
-
 		cdir(direction = 0, goToFrame = true) {
 			if (direction == 0) {
 				return this.player.direction * -1;
@@ -1088,24 +1111,20 @@
 			}
 		}
 
-		trigger(name = "") {
-			return this.triggers.includes(name);
-		}
-
-		get intro() {
-			return this.element.getAttribute("intro") ?? this.state;
-		}
-
 		get state() {
 			return this.element.getAttribute("state") ?? this.element.state;
 		}
 
 		get morph() {
-			return this.element.getAttribute("morph") ?? this.element.state;
+			return this.element.getAttribute("morph") ?? "none";
+		}
+
+		get intro() {
+			return this.element.getAttribute("intro") ?? "none";
 		}
 
 		get outro() {
-			return this.element.getAttribute("outro") ?? this.intro;
+			return this.element.getAttribute("outro") ?? "none";
 		}
 
 		get wait() {
@@ -1125,452 +1144,240 @@
 		}
 
 		onEnter() {
-			this.enter = true;
-		}
-
-		onLeave() {
-			this.leave = true;
-		}
-
-		onHover() {
 			this.hover = true;
-			this.outer = false;
-		}
-
-		onOuter() {
-			this.hover = false;
-			this.outer = true;
-		}
-
-		onPress() {
-			this.press = true;
-			this.loose = false;
-		}
-
-		onLoose() {
-			this.press = false;
-			this.loose = true;
+			if (this.introTrigger == "hover") this.playIntroAnim();
+			if (this.outroTrigger == "hover") this.playOutroAnim();
+			if (this.introTrigger == "both") this.playIntroAnim();
+			if (this.introTrigger == "both") this.playOutroAnim();
 		}
 
 		onClick() {
 			this.click = !this.click;
+			if (this.introTrigger == "click") this.playIntroAnim();
+			if (this.outroTrigger == "click") this.playOutroAnim();
+			if (this.introTrigger == "both") this.playIntroAnim();
+			if (this.introTrigger == "both") this.playOutroAnim();
+		}
+
+		onLeave() {
+			this.hover = false;
 		}
 
 	}
 
-	class Custom extends Default {
-
-		onConnected() {
-
-			super.onConnected();
-			console.log(this.triggers);
-
-			if (this.hasIntro) {
-				this.player.direction = +1;
-				this.player.state = this.intro;
-				this.player.goToFirstFrame();
-			}
-
-			if (this.hasOutro) {
-				this.player.direction = -1;
-				this.player.state = this.outro;
-				this.player.goToLastFrame();
-			}
-
-		}
+	class State extends Base {
 
 		onReady() {
-			this.onComplete();
-			this.onOuter();
+			super.onReady();
+			if (this.trigger == "auto" && !this.playedAnim) this.playStateAnim(+1, false, false);
 		}
 
 		onComplete() {
 			super.onComplete();
-
-			//in
-			if (this.trigger("in-auto") && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-auto") && !this.playedState && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-
-			//loop
-			if (this.trigger("loop-auto") && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-			if (this.trigger("loop-enter") && this.enter && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-			if (this.trigger("loop-leave") && this.leave && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-			if (this.trigger("loop-hover") && this.hover && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-			if (this.trigger("loop-outer") && this.outer && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-			if (this.trigger("loop-press") && this.press && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-			if (this.trigger("loop-loose") && this.loose && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-			if (this.trigger("loop-click") && this.click && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, false, false); return; }
-
-			//morph
-			if (this.trigger("morph-auto") && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphin
-			if (this.trigger("morphin-auto") && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-auto") && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = false; this.playMorphAnim(0, false, false); return; }
-			if (this.trigger("boomerang-auto") && !this.boomerang && this.playedIntro && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-auto") && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-			if (this.trigger("looprang-enter") && !this.boomerang && this.enter && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-			if (this.trigger("looprang-leave") && !this.boomerang && this.leave && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-			if (this.trigger("looprang-hover") && !this.boomerang && this.hover && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-			if (this.trigger("looprang-outer") && !this.boomerang && this.outer && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-			if (this.trigger("looprang-press") && !this.boomerang && this.press && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-			if (this.trigger("looprang-loose") && !this.boomerang && this.loose && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-			if (this.trigger("looprang-click") && !this.boomerang && this.click && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, false, false); return; }
-
-			//out
-			if (this.trigger("out-auto") && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
+			if (this.trigger == "auto" && !this.playedAnim) this.playStateAnim(+1, false, false);
 		}
 
 		onEnter() {
 			super.onEnter();
-
-			//in
-			if (this.trigger("in-enter") && this.enter && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-enter") && this.enter && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//loop
-			if (this.trigger("loop-enter") && this.enter && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//morph
-			if (this.trigger("morph-enter") && this.enter && this.playedIntro && !this.playedOutro) { this.playMorphAnim(0, true, false); return; }
-
-			//morphin
-			if (this.trigger("morphin-enter") && this.enter && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-enter") && this.enter && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.trigger("boomerang-enter") && this.enter && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(0, true, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-enter") && this.enter && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(0, true, false); return; }
-
-			//out
-			if (this.trigger("out-enter") && this.enter && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
-		}
-
-		onLeave() {
-			super.onLeave();
-
-			//in
-			if (this.trigger("in-leave") && this.leave && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-leave") && this.leave && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//loop
-			if (this.trigger("loop-leave") && this.leave && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//morph
-			if (this.trigger("morph-leave") && this.leave && this.playedIntro && !this.playedOutro) { this.playMorphAnim(0, true, false); return; }
-
-			//morphin
-			if (this.trigger("morphin-leave") && this.leave && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-leave") && this.leave && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.trigger("boomerang-leave") && this.leave && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(0, true, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-leave") && this.leave && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(0, true, false); return; }
-
-			//out
-			if (this.trigger("out-leave") && this.leave && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
-		}
-
-		onHover() {
-			super.onHover();
-
-			//in
-			if (this.trigger("in-hover") && this.hover && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-hover") && this.hover && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//loop
-			if (this.trigger("loop-hover") && this.hover && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//morph
-			if (this.trigger("morph-hover") && this.hover && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, true, true); return; }
-			if (this.trigger("morph-outer") && this.enter && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, true, true); return; }
-
-			//morphin
-			if (this.trigger("morphin-hover") && this.hover && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-hover") && this.hover && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.trigger("boomerang-hover") && this.hover && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-hover") && this.hover && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//out
-			if (this.trigger("out-hover") && this.hover && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
-		}
-
-		onOuter() {
-			super.onOuter();
-
-			//in
-			if (this.trigger("in-outer") && this.outer && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-outer") && this.outer && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//loop
-			if (this.trigger("loop-outer") && this.outer && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//morph
-			if (this.trigger("morph-hover") && this.outer && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, true, true); return; }
-			if (this.trigger("morph-outer") && this.enter && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, true, true); return; }
-
-			//morphin
-			if (this.trigger("morphin-outer") && this.outer && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-outer") && this.outer && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.trigger("boomerang-outer") && this.outer && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-outer") && this.outer && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//out
-			if (this.trigger("out-outer") && this.outer && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
-		}
-
-		onPress() {
-			super.onPress();
-
-			//in
-			if (this.trigger("in-press") && this.press && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-press") && this.press && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//loop
-			if (this.trigger("loop-press") && this.press && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//morph
-			if (this.trigger("morph-press") && this.press && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, true, true); return; }
-			if (this.trigger("morph-loose") && this.press && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, true, true); return; }
-
-			//morphin
-			if (this.trigger("morphin-press") && this.press && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-press") && this.press && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.trigger("boomerang-press") && this.press && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-press") && this.press && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//out
-			if (this.trigger("out-press") && this.press && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
-		}
-
-		onLoose() {
-			super.onLoose();
-
-			//in
-			if (this.trigger("in-loose") && this.loose && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-loose") && this.loose && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//loop
-			if (this.trigger("loop-loose") && this.loose && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//morph
-			if (this.trigger("morph-press") && this.loose && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, true, true); return; }
-			if (this.trigger("morph-loose") && this.loose && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, true, true); return; }
-
-			//morphin
-			if (this.trigger("morphin-loose") && this.loose && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-loose") && this.loose && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.trigger("boomerang-loose") && this.loose && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-loose") && this.loose && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(+1, true, false); return; }
-
-			//out
-			if (this.trigger("out-loose") && this.loose && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
+			if (this.trigger == "hover") this.playStateAnim(+1, true, false);
+			if (this.trigger == "both") this.playStateAnim(+1, true, false);
 		}
 
 		onClick() {
 			super.onClick();
-
-			//in
-			if (this.trigger("in-click") && this.click && !this.playedIntro && !this.playedOutro) { this.playIntroAnim(); return; }
-
-			//state
-			if (this.trigger("state-click") && this.click && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//loop
-			if (this.trigger("loop-click") && this.click && this.playedIntro && !this.playedOutro) { this.playStateAnim(+1, true, false); return; }
-
-			//morph
-			if (this.trigger("morph-click") && this.playedIntro && !this.playedOutro) { this.playMorphAnim(0, true, true); return; }
-
-			//morphin
-			if (this.trigger("morphin-click") && this.click && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(+1, false, false); return; }
-
-			//morphout
-			if (this.trigger("morphout-click") && this.click && !this.playedMorph && this.playedIntro && !this.playedOutro) { this.playMorphAnim(-1, false, false); return; }
-
-			//boomerang
-			if (this.trigger("boomerang-click") && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(0, true, false); return; }
-
-			//looprang
-			if (this.trigger("looprang-click") && !this.boomerang && this.playedIntro && !this.playedOutro) { this.boomerang = true; this.playMorphAnim(0, true, false); return; }
-
-			//out
-			if (this.trigger("out-click") && this.click && this.playedIntro && !this.playedOutro) { this.playOutroAnim(); return; }
-
+			if (this.trigger == "click") this.playStateAnim(+1, true, false);
+			if (this.trigger == "both") this.playStateAnim(+1, true, false);
 		}
 
 	}
 
-	const NUMBER_REGEX = /^\d*(\.\d+)?$/,
-		MUTATION_OBSERVER_CONFIG = {
-			attributes: !0,
-			childList: !1,
-			subtree: !1
-		};
+	class Loop extends Base {
 
-	class Sequence {
-		player;
-		element;
-		targetElement;
-		sequenceIndex = 0;
-		frameState = null;
-		frameDelayFirst = null;
-		frameDelayLast = null;
-		timer;
-		observer;
-		constructor(t, e, i) {
-			this.player = t,
-				this.element = e,
-				this.targetElement = i,
-				this.observer = new MutationObserver(((t, e) => {
-					for (const e of t)
-						"attributes" === e.type && "sequence" === e.attributeName && (this.reset(), this.step())
-				}))
-		}
 		onReady() {
-			this.step()
+			super.onReady();
+			if (this.trigger == "auto") this.playStateAnim(+1, false, false);
 		}
+
 		onComplete() {
-			this.timer = setTimeout((() => {
-				this.timer = null,
-					this.frameDelayLast = null,
-					this.step()
-			}), this.frameDelayLast || 0)
+			super.onComplete();
+			if (this.trigger == "auto") this.playStateAnim(+1, false, false);
+			if (this.trigger == "hover" && this.hover) this.playStateAnim(+1, false, false);
+			if (this.trigger == "click" && this.click) this.playStateAnim(+1, false, false);
+			if (this.trigger == "both" && this.hover) this.playStateAnim(+1, false, false);
+			if (this.trigger == "both" && this.click) this.playStateAnim(+1, false, false);
 		}
-		onConnected() {
-			this.observer.observe(this.element, MUTATION_OBSERVER_CONFIG)
+
+		onEnter() {
+			super.onEnter();
+			if (this.trigger == "hover" && this.hover) this.playStateAnim(+1, true, false);
+			if (this.trigger == "both" && this.hover) this.playStateAnim(+1, true, false);
 		}
-		onDisconnected() {
-			this.observer.disconnect(),
-				this.timer && (clearTimeout(this.timer), this.timer = null)
+
+		onClick() {
+			super.onClick();
+			if (this.trigger == "click" && this.click) this.playStateAnim(+1, true, false);
+			if (this.trigger == "both" && this.click) this.playStateAnim(+1, true, false);
 		}
-		reset() {
-			this.player.pause(),
-				this.sequenceIndex = 0,
-				this.frameState = this.frameDelayFirst = this.frameDelayLast = null,
-				this.timer && (clearTimeout(this.timer), this.timer = null)
+
+	}
+
+	class Morph extends Base {
+
+		onReady() {
+			super.onReady();
+			if (this.trigger == "auto" && !this.playedAnim) this.playMorphAnim(+1, false, false);
 		}
-		takeStep() {
-			const t = this.sequence.split(","),
-				e = t[this.sequenceIndex];
-			this.sequenceIndex++,
-				this.sequenceIndex >= t.length && (this.sequenceIndex = 0);
-			const [i, ...r] = e.split(":");
-			return {
-				action: i,
-				params: r
+
+		onComplete() {
+			super.onComplete();
+			if (this.trigger == "auto" && !this.playedAnim) this.playMorphAnim(+1, false, false);
+		}
+
+		onEnter() {
+			super.onEnter();
+			if (this.trigger == "hover") this.playMorphAnim(+1, true, true);
+			if (this.trigger == "both") this.playMorphAnim(0, true, true);
+		}
+
+		onClick() {
+			super.onClick();
+			if (this.trigger == "click") this.playMorphAnim(0, true, true);
+			if (this.trigger == "both") this.playMorphAnim(0, true, true);
+		}
+
+		onLeave() {
+			super.onLeave();
+			if (this.trigger == "hover") this.playMorphAnim(-1, true, true);
+			if (this.trigger == "both") this.playMorphAnim(0, true, true);
+		}
+
+	}
+
+	class MorphIn extends Base {
+
+		onReady() {
+			super.onReady();
+			if (this.trigger == "auto" && !this.playedAnim) this.playMorphAnim(+1, false, false);
+		}
+
+		onComplete() {
+			super.onComplete();
+			if (this.trigger == "auto" && !this.playedAnim) this.playMorphAnim(+1, false, false);
+		}
+
+		onEnter() {
+			super.onEnter();
+			if (this.trigger == "hover") this.playMorphAnim(+1, true, true);
+			if (this.trigger == "both") this.playMorphAnim(+1, true, true);
+		}
+
+		onClick() {
+			super.onClick();
+			if (this.trigger == "click") this.playMorphAnim(+1, true, true);
+			if (this.trigger == "both") this.playMorphAnim(+1, true, true);
+		}
+
+	}
+
+	class MorphOut extends Base {
+
+		onReady() {
+			super.onReady();
+			if (this.trigger == "auto" && !this.playedAnim) this.playMorphAnim(-1, false, false);
+		}
+
+		onComplete() {
+			super.onComplete();
+			if (this.trigger == "auto" && !this.playedAnim) this.playMorphAnim(-1, false, false);
+		}
+
+		onEnter() {
+			super.onEnter();
+			if (this.trigger == "hover") this.playMorphAnim(-1, true, true);
+			if (this.trigger == "both") this.playMorphAnim(-1, true, true);
+		}
+
+		onClick() {
+			super.onClick();
+			if (this.trigger == "click") this.playMorphAnim(-1, true, true);
+			if (this.trigger == "both") this.playMorphAnim(-1, true, true);
+		}
+
+	}
+
+	class Boomerang extends Base {
+
+		onReady() {
+			super.onReady();
+			if (this.trigger == "auto") this.boomerang = true, this.playMorphAnim(+1, false, false);
+		}
+
+		onComplete() {
+			super.onComplete();
+			if (this.boomerang) this.boomerang = false, this.playMorphAnim(-1, false, false);
+		}
+
+		onEnter() {
+			super.onEnter();
+			if (this.trigger == "hover") this.boomerang = true, this.playMorphAnim(+1, true, false);
+			if (this.trigger == "both") this.boomerang = true, this.playMorphAnim(+1, true, false);
+		}
+
+		onClick() {
+			super.onClick();
+			if (this.trigger == "click") this.boomerang = true, this.playMorphAnim(+1, true, false);
+			if (this.trigger == "both") this.boomerang = true, this.playMorphAnim(+1, true, false);
+		}
+
+	}
+
+	class Looprang extends Base {
+
+		onReady() {
+			super.onReady();
+			if (this.trigger == "auto") this.boomerang = true, this.playMorphAnim(+1, false, false);
+		}
+
+		onComplete() {
+			super.onComplete();
+			if (this.boomerang) {
+				this.boomerang = false, this.playMorphAnim(-1, false, false);
+			} else {
+				if (this.trigger == "auto") this.boomerang = true, this.playMorphAnim(+1, false, false);
+				if (this.trigger == "hover" && this.hover) this.boomerang = true, this.playMorphAnim(+1, false, false);
+				if (this.trigger == "click" && this.click) this.boomerang = true, this.playMorphAnim(+1, false, false);
+				if (this.trigger == "both" && this.hover) this.boomerang = true, this.playMorphAnim(+1, false, false);
+				if (this.trigger == "both" && this.click) this.boomerang = true, this.playMorphAnim(+1, false, false);
 			}
 		}
-		handleStep(t, e) {
-			if ("play" === t)
-				this.frameState && (this.player.state = this.frameState, this.frameState = null), e.includes("reverse") ? (this.player.goToLastFrame(), this.player.direction = -1) : (this.player.goToFirstFrame(), this.player.direction = 1), this.timer = setTimeout((() => {
-					this.timer = null,
-						this.frameDelayFirst = null,
-						this.player.play()
-				}), this.frameDelayFirst || 0);
-			else if ("frame" === t) {
-				let t = 0;
-				e.length && e[0].match(NUMBER_REGEX) && (t = Math.max(0, Math.min(this.player.frames, +e[0]))),
-					this.player.frame = t,
-					this.timer = setTimeout((() => {
-						this.timer = null,
-							this.frameDelayFirst = null,
-							this.step()
-					}), this.frameDelayFirst || 0)
-			} else if ("state" === t)
-				this.frameState = e[0], this.step();
-			else if ("delay" === t) {
-				let t = null;
-				for (const i of e)
-					i && i.match(NUMBER_REGEX) && (t = +i);
-				t && t > 0 && (e.includes("first") && e.includes("last") ? (this.frameDelayFirst = t, this.frameDelayLast = t) : e.includes("first") ? this.frameDelayFirst = t : e.includes("last") ? this.frameDelayLast = t : this.frameDelayFirst = t),
-					this.step()
-			} else if ("idle" !== t)
-				throw new Error(`Invalid sequence action: ${t}`)
+
+		onEnter() {
+			super.onEnter();
+			if (this.trigger == "hover" && this.hover) this.boomerang = true, this.playMorphAnim(+1, true, false);
+			if (this.trigger == "both" && this.hover) this.boomerang = true, this.playMorphAnim(+1, true, false);
 		}
-		step() {
-			const {
-				action: t,
-				params: e
-			} = this.takeStep();
-			t && this.handleStep(t, e)
+
+		onClick() {
+			super.onClick();
+			if (this.trigger == "click" && this.click) this.boomerang = true, this.playMorphAnim(+1, true, false);
+			if (this.trigger == "both" && this.click) this.boomerang = true, this.playMorphAnim(+1, true, false);
 		}
-		get sequence() {
-			return this.element.getAttribute("sequence") || ""
-		}
+
 	}
 
 	function defineElement(t) {
 		Element.setPlayerFactory(((e, i, r) => new Player(t, e, i, r))),
-			Element.defineTrigger("in", Custom),
-			Element.defineTrigger("click", Custom),
-			Element.defineTrigger("hover", Custom),
-			Element.defineTrigger("custom", Custom),
-			Element.defineTrigger("sequence", Sequence),
+			Element.defineTrigger("none", Base),
+			Element.defineTrigger("state", State),
+			Element.defineTrigger("loop", Loop),
+			Element.defineTrigger("morph", Morph),
+			Element.defineTrigger("morphin", MorphIn),
+			Element.defineTrigger("morphout", MorphOut),
+			Element.defineTrigger("boomerang", Boomerang),
+			Element.defineTrigger("looprang", Looprang),
 			customElements.get && customElements.get("lord-icon") || customElements.define("lord-icon", Element)
 	}
 
-	var commonjsGlobal = "undefined" != typeof globalThis ? globalThis : "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {};
 	function getDefaultExportFromCjs(t) {
 		return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, "default") ? t.default : t
 	}
