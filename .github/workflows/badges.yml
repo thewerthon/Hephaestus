@@ -22,8 +22,8 @@ jobs:
         with:
           debug: true
           directory: ./
-          patterns: "**/*.cs|"**/*.cshtml|**/*.razor|**/*.resx|**/*.css|**/*.json|**/*.html|**/*.js
-          ignore: "**/lordicon/*|**/base-light.css|**/base-dark.css|**/service-worker*.js
+          patterns: "**/*.cs|**/*.cshtml|**/*.razor|**/*.resx|**/*.css|**/*.json|**/*.html|**/*.js"
+          ignore: "**/lordicon/*|**/base-light.css|**/base-dark.css|**/service-worker*.js"
           
       - name: Deploy to Branch
         uses: peaceiris/actions-gh-pages@v3
