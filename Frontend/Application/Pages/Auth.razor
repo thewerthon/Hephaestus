@@ -1,8 +1,6 @@
 ﻿@page "/authentication/{action}"
 @layout LoginLayout
 @attribute [AllowAnonymous]
-@inject NavigationManager NavigationManager
-@inject ISessionStorageService SessionStorage
 
 <PageTitle>Login</PageTitle>
 <RemoteAuthenticatorView Action="@Action" OnLogInSucceeded="LoginSuccessHandler">

@@ -953,13 +953,13 @@
 		onComplete() {
 			if (this.initIntro) this.playedIntro = true;
 			if (this.initOutro) this.playedOutro = true;
-			
+
 			if (this.initAnim) {
 				if (STATE_ANIMS.includes(this.anim) && !this.boomerang) this.playedAnim = true;
 				if (MORPH_ANIMS.includes(this.anim) && !this.boomerang) this.playedAnim = true;
 				if (this.repeats > 0) this.playedCount++;
 			}
-			
+
 			if (this.introTrigger.includes("auto")) this.playIntroAnim();
 			if (this.outroTrigger.includes("auto")) this.playOutroAnim();
 		}
@@ -989,7 +989,7 @@
 			this.player.state = this.outro;
 			this.player.goToLastFrame();
 		}
-		
+
 		playIntro() {
 			this.resetTimeout();
 			this.player.direction = +1;

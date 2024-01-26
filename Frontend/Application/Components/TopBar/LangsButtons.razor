@@ -6,17 +6,17 @@
 
 	<RadzenStack Gap="6px" class="rz-p-2">
 
-		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("pt"))" Style="text-align:start" class="rz-px-2" title="Mudar Idioma">
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetLanguage("pt"))" Style="text-align:start" class="rz-px-2" title="Mudar Idioma">
 			<RadzenImage Path="images/langs/br.svg" class="lang-quickbutton" />
 			<RadzenText Text="Portugês (Brasileiro)" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
 		</RadzenButton>
 
-		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("en"))" Style="text-align:start" class="rz-px-2" title="Change Language">
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetLanguage("en"))" Style="text-align:start" class="rz-px-2" title="Change Language">
 			<RadzenImage Path="images/langs/us.svg" class="lang-quickbutton" />
 			<RadzenText Text="English (International)" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
 		</RadzenButton>
 
-		<RadzenButton Variant="Variant.Text" Click="@(() => SetLang("es"))" Style="text-align:start" class="rz-px-2" title="Cambiar Idioma">
+		<RadzenButton Variant="Variant.Text" Click="@(() => SetLanguage("es"))" Style="text-align:start" class="rz-px-2" title="Cambiar Idioma">
 			<RadzenImage Path="images/langs/sp.svg" class="lang-quickbutton" />
 			<RadzenText Text="Español (Internacional)" TextStyle="TextStyle.Button" class="rz-m-0 rz-ml-2" />
 		</RadzenButton>
@@ -30,7 +30,7 @@
 	RadzenButton? button;
 	Popup? popup;
 
-	private async Task SetLang(string lang) {
+	private async Task SetLanguage(string lang) {
 
 		var result = await DialogService.Confirm(AppText["0036"], AppText["0037"], new ConfirmOptions() {
 				OkButtonText = AppButton["Confirm"],
@@ -43,7 +43,7 @@
 		if (result ?? false) {
 
 			await LocalStorage.RemoveItemAsync("UserInfo");
-			await JSRuntime.InvokeVoidAsync("setLang", lang);
+			await JSRuntime.InvokeVoidAsync("setLanguage", lang);
 			NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
 
 		}

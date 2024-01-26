@@ -16,15 +16,15 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", eve
 
 function getTheme() {
 
-	const theme = localStorage.getItem("UserTheme");
-	return theme === "light" || theme === "dark" ? theme : "auto";
+	userPreferences.refresh();
+	return userPreferences.theme;
 
 }
 
 function setTheme(theme) {
 
-	theme = theme !== "light" && theme !== "dark" ? "auto" : theme;
-	localStorage.setItem("UserTheme", theme);
+	userPreferences.theme = theme;
+	userPreferences.save()
 
 }
 
@@ -86,7 +86,7 @@ async function applyTheme(theme) {
 			addStylesheet("css/base-light.css");
 			addStylesheet("css/custom-light.css");
 			addStylesheet("css/default.css");
-			localStorage.setItem("UserTheme", "light");
+			setTheme("light");
 			setToggle();
 			break;
 
@@ -95,7 +95,7 @@ async function applyTheme(theme) {
 			addStylesheet("css/base-dark.css");
 			addStylesheet("css/custom-dark.css");
 			addStylesheet("css/default.css");
-			localStorage.setItem("UserTheme", "dark");
+			setTheme("dark");
 			setToggle();
 			break;
 
@@ -107,7 +107,7 @@ async function applyTheme(theme) {
 			addStylesheet("css/custom-light.css", "(prefers-color-scheme: light)");
 			addStylesheet("css/custom-dark.css", "(prefers-color-scheme: dark)");
 			addStylesheet("css/default.css");
-			localStorage.setItem("UserTheme", "auto");
+			setTheme("auto");
 			setToggle();
 
 	}
