@@ -92,14 +92,6 @@
 	height: 42px !important;
 }
 
-.app-sidebar-backdrop {
-	display: none;
-	width: 100%;
-	height: 100%;
-	backdrop-filter: blur(5px);
-	background: linear-gradient(#00000000, #00000022);
-}
-
 @media (display-mode: browser) {
 	.app-layout {
 		grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';

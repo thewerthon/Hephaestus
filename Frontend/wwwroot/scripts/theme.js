@@ -21,6 +21,20 @@ function getTheme() {
 
 }
 
+function getCurrentTheme() {
+
+	userPreferences.refresh();
+	let theme = userPreferences.theme;
+
+	if (theme == "auto") {
+		if (window.matchMedia("(prefers-color-scheme: light)").matches) theme = "light";
+		if (window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+	}
+
+	return theme;
+
+}
+
 function setTheme(theme) {
 
 	userPreferences.theme = theme;

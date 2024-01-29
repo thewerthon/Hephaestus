@@ -25,9 +25,11 @@ namespace Frontend.Application.Services {
 
 					CurrentUser = UserInfo;
 					CurrentUser.Email = UserClaims.FindFirst("email")?.Value;
+
+					var defaultDate = new DateTime(1994, 03, 09, 16, 00, 00);
 					SavedUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? SavedUser;
 					UserPreferences = await LocalStorage.GetItemAsync<UserPreferences>("UserPreferences") ?? UserPreferences;
-					UserFetched = await LocalStorage.GetItemAsync<DateTime?>("UserFetched") ?? DateTime.UtcNow;
+					UserFetched = await LocalStorage.GetItemAsync<DateTime?>("UserFetched") ?? defaultDate;
 
 					if (CurrentUser.Email == SavedUser!.Email && DateTime.UtcNow < UserFetched.AddHours(6)) {
 
