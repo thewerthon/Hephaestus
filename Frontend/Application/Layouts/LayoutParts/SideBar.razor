@@ -153,9 +153,9 @@
 
 	public async Task OnNavigate(EventArgs args) {
 
-		var dimensions = await JSRuntime.InvokeAsync<WindowDimension>("getWindowDimensions");
+		var width = await JSRuntime.InvokeAsync<int>("getWindowWidth");
 
-		if (dimensions.Width <= 768) {
+		if (width <= 768) {
 			await Toggle.InvokeAsync(args);
 		}
 

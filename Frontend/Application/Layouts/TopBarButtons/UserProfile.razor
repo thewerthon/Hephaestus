@@ -39,19 +39,24 @@
 
 	protected override async Task OnInitializedAsync() {
 
-		UserClaims = (await AuthTask!).User;
-		CurrentUser = new() { Name = AppText["0033"], Role = AppText["0034"], Photo = "images/users/unknown.jpg" };
-		await UserService.FecthUserAsync(UserClaims);
-
-		CurrentUser = UserService.UserInfo;
-		CurrentUser.Role = AppRole[(UserService.UserInfo.Role ?? "System.User").Replace(".", string.Empty)];
+		CurrentUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new() { Name = AppText["0033"], Role = AppText["0034"], Photo = "images/users/unknown.jpg" };
+		CurrentUser.Role = AppRole[(CurrentUser.Role ?? "System.User").Replace(".", string.Empty)];
 
 	}
 
-	protected override Task OnAfterRenderAsync(bool firstRender) {
+	protected override async Task OnAfterRenderAsync(bool firstRender) {
 
-		if (firstRender) _ = JSRuntime.InvokeVoidAsync("isAppInstalled");
-		return base.OnAfterRenderAsync(firstRender);
+		if (firstRender) {
+
+			_ = JSRuntime.InvokeVoidAsync("isAppInstalled");
+
+			UserClaims = (await AuthTask!).User;
+			await UserService.FecthUserAsync(UserClaims);
+			CurrentUser = UserService.UserInfo;
+			CurrentUser.Role = AppRole[(UserService.UserInfo.Role ?? "System.User").Replace(".", string.Empty)];
+			StateHasChanged();
+
+		}
 
 	}
 

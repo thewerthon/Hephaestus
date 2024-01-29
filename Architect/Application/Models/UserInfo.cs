@@ -5,7 +5,7 @@ namespace Architect.Application.Models {
 	public class UserInfo {
 
 		[JsonPropertyName("id")]
-		public Guid? Id { get; set; }
+		public Guid? Guid { get; set; }
 
 		[JsonPropertyName("displayName")]
 		public string? Name { get; set; } = "Unknown User";

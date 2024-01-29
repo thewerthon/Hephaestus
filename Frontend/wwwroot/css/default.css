@@ -166,7 +166,7 @@
 		height: 38px !important;
 	}
 
-	.app-sidebar-backdrop {
+	.sidebar-backdrop {
 		z-index: 2;
 		display: flex;
 		position: absolute;
