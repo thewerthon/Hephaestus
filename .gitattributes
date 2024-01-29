@@ -75,7 +75,6 @@ Frontend/wwwroot/service-worker*.js linguist-vendored
 *.cs linguist-detectable=true linguist-language=C#
 *.cshtml linguist-detectable=true linguist-language=C#
 *.razor linguist-detectable=true linguist-language=C#
-*.resx linguist-detectable=true linguist-language=XML
 *.css linguist-detectable=true linguist-language=CSS
 *.json linguist-detectable=true linguist-language=JSON
 *.html linguist-detectable=true linguist-language=HTML
