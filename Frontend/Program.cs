@@ -5,9 +5,7 @@ using Blazored.SessionStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Frontend.Application.Services.Account;
-using Frontend.Application.Services.Version;
-using Frontend.Application.Services.Graph;
+using Frontend.Application.Services;
 using System.Globalization;
 using Microsoft.JSInterop;
 
@@ -46,8 +44,9 @@ builder.Services.AddHttpClient("GraphAPI", client => client.BaseAddress = new Ur
 // Logging Configuration
 builder.Logging.SetMinimumLevel(LogLevel.Warning);
 
-// Version Service
+// Frontend Service
 builder.Services.AddScoped<VersionService>();
+builder.Services.AddScoped<UserService>();
 
 // Localization Service
 builder.Services.AddLocalization();

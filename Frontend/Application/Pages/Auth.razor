@@ -1,39 +1,41 @@
 ﻿@page "/authentication/{action}"
 @layout LoginLayout
 @attribute [AllowAnonymous]
+@namespace Frontend.Application.Pages
 
-<PageTitle>Login</PageTitle>
-<RemoteAuthenticatorView Action="@Action" OnLogInSucceeded="LoginSuccessHandler">
+<PageTitle>@(AppMenu["0100"])</PageTitle>
+
+<RemoteAuthenticatorView Action="@Action" OnLogInSucceeded="LoginSucceeded" OnLogOutSucceeded="LogoutSucceeded">
 
 	<LoggingIn>
-		<p>Iniciando Login...</p>
+		<p>@AppText["0040"]</p>
 	</LoggingIn>
 
 	<CompletingLoggingIn>
-		<p>Finalizando Login...</p>
+		<p>@AppText["0041"]</p>
 	</CompletingLoggingIn>
 
 	<LogInFailed>
-		<RadzenButton Text="Tentar Novamente" Click="@DoLogin" />
-		<p style="padding-top:10px">Processo de login falhou.</p>
+		<RadzenButton Text="@AppText["0042"]" Click="@DoLogin" />
+		<p style="padding-top:10px">@AppText["0043"]</p>
 	</LogInFailed>
 
 	<LogOut>
-		<p>Iniciando Logout...</p>
+		<p>@AppText["0044"]</p>
 	</LogOut>
 
 	<CompletingLogOut>
-		<p>Finalizando Logout...</p>
+		<p>@AppText["0045"]</p>
 	</CompletingLogOut>
 
 	<LogOutFailed>
-		<RadzenButton Text="Retornar ao Início" Click="@DoLogin" />
-		<p style="padding-top:10px">Processo de logout falhou.</p>
+		<RadzenButton Text="@AppText["0046"]" Click="@DoLogin" />
+		<p style="padding-top:10px">@AppText["0047"]</p>
 	</LogOutFailed>
 
 	<LogOutSucceeded>
-		<RadzenButton Text="Novo Login" Click="@DoLogin" />
-		<p style="padding-top:10px">Você saiu da sua conta.</p>
+		<RadzenButton Text="@AppText["0048"]" Click="@DoLogin" />
+		<p style="padding-top:10px">@AppText["0049"]</p>
 	</LogOutSucceeded>
 
 </RemoteAuthenticatorView>
@@ -45,11 +47,16 @@
 	private string returnPath = string.Empty;
 
 	protected override async Task OnInitializedAsync() {
-		returnPath = await SessionStorage.GetItemAsStringAsync("ReturnPath") ?? "inicio";
+		returnPath = await SessionStorage.GetItemAsStringAsync("ReturnPath") ?? AppPath["0200"].Value.Replace("/", string.Empty);
 	}
 
-	private void LoginSuccessHandler(RemoteAuthenticationState state) {
+	private void LoginSucceeded(RemoteAuthenticationState state) {
 		state.ReturnUrl = returnPath;
+	}
+
+	private async Task LogoutSucceeded() {
+		await LocalStorage.RemoveItemAsync("UserInfo");
+		await LocalStorage.RemoveItemAsync("UserFetched");
 	}
 
 	private void DoLogin() {

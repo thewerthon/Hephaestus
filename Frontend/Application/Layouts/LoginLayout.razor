@@ -1,4 +1,5 @@
-@inherits LayoutComponentBase
+@namespace Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.LayoutComponentBase
 
 <!-- Components -->
 <RadzenComponents />
@@ -45,6 +46,7 @@
 
 	private async Task SetLanguage(string lang) {
 		await LocalStorage.RemoveItemAsync("UserInfo");
+		await LocalStorage.RemoveItemAsync("UserFetched");
 		await JSRuntime.InvokeVoidAsync("setLanguage", lang);
 		NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
 	}

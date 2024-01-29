@@ -118,27 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="0004" xml:space="preserve">
-    <value>Error403Message</value>
-  </data>
-  <data name="0003" xml:space="preserve">
-    <value>Error403Title</value>
-  </data>
-  <data name="0002" xml:space="preserve">
     <value>Error401Message</value>
   </data>
-  <data name="0001" xml:space="preserve">
+  <data name="0003" xml:space="preserve">
     <value>Error401Title</value>
   </data>
-  <data name="0005" xml:space="preserve">
-    <value>Error404Title</value>
+  <data name="0010" xml:space="preserve">
+    <value>Error410Message</value>
   </data>
-  <data name="0006" xml:space="preserve">
-    <value>Error404Message</value>
-  </data>
-  <data name="0007" xml:space="preserve">
+  <data name="0009" xml:space="preserve">
     <value>Error410Title</value>
   </data>
+  <data name="0005" xml:space="preserve">
+    <value>Error403Title</value>
+  </data>
+  <data name="0006" xml:space="preserve">
+    <value>Error403Message</value>
+  </data>
+  <data name="0007" xml:space="preserve">
+    <value>Error404Title</value>
+  </data>
   <data name="0008" xml:space="preserve">
-    <value>Error410Message</value>
+    <value>Error404Message</value>
+  </data>
+  <data name="0001" xml:space="preserve">
+    <value>Error000Title</value>
+  </data>
+  <data name="0002" xml:space="preserve">
+    <value>Error000Message</value>
   </data>
 </root>

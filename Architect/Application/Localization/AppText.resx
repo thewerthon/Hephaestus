@@ -231,4 +231,40 @@
   <data name="0037" xml:space="preserve">
     <value>ChangeLanguage</value>
   </data>
+  <data name="0038" xml:space="preserve">
+    <value>DefaultChangLog</value>
+  </data>
+  <data name="0039" xml:space="preserve">
+    <value>DoLogin</value>
+  </data>
+  <data name="0040" xml:space="preserve">
+    <value>LoggingIn</value>
+  </data>
+  <data name="0041" xml:space="preserve">
+    <value>CompletingLoggingIn</value>
+  </data>
+  <data name="0042" xml:space="preserve">
+    <value>LogInFailedButton</value>
+  </data>
+  <data name="0043" xml:space="preserve">
+    <value>LogInFailedText</value>
+  </data>
+  <data name="0044" xml:space="preserve">
+    <value>LogOut</value>
+  </data>
+  <data name="0045" xml:space="preserve">
+    <value>CompletingLogOut</value>
+  </data>
+  <data name="0046" xml:space="preserve">
+    <value>LogOutFailedButton</value>
+  </data>
+  <data name="0047" xml:space="preserve">
+    <value>LogOutFailedText</value>
+  </data>
+  <data name="0048" xml:space="preserve">
+    <value>LogOutSucceededButton</value>
+  </data>
+  <data name="0049" xml:space="preserve">
+    <value>LogOutSucceededText</value>
+  </data>
 </root>

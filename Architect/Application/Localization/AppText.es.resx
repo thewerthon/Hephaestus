@@ -148,10 +148,12 @@
     <value>Actualización Requerida</value>
   </data>
   <data name="0010" xml:space="preserve">
-    <value>Hay una actualización de la aplicación disponible. ¿Quieres actualizarla ahora? Los datos no guardados se perderan.</value>
+    <value>Hay una actualización de la aplicación disponible.&lt;br/&gt;
+¿Quieres actualizarla ahora? Los datos no guardados se perderan.</value>
   </data>
   <data name="0011" xml:space="preserve">
-    <value>Se requiere una actualización de la aplicación para continuar. ¿Quieres actualizar ahora?</value>
+    <value>Se requiere una actualización de la aplicación para continuar.&lt;br/&gt;
+¿Quieres actualizar ahora?</value>
   </data>
   <data name="0012" xml:space="preserve">
     <value>Utilice el botón en la parte superior de la página para actualizar.</value>
@@ -234,5 +236,41 @@ Los datos no guardados se perderán.&lt;br/&gt;
   </data>
   <data name="0037" xml:space="preserve">
     <value>Cambiar idioma</value>
+  </data>
+  <data name="0038" xml:space="preserve">
+    <value>- Mejoras de usabilidad y correcciones generales.</value>
+  </data>
+  <data name="0039" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="0040" xml:space="preserve">
+    <value>Iniciando sesión...</value>
+  </data>
+  <data name="0041" xml:space="preserve">
+    <value>Finalizando el inicio de sesión...</value>
+  </data>
+  <data name="0042" xml:space="preserve">
+    <value>De Nuevo</value>
+  </data>
+  <data name="0043" xml:space="preserve">
+    <value>El inicio de sesión falló.</value>
+  </data>
+  <data name="0044" xml:space="preserve">
+    <value>Iniciando cierre de sesión...</value>
+  </data>
+  <data name="0045" xml:space="preserve">
+    <value>Terminando de cerrar sesión...</value>
+  </data>
+  <data name="0046" xml:space="preserve">
+    <value>Vuelve a Inicio</value>
+  </data>
+  <data name="0047" xml:space="preserve">
+    <value>Cierre de sesión falló.</value>
+  </data>
+  <data name="0048" xml:space="preserve">
+    <value>Nueva Sesión</value>
+  </data>
+  <data name="0049" xml:space="preserve">
+    <value>Has cerrado sesión en tu cuenta.</value>
   </data>
 </root>

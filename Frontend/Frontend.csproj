@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
-		<Nullable>enable</Nullable>
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<NoWarn>CS8601,CS8602</NoWarn>
-		<PublishTrimmed>true</PublishTrimmed>
-		<BlazorEnableCompression>true</BlazorEnableCompression>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+		<BlazorEnableCompression>true</BlazorEnableCompression>
+		<PublishTrimmed>true</PublishTrimmed>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,19 +17,24 @@
 		<UserSecretsId>Hephaestus.Frontend.Release</UserSecretsId>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Architect\Architect.csproj" />
-	</ItemGroup>
+	<PropertyGroup>
+		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Bootstrap" Version="5.3.2" IncludeAssets="none" />
-		<PackageReference Include="Radzen.Blazor" Version="4.24.2" IncludeAssets="all" />
+		<PackageReference Include="Bootstrap" Version="5.3.2" IncludeAssets="compile" />
+		<PackageReference Include="Radzen.Blazor" Version="4.24.3" IncludeAssets="all" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" IncludeAssets="all" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.1" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.1" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -38,12 +42,8 @@
 		<TrimmerRootAssembly Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" />
 	</ItemGroup>
 
-	<PropertyGroup>
-		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	</PropertyGroup>
-
 	<ItemGroup>
-		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+		<ProjectReference Include="..\Architect\Architect.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

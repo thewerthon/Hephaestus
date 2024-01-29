@@ -1,4 +1,7 @@
-﻿<div style="display:flex; align-items:center; justify-content:center;">
+﻿@namespace Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<div class="lord-icon-container">
 	<lord-icon src=@("lordicon" + @Icon) state="@State" morph="@Morph" trigger="@Anim" animtrigger="@Trigger" intro="@Intro" introtrigger="@IntroTrigger" outro="@Outro" outrotrigger="@OutroTrigger" repeats="@Repeats" delay="@Delay" wait="@Wait" loading="@Loading" stroke="@Stroke" style="width:@Size;height:@Size;" target="@Target" title="@Title" id="@Id" class="lord-icon" />
 </div>
 
@@ -144,13 +147,13 @@
 		}
 
 		if (Anim == string.Empty) {
-			if (State != string.Empty) Anim = "state";
-			if (Morph != string.Empty) Anim = "morph";
+			Anim = State != string.Empty ? "state" : Anim;
+			Morph = Morph != string.Empty ? "morph" : Morph;
 		}
 
 		if (Trigger == string.Empty) {
-			if (State != string.Empty) Trigger = "click";
-			if (Morph != string.Empty) Trigger = "hover";
+			State = State != string.Empty ? "click" : State;
+			Morph = Morph != string.Empty ? "hover" : Morph;
 		}
 
 	}

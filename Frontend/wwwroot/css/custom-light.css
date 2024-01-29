@@ -76,9 +76,10 @@
 	--rz-button-hover-shadow: none;
 	--rz-button-focus-shadow: none;
 	--rz-button-active-shadow: none;
-	--rz-button-hover-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
-	--rz-button-focus-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
-	--rz-button-active-gradient: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+	--rz-button-overlay-color: rgba(255, 255, 255, 0.1);
+	--rz-button-hover-gradient: linear-gradient(var(--rz-button-overlay-color), var(--rz-button-overlay-color));
+	--rz-button-focus-gradient: linear-gradient(var(--rz-button-overlay-color), var(--rz-button-overlay-color));
+	--rz-button-active-gradient: linear-gradient(var(--rz-button-overlay-color), var(--rz-button-overlay-color));
 }
 
 :root {
@@ -92,6 +93,14 @@
 
 :root {
 	--rz-profile-menu-item-hover-background-color: var(--rz-primary);
+}
+
+:root {
+	--rz-profile-menu-border-radius: 6px;
+	--rz-menu-border-radius: var(--rz-profile-menu-border-radius);
+	--rz-menu-item-border-radius: var(--rz-profile-menu-border-radius);
+	--rz-context-menu-padding: var(--rz-profile-menu-border-radius);
+	--rz-menu-item-hover-background-color: var(--rz-primary);
 }
 
 :root {
@@ -174,7 +183,7 @@ ul.rz-profile-menu {
 }
 
 .rz-dialog-mask {
-	background: linear-gradient(#00000000, #00000044);
+	background: linear-gradient(#00000000, #2b3a5066);
 	backdrop-filter: blur(5px);
 	opacity: 1;
 }
@@ -230,6 +239,10 @@ ul.rz-profile-menu {
 
 .rz-button.rz-variant-text.rz-light .rzi {
 	color: var(--rz-white);
+}
+
+.rz-navigation-item-wrapper {
+	border-radius: 4px;
 }
 
 .rz-popup .rz-button.rz-variant-text .rzi {

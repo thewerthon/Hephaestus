@@ -1,7 +1,5 @@
 ﻿namespace Architect.Application.Localization {
 
-	public class AppRole {
-
-	}
+	public class AppRole { }
 
 }

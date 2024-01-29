@@ -1,0 +1,12 @@
+﻿@namespace Frontend.Application.Layouts
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<RadzenButton Variant="Variant.Text" ContextMenu="@(args => None())" class="topbar-icon" title="@AppText["0022"]">
+	<LordIcon Icon="/topbar/notification-bell.json" Anim="state" Trigger="click" State="hover-bell" Size="24px" Target=".rz-button" Title="@AppText["0022"]" />
+</RadzenButton>
+
+@code {
+
+	private void None() { }
+
+}

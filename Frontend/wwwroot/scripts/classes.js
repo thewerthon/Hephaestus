@@ -1,5 +1,7 @@
 class UserPreferences {
 
+	localData;
+
 	constructor() {
 		this.refresh();
 	}

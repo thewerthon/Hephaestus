@@ -1,7 +1,4 @@
-﻿<RadzenRow>
-	<RadzenColumn Size="12" style="margin-top: 5rem; margin-bottom: 5rem;" class="">
-		<LordIcon Icon="/pages/padlock.json" Anim="state" Trigger="hover-click" Intro="in-reveal" State="hover-loked" Stroke="bold" Size="120px" Id="icon-error-anim" />
-		<RadzenText Text="@AppError["0001"]" TextStyle="TextStyle.DisplayH3" style="margin: 0; margin-bottom: 2rem;" TextAlign="TextAlign.Center" class="error-fadein rz-mb-2" />
-		<RadzenText Text="@AppError["0002"]" TextStyle="TextStyle.H6" style="margin: 0;" TextAlign="TextAlign.Center" TagName="Radzen.Blazor.TagName.P" class="error-fadein" />
-	</RadzenColumn>
-</RadzenRow>
+﻿@namespace Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<Error000 Icon="/pages/padlock.json" Anim="state" Trigger="hover-click" Intro="in-reveal" State="hover-loked" ErrorTitle="@AppError["0003"]" ErrorDescription="@AppError["0004"]" />

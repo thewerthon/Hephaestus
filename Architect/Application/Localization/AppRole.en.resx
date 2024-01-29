@@ -124,7 +124,7 @@
     <value>Moderator</value>
   </data>
   <data name="SystemUser" xml:space="preserve">
-    <value>Default User</value>
+    <value>System User</value>
   </data>
   <data name="EngineeringAdmin" xml:space="preserve">
     <value>Engineering (Manager)</value>

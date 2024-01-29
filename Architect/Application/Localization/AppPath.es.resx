@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="0200" xml:space="preserve">
-    <value>/home</value>
+    <value>/inicio</value>
   </data>
   <data name="2000" xml:space="preserve">
     <value>/</value>
   </data>
   <data name="1300" xml:space="preserve">
-    <value>/reports</value>
+    <value>/reportes</value>
   </data>
   <data name="1200" xml:space="preserve">
-    <value>/dashboards</value>
+    <value>/tableros</value>
   </data>
   <data name="0000" xml:space="preserve">
     <value>/</value>
   </data>
   <data name="1400" xml:space="preserve">
-    <value>/tests</value>
+    <value>/dev</value>
   </data>
   <data name="1000" xml:space="preserve">
-    <value>/system</value>
+    <value>/sistema</value>
   </data>
   <data name="2100" xml:space="preserve">
-    <value>/engineering</value>
+    <value>/ingenieria</value>
   </data>
   <data name="1100" xml:space="preserve">
-    <value>/settings</value>
+    <value>/configuraciones</value>
   </data>
   <data name="0100" xml:space="preserve">
     <value>/login</value>
@@ -151,165 +151,165 @@
     <value>/error</value>
   </data>
   <data name="0400" xml:space="preserve">
-    <value>/help</value>
+    <value>/ayuda</value>
   </data>
   <data name="0500" xml:space="preserve">
     <value>/version</value>
   </data>
   <data name="0600" xml:space="preserve">
-    <value>/user</value>
+    <value>/usuario</value>
   </data>
   <data name="2110" xml:space="preserve">
-    <value>/engineering/datasheets</value>
+    <value>/ingenieria/hojastecnicas</value>
   </data>
   <data name="2120" xml:space="preserve">
-    <value>/engineering/processes</value>
+    <value>/ingenieria/procesos</value>
   </data>
   <data name="2130" xml:space="preserve">
-    <value>/engineering/machines</value>
+    <value>/ingenieria/maquinas</value>
   </data>
   <data name="2140" xml:space="preserve">
-    <value>/engineering/products</value>
+    <value>/ingenieria/productos</value>
   </data>
   <data name="2200" xml:space="preserve">
-    <value>/warehouse</value>
+    <value>/almacen</value>
   </data>
   <data name="2210" xml:space="preserve">
-    <value>/warehouse/receivings</value>
+    <value>/almacen/recepciones</value>
   </data>
   <data name="2220" xml:space="preserve">
-    <value>/warehouse/separations</value>
+    <value>/almacen/separaciones</value>
   </data>
   <data name="2230" xml:space="preserve">
-    <value>/warehouse/returns</value>
+    <value>/almacen/devoluciones</value>
   </data>
   <data name="2240" xml:space="preserve">
-    <value>/warehouse/tranfers</value>
+    <value>/almacen/transferencias</value>
   </data>
   <data name="2250" xml:space="preserve">
-    <value>/warehouse/disposals</value>
+    <value>/almacen/descartes</value>
   </data>
   <data name="2260" xml:space="preserve">
-    <value>/warehouse/labels</value>
+    <value>/almacen/etiquetas</value>
   </data>
   <data name="2300" xml:space="preserve">
-    <value>/planning</value>
+    <value>/planificacion</value>
   </data>
   <data name="2310" xml:space="preserve">
-    <value>/planning/stock</value>
+    <value>/planificacion/inventario</value>
   </data>
   <data name="2320" xml:space="preserve">
-    <value>/planning/orders/production</value>
+    <value>/planificacion/ordenes/produccion</value>
   </data>
   <data name="2330" xml:space="preserve">
-    <value>/planning/orders/operation</value>
+    <value>/planificacion/ordenes/operacion</value>
   </data>
   <data name="2340" xml:space="preserve">
-    <value>/planning/orders/purchases</value>
+    <value>/planificacion/ordenes/compra</value>
   </data>
   <data name="2350" xml:space="preserve">
-    <value>/planning/orders/sales</value>
+    <value>/planificacion/ordenes/venta</value>
   </data>
   <data name="2400" xml:space="preserve">
-    <value>/production</value>
+    <value>/produccion</value>
   </data>
   <data name="2410" xml:space="preserve">
-    <value>/production/appointments</value>
+    <value>/produccion/registros</value>
   </data>
   <data name="2420" xml:space="preserve">
-    <value>/production/orders/production</value>
+    <value>/produccion/ordenes/produccion</value>
   </data>
   <data name="2430" xml:space="preserve">
-    <value>/production/orders/operations</value>
+    <value>/produccion/ordenes/operacion</value>
   </data>
   <data name="2440" xml:space="preserve">
-    <value>/production/labels</value>
+    <value>/produccion/etiquetas</value>
   </data>
   <data name="2500" xml:space="preserve">
-    <value>/quality</value>
+    <value>/calidad</value>
   </data>
   <data name="2510" xml:space="preserve">
-    <value>/quality/inspections</value>
+    <value>/calidad/inspecciones</value>
   </data>
   <data name="2520" xml:space="preserve">
-    <value>/quality/patterns</value>
+    <value>/calidad/estandares</value>
   </data>
   <data name="2530" xml:space="preserve">
-    <value>/quality/parameters</value>
+    <value>/calidad/parametros</value>
   </data>
   <data name="2540" xml:space="preserve">
-    <value>/quality/lockouts</value>
+    <value>/calidad/bloqueos</value>
   </data>
   <data name="2550" xml:space="preserve">
-    <value>/quality/clearances</value>
+    <value>/calidad/liberaciones</value>
   </data>
   <data name="2560" xml:space="preserve">
-    <value>/quality/certificates</value>
+    <value>/calidad/certificados</value>
   </data>
   <data name="2600" xml:space="preserve">
     <value>/fiscal</value>
   </data>
   <data name="2610" xml:space="preserve">
-    <value>/fiscal/prices</value>
+    <value>/fiscal/precios</value>
   </data>
   <data name="2620" xml:space="preserve">
-    <value>/fiscal/taxes</value>
+    <value>/fiscal/impuestos</value>
   </data>
   <data name="2630" xml:space="preserve">
-    <value>/fiscal/sales</value>
+    <value>/fiscal/ventas</value>
   </data>
   <data name="2640" xml:space="preserve">
-    <value>/fiscal/invoices/receivings</value>
+    <value>/fiscal/notas/entrada</value>
   </data>
   <data name="2650" xml:space="preserve">
-    <value>/fiscal/invoices/shipments</value>
+    <value>/fiscal/notas/salida</value>
   </data>
   <data name="2700" xml:space="preserve">
-    <value>/logistics</value>
+    <value>/logistica</value>
   </data>
   <data name="2710" xml:space="preserve">
-    <value>/logistics/receivings</value>
+    <value>/logistica/recepciones</value>
   </data>
   <data name="2720" xml:space="preserve">
-    <value>/logistics/shipments</value>
+    <value>/logistica/expediciones</value>
   </data>
   <data name="3000" xml:space="preserve">
     <value>/</value>
   </data>
   <data name="3100" xml:space="preserve">
-    <value>/safety</value>
+    <value>/seguridad</value>
   </data>
   <data name="3110" xml:space="preserve">
-    <value>/safety/equipments</value>
+    <value>/seguridad/equipos</value>
   </data>
   <data name="3120" xml:space="preserve">
-    <value>/safety/stock</value>
+    <value>/seguridad/inventario</value>
   </data>
   <data name="3200" xml:space="preserve">
-    <value>/maintenance</value>
+    <value>/mantenimiento</value>
   </data>
   <data name="3210" xml:space="preserve">
-    <value>/maintenance/equipments</value>
+    <value>/mantenimiento/equipos</value>
   </data>
   <data name="3220" xml:space="preserve">
-    <value>/maintenance/stock</value>
+    <value>/mantenimiento/inventario</value>
   </data>
   <data name="1001" xml:space="preserve">
-    <value>/terms</value>
+    <value>/terminos</value>
   </data>
   <data name="1002" xml:space="preserve">
-    <value>/policy</value>
+    <value>/politica</value>
   </data>
   <data name="0700" xml:space="preserve">
-    <value>/update</value>
+    <value>/actualizar</value>
   </data>
   <data name="0800" xml:space="preserve">
-    <value>/install</value>
+    <value>/instalar</value>
   </data>
   <data name="0900" xml:space="preserve">
-    <value>/logout</value>
+    <value>/salir</value>
   </data>
   <data name="0050" xml:space="preserve">
-    <value>/about</value>
+    <value>/acerca</value>
   </data>
 </root>

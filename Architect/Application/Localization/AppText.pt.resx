@@ -148,10 +148,12 @@
     <value>Atualização Necessária</value>
   </data>
   <data name="0010" xml:space="preserve">
-    <value>Uma atualização do aplicativo está disponível, deseja atualizar agora? Dados não salvos serão perdidos.</value>
+    <value>Uma atualização do aplicativo está disponível, deseja atualizar agora?&lt;br/&gt;
+Dados não salvos serão perdidos.</value>
   </data>
   <data name="0011" xml:space="preserve">
-    <value>É necessária uma atualização do aplicativo para prosseguir. Deseja atualizar agora?</value>
+    <value>É necessária uma atualização do aplicativo para prosseguir.&lt;br/&gt;
+Deseja atualizar agora?</value>
   </data>
   <data name="0012" xml:space="preserve">
     <value>Utilize o botão no topo da página para atualizar.</value>
@@ -234,5 +236,41 @@ Deseja continuar?</value>
   </data>
   <data name="0037" xml:space="preserve">
     <value>Alterar o Idioma</value>
+  </data>
+  <data name="0038" xml:space="preserve">
+    <value>- Melhorias de usabilidade e correções gerais.</value>
+  </data>
+  <data name="0039" xml:space="preserve">
+    <value>Fazer Login</value>
+  </data>
+  <data name="0040" xml:space="preserve">
+    <value>Iniciando Login...</value>
+  </data>
+  <data name="0041" xml:space="preserve">
+    <value>Finalizando Login...</value>
+  </data>
+  <data name="0042" xml:space="preserve">
+    <value>Tentar Novamente</value>
+  </data>
+  <data name="0043" xml:space="preserve">
+    <value>Processo de login falhou.</value>
+  </data>
+  <data name="0044" xml:space="preserve">
+    <value>Iniciando Logout...</value>
+  </data>
+  <data name="0045" xml:space="preserve">
+    <value>Finalizando Logout...</value>
+  </data>
+  <data name="0046" xml:space="preserve">
+    <value>Retornar ao Início</value>
+  </data>
+  <data name="0047" xml:space="preserve">
+    <value>Processo de logout falhou.</value>
+  </data>
+  <data name="0048" xml:space="preserve">
+    <value>Novo Login</value>
+  </data>
+  <data name="0049" xml:space="preserve">
+    <value>Você saiu da sua conta.</value>
   </data>
 </root>

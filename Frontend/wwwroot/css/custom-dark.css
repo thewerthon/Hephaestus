@@ -9,11 +9,11 @@
 	--rz-base-700: #395374;
 	--rz-base-800: #30445f;
 	--rz-base-900: #2b3a50;
-	--rz-primary: #395374;
-	--rz-primary-light: #4b6180;
+	--rz-primary: #1e2936;
+	--rz-primary-light: #222e3e;
 	--rz-primary-lighter: #47699255;
-	--rz-primary-dark: #354b69;
-	--rz-primary-darker: #30445e;
+	--rz-primary-dark: #1b242f;
+	--rz-primary-darker: #181f28;
 	--rz-on-primary: #ffffff;
 	--rz-on-primary-light: #ffffff;
 	--rz-on-primary-lighter: #c7ced8;
@@ -76,9 +76,10 @@
 	--rz-button-hover-shadow: none;
 	--rz-button-focus-shadow: none;
 	--rz-button-active-shadow: none;
-	--rz-button-hover-gradient: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
-	--rz-button-focus-gradient: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
-	--rz-button-active-gradient: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+	--rz-button-overlay-color: rgba(0, 0, 0, 0.1);
+	--rz-button-hover-gradient: linear-gradient(var(--rz-button-overlay-color), var(--rz-button-overlay-color));
+	--rz-button-focus-gradient: linear-gradient(var(--rz-button-overlay-color), var(--rz-button-overlay-color));
+	--rz-button-active-gradient: linear-gradient(var(--rz-button-overlay-color), var(--rz-button-overlay-color));
 }
 
 :root {
@@ -92,6 +93,14 @@
 
 :root {
 	--rz-profile-menu-item-hover-background-color: var(--rz-primary);
+}
+
+:root {
+	--rz-profile-menu-border-radius: 6px;
+	--rz-menu-border-radius: var(--rz-profile-menu-border-radius);
+	--rz-menu-item-border-radius: var(--rz-profile-menu-border-radius);
+	--rz-context-menu-padding: var(--rz-profile-menu-border-radius);
+	--rz-menu-item-hover-background-color: var(--rz-primary);
 }
 
 :root {
@@ -174,7 +183,7 @@ ul.rz-profile-menu {
 }
 
 .rz-dialog-mask {
-	background: linear-gradient(#00000000, #00000044);
+	background: linear-gradient(#00000000, #00000066);
 	backdrop-filter: blur(5px);
 	opacity: 1;
 }
@@ -232,8 +241,12 @@ ul.rz-profile-menu {
 	color: var(--rz-white);
 }
 
+.rz-navigation-item-wrapper {
+	border-radius: 4px;
+}
+
 .rz-popup .rz-button.rz-variant-text .rzi {
-	color: var(--rz-white) !important;
+	color: var(--rz-primary) !important;
 }
 
 .logo {

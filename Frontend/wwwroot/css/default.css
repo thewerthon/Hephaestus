@@ -394,7 +394,8 @@ a {
 	color: var(--rz-link-color);
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
 	color: var(--rz-link-hover-color);
 }
 
@@ -424,12 +425,18 @@ a:hover, a:focus {
 	padding: 0px;
 }
 
-.error-fadein {
+.lord-icon-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fadein {
 	opacity: 0;
 	animation: fadein .5s forwards 1s;
 }
 
-.error-fadeout {
+.fadeout {
 	animation: fadeout .5s;
 }
 
@@ -437,4 +444,9 @@ a:hover, a:focus {
 	height: 16px;
 	cursor: pointer;
 	border-radius: 4px;
+}
+
+.lang-contextmenu img {
+	border-radius: 4px;
+	margin-right: 8px;
 }
