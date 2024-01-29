@@ -50,4 +50,8 @@
 		<None Include="..\Architect\Application\Models\VersionInfo.cs" Link="Version.cs" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Application\Classes\" />
+	</ItemGroup>
+
 </Project>

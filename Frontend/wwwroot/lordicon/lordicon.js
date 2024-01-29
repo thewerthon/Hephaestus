@@ -928,11 +928,10 @@
 		}
 
 		onConnected() {
-			if (this.hasIntro) this.goToIntro();
-			if (this.hasOutro && !this.hasAnim && !this.hasIntro) this.goToOutro();
+			if (this.hasIntro) this.goToStart();
+			if (this.hasOutro && !this.hasAnim && !this.hasIntro) this.goToEnd();
 			this.targetElement.addEventListener("mouseenter", this.onEnter);
 			this.targetElement.addEventListener("mouseleave", this.onLeave);
-			this.targetElement.addEventListener("touchend", this.onClick, { passive: !0 });
 			this.targetElement.addEventListener("mouseup", this.onClick);
 		}
 
@@ -940,7 +939,6 @@
 			this.resetIntersectionObserver();
 			this.targetElement.removeEventListener("mouseenter", this.onEnter);
 			this.targetElement.removeEventListener("mouseleave", this.onLeave);
-			this.targetElement.removeEventListener("touchend", this.onClick);
 			this.targetElement.removeEventListener("mouseup", this.onClick);
 			this.resetTimeout();
 		}
@@ -978,15 +976,15 @@
 			}
 		}
 
-		goToIntro() {
+		goToStart(introAnim = this.intro) {
 			this.player.direction = +1;
-			this.player.state = this.intro;
+			this.player.state = introAnim;
 			this.player.goToFirstFrame();
 		}
 
-		goToOutro() {
+		goToEnd(outroAnim = this.outro) {
 			this.player.direction = -1;
-			this.player.state = this.outro;
+			this.player.state = outroAnim;
 			this.player.goToLastFrame();
 		}
 
@@ -1174,6 +1172,24 @@
 
 	}
 
+	class Start extends Base {
+
+		onReady() {
+			super.onReady();
+			this.goToStart(this.intro);
+		}
+
+	}
+
+	class End extends Base {
+
+		onReady() {
+			super.onReady();
+			this.goToEnd(this.outro);
+		}
+
+	}
+
 	class State extends Base {
 
 		onReady() {
@@ -1194,6 +1210,24 @@
 		onClick() {
 			super.onClick();
 			if (this.trigger.includes("click")) this.playStateAnim(+1, true, false);
+		}
+
+	}
+
+	class StateStart extends Base {
+
+		onReady() {
+			super.onReady();
+			this.goToStart(this.state);
+		}
+
+	}
+
+	class StateEnd extends Base {
+
+		onReady() {
+			super.onReady();
+			this.goToEnd(this.state);
 		}
 
 	}
@@ -1238,7 +1272,8 @@
 
 		onEnter() {
 			super.onEnter();
-			if (this.trigger.includes("hover")) this.playMorphAnim(+1, true, true);
+			if (this.trigger.includes("hover") && this.trigger.includes("click")) this.playMorphAnim(0, true, true);
+			if (this.trigger.includes("hover") && !this.trigger.includes("click")) this.playMorphAnim(+1, true, true);
 		}
 
 		onClick() {
@@ -1248,7 +1283,8 @@
 
 		onLeave() {
 			super.onLeave();
-			if (this.trigger.includes("hover")) this.playMorphAnim(-1, true, true);
+			if (this.trigger.includes("hover") && this.trigger.includes("click")) this.playMorphAnim(0, true, true);
+			if (this.trigger.includes("hover") && !this.trigger.includes("click")) this.playMorphAnim(-1, true, true);
 		}
 
 	}
@@ -1276,7 +1312,6 @@
 		}
 
 	}
-
 	class MorphOut extends Base {
 
 		onReady() {
@@ -1297,6 +1332,24 @@
 		onClick() {
 			super.onClick();
 			if (this.trigger.includes("click")) this.playMorphAnim(-1, true, true);
+		}
+
+	}
+
+	class MorphStart extends Base {
+
+		onReady() {
+			super.onReady();
+			this.goToStart(this.morph);
+		}
+
+	}
+
+	class MorphEnd extends Base {
+
+		onReady() {
+			super.onReady();
+			this.goToEnd(this.morph);
 		}
 
 	}
@@ -1358,11 +1411,17 @@
 	function defineElement(t) {
 		Element.setPlayerFactory(((e, i, r) => new Player(t, e, i, r))),
 			Element.defineTrigger("none", Base),
+			Element.defineTrigger("start", Start),
+			Element.defineTrigger("end", End),
 			Element.defineTrigger("state", State),
+			Element.defineTrigger("statestart", StateStart),
+			Element.defineTrigger("stateend", StateEnd),
 			Element.defineTrigger("loop", Loop),
 			Element.defineTrigger("morph", Morph),
 			Element.defineTrigger("morphin", MorphIn),
 			Element.defineTrigger("morphout", MorphOut),
+			Element.defineTrigger("morphstart", MorphStart),
+			Element.defineTrigger("morphend", MorphEnd),
 			Element.defineTrigger("boomerang", Boomerang),
 			Element.defineTrigger("looprang", Looprang),
 			customElements.get && customElements.get("lord-icon") || customElements.define("lord-icon", Element)

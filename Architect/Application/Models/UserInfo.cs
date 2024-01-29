@@ -1,11 +1,13 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Architect.Application.Models {
 
 	public class UserInfo {
 
+		[Key]
 		[JsonPropertyName("id")]
-		public Guid? Id { get; set; }
+		public Guid Id { get; set; }
 
 		[JsonPropertyName("displayName")]
 		public string? Name { get; set; } = "Unknown User";

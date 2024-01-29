@@ -1,5 +1,7 @@
 using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Backend.Application.Database;
 
 // WebApplication Builder
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,10 @@ builder.Services.Configure<JwtBearerOptions>(
 // Blazor Services
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+// Add DbContext
+builder.Services.AddDbContext<DatabaseContext>(options =>
+				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Build the Application
 var app = builder.Build();

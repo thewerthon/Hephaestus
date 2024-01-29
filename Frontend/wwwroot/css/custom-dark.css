@@ -268,3 +268,11 @@ ul.rz-profile-menu {
 	background-image: radial-gradient(circle at 4rem 4rem, var(--rz-sidebar-background-color-top) 20%, var(--rz-sidebar-background-color-down) 80%);
 	position: relative;
 }
+
+.sidebar-backdrop {
+	display: none;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(5px);
+	background: linear-gradient(#00000000, #00000066);
+}
