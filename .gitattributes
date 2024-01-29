@@ -63,22 +63,20 @@
 #*.RTF   diff=astextplain
 
 # Linguist Vendored
-Frontend/wwwroot/css/base.css linguist-vendored
-Frontend/wwwroot/css/base.css linguist-vendored
-Frontend/wwwroot/css/dark.css linguist-vendored
-Frontend/wwwroot/css/light.css linguist-vendored
 Frontend/wwwroot/lordicon/** linguist-vendored
-Frontend/wwwroot/*.js linguist-vendored
+Frontend/wwwroot/css/base-light.css linguist-vendored
+Frontend/wwwroot/css/base-dark.css linguist-vendored
+Frontend/wwwroot/service-worker*.js linguist-vendored
 
 # Linguist Detectable
+*.ps1 linguist-detectable=false
+*.sln linguist-detectable=false
+*.csproj linguist-detectable=false
 *.cs linguist-detectable=true linguist-language=C#
 *.cshtml linguist-detectable=true linguist-language=C#
-*.csproj linguist-detectable=false
+*.razor linguist-detectable=true linguist-language=C#
+*.resx linguist-detectable=true linguist-language=XML
 *.css linguist-detectable=true linguist-language=CSS
+*.json linguist-detectable=true linguist-language=JSON
 *.html linguist-detectable=true linguist-language=HTML
 *.js linguist-detectable=true linguist-language=JavaScript
-*.json linguist-detectable=true linguist-language=JSON
-*.ps1 linguist-detectable=false
-*.razor linguist-detectable=true linguist-language=C#
-*.sln linguist-detectable=false
-*.webmanifest linguist-detectable=false

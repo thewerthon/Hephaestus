@@ -117,28 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="0001" xml:space="preserve">
-    <value>Não Autorizado</value>
-  </data>
-  <data name="0002" xml:space="preserve">
-    <value>Você não tem permissão para visualizar esta página.</value>
-  </data>
-  <data name="0003" xml:space="preserve">
-    <value>Em Construção</value>
-  </data>
-  <data name="0004" xml:space="preserve">
+  <data name="0010" xml:space="preserve">
     <value>Tente acessar esta página depois.</value>
   </data>
-  <data name="0005" xml:space="preserve">
-    <value>Não Encontrado</value>
-  </data>
-  <data name="0006" xml:space="preserve">
-    <value>A página que você tentou acessar não existe.</value>
-  </data>
-  <data name="0007" xml:space="preserve">
+  <data name="0009" xml:space="preserve">
     <value>Em Manutenção</value>
   </data>
-  <data name="0008" xml:space="preserve">
+  <data name="0003" xml:space="preserve">
+    <value>Não Autorizado</value>
+  </data>
+  <data name="0004" xml:space="preserve">
+    <value>Você não tem permissão para visualizar esta página.</value>
+  </data>
+  <data name="0005" xml:space="preserve">
+    <value>Em Construção</value>
+  </data>
+  <data name="0006" xml:space="preserve">
     <value>Tente acessar esta página depois.</value>
+  </data>
+  <data name="0007" xml:space="preserve">
+    <value>Não Encontrado</value>
+  </data>
+  <data name="0008" xml:space="preserve">
+    <value>A página que você tentou acessar não existe.</value>
+  </data>
+  <data name="0001" xml:space="preserve">
+    <value>Erro Desconhecido</value>
+  </data>
+  <data name="0002" xml:space="preserve">
+    <value>Ocorreu um erro desconhecido e a página não pode ser exibida.</value>
   </data>
 </root>

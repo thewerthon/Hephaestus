@@ -6,13 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Identity Service
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-		.AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+				.AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
 // Identity Configuration
 builder.Services.Configure<JwtBearerOptions>(
-		JwtBearerDefaults.AuthenticationScheme, options => {
-			options.TokenValidationParameters.NameClaimType = "name";
-		});
+				JwtBearerDefaults.AuthenticationScheme, options => {
+					options.TokenValidationParameters.NameClaimType = "name";
+				});
 
 // Blazor Services
 builder.Services.AddControllersWithViews();
@@ -21,13 +21,8 @@ builder.Services.AddRazorPages();
 // Build the Application
 var app = builder.Build();
 
-// Environment Configuration
-if (app.Environment.IsDevelopment()) {
-	app.UseWebAssemblyDebugging();
-} else {
-	app.UseExceptionHandler("/error");
-	app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-}
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment()) { }
 
 // Default Configurations
 app.UseHttpsRedirection();

@@ -1,10 +1,11 @@
 ﻿@page "/login"
 @layout LoginLayout
 @attribute [AllowAnonymous]
+@namespace Frontend.Application.Pages
 @inject NavigationManager NavigationManager
 
-<PageTitle>Login</PageTitle>
-<RadzenButton Text="Fazer Login" Click="@DoLogin" />
+<PageTitle>@(AppMenu["0100"])</PageTitle>
+<RadzenButton Text="@AppText["0039"]" Click="@DoLogin" />
 
 @code {
 

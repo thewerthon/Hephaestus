@@ -1,87 +1,98 @@
-﻿<div style="display:flex; align-items:center; justify-content:center;">
-	<lord-icon src=@("lordicon" + @Icon) state="@State" morph="@Morph" intro="@Intro" outro="@Outro" anim="@Anim" trigger="@Trigger" triggers="@Triggers" repeats="@Repeats" delay="@Delay" wait="@Wait" loading="@Loading" stroke="@Stroke" style="width:@Size;height:@Size;" target="@Target" title="@Title" id="@Id" class="lord-icon" />
+﻿@namespace Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<div class="lord-icon-container">
+	<lord-icon src=@("lordicon" + @Icon) state="@State" morph="@Morph" trigger="@Anim" animtrigger="@Trigger" intro="@Intro" introtrigger="@IntroTrigger" outro="@Outro" outrotrigger="@OutroTrigger" repeats="@Repeats" delay="@Delay" wait="@Wait" loading="@Loading" stroke="@Stroke" style="width:@Size;height:@Size;" target="@Target" title="@Title" id="@Id" class="lord-icon" />
 </div>
 
 @code {
 
 	/// <summary>
-	/// Path to json icon.
+	/// Path to icon's json file.
 	/// </summary>
 	[Parameter, EditorRequired]
 	public string Icon { get; set; } = string.Empty;
 
 	/// <summary>
 	/// The state animation name.
+	/// Only apply to 'state' and 'loop' animations.
 	/// </summary>
-	[Parameter, EditorRequired]
-	public string State { get; set; } = string.Empty;
+	[Parameter]
+	public string State { get; set; } = "default";
 
 	/// <summary>
 	/// The morph animation name.
-	/// Defaults to same as state.
+	/// Only apply to 'morphs', 'boomerang' and 'looprang' animations.
 	/// </summary>
 	[Parameter]
-	public string Morph { get; set; } = string.Empty;
+	public string Morph { get; set; } = "none";
+
+	/// <summary>
+	/// The animation type.
+	/// Accepts 'state', 'loop', 'morph', 'morphin', 'morphout', 'boomerang' or 'looprang'.
+	/// Defaults to 'state' if using state and defaults to 'morph' if using morph.
+	/// </summary>
+	[Parameter]
+	public string Anim { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The animation trigger.
+	/// Accepts 'none', 'auto', 'hover', 'click'.
+	/// Can mix them as 'auto-hover-click'.
+	/// Defaults to 'click' if using state and defaults to 'hover' if using morph.
+	/// </summary>
+	[Parameter]
+	public string Trigger { get; set; } = string.Empty;
 
 	/// <summary>
 	/// The intro animation name.
-	/// Defaults to "in-reveal".
+	/// Leave blank for no intro animation.
 	/// </summary>
 	[Parameter]
-	public string Intro { get; set; } = "in-reveal";
+	public string Intro { get; set; } = "none";
+
+	/// <summary>
+	/// The intro animation trigger.
+	/// Accepts 'none', 'auto', 'hover', 'click'.
+	/// Can mix them as 'auto-hover-click'.
+	/// Defaults to 'auto'.
+	/// </summary>
+	[Parameter]
+	public string IntroTrigger { get; set; } = "auto";
 
 	/// <summary>
 	/// The outro animation name.
-	/// Defaults to same as intro.
+	/// Leave blank for no outro animation.
 	/// </summary>
 	[Parameter]
-	public string Outro { get; set; } = string.Empty;
+	public string Outro { get; set; } = "none";
 
 	/// <summary>
-	/// The icon's animation type.
-	/// Accepts: "in", "out", "state", "loop", "morph" "morphin", "morphout", "boomerang", "looprang", "custom".
-	/// If "custom" is used, the Triggers parameter must be set instead of Trigger.
-	/// Defaults to "state".
+	/// The outro animation trigger.
+	/// Accepts 'none', 'auto', 'hover', 'click'.
+	/// Can mix them as 'auto-hover-click'.
+	/// Defaults to 'none'.
 	/// </summary>
 	[Parameter]
-	public string Anim { get; set; } = "state";
+	public string OutroTrigger { get; set; } = "none";
 
 	/// <summary>
-	/// The trigger for the icon's animation.
-	/// Accepts: "auto", "enter", "hover", "press", "loose", "click", "leave".
-	/// Defaults to "hover".
-	/// </summary>
-	[Parameter]
-	public string Trigger { get; set; } = "hover";
-
-	/// <summary>
-	/// Custom triggers for the icon's animation.
-	/// Must be set if Anim is set to "custom".
-	/// Accepts combinations of [Anim]-[Trigger] separated by comma.
-	/// Anims: "in", "out", "state", "loop", "morph" "morphin", "morphout", "boomerang", "looprang".
-	/// Triggers: "auto", "enter", "hover", "press", "loose", "click", "leave".
-	/// Example: "in-auto,state-auto,morphin-click,morphout-click,out-auto".
-	/// </summary>
-	[Parameter]
-	public string Triggers { get; set; } = string.Empty;
-
-	/// <summary>
-	/// The number of repeats for the animation.
+	/// The number of repeats for the 'loop' and 'looprang' animations.
 	/// Defaults to 0 (infinite repeats).
 	/// </summary>
 	[Parameter]
 	public int Repeats { get; set; } = 0;
 
 	/// <summary>
-	/// The delay (in milliseconds) for the icon's animation to start.
-	/// Only affects 'in' and 'out' animations types.
+	/// The delay (in milliseconds).
+	/// Only affects intro and outro animations.
 	/// </summary>
 	[Parameter]
 	public int Delay { get; set; } = 0;
 
 	/// <summary>
-	/// The wait time (in milliseconds) for the icon's animation to start.
-	/// Only affects state or morph animations.
+	/// The wait time (in milliseconds).
+	/// Only affects other states and morphs animations.
 	/// </summary>
 	[Parameter]
 	public int Wait { get; set; } = 0;
@@ -131,15 +142,18 @@
 
 	protected override void OnInitialized() {
 
-		if (Morph == string.Empty) Morph = State;
-		if (Outro == string.Empty) Outro = Intro;
+		if (Morph == "none") {
+			Morph = State;
+		}
 
-		if (Anim == "custom") {
-			Trigger = "custom";
-		} else {
-			Trigger = "hover";
-			//Trigger = Anim + "-" + Trigger;
-			Triggers = Trigger;
+		if (Anim == string.Empty) {
+			Anim = State != string.Empty ? "state" : Anim;
+			Morph = Morph != string.Empty ? "morph" : Morph;
+		}
+
+		if (Trigger == string.Empty) {
+			State = State != string.Empty ? "click" : State;
+			Morph = Morph != string.Empty ? "hover" : Morph;
 		}
 
 	}

@@ -1,9 +1,12 @@
-﻿<NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
-<RadzenAlert Title="@AppText["0008"]" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="false" Visible="@(DisplayBanner && updateAvailable)" class="update-banner">
-	<p class="m-0">@AppText["0012"]</p>
-	@if (serverVersion != null) {
-		<p class="mt-2 mb-0">@(AppText["0013"] + " " + @serverVersion.Version)</p>
-		<pre style="white-space:pre-line;" class="mb-0">@serverVersion.Notes</pre>
+﻿@namespace Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
+<RadzenAlert Title="@AppText["0008"]" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="update-banner">
+	@if (VersionService.ServerVersion != null) {
+		<p class="m-0">@($"{AppText["0013"]} {VersionService.ServerVersion.Version}:")</p>
+		<pre class="text-wrap" style="margin: 0 0 4px 0;">@(string.IsNullOrEmpty(VersionService.ServerVersion.Notes) ? AppText["0038"] : VersionService.ServerVersion.Notes)</pre>
+		<p class="mt-2 mb-0">@AppText["0012"]</p>
 	}
 </RadzenAlert>
 
@@ -14,7 +17,7 @@
 	/// Defaults to true.
 	/// </summary>
 	[Parameter]
-	public bool CheckUpdate { get; set; } = true;
+	public bool CheckUpdates { get; set; } = true;
 
 	/// <summary>
 	/// Defines whether the update banner will be displayed.
@@ -30,55 +33,15 @@
 	[Parameter]
 	public bool BlockNavigation { get; set; } = false;
 
-	private const int TIME_INTERVAL = 60;
-	private VersionInfo localVersion = new();
-	private VersionInfo serverVersion = new();
-	private DateTime? lastChecked = DateTime.UtcNow;
-	private bool updateAvailable = false;
-	private bool blockNavigation = false;
-
 	protected override async Task OnInitializedAsync() {
 
-		lastChecked = await SessionStorage.GetItemAsync<DateTime>("UpdateLastChecked");
-		updateAvailable = await SessionStorage.GetItemAsync<bool>("UpdateAvailable");
-		blockNavigation = await SessionStorage.GetItemAsync<bool>("UpdateForced");
-
-		if (CheckUpdate && !updateAvailable) {
-
-			if (DateTime.UtcNow >= lastChecked.Value.AddSeconds(TIME_INTERVAL)) {
-
-				localVersion = VersionService.GetLocalVersion();
-				serverVersion = await VersionService.GetServerVersionAsync();
-				await SessionStorage.SetItemAsync<DateTime>("UpdateLastChecked", DateTime.UtcNow);
-
-				if (localVersion != null && serverVersion != null) {
-
-					if (localVersion.Build < serverVersion.Build) {
-
-						if (localVersion.Forced < serverVersion.Forced) {
-
-							await SessionStorage.SetItemAsync<bool>("UpdateForced", true);
-							blockNavigation = true;
-
-						}
-
-						await SessionStorage.SetItemAsync<bool>("UpdateAvailable", true);
-						await JSRuntime.InvokeVoidAsync("newUpdate");
-						updateAvailable = true;
-
-					}
-
-				}
-
-			}
-
-		}
+		if (CheckUpdates) await VersionService.CheckForUpdatesAsync();
 
 	}
 
 	private async Task OnBeforeInternalNavigationAsync(LocationChangingContext locationChangingContext) {
 
-		if (BlockNavigation && blockNavigation && updateAvailable) {
+		if (BlockNavigation && VersionService.UpdateAvailable && VersionService.UpdateForced) {
 
 			var result = await DialogService.Confirm(AppText["0011"], AppText["0009"], new ConfirmOptions() {
 					OkButtonText = AppButton["Update"],
@@ -98,6 +61,15 @@
 
 			}
 
+		}
+
+	}
+
+	private void BannerDismiss() {
+
+		if ((!VersionService.UpdateForced)) {
+			VersionService.UpdateDismissed = true;
+			DisplayBanner = false;
 		}
 
 	}

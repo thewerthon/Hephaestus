@@ -1,7 +1,5 @@
 ﻿namespace Architect.Application.Localization {
 
-	public class AppPath {
-
-	}
+	public class AppPath { }
 
 }

@@ -124,7 +124,7 @@
     <value>Log in to proceed.</value>
   </data>
   <data name="0002" xml:space="preserve">
-    <value>By logging in, you agree to:</value>
+    <value>By logging in, you agree to</value>
   </data>
   <data name="0003" xml:space="preserve">
     <value>terms of use</value>
@@ -148,16 +148,18 @@
     <value>Update Required</value>
   </data>
   <data name="0010" xml:space="preserve">
-    <value>An app update is available, want to update now? Unsaved data will be lost.</value>
+    <value>An app update is available, want to update now?&lt;br/&gt;
+Unsaved data will be lost.</value>
   </data>
   <data name="0011" xml:space="preserve">
-    <value>An app update is required to proceed. Do you want to update now?</value>
+    <value>An app update is required to proceed.&lt;br/&gt;
+Do you want to update now?</value>
   </data>
   <data name="0012" xml:space="preserve">
     <value>Use the button at the top of the page to update.</value>
   </data>
   <data name="0013" xml:space="preserve">
-    <value>News from</value>
+    <value>News in</value>
   </data>
   <data name="0014" xml:space="preserve">
     <value>Change Language</value>
@@ -226,5 +228,49 @@ After leaving, you will need to log in again.</value>
   </data>
   <data name="0035" xml:space="preserve">
     <value>More Options</value>
+  </data>
+  <data name="0036" xml:space="preserve">
+    <value>Changing the language will cause the app to reload.&lt;br/&gt;
+Unsaved data will be lost.&lt;br/&gt;
+Do you wish to continue?</value>
+  </data>
+  <data name="0037" xml:space="preserve">
+    <value>Change Language</value>
+  </data>
+  <data name="0038" xml:space="preserve">
+    <value>- Usability improvements and general bug fixes.</value>
+  </data>
+  <data name="0039" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="0040" xml:space="preserve">
+    <value>Starting Login...</value>
+  </data>
+  <data name="0041" xml:space="preserve">
+    <value>Finishing Login...</value>
+  </data>
+  <data name="0042" xml:space="preserve">
+    <value>Try Again</value>
+  </data>
+  <data name="0043" xml:space="preserve">
+    <value>Login process failed.</value>
+  </data>
+  <data name="0044" xml:space="preserve">
+    <value>Starting Logout...</value>
+  </data>
+  <data name="0045" xml:space="preserve">
+    <value>Finishing Logout...</value>
+  </data>
+  <data name="0046" xml:space="preserve">
+    <value>Return to Home</value>
+  </data>
+  <data name="0047" xml:space="preserve">
+    <value>Logout process failed.</value>
+  </data>
+  <data name="0048" xml:space="preserve">
+    <value>New Login</value>
+  </data>
+  <data name="0049" xml:space="preserve">
+    <value>You have logged out.</value>
   </data>
 </root>
