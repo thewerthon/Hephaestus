@@ -1,8 +1,15 @@
 {
   "dependencies": {
-    "identityapp1": {
+    "identityapp": {
       "connectionInfo": "Registro do aplicativo: SCP 2.0 (API), Locatário: SIW Kits Eólicos (siw.ind.br - Microsoft Entra ID)",
       "type": "identityapp.default"
+    },
+    "mssql": {
+      "serviceConnectorResourceId": "",
+      "secretStore": "LocalSecretsFile",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "dynamicId": null
     }
   }
 }
