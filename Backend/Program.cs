@@ -1,7 +1,7 @@
 using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Backend.Application.Database;
+using Backend.Database;
 
 // WebApplication Builder
 var builder = WebApplication.CreateBuilder(args);
