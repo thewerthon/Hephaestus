@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -8,13 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Identity Service
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-				.AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+	.AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
 // Identity Configuration
 builder.Services.Configure<JwtBearerOptions>(
-				JwtBearerDefaults.AuthenticationScheme, options => {
-					options.TokenValidationParameters.NameClaimType = "name";
-				});
+	JwtBearerDefaults.AuthenticationScheme, options => {
+		options.TokenValidationParameters.NameClaimType = "name";
+	}
+);
 
 // Blazor Services
 builder.Services.AddControllers();
@@ -22,7 +24,41 @@ builder.Services.AddRazorPages();
 
 // Swagger Services
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options => {
+
+	// Get ScopeURLs from appsettings.json
+	var instance = builder.Configuration.GetSection("AzureAd")["Instance"];
+	var tenant = builder.Configuration.GetSection("AzureAd")["TenantId"];
+	var scopes = new Dictionary<string, string> {
+		{ builder.Configuration.GetSection("Swagger")["ScopeUrl"]!, "Access to backend" }
+	};
+
+	// Enabled OAuth security in Swagger
+	options.AddSecurityRequirement(new OpenApiSecurityRequirement() {{
+		new OpenApiSecurityScheme {
+			Name = "oauth2",
+			Scheme = "oauth2",
+			In = ParameterLocation.Header,
+			Reference = new OpenApiReference {
+				Type = ReferenceType.SecurityScheme,
+				Id = "oauth2"
+			}
+		},
+		new List<string>()
+	}});
+
+	options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme {
+		Type = SecuritySchemeType.OAuth2,
+		Flows = new OpenApiOAuthFlows {
+			Implicit = new OpenApiOAuthFlow() {
+				AuthorizationUrl = new Uri($"{instance}{tenant}/oauth2/v2.0/authorize"),
+				TokenUrl = new Uri($"{instance}{tenant}/common/v2.0/token"),
+				Scopes = scopes
+			}
+		}
+	});
+
+});
 
 // Add DbContext
 builder.Services.AddDbContext<DatabaseContext>(options =>
@@ -34,7 +70,22 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
 	app.UseSwagger();
-	app.UseSwaggerUI();
+	app.UseSwaggerUI(options => {
+		options.OAuthAppName("Hephaestus");
+		options.OAuthClientId(builder.Configuration.GetSection("Swagger")["ClientId"]);
+		options.OAuthClientSecret(builder.Configuration.GetSection("Swagger")["ClientSecret"]);
+		options.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+		options.ConfigObject.AdditionalItems.Add("tryItOutEnabled", "true");
+		options.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
+		options.ConfigObject.AdditionalItems.Add("displayOperationId", "false");
+		options.ConfigObject.AdditionalItems.Add("displayRequestDuration", "false");
+		options.ConfigObject.AdditionalItems.Add("defaultModelRendering", "example");
+		options.ConfigObject.AdditionalItems.Add("defaultModelsExpandDepth", "-1");
+		options.ConfigObject.AdditionalItems.Add("defaultModelExpandDepth", "1");
+		options.ConfigObject.AdditionalItems.Add("docExpansion", "none");
+		options.ConfigObject.AdditionalItems.Add("deepLinking", "false");
+		options.ConfigObject.AdditionalItems.Add("filter", "true");
+	});
 }
 
 // Default Configurations

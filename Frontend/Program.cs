@@ -22,7 +22,7 @@ builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddBlazoredSessionStorage();
 
 // AzureAD Authentication Service
-var scope = builder.Configuration["AzureAd:Scope"] ?? string.Empty;
+var scope = builder.Configuration.GetSection("AzureAd")["Scope"]!;
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, AccountUser>(options => {
 	builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
 	options.ProviderOptions.DefaultAccessTokenScopes.Add(scope);
@@ -36,8 +36,7 @@ builder.Services.AddHttpClient("Backend.ServerAPI", client => client.BaseAddress
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Backend.ServerAPI"));
 
 // HttpClient Service for MicrosoftGraph API
-var baseUrl = builder.Configuration.GetSection("MicrosoftGraph")["BaseUrl"] ?? string.Empty;
-var scopes = builder.Configuration.GetSection("MicrosoftGraph")["Scopes"] ?? string.Empty;
+var baseUrl = builder.Configuration.GetSection("MicrosoftGraph")["BaseUrl"]!;
 builder.Services.AddTransient<GraphService>();
 builder.Services.AddHttpClient("GraphAPI", client => client.BaseAddress = new Uri(baseUrl)).AddHttpMessageHandler<GraphService>();
 
