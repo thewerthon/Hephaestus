@@ -1,1 +1,10 @@
 @Backend_HostAddress = https://localhost:7153
+
+GET {{Backend_HostAddress}}/api/application/versioninfo
+###
+
+GET {{Backend_HostAddress}}/api/dev/weatherforecasts
+###
+
+GET {{Backend_HostAddress}}/api/application/userinfo
+###

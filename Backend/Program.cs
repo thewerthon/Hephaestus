@@ -1,5 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.Identity.Web;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Backend.Database;
@@ -19,21 +21,24 @@ builder.Services.Configure<JwtBearerOptions>(
 );
 
 // Blazor Services
-builder.Services.AddControllers();
 builder.Services.AddRazorPages();
+builder.Services.AddControllers(options => {
+	var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+	options.Filters.Add(new AuthorizeFilter(policy));
+});
 
 // Swagger Services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
 
-	// Get ScopeURLs from appsettings.json
+	// Get configuration variables
 	var instance = builder.Configuration.GetSection("AzureAd")["Instance"];
 	var tenant = builder.Configuration.GetSection("AzureAd")["TenantId"];
 	var scopes = new Dictionary<string, string> {
 		{ builder.Configuration.GetSection("Swagger")["ScopeUrl"]!, "Access to backend" }
 	};
 
-	// Enabled OAuth security in Swagger
+	// Add Security Requeriments
 	options.AddSecurityRequirement(new OpenApiSecurityRequirement() {{
 		new OpenApiSecurityScheme {
 			Name = "oauth2",
@@ -47,6 +52,7 @@ builder.Services.AddSwaggerGen(options => {
 		new List<string>()
 	}});
 
+	// Add Security Definitions
 	options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme {
 		Type = SecuritySchemeType.OAuth2,
 		Flows = new OpenApiOAuthFlows {
@@ -60,7 +66,7 @@ builder.Services.AddSwaggerGen(options => {
 
 });
 
-// Add DbContext
+// Add Database Context
 builder.Services.AddDbContext<DatabaseContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

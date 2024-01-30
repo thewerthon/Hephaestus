@@ -5,7 +5,6 @@ using Architect.SideModules.Development.Models;
 
 namespace Backend.SideModules.Development.Controllers {
 
-	[Authorize]
 	[ApiController]
 	[Route("api/dev/[controller]")]
 	[RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
