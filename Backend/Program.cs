@@ -64,6 +64,11 @@ builder.Services.AddSwaggerGen(options => {
 		}
 	});
 
+	// Swagger Documentation Attributes
+	options.SwaggerDoc("v0", new OpenApiInfo {
+		Title = "Hephaestus Backend"
+	});
+
 });
 
 // Add Database Context
@@ -81,6 +86,7 @@ if (app.Environment.IsDevelopment()) {
 		options.OAuthClientId(builder.Configuration.GetSection("Swagger")["ClientId"]);
 		options.OAuthClientSecret(builder.Configuration.GetSection("Swagger")["ClientSecret"]);
 		options.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+		options.SwaggerEndpoint("v0/swagger.json", "Hephaestus Backend");
 		options.ConfigObject.AdditionalItems.Add("tryItOutEnabled", "true");
 		options.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
 		options.ConfigObject.AdditionalItems.Add("displayOperationId", "false");

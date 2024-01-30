@@ -6,7 +6,7 @@ using Architect.SideModules.Development.Models;
 namespace Backend.SideModules.Development.Controllers {
 
 	[ApiController]
-	[Route("api/dev/[controller]")]
+	[Route("api/[controller]/[action]")]
 	[RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 	public class WeatherForecastsController : ControllerBase {
 
