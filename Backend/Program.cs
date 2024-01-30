@@ -17,8 +17,12 @@ builder.Services.Configure<JwtBearerOptions>(
 				});
 
 // Blazor Services
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
 builder.Services.AddRazorPages();
+
+// Swagger Services
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // Add DbContext
 builder.Services.AddDbContext<DatabaseContext>(options =>
@@ -28,7 +32,10 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment()) { }
+if (app.Environment.IsDevelopment()) {
+	app.UseSwagger();
+	app.UseSwaggerUI();
+}
 
 // Default Configurations
 app.UseHttpsRedirection();
