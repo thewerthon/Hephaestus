@@ -24,14 +24,14 @@ namespace Frontend.Application.Services {
 				if (UserClaims.Identity!.IsAuthenticated) {
 
 					CurrentUser = UserInfo;
-					CurrentUser.Email = UserClaims.FindFirst("email")?.Value;
+					CurrentUser.GUID = UserClaims.FindFirst("oid")?.Value ?? string.Empty;
 
 					var defaultDate = new DateTime(1994, 03, 09, 16, 00, 00);
-					SavedUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? SavedUser;
-					UserPreferences = await LocalStorage.GetItemAsync<UserPreferences>("UserPreferences") ?? UserPreferences;
+					SavedUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new();
+					UserPreferences = await LocalStorage.GetItemAsync<UserPreferences>("UserPreferences") ?? new();
 					UserFetched = await LocalStorage.GetItemAsync<DateTime?>("UserFetched") ?? defaultDate;
 
-					if (CurrentUser.Email == SavedUser!.Email && DateTime.UtcNow < UserFetched.AddHours(6)) {
+					if (CurrentUser.GUID == SavedUser.GUID && DateTime.UtcNow < UserFetched.AddHours(6)) {
 
 						UserInfo = SavedUser;
 
