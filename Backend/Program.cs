@@ -75,6 +75,12 @@ builder.Services.AddSwaggerGen(options => {
 builder.Services.AddDbContext<DatabaseContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add Routing Options
+builder.Services.AddRouting(options => {
+	options.LowercaseUrls = true;
+	options.LowercaseQueryStrings = true;
+});
+
 // Build the Application
 var app = builder.Build();
 
