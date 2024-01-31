@@ -5,7 +5,7 @@ using Blazored.SessionStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Frontend.Application.Services;
+using Hephaestus.Frontend.Services;
 using System.Globalization;
 using Microsoft.JSInterop;
 
