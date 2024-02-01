@@ -14,38 +14,40 @@ namespace Hephaestus.Architect.Models {
 		[MinLength(36)]
 		[MaxLength(36)]
 		[JsonPropertyName("id")]
-		public string Guid { get; set; } = string.Empty;
+		public string? Guid { get; set; }
 
 		[Required]
 		[MinLength(4)]
 		[MaxLength(64)]
 		[JsonPropertyName("displayName")]
-		public string? Name { get; set; } = "Unknown User";
+		public string? Name { get; set; }
 
 		[MinLength(4)]
 		[MaxLength(32)]
 		[JsonPropertyName("givenName")]
-		public string? FirstName { get; set; } = "Unknown";
+		public string? FirstName { get; set; }
 
 		[MinLength(4)]
 		[MaxLength(32)]
 		[JsonPropertyName("surname")]
-		public string? SecondName { get; set; } = "User";
+		public string? SecondName { get; set; }
 
 		[MinLength(4)]
 		[MaxLength(64)]
 		[JsonPropertyName("officeLocation")]
-		public string? Office { get; set; } = "Unknown";
+		public string? Office { get; set; }
 
 		[MinLength(4)]
 		[MaxLength(64)]
 		[JsonPropertyName("jobTitle")]
-		public string? Title { get; set; } = "Unknown";
+		public string? Title { get; set; }
 
+		[Required]
 		[MinLength(12)]
 		[MaxLength(64)]
+		[EmailAddress]
 		[JsonPropertyName("mail")]
-		public string? Email { get; set; } = "user@siw.ind.br";
+		public string? Email { get; set; }
 
 		[MaxLength(32)]
 		[JsonPropertyName("role")]

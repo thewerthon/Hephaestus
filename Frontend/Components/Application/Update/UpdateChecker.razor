@@ -4,7 +4,7 @@
 <NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
 <RadzenAlert Title="@AppText["0008"]" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="update-banner">
 	@if (VersionService.ServerVersion != null) {
-		<p class="m-0">@($"{AppText["0013"]} {VersionService.ServerVersion.Version}:")</p>
+		<p class="m-0">@($"{AppText["0013"]} {VersionService.ServerVersion.Name}:")</p>
 		<pre class="text-wrap" style="margin: 0 0 4px 0;">@(string.IsNullOrEmpty(VersionService.ServerVersion.Notes) ? AppText["0038"] : VersionService.ServerVersion.Notes)</pre>
 		<p class="mt-2 mb-0">@AppText["0012"]</p>
 	}

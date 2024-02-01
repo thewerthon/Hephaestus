@@ -25,7 +25,7 @@ namespace Hephaestus.Frontend.Services {
 
 		public async Task<Architect.Models.Version> GetServerVersionAsync() {
 			var serverVersion = await HttpClient.GetFromJsonAsync<Architect.Models.Version>("api/version");
-			return serverVersion ?? new() { Build = 0, Forced = 0, Name = "Unknow" };
+			return serverVersion ?? new() { Build = 0, Force = 0, Name = "Unknow" };
 		}
 
 		public async Task CheckForUpdatesAsync() {
@@ -43,7 +43,7 @@ namespace Hephaestus.Frontend.Services {
 
 				if (LocalVersion != null && ServerVersion != null && LocalVersion.Build < ServerVersion.Build) {
 
-					if (LocalVersion.Forced < ServerVersion.Forced) {
+					if (LocalVersion.Force < ServerVersion.Force) {
 						await SessionStorage.SetItemAsync("UpdateForced", true);
 						UpdateForced = true;
 					}
