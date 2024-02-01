@@ -9,19 +9,21 @@ using Hephaestus.Frontend.Services;
 using System.Globalization;
 using Microsoft.JSInterop;
 
-// WebAssembly Host Builder
+// WebAssembly Host
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+// Application
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Radzen Components Service
+// Radzen Components
 builder.Services.AddRadzenComponents();
 
-// LocalStorage and SessionStorage Services
+// LocalStorage and SessionStorage
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddBlazoredSessionStorage();
 
-// AzureAD Authentication Service
+// AzureAD Authentication
 var scope = builder.Configuration.GetSection("AzureAd")["Scope"]!;
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, AccountUser>(options => {
 	builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
@@ -43,7 +45,7 @@ builder.Services.AddHttpClient("GraphAPI", client => client.BaseAddress = new Ur
 // Logging Configuration
 builder.Logging.SetMinimumLevel(LogLevel.Warning);
 
-// Frontend Service
+// Frontend Services
 builder.Services.AddScoped<VersionService>();
 builder.Services.AddScoped<UserService>();
 
