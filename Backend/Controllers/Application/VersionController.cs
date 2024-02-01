@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hephaestus.Backend.Controllers {
 
@@ -9,9 +9,9 @@ namespace Hephaestus.Backend.Controllers {
 	public class VersionController : ControllerBase {
 
 		[HttpGet(Name = "GetVersionInfo")]
-		public ActionResult<Architect.Models.Version> Get() {
+		public ActionResult<Version> Get() {
 
-			var version = new Architect.Models.Version();
+			var version = new Version();
 			return Ok(version);
 
 		}

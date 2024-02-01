@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Hephaestus.Backend.Databases;
 using Hephaestus.Architect.Models;
+using Hephaestus.Backend.Database;
 
-namespace Backend.Controllers.Application {
+namespace Hephaestus.Backend.Controllers {
 
 	[ApiController]
 	[Route("api/preferences")]

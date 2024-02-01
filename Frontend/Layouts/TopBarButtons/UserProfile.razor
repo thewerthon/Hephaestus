@@ -35,11 +35,11 @@
 	[CascadingParameter]
 	public Task<AuthenticationState>? AuthTask { get; set; }
 	private ClaimsPrincipal? UserClaims;
-	private User? CurrentUser;
+	private UserInfo? CurrentUser;
 
 	protected override async Task OnInitializedAsync() {
 
-		CurrentUser = await LocalStorage.GetItemAsync<User>("UserInfo") ?? new() { Name = AppText["0033"], Role = AppText["0034"], Photo = "images/users/unknown.jpg" };
+		CurrentUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new() { Name = AppText["0033"], Role = AppText["0034"], Photo = "images/users/unknown.jpg" };
 		CurrentUser.Role = AppRole[(CurrentUser.Role ?? "System.User").Replace(".", string.Empty)];
 
 	}

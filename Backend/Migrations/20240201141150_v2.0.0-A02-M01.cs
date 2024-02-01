@@ -35,11 +35,12 @@ namespace Backend.Migrations
                     Name = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
                     SecondName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
-                    Office = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
+                    Office = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
                     Title = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Role = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Active = table.Column<bool>(type: "bit", nullable: true, defaultValue: true)
                 },
                 constraints: table =>
                 {

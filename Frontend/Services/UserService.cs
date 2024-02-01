@@ -12,9 +12,9 @@ namespace Hephaestus.Frontend.Services {
 
 		public DateTime UserFetched = DateTime.UtcNow;
 		public Preferences UserPreferences = new();
-		public User UserInfo = new();
-		private User? CurrentUser = new();
-		private User? SavedUser = new();
+		public UserInfo UserInfo = new();
+		private UserInfo? CurrentUser = new();
+		private UserInfo? SavedUser = new();
 		private byte[]? UserPhoto;
 
 		public async Task FecthUserAsync(ClaimsPrincipal user) {
@@ -27,7 +27,7 @@ namespace Hephaestus.Frontend.Services {
 					CurrentUser.Guid = user.FindFirst("oid")?.Value ?? string.Empty;
 
 					var defaultDate = new DateTime(1994, 03, 09, 16, 00, 00);
-					SavedUser = await LocalStorage.GetItemAsync<User>("UserInfo") ?? new();
+					SavedUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new();
 					UserPreferences = await LocalStorage.GetItemAsync<Preferences>("UserPreferences") ?? new();
 					UserFetched = await LocalStorage.GetItemAsync<DateTime?>("UserFetched") ?? defaultDate;
 
@@ -39,7 +39,7 @@ namespace Hephaestus.Frontend.Services {
 
 						UserInfo = SavedUser;
 						var client = ClientFactory.CreateClient("GraphAPI");
-						UserInfo = await client.GetFromJsonAsync<User>("v1.0/me") ?? SavedUser;
+						UserInfo = await client.GetFromJsonAsync<UserInfo>("v1.0/me") ?? SavedUser;
 						UserPhoto = await client.GetByteArrayAsync("v1.0/me/photos/96x96/$value");
 
 						UserInfo.Role = user.FindFirst("role")?.Value ?? "System.User";

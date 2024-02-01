@@ -1,10 +1,14 @@
-using Microsoft.OpenApi.Models;
-using Microsoft.Identity.Web;
+﻿using Hephaestus.Architect.Models;
+using Hephaestus.Backend.Database;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
-using Hephaestus.Backend.Databases;
+using Microsoft.Identity.Web;
+using Microsoft.OData.ModelBuilder;
+using Microsoft.OpenApi.Models;
+using Version = Hephaestus.Architect.Models.Version;
 
 // WebApplication Builder
 var builder = WebApplication.CreateBuilder(args);
@@ -20,11 +24,19 @@ builder.Services.Configure<JwtBearerOptions>(
 	}
 );
 
+// Create OData Model
+var models = new ODataConventionModelBuilder();
+models.EntitySet<Version>("Versions");
+models.EntitySet<UserInfo>("Users");
+models.EntitySet<Preferences>("Preferences");
+
 // Blazor Services
 builder.Services.AddRazorPages();
 builder.Services.AddControllers(options => {
 	var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 	options.Filters.Add(new AuthorizeFilter(policy));
+}).AddOData(options => {
+	options.AddRouteComponents("odata", models.GetEdmModel()).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
 });
 
 // Swagger Services
