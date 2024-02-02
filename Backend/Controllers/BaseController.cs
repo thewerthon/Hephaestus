@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Query;
-using Microsoft.AspNetCore.OData.Results;
+using Microsoft.AspNetCore.OData.Routing.Attributes;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Hephaestus.Architect.Interfaces;
@@ -9,7 +9,7 @@ using Hephaestus.Backend.Database;
 
 namespace Hephaestus.Backend.Controllers {
 
-	[ApiController]
+	[ODataAttributeRouting]
 	public abstract class BaseController<T> : ODataController where T : class, IRecord {
 
 		// Controller Permissions
@@ -26,13 +26,13 @@ namespace Hephaestus.Backend.Controllers {
 
 		// Query Options for Collections
 		private const AllowedQueryOptions CollectionQueryOptions =
-			AllowedQueryOptions.Apply | AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Filter |
-			AllowedQueryOptions.OrderBy | AllowedQueryOptions.Count | AllowedQueryOptions.Top | AllowedQueryOptions.SkipToken |
-			AllowedQueryOptions.Skip | AllowedQueryOptions.Format | AllowedQueryOptions.Search | AllowedQueryOptions.Compute;
+			AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
+			AllowedQueryOptions.Count | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.SkipToken |
+			AllowedQueryOptions.Search | AllowedQueryOptions.Apply | AllowedQueryOptions.Compute | AllowedQueryOptions.Format;
 
 		// Query Options for Single Item
 		private const AllowedQueryOptions SingleItemQueryOptions =
-			AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Format;
+			AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Compute | AllowedQueryOptions.Format;
 
 		// Constructor
 		public BaseController(DatabaseContext context) {
@@ -41,35 +41,34 @@ namespace Hephaestus.Backend.Controllers {
 		}
 
 		// Virtual Action Methods
-		protected virtual void OnCreate(T item) { }
-		protected virtual void OnCreated(T item) { }
-		protected virtual void OnRead(ref SingleResult<T> item) { }
-		protected virtual void OnUpdate(T item) { }
-		protected virtual void OnUpdated(T item) { }
-		protected virtual void OnDelete(T item) { }
-		protected virtual void OnDeleted(T item) { }
+		protected virtual void OnCreate(ref T item) { }
+		protected virtual void OnCreated(ref T item) { }
+		protected virtual void OnRead(ref T item) { }
+		protected virtual void OnUpdate(ref T item) { }
+		protected virtual void OnUpdated(ref T item) { }
+		protected virtual void OnDelete(ref T item) { }
+		protected virtual void OnDeleted(ref T item) { }
 		protected virtual void OnList(ref IQueryable<T> items) { }
 
-		// POST Item Method
-		[HttpPost("")]
+		[HttpPost] // POST Item Method
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
-		public virtual IActionResult PostItem([FromBody] T item, [FromQuery] bool response = true) {
+		public virtual IActionResult Post([FromBody] T item, [FromQuery] bool response = true) {
 
 			try {
 
 				if (!AllowPost) return StatusCode(405);
 				if (item == null) return BadRequest("Item cannot be null.");
-				if (item.Id != 0) return BadRequest("Id must be 0 for new records.");
+				if (item.Id != 0) return BadRequest("Id must be 0 for new items.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				OnCreate(item);
+				OnCreate(ref item);
 				DbSet.Add(item);
 				DbContext.SaveChanges();
-				OnCreated(item);
+				OnCreated(ref item);
 
 				if (!response) return Ok();
-				var result = DbSet.Where(i => i.Id == item.Id);
-				return new ObjectResult(SingleResult.Create(result)) { StatusCode = 201 };
+				var result = DbSet.Find(item.Id);
+				return Ok(result);
 
 			} catch (Exception ex) {
 
@@ -80,54 +79,44 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
-		// GET List Method
-		[HttpGet("")]
-		[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
-		public virtual ActionResult<IQueryable<T>> GetItems() {
+		[HttpGet] // GET Item Method
+		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
+		public virtual ActionResult<T> Get(int key) {
 
-			if (!AllowList) return StatusCode(405);
+			if (!AllowGet) return StatusCode(405, null);
+			if (key <= 0) return BadRequest("Ivalid key.");
 
-			var items = DbSet.AsNoTracking().AsQueryable();
-			OnList(ref items);
-			return Ok(items);
+			var item = DbSet.AsNoTracking().FirstOrDefault(i => i.Id == key);
+			if (item == null) return NotFound("Item not found.");
+
+			OnRead(ref item);
+			return Ok(item);
 
 		}
 
-		// GET Item Method
-		[HttpGet("{id}")]
+		[HttpPut] // PUT Item Method
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
-		public virtual ActionResult<SingleResult<T>> GetItem(int id) {
-
-			if (!AllowGet) return StatusCode(405);
-			if (id <= 0) return BadRequest("Ivalid id.");
-
-			var item = DbSet.AsNoTracking().Where(i => i.Id == id);
-			var result = SingleResult.Create(item);
-			return Ok(result);
-
-		}
-
-		// PUT Item Method
-		[HttpPut("{id}")]
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
-		public virtual IActionResult PutItem(int id, [FromBody] T item, [FromQuery] bool response = true) {
+		public virtual IActionResult Put(int key, [FromBody] T item, [FromQuery] bool response = true) {
 
 			try {
 
 				if (!AllowPut) return StatusCode(405);
-				if (id <= 0) return BadRequest("Ivalid id.");
+				if (key <= 0) return BadRequest("Ivalid key.");
 				if (item == null) return BadRequest("Item cannot be null.");
-				if (item.Id != id) return BadRequest("Id must match item.Id.");
+				if (item.Id != key) return BadRequest("Key must match item id.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				OnUpdate(item);
+				var check = DbSet.AsNoTracking().FirstOrDefault(i => i.Id == key);
+				if (check == null) return NotFound("Item not found.");
+
+				OnUpdate(ref item);
 				DbSet.Update(item);
 				DbContext.SaveChanges();
-				OnUpdated(item);
+				OnUpdated(ref item);
 
 				if (!response) return Ok();
-				var result = DbSet.Where(i => i.Id == id);
-				return new ObjectResult(SingleResult.Create(result));
+				var result = DbSet.Find(key);
+				return Ok(result);
 
 			} catch (Exception ex) {
 
@@ -138,31 +127,30 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
-		// PATCH Item Method
-		[HttpPatch("{id}")]
+		[HttpPatch] // PATCH Item Method
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
-		public virtual IActionResult PatchItem(int id, [FromBody] Delta<T> patch, [FromQuery] bool response = true) {
+		public virtual IActionResult Patch(int key, [FromBody] Delta<T> patch, [FromQuery] bool response = true) {
 
 			try {
 
 				if (!AllowPatch) return StatusCode(405);
-				if (id <= 0) return BadRequest("Ivalid id.");
+				if (key <= 0) return BadRequest("Ivalid key.");
 				if (patch == null) return BadRequest("Data cannot be null.");
 				if (!patch.GetChangedPropertyNames().Any()) return BadRequest("Data cannot be empty.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				var item = DbSet.Where(i => i.Id == id).FirstOrDefault();
+				var item = DbSet.FirstOrDefault(i => i.Id == key);
 				if (item == null) return NotFound("Item not found.");
 
 				patch.Patch(item);
-				OnUpdate(item);
+				OnUpdate(ref item);
 				DbSet.Update(item);
 				DbContext.SaveChanges();
-				OnUpdated(item);
+				OnUpdated(ref item);
 
 				if (!response) return Ok();
-				var result = DbSet.Where(i => i.Id == id);
-				return new ObjectResult(SingleResult.Create(result));
+				var result = DbSet.Find(key);
+				return Ok(result);
 
 			} catch (Exception ex) {
 
@@ -173,25 +161,24 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
-		// DELETE Item Method
-		[HttpDelete("{id}")]
-		public virtual IActionResult DeleteItem(int id) {
+		[HttpDelete] // DELETE Item Method
+		public virtual IActionResult Delete(int key) {
 
 			try {
 
 				if (!AllowDelete) return StatusCode(405);
-				if (id <= 0) return BadRequest("Ivalid id.");
+				if (key <= 0) return BadRequest("Ivalid key.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				var item = DbSet.Where(i => i.Id == id).FirstOrDefault();
+				var item = DbSet.FirstOrDefault(i => i.Id == key);
 				if (item == null) return NotFound("Item not found.");
 
-				OnDelete(item);
+				OnDelete(ref item);
 				DbSet.Remove(item);
 				DbContext.SaveChanges();
-				OnDeleted(item);
+				OnDeleted(ref item);
 
-				return new NoContentResult();
+				return Ok();
 
 			} catch (Exception ex) {
 
@@ -199,6 +186,18 @@ namespace Hephaestus.Backend.Controllers {
 				return BadRequest(ModelState);
 
 			}
+
+		}
+
+		[HttpGet] // GET List Method
+		[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
+		public virtual ActionResult<IQueryable<T>> Get() {
+
+			if (!AllowList) return StatusCode(405);
+			var items = DbSet.AsNoTracking().AsQueryable();
+
+			OnList(ref items);
+			return Ok(items);
 
 		}
 

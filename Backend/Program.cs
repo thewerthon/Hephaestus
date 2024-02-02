@@ -1,7 +1,7 @@
 ﻿using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.ModelBuilder;
-using Microsoft.AspNetCore.OData.Routing.Conventions;
+using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -48,19 +48,20 @@ foreach (var entity in Mappings.EntityMappings) {
 // Razor Pages
 builder.Services.AddRazorPages();
 
+// Routing
+builder.Services.AddRouting(options => {
+	options.LowercaseUrls = true;
+	options.LowercaseQueryStrings = true;
+});
+
 // Controllers
 builder.Services.AddControllers(options => {
 	var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 	options.Filters.Add(new AuthorizeFilter(policy));
 }).AddOData(options => {
-	options.Conventions.Remove(options.Conventions.OfType<MetadataRoutingConvention>().First());
-	options.AddRouteComponents("odata", models.GetEdmModel()).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
-});
-
-// Routing Options
-builder.Services.AddRouting(options => {
-	options.LowercaseUrls = true;
-	options.LowercaseQueryStrings = true;
+	options.AddRouteComponents("odata", models.GetEdmModel(), services =>
+		services.AddSingleton<ISearchBinder, SearchBinder>()
+	).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
 });
 
 // Application

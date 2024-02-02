@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hephaestus.Backend.Controllers {
 
 	[Route("/odata/users")]
-	public class UserInfoController : BaseController<UserInfo> {
+	public class UsersController : BaseController<UserInfo> {
 
-		public UserInfoController(DatabaseContext context) : base(context) {
+		public UsersController(DatabaseContext context) : base(context) {
 
 			AllowPost = true;
 			AllowGet = true;
