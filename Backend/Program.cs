@@ -1,14 +1,13 @@
-﻿using Hephaestus.Architect.Models;
-using Hephaestus.Backend.Database;
+﻿using Microsoft.Identity.Web;
+using Microsoft.AspNetCore.OData;
+using Microsoft.OData.ModelBuilder;
+using Microsoft.AspNetCore.OData.Routing.Conventions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.OData;
-using Microsoft.OData.ModelBuilder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Web;
-using Version = Hephaestus.Architect.Models.Version;
-using Microsoft.AspNetCore.OData.Routing.Conventions;
+using Hephaestus.Backend.Database;
+using Hephaestus.Backend.Mappings;
 
 // WebApplication
 var builder = WebApplication.CreateBuilder(args);
@@ -25,16 +24,26 @@ builder.Services.Configure<JwtBearerOptions>(
 );
 
 // Database Context
-builder.Services.AddDbContext<DatabaseContext>(options =>
-	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-		.LogTo(s => System.Diagnostics.Debug.WriteLine(s))
-);
+builder.Services.AddDbContext<DatabaseContext>(options => {
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+	options.LogTo(message => System.Diagnostics.Debug.WriteLine(message), LogLevel.Information);
+});
 
 // OData Models
 var models = new ODataConventionModelBuilder();
-models.EntitySet<Version>("Versions");
-models.EntitySet<UserInfo>("Users");
-models.EntitySet<Preferences>("Preferences");
+foreach (var entity in Mappings.EntityMappings) {
+
+	// Get entity properties
+	var tableName = entity.TableName;
+	var modelType = entity.ModelType;
+
+	// Use reflection to call EntitySet
+	typeof(ODataConventionModelBuilder)
+		.GetMethod("EntitySet")!
+		.MakeGenericMethod(modelType)
+		.Invoke(models, new object[] { tableName });
+
+}
 
 // Razor Pages
 builder.Services.AddRazorPages();

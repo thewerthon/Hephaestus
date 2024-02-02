@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Version = Hephaestus.Architect.Models.Version;
+using VersionInfo = Hephaestus.Architect.Models.VersionInfo;
 
 namespace Hephaestus.Backend.Mappings {
 
-	public class VersionMapping : IEntityTypeConfiguration<Version> {
+	public class VersionInfoMapping : IEntityTypeConfiguration<VersionInfo> {
 
-		public void Configure(EntityTypeBuilder<Version> builder) {
+		public void Configure(EntityTypeBuilder<VersionInfo> builder) {
 
 			// Table Name
 			builder.ToTable("Versions");

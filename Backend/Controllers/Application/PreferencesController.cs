@@ -1,116 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Hephaestus.Backend.Database;
 using Hephaestus.Architect.Models;
-using Hephaestus.Backend.Database;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hephaestus.Backend.Controllers {
 
-	[ApiController]
-	[Route("api/preferences")]
-	public class PreferencesController : ControllerBase {
+	[Route("/odata/preferences")]
+	public class PreferencesController : BaseController<Preferences> {
 
-		// POST: /api/preferences
-		[HttpPost("", Name = "PostPreferences")]
-		public async Task<IActionResult> PostAsync([FromServices] DatabaseContext dbContext, [FromBody] Preferences data) {
+		public PreferencesController(DatabaseContext context) : base(context) {
 
-			if (!ModelState.IsValid) return BadRequest();
-
-			try {
-
-				await dbContext.Preferences.AddAsync(data);
-				await dbContext.SaveChangesAsync();
-				return CreatedAtRoute("GetPreferences", new { id = data.Id }, data);
-
-			} catch (Exception e) {
-
-				return BadRequest(e);
-
-			}
-
-		}
-
-		// GET: /api/preferences/id
-		[HttpGet("{id}", Name = "GetPreferences")]
-		public async Task<IActionResult> GetAsync([FromServices] DatabaseContext dbContext, [FromRoute] int id) {
-
-			var preferences = await dbContext.Preferences.AsNoTracking().SingleAsync(x => x.Id == id);
-			return preferences == null ? NotFound() : Ok(preferences);
-
-		}
-
-		// GET: /api/preferences/guid/guid
-		[HttpGet("guid/{guid}", Name = "GetPreferencesByGuid")]
-		public async Task<IActionResult> GetByGuidAsync([FromServices] DatabaseContext dbContext, [FromRoute] string guid) {
-
-			var preferences = await dbContext.Preferences.AsNoTracking().SingleAsync(x => x.Guid == guid);
-			return preferences == null ? NotFound() : Ok(preferences);
-
-		}
-
-		// PUT: /api/preferences/id
-		[HttpPut("{id}", Name = "PutPreferences")]
-		public async Task<IActionResult> PutAsync([FromServices] DatabaseContext dbContext, [FromRoute] int id, [FromBody] Preferences data) {
-
-			if (!ModelState.IsValid) return BadRequest();
-			var preferences = await dbContext.Preferences.FirstOrDefaultAsync(x => x.Id == id);
-			if (preferences == null) return NotFound();
-
-			try {
-
-				preferences = data;
-				dbContext.Preferences.Update(preferences);
-				await dbContext.SaveChangesAsync();
-				return Ok(preferences);
-
-			} catch (Exception e) {
-
-				return BadRequest(e);
-
-			}
-
-		}
-
-		// PUT: /api/preferences/guid/guid
-		[HttpPut("guid/{guid}", Name = "PutPreferencesByGuid")]
-		public async Task<IActionResult> PutAsync([FromServices] DatabaseContext dbContext, [FromRoute] string guid, [FromBody] Preferences data) {
-
-			if (!ModelState.IsValid) return BadRequest();
-			var preferences = await dbContext.Preferences.FirstOrDefaultAsync(x => x.Guid == guid);
-			if (preferences == null) return NotFound();
-
-			try {
-
-				preferences = data;
-				dbContext.Preferences.Update(preferences);
-				await dbContext.SaveChangesAsync();
-				return Ok(preferences);
-
-			} catch (Exception e) {
-
-				return BadRequest(e);
-
-			}
-
-		}
-
-		// DELETE: /api/preferences/id
-		[HttpDelete("{id}", Name = "DeletePreferences")]
-		public async Task<IActionResult> DeleteAsync([FromServices] DatabaseContext dbContext, [FromRoute] int id) {
-
-			var preferences = await dbContext.Preferences.SingleAsync(x => x.Id == id);
-			if (preferences == null) return NotFound();
-
-			try {
-
-				dbContext.Preferences.Remove(preferences);
-				await dbContext.SaveChangesAsync();
-				return Ok();
-
-			} catch (Exception e) {
-
-				return BadRequest(e);
-
-			}
+			AllowPost = true;
+			AllowGet = true;
+			AllowPut = true;
+			AllowPatch = true;
+			AllowDelete = true;
+			AllowList = true;
 
 		}
 
