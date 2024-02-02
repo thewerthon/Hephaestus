@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240201141150_v2.0.0-A02-M01")]
+    [Migration("20240202021257_v2.0.0-A02-M01")]
     partial class v200A02M01
     {
         /// <inheritdoc />
@@ -107,11 +107,9 @@ namespace Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
+                    b.HasIndex("Email");
 
-                    b.HasIndex("Guid")
-                        .IsUnique();
+                    b.HasIndex("Guid");
 
                     b.ToTable("Users", (string)null);
                 });

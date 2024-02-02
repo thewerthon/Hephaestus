@@ -72,14 +72,12 @@ namespace Backend.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
                 table: "Users",
-                column: "Email",
-                unique: true);
+                column: "Email");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Guid",
                 table: "Users",
-                column: "Guid",
-                unique: true);
+                column: "Guid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Versions_Build",

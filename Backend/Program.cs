@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.OData;
+using Microsoft.OData.ModelBuilder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
-using Microsoft.OData.ModelBuilder;
 using Version = Hephaestus.Architect.Models.Version;
+using Microsoft.AspNetCore.OData.Routing.Conventions;
 
 // WebApplication
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +26,9 @@ builder.Services.Configure<JwtBearerOptions>(
 
 // Database Context
 builder.Services.AddDbContext<DatabaseContext>(options =>
-				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+		.LogTo(s => System.Diagnostics.Debug.WriteLine(s))
+);
 
 // OData Models
 var models = new ODataConventionModelBuilder();
@@ -41,6 +44,7 @@ builder.Services.AddControllers(options => {
 	var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 	options.Filters.Add(new AuthorizeFilter(policy));
 }).AddOData(options => {
+	options.Conventions.Remove(options.Conventions.OfType<MetadataRoutingConvention>().First());
 	options.AddRouteComponents("odata", models.GetEdmModel()).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
 });
 
@@ -56,15 +60,6 @@ var app = builder.Build();
 // Development Environment
 if (app.Environment.IsDevelopment()) { }
 
-// OData Requests
-app.Use(async (context, next) => {
-	if (context.Request.Path.StartsWithSegments("/odata")) {
-		context.Response.StatusCode = 404;
-	} else {
-		await next();
-	}
-});
-
 // App Configurations
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
@@ -74,7 +69,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
-app.MapFallbackToFile("index.html");
+app.MapFallbackToFile(
+	"{*path:regex(^(?!odata).*$)}",
+	"index.html"
+);
 
 // Run App
 app.Run();

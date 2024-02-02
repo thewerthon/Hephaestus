@@ -58,11 +58,14 @@ namespace Hephaestus.Backend.Controllers {
 		// GET: /odata/users/id
 		[HttpGet("{id}", Name = "GetUser")]
 		[EnableQuery(MaxExpansionDepth = 10, MaxAnyAllExpressionDepth = 10, MaxNodeCount = 1000)]
-		public SingleResult<UserInfo> GetUser(int id) {
+		public async Task<ActionResult<UserInfo>> GetUserAsync(int id) {
 
-			var items = DbContext.UserInfos.Where(i => i.Id == id);
-			var result = SingleResult.Create(items);
-			return result;
+			var item = await DbContext.UserInfos.AsNoTracking().FirstAsync(x => x.Id == id);
+			return Ok(item);
+
+			//var items = DbContext.UserInfos.Where(i => i.Id == id);
+			//var result = SingleResult.Create(items);
+			//return result;
 
 		}
 

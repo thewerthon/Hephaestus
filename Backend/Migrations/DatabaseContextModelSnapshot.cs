@@ -104,11 +104,9 @@ namespace Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
+                    b.HasIndex("Email");
 
-                    b.HasIndex("Guid")
-                        .IsUnique();
+                    b.HasIndex("Guid");
 
                     b.ToTable("Users", (string)null);
                 });
