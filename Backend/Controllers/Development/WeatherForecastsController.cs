@@ -4,7 +4,7 @@ using Hephaestus.Architect.Models;
 namespace Hephaestus.Backend.Controllers {
 
 	[ApiController]
-	[Route("api/weatherforecasts")]
+	[Route("development/weatherforecasts")]
 	public class WeatherForecastsController : ControllerBase {
 
 		private static readonly string[] Summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];

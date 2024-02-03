@@ -7,14 +7,14 @@ namespace Hephaestus.Backend.Database {
 	public class DatabaseContext(DbContextOptions<DatabaseContext> options) : DbContext(options) {
 
 		// Application Tables
-		public DbSet<VersionInfo> Versions { get; set; }
+		public DbSet<AppVersion> Versions { get; set; }
 		public DbSet<UserInfo> UserInfos { get; set; }
 		public DbSet<Preferences> Preferences { get; set; }
 
 		// Application Mappings
 		protected override void OnModelCreating(ModelBuilder builder) {
 
-			builder.ApplyConfiguration(new VersionInfoMapping());
+			builder.ApplyConfiguration(new AppVersionMapping());
 			builder.ApplyConfiguration(new UserInfoMapping());
 			builder.ApplyConfiguration(new PreferencesMapping());
 

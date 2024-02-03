@@ -15,8 +15,8 @@ namespace Hephaestus.Backend.Mappings {
 			builder.HasKey(x => x.Id);
 			builder.Property(x => x.Id).ValueGeneratedOnAdd().UseIdentityColumn();
 
-			// Indexes Configuration
-			builder.HasIndex(x => x.Guid).IsUnique();
+			// Relationships
+			builder.HasOne(x => x.User).WithOne(x => x.Preferences).HasForeignKey<Preferences>(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
 
 		}
 

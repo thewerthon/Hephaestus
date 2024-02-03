@@ -22,7 +22,7 @@ namespace Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Hephaestus.Architect.Models.Preferences", b =>
+            modelBuilder.Entity("Hephaestus.Architect.Models.AppVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,10 +30,38 @@ namespace Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Guid")
+                    b.Property<int>("Build")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Force")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Build")
+                        .IsUnique();
+
+                    b.HasIndex("Force");
+
+                    b.ToTable("Versions", (string)null);
+                });
+
+            modelBuilder.Entity("Hephaestus.Architect.Models.Preferences", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Language")
                         .HasMaxLength(8)
@@ -43,9 +71,12 @@ namespace Backend.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Guid")
+                    b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("Preferences", (string)null);
@@ -111,35 +142,20 @@ namespace Backend.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Hephaestus.Architect.Models.Version", b =>
+            modelBuilder.Entity("Hephaestus.Architect.Models.Preferences", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("Hephaestus.Architect.Models.UserInfo", "User")
+                        .WithOne("Preferences")
+                        .HasForeignKey("Hephaestus.Architect.Models.Preferences", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Navigation("User");
+                });
 
-                    b.Property<int>("Build")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Force")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(32)
-                        .HasColumnType("nvarchar(32)");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Build")
-                        .IsUnique();
-
-                    b.ToTable("Versions", (string)null);
+            modelBuilder.Entity("Hephaestus.Architect.Models.UserInfo", b =>
+                {
+                    b.Navigation("Preferences");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,11 +1,11 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
+﻿using System.Reflection;
+using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.OData.Query.Expressions;
-using Microsoft.OData.Edm;
 using Microsoft.OData.UriParser;
+using Microsoft.OData.Edm;
 
-namespace Hephaestus.Backend.Database {
+namespace Hephaestus.Backend.Controllers {
 
 	public partial class SearchBinder : ISearchBinder {
 

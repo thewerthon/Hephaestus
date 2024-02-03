@@ -5,26 +5,11 @@
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class v200A02M01 : Migration
+    public partial class M0001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Preferences",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Guid = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
-                    Theme = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true),
-                    Language = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Preferences", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -63,10 +48,31 @@ namespace Backend.Migrations
                     table.PrimaryKey("PK_Versions", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Preferences",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Theme = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true),
+                    Language = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Preferences", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Preferences_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Preferences_Guid",
+                name: "IX_Preferences_UserId",
                 table: "Preferences",
-                column: "Guid",
+                column: "UserId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -84,6 +90,11 @@ namespace Backend.Migrations
                 table: "Versions",
                 column: "Build",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Versions_Force",
+                table: "Versions",
+                column: "Force");
         }
 
         /// <inheritdoc />
@@ -93,10 +104,10 @@ namespace Backend.Migrations
                 name: "Preferences");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Versions");
 
             migrationBuilder.DropTable(
-                name: "Versions");
+                name: "Users");
         }
     }
 }

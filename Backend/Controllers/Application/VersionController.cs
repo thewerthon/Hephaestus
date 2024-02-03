@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hephaestus.Backend.Controllers {
 
 	[ApiController]
-	[AllowAnonymous]
-	[Route("/odata/version")]
+	[Route("application/version")]
 	public class VersionController : ControllerBase {
 
 		[HttpGet]
-		public ActionResult<VersionInfo> Get() {
+		[AllowAnonymous]
+		public ActionResult<AppVersion> Get() {
 
-			var version = new VersionInfo();
+			var version = new AppVersion();
 			return Ok(version);
 
 		}

@@ -4,35 +4,48 @@ namespace Hephaestus.Backend.Mappings {
 
 	public static class Mappings {
 
+		public static List<SingletonMapping> SingletonMappings { get; } = [
+
+
+
+		];
+
 		public static List<EntityMapping> EntityMappings { get; } = [
 
 			new(
-				tableName: "Versions",
-				modelType: typeof(VersionInfo),
-				mappingType: typeof(VersionInfoMapping)
+				name: "Versions",
+				type: typeof(AppVersion),
+				maps: typeof(AppVersionMapping)
 			),
 
 			new(
-				tableName: "Users",
-				modelType: typeof(UserInfo),
-				mappingType: typeof(UserInfoMapping)
+				name: "Users",
+				type: typeof(UserInfo),
+				maps: typeof(UserInfoMapping)
 			),
 
 			new(
-				tableName: "Preferences",
-				modelType: typeof(Preferences),
-				mappingType: typeof(PreferencesMapping)
+				name: "Preferences",
+				type: typeof(Preferences),
+				maps: typeof(PreferencesMapping)
 			),
 
 		];
 
 	}
 
-	public class EntityMapping(string tableName, Type modelType, Type mappingType) {
+	public class SingletonMapping(string name, Type type) {
 
-		public string TableName { get; } = tableName;
-		public Type ModelType { get; } = modelType;
-		public Type MappingType { get; } = mappingType;
+		public string Name { get; } = name;
+		public Type Type { get; } = type;
+
+	}
+
+	public class EntityMapping(string name, Type type, Type maps) {
+
+		public string Name { get; } = name;
+		public Type Type { get; } = type;
+		public Type Maps { get; } = maps;
 
 	}
 

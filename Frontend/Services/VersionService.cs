@@ -12,19 +12,19 @@ namespace Hephaestus.Frontend.Services {
 		private readonly IJSRuntime JSRuntime = jsRuntime;
 
 		public DateTime UpdateChecked = DateTime.UtcNow;
-		public Architect.Models.VersionInfo LocalVersion = new();
-		public Architect.Models.VersionInfo ServerVersion = new();
+		public Architect.Models.AppVersion LocalVersion = new();
+		public Architect.Models.AppVersion ServerVersion = new();
 		public bool UpdateAvailable = false;
 		public bool UpdateDismissed = false;
 		public bool UpdateForced = false;
 
-		public static Architect.Models.VersionInfo GetLocalVersion() {
-			var localVersion = new Architect.Models.VersionInfo();
+		public static Architect.Models.AppVersion GetLocalVersion() {
+			var localVersion = new Architect.Models.AppVersion();
 			return localVersion;
 		}
 
-		public async Task<Architect.Models.VersionInfo> GetServerVersionAsync() {
-			var serverVersion = await HttpClient.GetFromJsonAsync<Architect.Models.VersionInfo>("api/version");
+		public async Task<Architect.Models.AppVersion> GetServerVersionAsync() {
+			var serverVersion = await HttpClient.GetFromJsonAsync<Architect.Models.AppVersion>("api/version");
 			return serverVersion ?? new() { Build = 0, Force = 0, Name = "Unknow" };
 		}
 

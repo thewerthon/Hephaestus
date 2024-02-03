@@ -1,12 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Hephaestus.Architect.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using VersionInfo = Hephaestus.Architect.Models.VersionInfo;
 
 namespace Hephaestus.Backend.Mappings {
 
-	public class VersionInfoMapping : IEntityTypeConfiguration<VersionInfo> {
+	public class AppVersionMapping : IEntityTypeConfiguration<AppVersion> {
 
-		public void Configure(EntityTypeBuilder<VersionInfo> builder) {
+		public void Configure(EntityTypeBuilder<AppVersion> builder) {
 
 			// Table Name
 			builder.ToTable("Versions");
@@ -17,6 +17,7 @@ namespace Hephaestus.Backend.Mappings {
 
 			// Indexes Configuration
 			builder.HasIndex(x => x.Build).IsUnique();
+			builder.HasIndex(x => x.Force);
 
 		}
 

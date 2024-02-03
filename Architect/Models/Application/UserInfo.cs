@@ -1,5 +1,6 @@
 ﻿using Hephaestus.Architect.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hephaestus.Architect.Models {
 
@@ -15,23 +16,23 @@ namespace Hephaestus.Architect.Models {
 		public string? Guid { get; set; }
 
 		[Required]
-		[MinLength(4)]
+		[MinLength(3)]
 		[MaxLength(64)]
 		public string? Name { get; set; }
 
-		[MinLength(4)]
+		[MinLength(3)]
 		[MaxLength(32)]
 		public string? FirstName { get; set; }
 
-		[MinLength(4)]
+		[MinLength(3)]
 		[MaxLength(32)]
 		public string? SecondName { get; set; }
 
-		[MinLength(4)]
+		[MinLength(3)]
 		[MaxLength(32)]
 		public string? Office { get; set; }
 
-		[MinLength(4)]
+		[MinLength(3)]
 		[MaxLength(64)]
 		public string? Title { get; set; }
 
@@ -46,6 +47,9 @@ namespace Hephaestus.Architect.Models {
 
 		[MaxLength()]
 		public string? Photo { get; set; }
+
+		// No Annotation
+		public Preferences? Preferences { get; set; }
 
 		// No Annotation
 		public bool? Active { get; set; }

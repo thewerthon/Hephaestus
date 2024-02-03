@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hephaestus.Architect.Models {
 
-	public class VersionInfo : IRecord {
+	public class AppVersion : IRecord {
 
 		[Key]
 		[Required]

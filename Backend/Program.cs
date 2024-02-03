@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Hephaestus.Architect.Models;
+using Hephaestus.Backend.Controllers;
 using Hephaestus.Backend.Database;
 using Hephaestus.Backend.Mappings;
 
@@ -29,19 +31,36 @@ builder.Services.AddDbContext<DatabaseContext>(options => {
 	options.LogTo(message => System.Diagnostics.Debug.WriteLine(message), LogLevel.Information);
 });
 
-// OData Models
+// OData Models Builder
 var models = new ODataConventionModelBuilder();
+
+// Add Singletons
+foreach (var singleton in Mappings.SingletonMappings) {
+
+	// Get singleton properties
+	var name = singleton.Name;
+	var type = singleton.Type;
+
+	// Use reflection to call Singleton
+	typeof(ODataConventionModelBuilder)
+		.GetMethod("Singleton")!
+		.MakeGenericMethod(type)
+		.Invoke(models, new object[] { name });
+
+}
+
+// Add Entity Sets
 foreach (var entity in Mappings.EntityMappings) {
 
 	// Get entity properties
-	var tableName = entity.TableName;
-	var modelType = entity.ModelType;
+	var name = entity.Name;
+	var type = entity.Type;
 
 	// Use reflection to call EntitySet
 	typeof(ODataConventionModelBuilder)
 		.GetMethod("EntitySet")!
-		.MakeGenericMethod(modelType)
-		.Invoke(models, new object[] { tableName });
+		.MakeGenericMethod(type)
+		.Invoke(models, new object[] { name });
 
 }
 
@@ -59,6 +78,12 @@ builder.Services.AddControllers(options => {
 	var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 	options.Filters.Add(new AuthorizeFilter(policy));
 }).AddOData(options => {
+	options.EnableAttributeRouting = true;
+	options.RouteOptions.EnableKeyAsSegment = false;
+	options.RouteOptions.EnableDollarValueRouting = true;
+	options.RouteOptions.EnableDollarCountRouting = true;
+	options.RouteOptions.EnablePropertyNameCaseInsensitive = true;
+	options.RouteOptions.EnableControllerNameCaseInsensitive = true;
 	options.AddRouteComponents("odata", models.GetEdmModel(), services =>
 		services.AddSingleton<ISearchBinder, SearchBinder>()
 	).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
@@ -74,6 +99,7 @@ if (app.Environment.IsDevelopment()) { }
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
+app.UseODataRouteDebug();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
