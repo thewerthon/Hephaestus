@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Hephaestus.Architect.Models;
 using Hephaestus.Backend.Controllers;
 using Hephaestus.Backend.Database;
 using Hephaestus.Backend.Mappings;
@@ -93,13 +92,14 @@ builder.Services.AddControllers(options => {
 var app = builder.Build();
 
 // Development Environment
-if (app.Environment.IsDevelopment()) { }
+if (app.Environment.IsDevelopment()) {
+	app.UseODataRouteDebug();
+}
 
 // App Configurations
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
-app.UseODataRouteDebug();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();

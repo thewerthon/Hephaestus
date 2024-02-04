@@ -4,20 +4,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hephaestus.Backend.Controllers {
 
-	//[Route("/odata/preferences")]
-	//public class PreferencesController : BaseController<Preferences> {
+	[Route("/odata/preferences")]
+	public class PreferencesController : BaseController<Preferences> {
 
-	//	public PreferencesController(DatabaseContext context) : base(context) {
+		public PreferencesController(DatabaseContext context) : base(context) {
 
-	//		AllowPost = true;
-	//		AllowGet = true;
-	//		AllowPut = true;
-	//		AllowPatch = true;
-	//		AllowDelete = true;
-	//		AllowList = true;
+			AllowPost = true;
+			AllowGet = true;
+			AllowPut = true;
+			AllowPatch = true;
+			AllowDelete = false;
+			AllowUpsert = true;
+			AllowList = true;
 
-	//	}
+		}
 
-	//}
+	}
 
 }

@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Query;
-using Microsoft.AspNetCore.OData.Results;
 using Microsoft.EntityFrameworkCore;
 using Hephaestus.Backend.Database;
 using Hephaestus.Architect.Models;
-using Hephaestus.Frontend.Pages;
 
 namespace Hephaestus.Backend.Controllers {
 
