@@ -1,11 +1,10 @@
 using Radzen;
-using Frontend;
+using Hephaestus.Frontend;
 using Blazored.LocalStorage;
 using Blazored.SessionStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Hephaestus.Frontend.Services;
 using System.Globalization;
 using Microsoft.JSInterop;
 
@@ -13,7 +12,7 @@ using Microsoft.JSInterop;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 // Application
-builder.RootComponents.Add<App>("#app");
+builder.RootComponents.Add<Application>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 // Radzen Components

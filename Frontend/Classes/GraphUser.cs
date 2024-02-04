@@ -2,7 +2,7 @@
 
 namespace Hephaestus.Frontend.Classes {
 
-	public class UserInfo {
+	public class GraphUser {
 
 		[JsonPropertyName("id")]
 		public string? Guid { get; set; }
@@ -24,12 +24,6 @@ namespace Hephaestus.Frontend.Classes {
 
 		[JsonPropertyName("mail")]
 		public string? Email { get; set; }
-
-		[JsonPropertyName("role")]
-		public string? Role { get; set; } = "System.User";
-
-		[JsonPropertyName("photo")]
-		public string? Photo { get; set; } = "images/users/unknown.jpg";
 
 	}
 
