@@ -1,8 +1,4 @@
-﻿using Hephaestus.Architect.Interfaces;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Hephaestus.Architect.Models {
+﻿namespace Hephaestus.Architect.Models {
 
 	public class Preferences : IRecord {
 

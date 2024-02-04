@@ -1,6 +1,4 @@
-﻿using Hephaestus.Architect.Models;
-
-namespace Hephaestus.Architect.Interfaces {
+﻿namespace Hephaestus.Architect.Interfaces {
 
 	public interface IRecordTraced : IRecord {
 

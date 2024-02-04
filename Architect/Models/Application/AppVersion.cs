@@ -1,7 +1,4 @@
-﻿using Hephaestus.Architect.Interfaces;
-using System.ComponentModel.DataAnnotations;
-
-namespace Hephaestus.Architect.Models {
+﻿namespace Hephaestus.Architect.Models {
 
 	public class AppVersion : IRecord {
 

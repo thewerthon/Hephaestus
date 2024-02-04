@@ -1,10 +1,5 @@
-﻿using Hephaestus.Backend.Database;
-using Hephaestus.Architect.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿namespace Hephaestus.Backend.Controllers {
 
-namespace Hephaestus.Backend.Controllers {
-
-	[Route("/odata/preferences")]
 	public class PreferencesController : BaseController<Preferences> {
 
 		public PreferencesController(DatabaseContext context) : base(context) {
@@ -12,7 +7,7 @@ namespace Hephaestus.Backend.Controllers {
 			AllowPost = true;
 			AllowGet = true;
 			AllowPut = true;
-			AllowPatch = true;
+			AllowPatch = false;
 			AllowDelete = false;
 			AllowUpsert = true;
 			AllowList = true;

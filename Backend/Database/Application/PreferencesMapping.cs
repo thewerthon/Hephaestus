@@ -1,8 +1,4 @@
-﻿using Hephaestus.Architect.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Hephaestus.Backend.Mappings {
+﻿namespace Hephaestus.Backend.Database {
 
 	public class PreferencesMapping : IEntityTypeConfiguration<Preferences> {
 

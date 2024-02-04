@@ -1,6 +1,4 @@
-using Hephaestus.Architect.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Hephaestus.Backend.Controllers {
 

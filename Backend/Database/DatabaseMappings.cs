@@ -1,14 +1,6 @@
-﻿using Hephaestus.Architect.Models;
+﻿namespace Hephaestus.Backend.Database {
 
-namespace Hephaestus.Backend.Mappings {
-
-	public static class Mappings {
-
-		public static List<SingletonMapping> SingletonMappings { get; } = [
-
-
-
-		];
+	public static class DatabaseMappings {
 
 		public static List<EntityMapping> EntityMappings { get; } = [
 
@@ -31,13 +23,6 @@ namespace Hephaestus.Backend.Mappings {
 			),
 
 		];
-
-	}
-
-	public class SingletonMapping(string name, Type type) {
-
-		public string Name { get; } = name;
-		public Type Type { get; } = type;
 
 	}
 

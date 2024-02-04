@@ -1,17 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Deltas;
-using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Results;
 using Microsoft.AspNetCore.OData.Routing.Attributes;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
-using Microsoft.EntityFrameworkCore;
-using Hephaestus.Architect.Interfaces;
-using Hephaestus.Backend.Database;
 
 namespace Hephaestus.Backend.Controllers {
 
 	[ODataAttributeRouting]
 	public abstract class BaseController<T> : ODataController where T : class, IRecord {
+
+		// DbContext and DbSet
+		protected readonly DatabaseContext DbContext;
+		protected readonly DbSet<T> DbSet;
+
+		// Constructor
+		public BaseController(DatabaseContext context) {
+			DbContext = context;
+			DbSet = DbContext.Set<T>();
+		}
 
 		// Controller Permissions
 		protected bool AllowPost = true;
@@ -22,28 +28,18 @@ namespace Hephaestus.Backend.Controllers {
 		protected bool AllowUpsert = false;
 		protected bool AllowList = true;
 
-		// DbContext and DbSet
-		internal readonly DatabaseContext DbContext;
-		internal readonly DbSet<T> DbSet;
-
 		// Query Options for Collections
-		internal const AllowedQueryOptions CollectionQueryOptions =
+		protected const AllowedQueryOptions CollectionQueryOptions =
 			AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
 			AllowedQueryOptions.Count | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.SkipToken |
 			AllowedQueryOptions.Search | AllowedQueryOptions.Apply | AllowedQueryOptions.Compute;
 
 		// Query Options for Single Item
-		internal const AllowedQueryOptions SingleItemQueryOptions =
+		protected const AllowedQueryOptions SingleItemQueryOptions =
 			AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Compute;
 
-		// Constructor
-		public BaseController(DatabaseContext context) {
-			DbContext = context;
-			DbSet = DbContext.Set<T>();
-		}
-
 		// Virtual Action Methods
-		internal string ResponseMessage = string.Empty;
+		protected string ResponseMessage = string.Empty;
 		protected virtual void OnRead(ref SingleResult<T> item) { }
 		protected virtual void OnList(ref IQueryable<T> items) { }
 		protected virtual bool BeforeCreate(ref T item) { return true; }

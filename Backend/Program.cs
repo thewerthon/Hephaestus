@@ -1,14 +1,10 @@
 ﻿using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.ModelBuilder;
-using Microsoft.AspNetCore.OData.Query.Expressions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.EntityFrameworkCore;
-using Hephaestus.Backend.Controllers;
-using Hephaestus.Backend.Database;
-using Hephaestus.Backend.Mappings;
 
 // WebApplication
 var builder = WebApplication.CreateBuilder(args);
@@ -33,33 +29,13 @@ builder.Services.AddDbContext<DatabaseContext>(options => {
 // OData Models Builder
 var models = new ODataConventionModelBuilder();
 
-// Add Singletons
-foreach (var singleton in Mappings.SingletonMappings) {
-
-	// Get singleton properties
-	var name = singleton.Name;
-	var type = singleton.Type;
-
-	// Use reflection to call Singleton
-	typeof(ODataConventionModelBuilder)
-		.GetMethod("Singleton")!
-		.MakeGenericMethod(type)
-		.Invoke(models, new object[] { name });
-
-}
-
 // Add Entity Sets
-foreach (var entity in Mappings.EntityMappings) {
+foreach (var entity in DatabaseMappings.EntityMappings) {
 
-	// Get entity properties
-	var name = entity.Name;
-	var type = entity.Type;
-
-	// Use reflection to call EntitySet
 	typeof(ODataConventionModelBuilder)
 		.GetMethod("EntitySet")!
-		.MakeGenericMethod(type)
-		.Invoke(models, new object[] { name });
+		.MakeGenericMethod(entity.Type)
+		.Invoke(models, new object[] { entity.Name });
 
 }
 

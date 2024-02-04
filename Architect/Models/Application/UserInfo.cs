@@ -1,8 +1,4 @@
-﻿using Hephaestus.Architect.Interfaces;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Hephaestus.Architect.Models {
+﻿namespace Hephaestus.Architect.Models {
 
 	public class UserInfo : IRecordWithGuid, IRecordActive {
 
@@ -37,9 +33,9 @@ namespace Hephaestus.Architect.Models {
 		public string? Title { get; set; }
 
 		[Required]
+		[EmailAddress]
 		[MinLength(12)]
 		[MaxLength(64)]
-		[EmailAddress]
 		public string? Email { get; set; }
 
 		[MaxLength(32)]

@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Hephaestus.Backend.Database;
-using Hephaestus.Architect.Models;
-
-namespace Hephaestus.Backend.Controllers {
+﻿namespace Hephaestus.Backend.Controllers {
 
 	public class UsersController : BaseController<UserInfo> {
 
@@ -12,8 +7,8 @@ namespace Hephaestus.Backend.Controllers {
 			AllowPost = true;
 			AllowGet = true;
 			AllowPut = true;
-			AllowPatch = true;
-			AllowDelete = true;
+			AllowPatch = false;
+			AllowDelete = false;
 			AllowUpsert = true;
 			AllowList = true;
 
@@ -23,7 +18,7 @@ namespace Hephaestus.Backend.Controllers {
 		public ActionResult<Preferences> GetPreferences(int key) {
 
 			if (key <= 0) return BadRequest();
-			var item = DbContext.Preferences.AsNoTracking().FirstOrDefault(x => x.UserId == key);
+			var item = DbContext.Set<Preferences>().AsNoTracking().FirstOrDefault(x => x.UserId == key);
 			return item == null ? NotFound("Item not found.") : Ok(item);
 
 		}

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Hephaestus.Architect.Interfaces {
+﻿namespace Hephaestus.Architect.Interfaces {
 
 	public interface IRecord {
 
