@@ -1,6 +1,5 @@
 ﻿@namespace Hephaestus.Frontend.Layouts.TopBarButtons
 @inherits Microsoft.AspNetCore.Components.ComponentBase
-@using System.Security.Claims
 
 <RadzenProfileMenu Click="@ProfileMenuClick" ContextMenu="@(args => None())" class="rz-p-2">
 
@@ -32,9 +31,6 @@
 
 @code {
 
-	[CascadingParameter]
-	public Task<AuthenticationState>? AuthTask { get; set; }
-	private ClaimsPrincipal? UserClaims;
 	private UserInfo? CurrentUser;
 
 	protected override async Task OnInitializedAsync() {
@@ -50,8 +46,7 @@
 
 			_ = JSRuntime.InvokeVoidAsync("isAppInstalled");
 
-			UserClaims = (await AuthTask!).User;
-			await UserService.FecthUserAsync(UserClaims);
+			await UserService.FecthUserAsync();
 			CurrentUser = UserService.UserInfo;
 			CurrentUser.Role = AppRole[(UserService.UserInfo.Role ?? "System.User").Replace(".", string.Empty)];
 			StateHasChanged();

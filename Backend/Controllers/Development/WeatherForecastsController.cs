@@ -1,7 +1,7 @@
 namespace Hephaestus.Backend.Controllers {
 
 	[ApiController]
-	[Route("development/weatherforecasts")]
+	[Route("odata/weatherforecasts")]
 	public class WeatherForecastsController : ControllerBase {
 
 		private static readonly string[] Summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];

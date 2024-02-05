@@ -38,7 +38,7 @@
 
 	protected override async Task OnInitializedAsync() {
 		try {
-			forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("api/weatherforecasts");
+			forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("odata/weatherforecasts");
 		} catch (AccessTokenNotAvailableException exception) {
 			exception.Redirect();
 		}

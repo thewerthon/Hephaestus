@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace Hephaestus.Backend.Controllers {
 
 	[ApiController]
-	[Route("application/version")]
-	public class VersionController : ControllerBase {
+	[Route("odata/appversion")]
+	public class AppVersionController : ControllerBase {
 
 		[HttpGet]
 		[AllowAnonymous]

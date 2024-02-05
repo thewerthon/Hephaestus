@@ -217,8 +217,8 @@
 Esto puede solucionar problemas de rendimiento y conectividad.</value>
   </data>
   <data name="0032" xml:space="preserve">
-    <value>¿Confirmar la aplicación?&lt;br/&gt;
-Después de decirlo, necesitarás iniciar sesión de forma nueva.</value>
+    <value>¿Confirmar salida de la aplicación?&lt;br/&gt;
+Después de cerrar sesión, deberá iniciar sesión nuevamente.</value>
   </data>
   <data name="0033" xml:space="preserve">
     <value>Usuario Desconocido</value>

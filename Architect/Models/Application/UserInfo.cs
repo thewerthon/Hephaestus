@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Models {
 
-	public class UserInfo : IRecordWithGuid, IRecordActive {
+	public class UserInfo : IRecordWithGuid, IRecordHidden, IRecordActive {
 
 		[Key]
 		[Required]
@@ -48,7 +48,10 @@
 		public Preferences? Preferences { get; set; }
 
 		// No Annotation
-		public bool? Active { get; set; }
+		public bool? Hidden { get; set; } = false;
+
+		// No Annotation
+		public bool? Active { get; set; } = true;
 
 	}
 

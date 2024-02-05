@@ -1,13 +1,17 @@
 let deferredPrompt = null;
 
 window.addEventListener("beforeinstallprompt", (e) => {
+
 	e.preventDefault();
 	deferredPrompt = e;
+
 });
 
 window.addEventListener("appinstalled", () => {
+
 	deferredPrompt = null;
 	isAppInstalled();
+
 });
 
 function isAppInstalled() {
@@ -33,15 +37,15 @@ function appInstall() {
 }
 
 function getWindowWidth() {
-	
+
 	return window.innerWidth;
-	
+
 }
 
 function getWindowHeight() {
-	
+
 	return window.innerHeight;
-	
+
 }
 
 function newUpdate() {

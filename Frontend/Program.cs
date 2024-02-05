@@ -22,15 +22,19 @@ builder.Services.AddRadzenComponents();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddBlazoredSessionStorage();
 
+// Frontend Services
+builder.Services.AddScoped<VersionService>();
+builder.Services.AddScoped<UserService>();
+
 // AzureAD Authentication
 var scope = builder.Configuration.GetSection("AzureAd")["Scope"]!;
-builder.Services.AddMsalAuthentication<RemoteAuthenticationState, AccountUser>(options => {
+builder.Services.AddMsalAuthentication<RemoteAuthenticationState, AppUser>(options => {
 	builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
 	options.ProviderOptions.DefaultAccessTokenScopes.Add(scope);
 	options.ProviderOptions.Cache.CacheLocation = "localStorage";
 	options.ProviderOptions.LoginMode = "redirect";
 	options.UserOptions.RoleClaim = "role";
-}).AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, AccountUser, AccountFactory>();
+}).AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, AppUser, AccountFactory>();
 
 // HttpClient Service for Backend API
 builder.Services.AddHttpClient("Backend.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
@@ -43,10 +47,6 @@ builder.Services.AddHttpClient("GraphAPI", client => client.BaseAddress = new Ur
 
 // Logging Configuration
 builder.Logging.SetMinimumLevel(LogLevel.Warning);
-
-// Frontend Services
-builder.Services.AddScoped<VersionService>();
-builder.Services.AddScoped<UserService>();
 
 // Localization Service
 builder.Services.AddLocalization();

@@ -1,9 +1,4 @@
-﻿using System.Net.Http.Json;
-using Microsoft.JSInterop;
-using Blazored.SessionStorage;
-using Hephaestus.Architect.Models;
-
-namespace Hephaestus.Frontend.Services {
+﻿namespace Hephaestus.Frontend.Services {
 
 	public class VersionService(HttpClient httpClient, ISessionStorageService sessionStorage, IJSRuntime jsRuntime) {
 
@@ -12,20 +7,32 @@ namespace Hephaestus.Frontend.Services {
 		private readonly IJSRuntime JSRuntime = jsRuntime;
 
 		public DateTime UpdateChecked = DateTime.UtcNow;
-		public Architect.Models.AppVersion LocalVersion = new();
-		public Architect.Models.AppVersion ServerVersion = new();
+		public AppVersion LocalVersion = new();
+		public AppVersion ServerVersion = new();
 		public bool UpdateAvailable = false;
 		public bool UpdateDismissed = false;
 		public bool UpdateForced = false;
 
-		public static Architect.Models.AppVersion GetLocalVersion() {
-			var localVersion = new Architect.Models.AppVersion();
+		public static AppVersion GetLocalVersion() {
+
+			var localVersion = new AppVersion();
 			return localVersion;
+
 		}
 
-		public async Task<Architect.Models.AppVersion> GetServerVersionAsync() {
-			var serverVersion = await HttpClient.GetFromJsonAsync<Architect.Models.AppVersion>("api/version");
-			return serverVersion ?? new() { Build = 0, Force = 0, Name = "Unknow" };
+		public async Task<AppVersion> GetServerVersionAsync() {
+
+			try {
+
+				var serverVersion = await HttpClient.GetFromJsonAsync<AppVersion>("odata/appversion");
+				return serverVersion ?? new() { Build = 0, Force = 0, Name = "Unknow" };
+
+			} catch (Exception) {
+
+				return null!;
+
+			}
+
 		}
 
 		public async Task CheckForUpdatesAsync() {
@@ -35,7 +42,7 @@ namespace Hephaestus.Frontend.Services {
 			UpdateAvailable = await SessionStorage.GetItemAsync<bool>("UpdateAvailable");
 			UpdateForced = await SessionStorage.GetItemAsync<bool>("UpdateForced");
 
-			if (!UpdateAvailable && DateTime.UtcNow >= UpdateChecked.AddMinutes(10)) {
+			if (!UpdateAvailable && DateTime.UtcNow >= UpdateChecked.AddMinutes(15)) {
 
 				LocalVersion = GetLocalVersion();
 				ServerVersion = await GetServerVersionAsync();
@@ -44,8 +51,10 @@ namespace Hephaestus.Frontend.Services {
 				if (LocalVersion != null && ServerVersion != null && LocalVersion.Build < ServerVersion.Build) {
 
 					if (LocalVersion.Force < ServerVersion.Force) {
+
 						await SessionStorage.SetItemAsync("UpdateForced", true);
 						UpdateForced = true;
+
 					}
 
 					await SessionStorage.SetItemAsync("UpdateAvailable", true);
@@ -57,7 +66,9 @@ namespace Hephaestus.Frontend.Services {
 			}
 
 			if (UpdateAvailable) {
+
 				await JSRuntime.InvokeVoidAsync("newUpdate");
+
 			}
 
 		}

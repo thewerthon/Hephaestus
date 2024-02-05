@@ -81,10 +81,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
-app.MapFallbackToFile(
-	"{*path:regex(^(?!odata).*$)}",
-	"index.html"
-);
+app.MapFallbackToFile("odata/{**slug}", "404");
+app.MapFallbackToFile("{**slug}", "index.html");
 
 // Run App
 app.Run();

@@ -1,7 +1,4 @@
-﻿using System.Net.Http.Json;
-using System.Security.Claims;
-using Blazored.LocalStorage;
-using Hephaestus.Architect.Models;
+﻿using System.Security.Claims;
 
 namespace Hephaestus.Frontend.Services {
 
@@ -10,45 +7,53 @@ namespace Hephaestus.Frontend.Services {
 		private readonly IHttpClientFactory ClientFactory = clientFactory;
 		private readonly ILocalStorageService LocalStorage = localStorage;
 
+		public ClaimsPrincipal? UserAccount;
 		public DateTime UserFetched = DateTime.UtcNow;
-		public Preferences UserPreferences = new();
+		//public Preferences UserPreferences = new();
 		public UserInfo UserInfo = new();
-		private UserInfo? CurrentUser = new();
-		private UserInfo? SavedUser = new();
+
 		private byte[]? UserPhoto;
+		private GraphUser GraphUser = new();
+		private UserInfo ActualUser = new();
+		private UserInfo LocalUser = new();
 
-		public async Task FecthUserAsync(ClaimsPrincipal user) {
+		public async Task FecthUserAsync() {
 
-			if (user is not null) {
+			if (UserAccount is not null) {
 
-				if (user.Identity!.IsAuthenticated) {
+				ActualUser = UserInfo;
+				ActualUser.Guid = UserAccount.FindFirst("oid")?.Value ?? string.Empty;
 
-					CurrentUser = UserInfo;
-					CurrentUser.Guid = user.FindFirst("oid")?.Value ?? string.Empty;
+				var defaultDate = new DateTime(1994, 03, 09, 16, 00, 00);
+				LocalUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new();
+				//UserPreferences = await LocalStorage.GetItemAsync<Preferences>("UserPreferences") ?? new();
+				UserFetched = await LocalStorage.GetItemAsync<DateTime?>("UserFetched") ?? defaultDate;
 
-					var defaultDate = new DateTime(1994, 03, 09, 16, 00, 00);
-					SavedUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new();
-					UserPreferences = await LocalStorage.GetItemAsync<Preferences>("UserPreferences") ?? new();
-					UserFetched = await LocalStorage.GetItemAsync<DateTime?>("UserFetched") ?? defaultDate;
+				if (ActualUser.Guid == LocalUser.Guid && DateTime.UtcNow < UserFetched.AddHours(6)) {
 
-					if (CurrentUser.Guid == SavedUser.Guid && DateTime.UtcNow < UserFetched.AddHours(6)) {
+					UserInfo = LocalUser;
 
-						UserInfo = SavedUser;
+				} else {
 
-					} else {
+					UserInfo = LocalUser;
+					var client = ClientFactory.CreateClient("GraphAPI");
+					GraphUser = await client.GetFromJsonAsync<GraphUser>("v1.0/me") ?? GraphUser;
+					UserPhoto = await client.GetByteArrayAsync("v1.0/me/photos/96x96/$value");
 
-						UserInfo = SavedUser;
-						var client = ClientFactory.CreateClient("GraphAPI");
-						UserInfo = await client.GetFromJsonAsync<UserInfo>("v1.0/me") ?? SavedUser;
-						UserPhoto = await client.GetByteArrayAsync("v1.0/me/photos/96x96/$value");
+					UserInfo.Guid = GraphUser.Guid;
+					UserInfo.Name = GraphUser.Name;
+					UserInfo.FirstName = GraphUser.FirstName;
+					UserInfo.SecondName = GraphUser.SecondName;
+					UserInfo.Office = GraphUser.Office;
+					UserInfo.Title = GraphUser.Title;
+					UserInfo.Email = GraphUser.Email;
+					UserInfo.Role = UserAccount.FindFirst("role")?.Value ?? "System.User";
+					UserInfo.Photo = "data:image/jpeg;base64," + Convert.ToBase64String(UserPhoto);
+					UserInfo.Hidden = false;
+					UserInfo.Active = true;
 
-						UserInfo.Role = user.FindFirst("role")?.Value ?? "System.User";
-						UserInfo.Photo = "data:image/jpeg;base64," + Convert.ToBase64String(UserPhoto);
-
-						await LocalStorage.SetItemAsync("UserFetched", DateTime.UtcNow);
-						await SaveUserAsync();
-
-					}
+					await LocalStorage.SetItemAsync("UserFetched", DateTime.UtcNow);
+					await SaveUserAsync();
 
 				}
 
@@ -59,7 +64,7 @@ namespace Hephaestus.Frontend.Services {
 		public async Task SaveUserAsync() {
 
 			if (UserInfo is not null) await LocalStorage.SetItemAsync("UserInfo", UserInfo);
-			if (UserPreferences is not null) await LocalStorage.SetItemAsync("UserPreferences", UserPreferences);
+			//if (UserPreferences is not null) await LocalStorage.SetItemAsync("UserPreferences", UserPreferences);
 
 		}
 
