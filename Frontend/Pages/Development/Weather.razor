@@ -1,6 +1,12 @@
+<<<<<<<< HEAD:Frontend/Pages/Development/Weather.razor
 ﻿@page "/weather"
 @namespace Hephaestus.Frontend.Pages
 @inject HttpClient Http
+========
+﻿@page "/dev/weather"
+@inject HttpClient Http
+@using Architect.SideModules.Development.Models
+>>>>>>>> main:Frontend/SideModules/Development/Pages/Weather.razor
 
 <PageTitle>Weather</PageTitle>
 
@@ -38,7 +44,11 @@
 
 	protected override async Task OnInitializedAsync() {
 		try {
+<<<<<<<< HEAD:Frontend/Pages/Development/Weather.razor
 			forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("odata/weatherforecasts");
+========
+			forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("api/dev/weatherforecasts");
+>>>>>>>> main:Frontend/SideModules/Development/Pages/Weather.razor
 		} catch (AccessTokenNotAvailableException exception) {
 			exception.Redirect();
 		}
