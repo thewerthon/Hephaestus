@@ -9,14 +9,6 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<UserSecretsId>Hephaestus.Frontend.Debug</UserSecretsId>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<UserSecretsId>Hephaestus.Frontend.Release</UserSecretsId>
-	</PropertyGroup>
-
 	<PropertyGroup>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	</PropertyGroup>
