@@ -1,12 +1,8 @@
-using Radzen;
 using Hephaestus.Frontend;
-using Blazored.LocalStorage;
-using Blazored.SessionStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Globalization;
-using Microsoft.JSInterop;
 
 // WebAssembly Host
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -23,6 +19,7 @@ builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddBlazoredSessionStorage();
 
 // Frontend Services
+builder.Services.AddScoped<DatabaseService>();
 builder.Services.AddScoped<VersionService>();
 builder.Services.AddScoped<UserService>();
 

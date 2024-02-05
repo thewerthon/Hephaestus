@@ -1,0 +1,105 @@
+﻿@page "/users"
+@namespace Hephaestus.Frontend.Pages
+
+<PageTitle>Users</PageTitle>
+
+<RadzenStack>
+	<RadzenRow AlignItems="AlignItems.Center">
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenText Text="Users" TextStyle="TextStyle.H4" TagName="TagName.H1" style="margin: 0" />
+		</RadzenColumn>
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+				<RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+			</RadzenStack>
+		</RadzenColumn>
+	</RadzenRow>
+	<RadzenRow>
+		<RadzenColumn SizeMD=12>
+			<RadzenDataGrid @ref="grid" Data="@users" Count="@count"
+											LoadData="@GridLoadData" TItem="UserInfo"
+											AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" AllowGrouping="true"
+											AllowRowSelectOnRowClick="true" Responsive="false" ShowCellDataAsTooltip="true" ShowColumnTitleAsTooltip="true" ShowMultiColumnSortingIndex="true" AllowMultiColumnSorting="true"
+											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@(new int[]{10, 20, 50, 100})
+											RowDoubleClick="@EditRow" Style="min-height: 450px">
+				<Columns>
+					<RadzenDataGridColumn TItem="UserInfo" Property="Photo" Title="Photo" Filterable="false" Sortable="false" Resizable="false" Reorderable="false" Pickable="false" Groupable="false" MinWidth="64px" Width="64px" TextAlign="TextAlign.Center" Visible="true">
+						<Template Context="user">
+							<RadzenImage Path="@user.Photo" Style="width:32px;height:32px" class="rounded-circle" />
+						</Template>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="UserInfo" Property="Id" Title="Id" Visible="false" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Name" Title="Name" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Office" Title="Office" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Title" Title="Title" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Email" Title="Email" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Role" Title="Role" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Active" Title="Active" Visible="true" />
+				</Columns>
+
+			</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
+</RadzenStack>
+
+@code {
+
+	protected int count;
+	protected IEnumerable<UserInfo> users;
+	protected RadzenDataGrid<UserInfo> grid;
+
+	protected async Task GridLoadData(LoadDataArgs args) {
+
+		try {
+
+			var result = await DatabaseService.GetUsersAsync(filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
+			users = result.Value.AsODataEnumerable();
+			count = result.Count;
+
+		} catch (Exception) {
+
+			NotificationService.Notify(new NotificationMessage() { Severity = NotificationSeverity.Error, Summary = $"Error", Detail = $"Unable to load Users" });
+
+		}
+
+	}
+
+	protected async Task AddButtonClick(MouseEventArgs args) {
+
+		//await DialogService.OpenAsync<AddUser>("Add User", null);
+		await grid.Reload();
+
+	}
+
+	protected async Task EditRow(DataGridRowMouseEventArgs<UserInfo> args) {
+
+		//await DialogService.OpenAsync<EditUser>("Edit User", new Dictionary<string, object> { { "Id", args.Data.Id } });
+		await grid.Reload();
+
+	}
+
+	protected async Task GridDeleteButtonClick(MouseEventArgs args, UserInfo user) {
+
+		try {
+
+			if (await DialogService.Confirm("Are you sure you want to delete this record?") == true) {
+
+				//var result = await DatabaseService.DeleteUserAsync(id: user.Id);
+				//if (result != null) await grid.Reload();
+				await grid.Reload();
+
+			}
+
+		} catch (Exception) {
+
+			NotificationService.Notify(new NotificationMessage {
+					Severity = NotificationSeverity.Error,
+					Summary = $"Error",
+					Detail = $"Unable to delete User"
+				});
+
+		}
+
+	}
+
+}
