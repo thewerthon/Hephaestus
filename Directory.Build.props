@@ -1,6 +1,0 @@
-<Project>
-	<PropertyGroup>
-		<BaseOutputPath>C:/Binaries/Hephaestus/$(MSBuildProjectName)/bin/</BaseOutputPath>
-		<BaseIntermediateOutputPath>C:/Binaries/Hephaestus/$(MSBuildProjectName)/obj/</BaseIntermediateOutputPath>
-	</PropertyGroup>
-</Project>

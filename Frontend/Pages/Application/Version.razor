@@ -1,0 +1,43 @@
+﻿@page "/versao"
+@page "/version"
+@namespace Hephaestus.Frontend.Pages
+@inject VersionService VersionService
+
+<PageTitle>@(AppText["0025"])</PageTitle>
+<RadzenText Text="@AppText["0025"]" TextStyle="Radzen.Blazor.TextStyle.DisplayH3" TagName="Radzen.Blazor.TagName.Auto"></RadzenText>
+
+@if (localVersion != null) {
+	<h3>Local Version</h3>
+	<p>Id: @localVersion.Build</p>
+	<p>Name: @localVersion.Name</p>
+}
+
+<br />
+
+@if (serverVersion != null) {
+	<h3>Server Version</h3>
+	<p>Id: @serverVersion.Build</p>
+	<p>Name: @serverVersion.Name</p>
+}
+
+@code {
+
+	private Architect.Models.AppVersion? serverVersion;
+	private Architect.Models.AppVersion? localVersion;
+
+	protected override async Task OnInitializedAsync() {
+
+		try {
+
+			localVersion = VersionService.GetLocalVersion();
+			serverVersion = await VersionService.GetServerVersionAsync();
+
+		} catch (AccessTokenNotAvailableException exception) {
+
+			exception.Redirect();
+
+		}
+
+	}
+
+}

@@ -1,0 +1,106 @@
+﻿@namespace Hephaestus.Frontend.Layouts.TopBarButtons
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<RadzenProfileMenu Click="@ProfileMenuClick" ContextMenu="@(args => None())" class="rz-p-2">
+
+	<!-- Profile Info -->
+	<Template>
+		<RadzenStack Orientation="Orientation.Horizontal" Gap="10px" class="rz-mr-2" title="@AppText["0035"]">
+			<RadzenStack AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center">
+				<RadzenImage Path="@CurrentUser?.Photo" Style="width:38px;height:38px" class="user-size rounded-circle" />
+			</RadzenStack>
+			<RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Center" Gap="0px" class="small-none">
+				<RadzenText Text="@CurrentUser?.Name" TextStyle="TextStyle.Body1" class="rz-mb-0 rz-text-nowrap" style="color:var(--rz-text-primary-color);font-size:14px"></RadzenText>
+				<RadzenText Text="@CurrentUser?.Role" TextStyle="TextStyle.Caption" class="rz-my-0 rz-text-nowrap" style="color:var(--rz-text-tertiary-color);font-size:11px"></RadzenText>
+			</RadzenStack>
+		</RadzenStack>
+	</Template>
+
+	<!-- Menu Items -->
+	<ChildContent>
+		<RadzenProfileMenuItem Text="@AppText["0024"]" Icon="@AppIcon["0600"]" Path="@AppPath["0600"]" />
+		<RadzenProfileMenuItem Text="@AppText["0025"]" Icon="@AppIcon["0500"]" Path="@AppPath["0500"]" />
+		<RadzenProfileMenuItem Text="@AppText["0026"]" Icon="@AppIcon["0800"]" Value="AppInstall" Style="display:none" id="app-install" />
+		<RadzenProfileMenuItem Text="@AppText["0027"]" Icon="@AppIcon["0700"]" Value="Update" />
+		<RadzenProfileMenuItem Text="@AppText["0028"]" Icon="@AppIcon["0050"]" Path="@AppPath["0050"]" />
+		<RadzenProfileMenuItem Text="@AppText["0029"]" Icon="@AppIcon["0400"]" Path="@AppPath["0400"]" />
+		<RadzenProfileMenuItem Text="@AppText["0030"]" Icon="@AppIcon["0900"]" Value="Logout" />
+	</ChildContent>
+
+</RadzenProfileMenu>
+
+@code {
+
+	private UserInfo? CurrentUser;
+
+	protected override async Task OnInitializedAsync() {
+
+		CurrentUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new() { Name = AppText["0033"], Role = AppText["0034"], Photo = "images/users/unknown.jpg" };
+		CurrentUser.Role = AppRole[(CurrentUser.Role ?? "System.User").Replace(".", string.Empty)];
+
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender) {
+
+		if (firstRender) {
+
+			_ = JSRuntime.InvokeVoidAsync("isAppInstalled");
+
+			await UserService.FecthUserAsync();
+			CurrentUser = UserService.UserInfo;
+			CurrentUser.Role = AppRole[(UserService.UserInfo.Role ?? "System.User").Replace(".", string.Empty)];
+			StateHasChanged();
+
+		}
+
+	}
+
+	protected async void ProfileMenuClick(RadzenProfileMenuItem args) {
+
+		if (args.Value == "AppInstall") await AppInstall();
+		if (args.Value == "Logout") await LogoutConfirm();
+		if (args.Value == "Update") await ForceUpdate();
+
+	}
+
+	private async Task AppInstall() {
+
+		await JSRuntime.InvokeVoidAsync("appInstall");
+
+	}
+
+	private async Task ForceUpdate() {
+
+		var result = await DialogService.Confirm(AppText["0031"], AppText["0027"], new ConfirmOptions() {
+				OkButtonText = AppButton["Confirm"],
+				CancelButtonText = AppButton["Cancel"],
+				AutoFocusFirstElement = false,
+				CloseDialogOnOverlayClick = true,
+				CloseDialogOnEsc = true
+			});
+
+		if (result ?? false) {
+			await JSRuntime.InvokeVoidAsync("update");
+		}
+
+	}
+
+	private async Task LogoutConfirm() {
+
+		var result = await DialogService.Confirm(AppText["0032"], AppText["0030"], new ConfirmOptions() {
+				OkButtonText = AppButton["Confirm"],
+				CancelButtonText = AppButton["Cancel"],
+				AutoFocusFirstElement = false,
+				CloseDialogOnOverlayClick = true,
+				CloseDialogOnEsc = true
+			});
+
+		if (result ?? false) {
+			NavigationManager.NavigateToLogout("authentication/logout");
+		}
+
+	}
+
+	private void None() { }
+
+}

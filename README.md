@@ -37,6 +37,7 @@ The final product of the Hephaestus project is the **SCP 2.0** software:
 ### Technologies Used
 - <img src="./Frontend/wwwroot/images/icons/blazor.svg" alt="Blazor" height="16"/> [Blazor WebAssembly](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) (Frontend Project) <br>
 - <img src="./Frontend/wwwroot/images/icons/asp.svg" alt="ASP.NET Core" height="16"/> [ASP.NET Core](https://dotnet.microsoft.com/apps/aspnet) (Backend Project) <br>
+- <img src="./Frontend/wwwroot/images/icons/odata.svg" alt="OData" height="16"/> [OData](https://www.odata.org/) (API Protocol) <br>
 
 ### Integrations
 - <img src="./Frontend/wwwroot/images/icons/omie.svg" alt="Omie" height="16"/> [Omie](https://www.omie.com.br/) (Cloud ERP System) <br>

@@ -1,0 +1,45 @@
+﻿@namespace Hephaestus.Frontend.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<RadzenRow>
+	<RadzenColumn Size="12" class="rz-my-5">
+		<LordIcon Icon="@Icon" Anim="@Anim" Trigger="@Trigger" Intro="@Intro" State="@State" Morph="@Morph" Stroke="bold" Size="120px" Id="icon-error-anim" />
+		<RadzenText Text="@ErrorTitle" TextStyle="TextStyle.DisplayH3" TextAlign="TextAlign.Center" class="rz-mb-2 fadein" />
+		<RadzenText Text="@ErrorDescription" TextStyle="TextStyle.H6" TextAlign="TextAlign.Center" TagName="Radzen.Blazor.TagName.P" class="rz-my-0 fadein" />
+	</RadzenColumn>
+</RadzenRow>
+
+@code {
+
+	[Parameter]
+	public string Icon { get; set; } = "/pages/error.json";
+
+	[Parameter]
+	public string Anim { get; set; } = "state";
+
+	[Parameter]
+	public string Trigger { get; set; } = "hover-click";
+
+	[Parameter]
+	public string Intro { get; set; } = "in-reveal";
+
+	[Parameter]
+	public string State { get; set; } = "hover-enlarge";
+
+	[Parameter]
+	public string Morph { get; set; } = string.Empty;
+
+	[Parameter]
+	public string ErrorTitle { get; set; } = string.Empty;
+
+	[Parameter]
+	public string ErrorDescription { get; set; } = string.Empty;
+
+	protected override void OnInitialized() {
+
+		ErrorTitle = string.IsNullOrEmpty(ErrorTitle) ? AppError["0001"] : ErrorTitle;
+		ErrorDescription = string.IsNullOrEmpty(ErrorDescription) ? AppError["0002"] : ErrorDescription;
+
+	}
+
+}

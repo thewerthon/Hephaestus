@@ -1,0 +1,30 @@
+﻿@namespace Hephaestus.Frontend.Layouts.TopBarButtons
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<RadzenButton Variant="Variant.Text" ContextMenu="@(args => None())" Style="display: none;" Click="@(() => Update())" class="topbar-icon" title="@AppText["0007"]" id="update-button">
+	<LordIcon Icon="/topbar/autorenew.json" Anim="state" Trigger="hover" Intro="in-autorenew" State="hover-autorenew" Size="24px" Target=".rz-button" Title="@AppText["0007"]" />
+</RadzenButton>
+
+@code {
+
+	private async Task Update() {
+
+		var result = await DialogService.Confirm(AppText["0010"], AppText["0007"], new ConfirmOptions() {
+				OkButtonText = AppButton["Update"],
+				CancelButtonText = AppButton["Cancel"],
+				AutoFocusFirstElement = false,
+				CloseDialogOnOverlayClick = true,
+				CloseDialogOnEsc = true
+			});
+
+		if (result ?? false) {
+
+			await JSRuntime.InvokeVoidAsync("update");
+
+		}
+
+	}
+
+	private void None() { }
+
+}
