@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:Architect/Models/Development/WeatherForecast.cs
 namespace Hephaestus.Architect.Models {
-========
-namespace Architect.SideModules.Development.Models {
->>>>>>>> main:Architect/SideModules/Development/Models/WeatherForecast.cs
 
 	public class WeatherForecast {
 
