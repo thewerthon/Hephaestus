@@ -10,28 +10,4 @@
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Compile Update="Localization\AppEnum.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>AppEnum.resx</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="Localization\AppEnum.en.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Localization\AppEnum.es.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Localization\AppEnum.pt.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Localization\AppEnum.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>AppEnum.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	</ItemGroup>
-
 </Project>

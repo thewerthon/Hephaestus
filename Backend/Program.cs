@@ -29,18 +29,16 @@ builder.Services.AddDbContext<DatabaseContext>(options => {
 
 // OData Models Builder
 var models = new ODataConventionModelBuilder();
-models.EnumType<YesNo>();
-models.EntitySet<UserInfo>("Users");
 
 // Add Entity Sets
-//foreach (var entity in DatabaseMappings.EntityMappings) {
+foreach (var table in DatabaseTables.Tables) {
 
-//	typeof(ODataConventionModelBuilder)
-//		.GetMethod("EntitySet")!
-//		.MakeGenericMethod(entity.Type)
-//		.Invoke(models, new object[] { entity.Name });
+	typeof(ODataConventionModelBuilder)
+		.GetMethod("EntitySet")!
+		.MakeGenericMethod(table.Type)
+		.Invoke(models, new object[] { table.Name });
 
-//}
+}
 
 // Razor Pages
 builder.Services.AddRazorPages();
@@ -63,7 +61,6 @@ builder.Services.AddControllers(options => {
 	options.RouteOptions.EnablePropertyNameCaseInsensitive = true;
 	options.RouteOptions.EnableControllerNameCaseInsensitive = true;
 	options.AddRouteComponents("odata", models.GetEdmModel(), services => {
-		services.AddSingleton<ODataUriResolver>(sp => new StringAsEnumResolver() { EnableCaseInsensitive = true });
 		services.AddSingleton<ISearchBinder, SearchBinder>();
 	}).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
 });

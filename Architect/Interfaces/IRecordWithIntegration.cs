@@ -3,7 +3,7 @@
 	public interface IRecordWithIntegration : IRecord {
 
 		[MaxLength(16)]
-		string? Id2 { get; set; }
+		string? Oid { get; set; }
 
 	}
 

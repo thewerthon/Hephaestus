@@ -1,8 +1,6 @@
 ﻿namespace Hephaestus.Architect.Interfaces {
 
-	public interface IRecordTracedActive : IRecordTraced {
-
-		bool? Active { get; set; }
+	public interface IRecordTracedActive : IRecordTraced, IRecordActive {
 
 		UserInfo? DeletedBy { get; set; }
 

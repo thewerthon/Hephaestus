@@ -264,11 +264,17 @@ ul.rz-profile-menu {
 }
 
 .rz-paginator {
-	border-top: var(--rz-grid-border);
+	border-top: var(--rz-border-normal);
 }
 
 .rz-group-header {
 	border-bottom: var(--rz-border-normal);
+}
+
+.rz-datatable-emptymessage {
+	padding-right: 60px !important;
+    text-align: center;
+    height: 70px;
 }
 
 .logo {

@@ -2,7 +2,9 @@
 
 	public interface IRecordHidden : IRecord {
 
-		YesNo? Hidden { get; set; }
+		[ForeignKey("Hidden")]
+		bool? Hidden { get; set; }
+		Hidden? HiddenData { get; set; }
 
 	}
 

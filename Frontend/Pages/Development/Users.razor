@@ -3,12 +3,13 @@
 
 <PageTitle>Users</PageTitle>
 
+
 <RadzenStack>
-	<RadzenRow AlignItems="AlignItems.Center">
-		<RadzenColumn Size="12" SizeMD="6">
-			<RadzenText Text="Users" TextStyle="TextStyle.H4" TagName="TagName.H1" style="margin: 0" />
+	<RadzenRow AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceAround">
+		<RadzenColumn>
+			<RadzenText Text="Usuários Cadastrados" TextStyle="TextStyle.H5" TagName="TagName.H5" style="margin: 0" />
 		</RadzenColumn>
-		<RadzenColumn Size="12" SizeMD="6">
+		<RadzenColumn>
 			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
 				<RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
 			</RadzenStack>
@@ -21,7 +22,7 @@
 											AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" AllowGrouping="true"
 											AllowRowSelectOnRowClick="true" Responsive="false" ShowCellDataAsTooltip="true" ShowColumnTitleAsTooltip="true" ShowMultiColumnSortingIndex="true" AllowMultiColumnSorting="true"
 											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@(new int[]{10, 20, 50, 100})
-											RowDoubleClick="@EditRow" Style="min-height: 450px">
+											RowDoubleClick="@EditRow">
 				<Columns>
 					<RadzenDataGridColumn TItem="UserInfo" Property="Photo" Title="Photo" Filterable="false" Sortable="false" Resizable="false" Reorderable="false" Pickable="false" Groupable="false" MinWidth="64px" Width="64px" TextAlign="TextAlign.Center" Visible="true">
 						<Template Context="user">
@@ -34,7 +35,10 @@
 					<RadzenDataGridColumn TItem="UserInfo" Property="Title" Title="Title" Visible="true" />
 					<RadzenDataGridColumn TItem="UserInfo" Property="Email" Title="Email" Visible="true" />
 					<RadzenDataGridColumn TItem="UserInfo" Property="Role" Title="Role" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Active" Title="Active" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property=@AppField["HiddenDataName"] Title="Hidden" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property=@AppField["ActiveDataName"] Title="Active" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Preferences.ThemeData.Name" Title="Theme" Visible="true" />
+					<RadzenDataGridColumn TItem="UserInfo" Property="Preferences.LanguageData.Name" Title="Language" Visible="true" />
 				</Columns>
 
 			</RadzenDataGrid>
@@ -52,7 +56,7 @@
 
 		try {
 
-			var result = await DatabaseService.GetUsersAsync(filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
+			var result = await DatabaseService.GetUsersAsync(expand: "hiddendata,activedata,preferences(expand=themedata,languagedata)", filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
 			users = result.Value.AsODataEnumerable();
 			count = result.Count;
 

@@ -49,8 +49,8 @@ namespace Hephaestus.Frontend.Services {
 					UserInfo.Email = GraphUser.Email;
 					UserInfo.Role = UserAccount.FindFirst("role")?.Value ?? "System.User";
 					UserInfo.Photo = "data:image/jpeg;base64," + Convert.ToBase64String(UserPhoto);
-					UserInfo.Hidden = YesNo.No;
-					UserInfo.Active = YesNo.Yes;
+					UserInfo.Hidden = false;
+					UserInfo.Active = true;
 
 					await LocalStorage.SetItemAsync("UserFetched", DateTime.UtcNow);
 					await SaveUserAsync();

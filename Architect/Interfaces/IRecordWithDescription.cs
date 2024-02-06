@@ -2,16 +2,16 @@
 
 	public interface IRecordWithDescription : IRecord {
 
-		[MaxLength()]
+		[MaxLength(255)]
 		string? Description { get; set; }
 
-		[MaxLength()]
+		[MaxLength(255)]
 		string? Description_pt { get; set; }
 
-		[MaxLength()]
+		[MaxLength(255)]
 		string? Description_en { get; set; }
 
-		[MaxLength()]
+		[MaxLength(255)]
 		string? Description_es { get; set; }
 
 	}

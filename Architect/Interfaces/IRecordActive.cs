@@ -2,7 +2,9 @@
 
 	public interface IRecordActive : IRecord {
 
-		YesNo? Active { get; set; }
+		[ForeignKey("Active")]
+		bool? Active { get; set; }
+		Active? ActiveData { get; set; }
 
 	}
 

@@ -30,7 +30,7 @@
 
 		public async Task<ODataServiceResult<UserInfo>> GetUsersAsync(Query query) {
 
-			return await GetUsersAsync(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
+			return await GetUsersAsync(select: query.Select, expand: query.Expand, filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
 
 		}
 

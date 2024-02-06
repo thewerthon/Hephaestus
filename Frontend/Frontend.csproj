@@ -35,11 +35,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Content Update="wwwroot\appsettings.json" Visible="false" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Architect\Architect.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\Architect\Models\Application\AppVersion.cs" Link="Version.cs" />
+		<None Include="..\Architect\Models\Records\AppVersion.cs" Link="Version.cs" />
 	</ItemGroup>
 
 </Project>
