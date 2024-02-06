@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.OData.UriParser;
 
 // WebApplication
 var builder = WebApplication.CreateBuilder(args);
@@ -28,16 +29,18 @@ builder.Services.AddDbContext<DatabaseContext>(options => {
 
 // OData Models Builder
 var models = new ODataConventionModelBuilder();
+models.EnumType<YesNo>();
+models.EntitySet<UserInfo>("Users");
 
 // Add Entity Sets
-foreach (var entity in DatabaseMappings.EntityMappings) {
+//foreach (var entity in DatabaseMappings.EntityMappings) {
 
-	typeof(ODataConventionModelBuilder)
-		.GetMethod("EntitySet")!
-		.MakeGenericMethod(entity.Type)
-		.Invoke(models, new object[] { entity.Name });
+//	typeof(ODataConventionModelBuilder)
+//		.GetMethod("EntitySet")!
+//		.MakeGenericMethod(entity.Type)
+//		.Invoke(models, new object[] { entity.Name });
 
-}
+//}
 
 // Razor Pages
 builder.Services.AddRazorPages();
@@ -59,9 +62,10 @@ builder.Services.AddControllers(options => {
 	options.RouteOptions.EnableDollarCountRouting = true;
 	options.RouteOptions.EnablePropertyNameCaseInsensitive = true;
 	options.RouteOptions.EnableControllerNameCaseInsensitive = true;
-	options.AddRouteComponents("odata", models.GetEdmModel(), services =>
-		services.AddSingleton<ISearchBinder, SearchBinder>()
-	).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
+	options.AddRouteComponents("odata", models.GetEdmModel(), services => {
+		services.AddSingleton<ODataUriResolver>(sp => new StringAsEnumResolver() { EnableCaseInsensitive = true });
+		services.AddSingleton<ISearchBinder, SearchBinder>();
+	}).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
 });
 
 // Application

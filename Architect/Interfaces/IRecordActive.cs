@@ -2,7 +2,7 @@
 
 	public interface IRecordActive : IRecord {
 
-		bool? Active { get; set; }
+		YesNo? Active { get; set; }
 
 	}
 

@@ -5,12 +5,18 @@
 		// Database Mappings
 		protected override void OnModelCreating(ModelBuilder builder) {
 
-			foreach (var entity in DatabaseMappings.EntityMappings) {
+			//builder.Entity<AppVersion>().ToTable("Versions");
+			//builder.Entity<UserInfo>().ToTable("Users");
+			//builder.Entity<Preferences>().ToTable("Preferences");
 
-				dynamic mapping = Activator.CreateInstance(entity.Maps)!;
-				builder.ApplyConfiguration(mapping);
+			builder.ApplyConfiguration(new UserInfoMapping());
 
-			}
+			//foreach (var entity in DatabaseMappings.EntityMappings) {
+
+			//	dynamic mapping = Activator.CreateInstance(entity.Maps)!;
+			//	builder.ApplyConfiguration(mapping);
+
+			//}
 
 		}
 

@@ -1,4 +1,6 @@
-﻿namespace Hephaestus.Architect.Models {
+﻿using System.Text.Json.Serialization;
+
+namespace Hephaestus.Architect.Models {
 
 	public class UserInfo : IRecordWithGuid, IRecordHidden, IRecordActive {
 
@@ -48,10 +50,12 @@
 		public Preferences? Preferences { get; set; }
 
 		// No Annotation
-		public bool? Hidden { get; set; } = false;
+		[JsonConverter(typeof(JsonStringEnumConverter<YesNo>))]
+		public YesNo? Hidden { get; set; } = YesNo.No;
 
 		// No Annotation
-		public bool? Active { get; set; } = true;
+		[JsonConverter(typeof(JsonStringEnumConverter<YesNo>))]
+		public YesNo? Active { get; set; } = YesNo.Yes;
 
 	}
 

@@ -1,4 +1,6 @@
-﻿namespace Hephaestus.Backend.Database {
+﻿using Hephaestus.Architect.Localization;
+
+namespace Hephaestus.Backend.Database {
 
 	public class UserInfoMapping : IEntityTypeConfiguration<UserInfo> {
 
@@ -16,7 +18,8 @@
 			builder.HasIndex(x => x.Email);
 
 			// Default Values
-			builder.Property(x => x.Active).HasDefaultValue(true);
+			builder.Property(x => x.Active).HasDefaultValue(YesNo.Yes).HasConversion<int>();
+			builder.Property(x => x.Hidden).HasDefaultValue(YesNo.No).HasConversion<int>();
 
 		}
 

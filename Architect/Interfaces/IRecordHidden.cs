@@ -2,7 +2,7 @@
 
 	public interface IRecordHidden : IRecord {
 
-		bool? Hidden { get; set; }
+		YesNo? Hidden { get; set; }
 
 	}
 
