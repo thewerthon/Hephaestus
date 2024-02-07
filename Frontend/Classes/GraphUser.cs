@@ -1,8 +1,12 @@
 ﻿using System.Text.Json.Serialization;
+using Hephaestus.Architect.Interfaces;
 
 namespace Hephaestus.Frontend.Classes {
 
-	public class GraphUser {
+	public class GraphUser : IUser {
+
+		[JsonPropertyName("i")]
+		public int Id { get; set; } = 0;
 
 		[JsonPropertyName("id")]
 		public string? Guid { get; set; }
@@ -16,14 +20,29 @@ namespace Hephaestus.Frontend.Classes {
 		[JsonPropertyName("surname")]
 		public string? SecondName { get; set; }
 
+		[JsonPropertyName("country")]
+		public string? Country { get; set; }
+
 		[JsonPropertyName("officeLocation")]
 		public string? Office { get; set; }
+
+		[JsonPropertyName("department")]
+		public string? Department { get; set; }
 
 		[JsonPropertyName("jobTitle")]
 		public string? Title { get; set; }
 
 		[JsonPropertyName("mail")]
 		public string? Email { get; set; }
+
+		[JsonPropertyName("photo")]
+		public string? Photo { get; set; }
+
+		[JsonPropertyName("role")]
+		public string? Role { get; set; }
+
+		[JsonPropertyName("accountEnabled")]
+		public bool? Active { get; set; }
 
 	}
 

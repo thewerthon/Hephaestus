@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Models {
 
-	public class UserInfo : IRecordWithGuid, IRecordActive, IRecordHidden {
+	public class UserInfo : IUser, IRecordWithGuid, IRecordActive, IRecordHidden {
 
 		[Key]
 		[Required]
@@ -26,7 +26,15 @@
 
 		[MinLength(3)]
 		[MaxLength(32)]
+		public string? Country { get; set; }
+
+		[MinLength(3)]
+		[MaxLength(32)]
 		public string? Office { get; set; }
+
+		[MinLength(3)]
+		[MaxLength(32)]
+		public string? Department { get; set; }
 
 		[MinLength(3)]
 		[MaxLength(64)]

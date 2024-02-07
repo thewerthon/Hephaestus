@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Models {
 
-	public class Preferences : IRecord {
+	public class Preferences : IPreferences, IRecord {
 
 		[Key]
 		[Required]

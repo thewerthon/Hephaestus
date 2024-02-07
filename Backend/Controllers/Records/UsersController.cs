@@ -10,29 +10,64 @@ namespace Hephaestus.Backend.Controllers {
 
 			AllowGet = true;
 			AllowList = true;
-			AllowPost = true;
-			AllowPut = true;
-			AllowUpsert = true;
+
+		}
+
+		[ODataIgnored]
+		[HttpPut("odata/User/{guid}")] // PUT By Guid
+		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
+		public ActionResult<SingleResult<UserInfo>> PutByGuid(string guid, [FromBody] UserInfo item) {
+
+			try {
+
+				if (guid == string.Empty) return BadRequest();
+				if (item == null) return BadRequest("Item cannot be null.");
+				if (!ModelState.IsValid) return BadRequest(ModelState);
+
+				var exists = DbSet.AsNoTracking().Any(i => i.Guid == item.Guid);
+
+				if (exists) {
+
+					DbSet.Update(item);
+					DbContext.SaveChanges();
+
+				} else {
+
+					DbSet.Add(item);
+					DbContext.SaveChanges();
+
+				}
+
+				var result = DbSet.Where(i => i.Guid == item.Guid);
+				return Ok(SingleResult.Create(result));
+
+			} catch (Exception ex) {
+
+				HandleException(ex);
+				return BadRequest(ModelState);
+
+			}
 
 		}
 
 		[ODataIgnored]
 		[HttpGet("odata/User/{guid}")] // GET By Guid
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public virtual ActionResult<SingleResult<UserInfo>> GetByGuid(string guid) {
+		public ActionResult<SingleResult<UserInfo>> GetByGuid(string guid) {
 
-			var item = DbSet.AsNoTracking().Where(i => i.Guid == guid);
-			var result = SingleResult.Create(item);
-			return Ok(result);
+			try {
 
-		}
+				if (guid == string.Empty) return BadRequest();
+				var item = DbSet.AsNoTracking().Where(i => i.Guid == guid);
+				var result = SingleResult.Create(item);
+				return Ok(result);
 
-		[HttpGet] // GET Preferences
-		public ActionResult<Preferences> GetPreferences(int key) {
+			} catch (Exception ex) {
 
-			if (key <= 0) return BadRequest();
-			var item = DbContext.Set<Preferences>().AsNoTracking().FirstOrDefault(x => x.User == key);
-			return item == null ? NotFound("Item not found.") : Ok(item);
+				HandleException(ex);
+				return BadRequest(ModelState);
+
+			}
 
 		}
 

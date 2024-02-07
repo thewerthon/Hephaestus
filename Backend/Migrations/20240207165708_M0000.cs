@@ -2,7 +2,7 @@
 
 #nullable disable
 
-#pragma warning disable CA1861
+#pragma warning disable CA1861 // Prefer jagged arrays over multidimensional
 
 namespace Backend.Migrations {
 	/// <inheritdoc />
@@ -95,7 +95,9 @@ namespace Backend.Migrations {
 						Name = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
 						FirstName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
 						SecondName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+						Country = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
 						Office = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+						Department = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
 						Title = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
 						Email = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
 						Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),

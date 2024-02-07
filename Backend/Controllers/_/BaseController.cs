@@ -83,11 +83,20 @@ namespace Hephaestus.Backend.Controllers {
 		[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
 		public virtual ActionResult<IQueryable<T>> Get() {
 
-			if (!AllowList) return StatusCode(405);
-			var items = DbSet.AsNoTracking().AsQueryable();
+			try {
 
-			OnList(ref items);
-			return Ok(items);
+				if (!AllowList) return StatusCode(405);
+				var items = DbSet.AsNoTracking().AsQueryable();
+
+				OnList(ref items);
+				return Ok(items);
+
+			} catch (Exception ex) {
+
+				HandleException(ex);
+				return BadRequest(ModelState);
+
+			}
 
 		}
 
@@ -95,14 +104,23 @@ namespace Hephaestus.Backend.Controllers {
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
 		public virtual ActionResult<SingleResult<T>> Get(int key) {
 
-			if (!AllowGet) return StatusCode(405);
-			if (key <= 0) return BadRequest();
+			try {
 
-			var item = DbSet.AsNoTracking().Where(i => i.Id == key);
-			var result = SingleResult.Create(item);
+				if (!AllowGet) return StatusCode(405);
+				if (key <= 0) return BadRequest();
 
-			OnRead(ref result);
-			return Ok(result);
+				var item = DbSet.AsNoTracking().Where(i => i.Id == key);
+				var result = SingleResult.Create(item);
+
+				OnRead(ref result);
+				return Ok(result);
+
+			} catch (Exception ex) {
+
+				HandleException(ex);
+				return BadRequest(ModelState);
+
+			}
 
 		}
 

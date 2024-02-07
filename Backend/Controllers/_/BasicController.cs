@@ -27,8 +27,25 @@ namespace Hephaestus.Backend.Controllers {
 		[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
 		public virtual ActionResult<IQueryable<T>> Get() {
 
-			var items = DbSet.AsNoTracking().AsQueryable();
-			return Ok(items);
+			try {
+
+				var items = DbSet.AsNoTracking().AsQueryable();
+				return Ok(items);
+
+			} catch (Exception ex) {
+
+				HandleException(ex);
+				return BadRequest(ModelState);
+
+			}
+
+		}
+
+		// Exception Handling
+		protected virtual void HandleException(Exception ex) {
+
+			ModelState.AddModelError("exception", ex.Message);
+			ModelState.AddModelError("innerexception", ex.InnerException?.Message ?? string.Empty);
 
 		}
 
