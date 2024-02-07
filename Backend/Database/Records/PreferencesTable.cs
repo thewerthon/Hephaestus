@@ -12,9 +12,9 @@
 			builder.Property(x => x.Id).ValueGeneratedOnAdd().UseIdentityColumn();
 
 			// Relationships
-			builder.HasOne(x => x.UserData).WithOne(x => x.Preferences).HasForeignKey<Preferences>(x => x.User).OnDelete(DeleteBehavior.Cascade);
 			builder.HasOne(x => x.ThemeData).WithMany().HasForeignKey(x => x.Theme);
 			builder.HasOne(x => x.LanguageData).WithMany().HasForeignKey(x => x.Language);
+			builder.HasOne(x => x.UserData).WithOne(x => x.Preferences).HasForeignKey<Preferences>(x => x.User).OnDelete(DeleteBehavior.Cascade);
 
 		}
 

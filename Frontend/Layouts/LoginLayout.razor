@@ -45,10 +45,12 @@
 	private string year = DateTime.Now.Year.ToString();
 
 	private async Task SetLanguage(string lang) {
+
 		await LocalStorage.RemoveItemAsync("UserInfo");
 		await LocalStorage.RemoveItemAsync("UserFetched");
 		await JSRuntime.InvokeVoidAsync("setLanguage", lang);
 		NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+
 	}
 
 }

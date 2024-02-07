@@ -31,12 +31,25 @@
 
 @code {
 
+	private UserInfo? DefaultUser;
 	private UserInfo? CurrentUser;
 
 	protected override async Task OnInitializedAsync() {
 
-		CurrentUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo") ?? new() { Name = AppText["0033"], Role = AppText["0034"], Photo = "images/users/unknown.jpg" };
-		CurrentUser.Role = AppRole[(CurrentUser.Role ?? "System.User").Replace(".", string.Empty)];
+		try {
+
+			CurrentUser = await LocalStorage.GetItemAsync<UserInfo>("UserInfo");
+
+			CurrentUser.Name = CurrentUser.Name ?? AppText["0033"];
+			CurrentUser.Role = CurrentUser.Role ?? AppText["0034"];
+			CurrentUser.Photo = CurrentUser.Photo ?? "images/users/unknown.jpg";
+			CurrentUser.Role = AppRole[(CurrentUser.Role ?? "System.User").Replace(".", string.Empty)];
+
+		} catch {
+
+			CurrentUser = new() { Name = AppText["0033"], Role = AppText["0034"], Photo = "images/users/unknown.jpg", Preferences = new() };
+
+		}
 
 	}
 
@@ -44,12 +57,12 @@
 
 		if (firstRender) {
 
-			_ = JSRuntime.InvokeVoidAsync("isAppInstalled");
-
 			await UserService.FecthUserAsync();
 			CurrentUser = UserService.UserInfo;
 			CurrentUser.Role = AppRole[(UserService.UserInfo.Role ?? "System.User").Replace(".", string.Empty)];
 			StateHasChanged();
+
+			await JSRuntime.InvokeVoidAsync("isAppInstalled");
 
 		}
 
@@ -80,6 +93,8 @@
 			});
 
 		if (result ?? false) {
+			await LocalStorage.ClearAsync();
+			await SessionStorage.ClearAsync();
 			await JSRuntime.InvokeVoidAsync("update");
 		}
 

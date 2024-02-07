@@ -1,12 +1,17 @@
-﻿using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+﻿namespace Hephaestus.Architect.Models {
 
-namespace Hephaestus.Frontend.Classes {
+	public class AppUser {
 
-	public class AppUser : RemoteUserAccount {
-
-		[JsonPropertyName("roles")]
-		public List<string>? Roles { get; set; }
+		public int? Id { get; set; }
+		public string? Guid { get; set; }
+		public string? Name { get; set; }
+		public string? FirstName { get; set; }
+		public string? SecondName { get; set; }
+		public string? Office { get; set; }
+		public string? Title { get; set; }
+		public string? Email { get; set; }
+		public string? Photo { get; set; }
+		public string? Role { get; set; }
 
 	}
 

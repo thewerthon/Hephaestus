@@ -59,7 +59,7 @@ namespace Hephaestus.Backend.Controllers {
 			return items;
 		}
 
-		public FileStreamResult ToCSV(IQueryable query, string fileName = null) {
+		public FileStreamResult ToCSV(IQueryable query, string? fileName = null) {
 			var columns = GetProperties(query.ElementType);
 
 			var sb = new StringBuilder();
@@ -82,7 +82,7 @@ namespace Hephaestus.Backend.Controllers {
 			return result;
 		}
 
-		public FileStreamResult ToExcel(IQueryable query, string fileName = null) {
+		public FileStreamResult ToExcel(IQueryable query, string? fileName = null) {
 			var columns = GetProperties(query.ElementType);
 			var stream = new MemoryStream();
 
@@ -132,7 +132,7 @@ namespace Hephaestus.Backend.Controllers {
 
 						if (typeCode == TypeCode.DateTime) {
 							if (!string.IsNullOrWhiteSpace(stringValue)) {
-								cell.CellValue = new CellValue() { Text = ((DateTime)value).ToOADate().ToString(System.Globalization.CultureInfo.InvariantCulture) };
+								cell.CellValue = new CellValue() { Text = ((DateTime)value!).ToOADate().ToString(System.Globalization.CultureInfo.InvariantCulture) };
 								cell.DataType = new EnumValue<CellValues>(CellValues.Number);
 								cell.StyleIndex = (UInt32Value)1U;
 							}
@@ -144,10 +144,10 @@ namespace Hephaestus.Backend.Controllers {
 								stringValue = Convert.ToString(value, CultureInfo.InvariantCulture);
 							}
 
-							cell.CellValue = new CellValue(stringValue);
+							cell.CellValue = new CellValue(stringValue!);
 							cell.DataType = new EnumValue<CellValues>(CellValues.Number);
 						} else {
-							cell.CellValue = new CellValue(stringValue);
+							cell.CellValue = new CellValue(stringValue!);
 							cell.DataType = new EnumValue<CellValues>(CellValues.String);
 						}
 
@@ -165,7 +165,7 @@ namespace Hephaestus.Backend.Controllers {
 				stream.Seek(0, SeekOrigin.Begin);
 			}
 
-			var result = new FileStreamResult(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+			var result = new FileStreamResult(stream!, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
 				FileDownloadName = (!string.IsNullOrEmpty(fileName) ? fileName : "Export") + ".xlsx"
 			};
 

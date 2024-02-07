@@ -43,7 +43,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\Architect\Models\Records\AppVersion.cs" Link="Version.cs" />
+		<None Include="..\Architect\Models\Application\Records\AppVersion.cs" Link="Version.cs" />
 	</ItemGroup>
 
 </Project>

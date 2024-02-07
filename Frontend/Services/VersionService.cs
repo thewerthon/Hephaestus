@@ -24,7 +24,7 @@
 
 			try {
 
-				var serverVersion = await HttpClient.GetFromJsonAsync<AppVersion>("odata/appversion");
+				var serverVersion = await HttpClient.GetFromJsonAsync<AppVersion>("odata/version");
 				return serverVersion ?? new() { Build = 0, Force = 0, Name = "Unknow" };
 
 			} catch (Exception) {

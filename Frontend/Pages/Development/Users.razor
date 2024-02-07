@@ -49,14 +49,14 @@
 @code {
 
 	protected int count;
-	protected IEnumerable<UserInfo> users;
-	protected RadzenDataGrid<UserInfo> grid;
+	protected IEnumerable<UserInfo>? users;
+	protected RadzenDataGrid<UserInfo>? grid;
 
 	protected async Task GridLoadData(LoadDataArgs args) {
 
 		try {
 
-			var result = await DatabaseService.GetUsersAsync(expand: "hiddendata,activedata,preferences(expand=themedata,languagedata)", filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
+			var result = await DatabaseService.GetItemsAsync<UserInfo>(table: "users", expand: "hiddendata,activedata,preferences(expand=themedata,languagedata)", filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
 			users = result.Value.AsODataEnumerable();
 			count = result.Count;
 
@@ -71,14 +71,14 @@
 	protected async Task AddButtonClick(MouseEventArgs args) {
 
 		//await DialogService.OpenAsync<AddUser>("Add User", null);
-		await grid.Reload();
+		if (grid is not null) await grid.Reload();
 
 	}
 
 	protected async Task EditRow(DataGridRowMouseEventArgs<UserInfo> args) {
 
 		//await DialogService.OpenAsync<EditUser>("Edit User", new Dictionary<string, object> { { "Id", args.Data.Id } });
-		await grid.Reload();
+		if (grid is not null) await grid.Reload();
 
 	}
 
@@ -90,7 +90,7 @@
 
 				//var result = await DatabaseService.DeleteUserAsync(id: user.Id);
 				//if (result != null) await grid.Reload();
-				await grid.Reload();
+				if (grid is not null) await grid.Reload();
 
 			}
 

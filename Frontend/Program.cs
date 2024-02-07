@@ -25,17 +25,18 @@ builder.Services.AddScoped<UserService>();
 
 // AzureAD Authentication
 var scope = builder.Configuration.GetSection("AzureAd")["Scope"]!;
-builder.Services.AddMsalAuthentication<RemoteAuthenticationState, AppUser>(options => {
+builder.Services.AddMsalAuthentication<RemoteAuthenticationState, RemoteUser>(options => {
 	builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
 	options.ProviderOptions.DefaultAccessTokenScopes.Add(scope);
 	options.ProviderOptions.Cache.CacheLocation = "localStorage";
 	options.ProviderOptions.LoginMode = "redirect";
 	options.UserOptions.RoleClaim = "role";
-}).AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, AppUser, AccountFactory>();
+}).AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, RemoteUser, AccountFactory>();
 
 // HttpClient Service for Backend API
-builder.Services.AddHttpClient("Backend.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
-builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Backend.ServerAPI"));
+builder.Services.AddHttpClient("Backend", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+builder.Services.AddHttpClient("OData", client => client.BaseAddress = new Uri($"{builder.HostEnvironment.BaseAddress}odata/")).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Backend"));
 
 // HttpClient Service for MicrosoftGraph API
 var baseUrl = builder.Configuration.GetSection("MicrosoftGraph")["BaseUrl"]!;

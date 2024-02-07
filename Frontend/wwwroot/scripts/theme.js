@@ -15,16 +15,22 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", eve
 });
 
 function getTheme() {
-
-	userPreferences.refresh();
-	return userPreferences.theme;
-
+	
+    var info = localStorage.getItem('UserInfo');
+    var user = info ? JSON.parse(info) : null;
+    var lang = user?.Preferences?.Theme;
+	
+    if (typeof lang === 'string') {
+        return lang;
+    } else {
+        return "auto";
+    }
+	
 }
 
 function getCurrentTheme() {
 
-	userPreferences.refresh();
-	let theme = userPreferences.theme;
+	let theme = getTheme();
 
 	if (theme == "auto") {
 		if (window.matchMedia("(prefers-color-scheme: light)").matches) theme = "light";
@@ -36,10 +42,17 @@ function getCurrentTheme() {
 }
 
 function setTheme(theme) {
+	
+    var info = localStorage.getItem('UserInfo');
+    var user = info ? JSON.parse(info) : {};
+    
+    if (!user.Preferences) {
+        user.Preferences = {};
+    }
 
-	userPreferences.theme = theme;
-	userPreferences.save()
-
+    user.Preferences.Theme = theme;
+	localStorage.setItem('UserInfo', JSON.stringify(user));
+	
 }
 
 function setToggle() {
