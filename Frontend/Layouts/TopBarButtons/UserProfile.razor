@@ -45,9 +45,10 @@
 
 		if (firstRender) {
 
+			await JSRuntime.InvokeVoidAsync("isAppInstalled");
+
 			User = UserService.CurrentUser;
 			User.Role = AppRole[(User.Role ?? "System.User").Replace(".", string.Empty)];
-			await JSRuntime.InvokeVoidAsync("isAppInstalled");
 			StateHasChanged();
 
 		}

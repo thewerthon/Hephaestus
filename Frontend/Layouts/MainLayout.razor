@@ -37,11 +37,15 @@
 	bool sidebarExpanded = true;
 
 	protected override void OnInitialized() {
+
 		SessionStorage.RemoveItemAsync("ReturnPath");
+
 	}
 
 	private void SidebarToggle() {
+
 		sidebarExpanded = !sidebarExpanded;
+
 	}
 
 }

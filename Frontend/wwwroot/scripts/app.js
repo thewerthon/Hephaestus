@@ -82,6 +82,13 @@ async function fireIconAnim(iconId) {
 
 }
 
+function setCursor(state) {
+
+	state = state == "pointer" || state == "wait" ? state : "default";
+	document.body.style.cursor = state;
+
+}
+
 function log(message) {
 
 	console.log(message);

@@ -23,7 +23,8 @@ namespace Hephaestus.Backend.Controllers {
 			AllowedQueryOptions.Count | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.SkipToken |
 			AllowedQueryOptions.Search | AllowedQueryOptions.Apply | AllowedQueryOptions.Compute;
 
-		[HttpGet] // GET All
+		// LIST
+		[HttpGet]
 		[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
 		public virtual ActionResult<IQueryable<T>> Get() {
 

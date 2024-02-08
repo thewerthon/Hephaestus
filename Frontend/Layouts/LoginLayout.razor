@@ -47,7 +47,6 @@
 	private async Task SetLanguage(string lang) {
 
 		await UserService.SetLanguageAsync(lang, false);
-		await UserService.ClearLocalUserAsync(true, true, true);
 		NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
 
 	}

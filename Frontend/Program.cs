@@ -19,6 +19,7 @@ builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddBlazoredSessionStorage();
 
 // Frontend Services
+builder.Services.AddScoped<CursorService>();
 builder.Services.AddScoped<DatabaseService>();
 builder.Services.AddScoped<VersionService>();
 builder.Services.AddScoped<UserService>();
@@ -56,10 +57,9 @@ var host = builder.Build();
 CultureInfo culture;
 var js = host.Services.GetRequiredService<IJSRuntime>();
 var lang = await js.InvokeAsync<string>("getLanguage");
-culture = new CultureInfo(lang);
 
 // Set Culture
-await js.InvokeVoidAsync("setLanguage", lang);
+culture = new CultureInfo(lang);
 CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;
 

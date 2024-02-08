@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
 
 namespace Hephaestus.Frontend.Services {
 
-	public class AccountFactory(IAccessTokenProviderAccessor accessor, UserService service, NavigationManager navigation) : AccountClaimsPrincipalFactory<RemoteUser>(accessor) {
+	public class AccountFactory(IAccessTokenProviderAccessor accessor, UserService service) : AccountClaimsPrincipalFactory<RemoteUser>(accessor) {
 
 		private readonly UserService UserService = service;
 
@@ -19,7 +19,7 @@ namespace Hephaestus.Frontend.Services {
 
 				UserService.Guid = identity.FindFirst("oid")?.Value ?? "";
 				UserService.Role = identity.FindFirst("role")?.Value ?? "System.User";
-				if (navigation.Uri.Contains("/auth")) await UserService.FecthUserAsync();
+				await UserService.FecthUserAsync();
 
 			}
 

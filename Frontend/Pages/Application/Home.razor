@@ -32,11 +32,11 @@
 
 		<br />
 		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Primary" Text="Primary" Click="GoTeste"></RadzenButton>
-		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Secondary" Text="Secondary"></RadzenButton>
-		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Success" Text="Success"></RadzenButton>
-		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Danger" Text="Danger"></RadzenButton>
-		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Warning" Text="Warning"></RadzenButton>
-		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Info" Text="Info"></RadzenButton>
+		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Secondary" Text="Secondary" Click="GoTeste"></RadzenButton>
+		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Success" Text="Success" Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Success, Summary = "Concluído!", Detail = "Solicitação concluída com sucesso.", Duration = 100000 }))></RadzenButton>
+		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Danger" Text="Danger" Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Error, Summary = "Error Desconhecido", Detail = "Um erro desconhecido ocorreu", Duration = 100000 }))></RadzenButton>
+		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Warning" Text="Warning" Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Warning, Summary = "Aviso Importante", Detail = "Você não pode fazer isso!", Duration = 100000 }))></RadzenButton>
+		<RadzenButton Style="width: 100px" Shade="Shade.Default" ButtonStyle="Radzen.ButtonStyle.Info" Text="Info" Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Atualização Disponível", Detail = "Há uma nova atualização do aplicativo dispon;ivel.", Duration = 100000 }))></RadzenButton>
 
 		<br />
 		<RadzenButton Style="width: 100px" Shade="Shade.Dark" ButtonStyle="Radzen.ButtonStyle.Primary" Text="Primary" Click="GoTeste"></RadzenButton>
@@ -151,8 +151,16 @@
 	private DateTime dt = DateTime.Now;
 	private double number = 1999.69;
 
+	private void ShowNotification(NotificationMessage message) {
+
+		NotificationService.Notify(message);
+
+	}
+
 	private void GoTeste() {
+
 		NavigationManager.NavigateTo("/dev/test1");
+
 	}
 
 }

@@ -1,4 +1,5 @@
 :root {
+	--rz-icon-size: 24px;
 	--rz-base-50: #ffffff;
 	--rz-base-100: #f6f7fa;
 	--rz-base-200: #e9edf0;
@@ -131,10 +132,10 @@
 	--rz-panel-menu-item-2nd-level-active-background-color: rgba(125, 173, 249, 0.1);
 	--rz-panel-menu-item-3rd-level-hover-background-color: rgba(125, 173, 249, 0.07);
 	--rz-panel-menu-item-3rd-level-active-background-color: rgba(125, 173, 249, 0.1);
-	--rz-panel-menu-icon-width: 1.5rem;
-	--rz-panel-menu-icon-height: 1.5rem;
+	--rz-panel-menu-icon-width: 28px;
+	--rz-panel-menu-icon-height: 28px;
 	--rz-panel-menu-icon-margin: 0 0.8rem 0 0;
-	--rz-panel-menu-icon-2nd-level-icon-size: 20px;
+	--rz-panel-menu-icon-2nd-level-icon-size: 24px;
 }
 
 :root {
@@ -166,6 +167,24 @@
 	--rz-grid-bottom-cell-border: var(--rz-border-disabled);
 	--rz-grid-border-radius: var(--rz-button-border-radius);
 	--rz-grid-stripe-background-color: var(--rz-base-900);
+}
+
+:root {
+	--rz-notification-padding: 1rem 1rem;
+	--rz-notification-border-radius: 20px;
+	--rz-notification-icon-margin: 0 0.625rem 0 0;
+	--rz-notification-success-background-color: #255451cc;
+	--rz-notification-error-background-color: #64414bcc;
+	--rz-notification-warning-background-color: #706243cc;
+	--rz-notification-info-background-color: #315e89cc;
+	--rz-notification-success-color: var(--rz-on-success-lighter);
+	--rz-notification-error-color: var(--rz-on-danger-lighter);
+	--rz-notification-warning-color: var(--rz-on-warning-lighter);
+	--rz-notification-info-color: var(--rz-on-info-lighter);
+	--rz-notification-info-icon-color: var(--rz-on-info-lighter);
+	--rz-notification-success-icon-color: var(--rz-on-success-lighter);
+	--rz-notification-error-icon-color: var(--rz-on-danger-lighter);
+	--rz-notification-warning-icon-color: var(--rz-on-warning-lighter);
 }
 
 .rz-panel-menu .rz-navigation-item-link {
@@ -273,8 +292,26 @@ ul.rz-profile-menu {
 
 .rz-datatable-emptymessage {
 	padding-right: 60px;
-    text-align: center;
-    height: 70px;
+	text-align: center;
+	height: 70px;
+}
+
+.rz-notification {
+	top: 60px !important;
+	right: 15px !important;
+}
+
+.rz-growl-title {
+	display: block;
+}
+
+.rz-growl-message p {
+	display: block;
+	padding-left: 33px;
+}
+
+.rz-growl-item {
+	backdrop-filter: blur(10px);
 }
 
 .logo {

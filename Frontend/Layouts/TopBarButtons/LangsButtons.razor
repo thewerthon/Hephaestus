@@ -34,8 +34,7 @@
 
 		if (result ?? false) {
 
-			await UserService.SetLanguageAsync(lang, false);
-			await UserService.ClearLocalUserAsync(true, true, true);
+			await UserService.SetLanguageAsync(lang, true);
 			NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
 
 		}

@@ -4,26 +4,18 @@ using Microsoft.AspNetCore.OData.Routing.Attributes;
 
 namespace Hephaestus.Backend.Controllers {
 
-	public class PreferencesController : BaseController<Preferences> {
+	public class PreferencesController(DatabaseContext context) : BaseController<Preferences>(context) {
 
-		public PreferencesController(DatabaseContext context) : base(context) {
-
-			AllowGet = true;
-			AllowList = true;
-			AllowPost = true;
-			AllowPut = true;
-
-		}
-
+		// GET By User
 		[ODataIgnored]
-		[HttpGet("odata/Preferences/{user}")] // GET By User
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public ActionResult<SingleResult<Preferences>> GetByUser(int user) {
+		[HttpGet("odata/Preferences/{user}")]
+		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
+		public ActionResult<SingleResult<UserInfo>> GetByUser(int user) {
 
 			try {
 
-				var item = DbSet.AsNoTracking().Where(i => i.User == user);
-				return item.Any() ? Ok(SingleResult.Create(item)) : Ok(null);
+				var record = DbSet.AsNoTracking().Where(i => i.User == user);
+				return record.Any() ? Ok(SingleResult.Create(record)) : Ok(null);
 
 			} catch (Exception ex) {
 
@@ -34,31 +26,27 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
+		// PUT By User
 		[ODataIgnored]
-		[HttpPut("odata/Preferences/{user}")] // PUT By User
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public ActionResult<SingleResult<Preferences>> PutByUser(int user, [FromBody] Preferences item) {
+		[HttpPut("odata/Preferences/{user}")]
+		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
+		public ActionResult PutByUser(int user, [FromBody] Preferences item, [FromQuery] bool response = true) {
 
 			try {
 
-				if (item == null) return BadRequest("Item cannot be null.");
+				if (user < 0) user = 0;
+				if (item == null) return BadRequest("Invalid data.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				var prefs = DbSet.AsNoTracking().Where(i => i.User == user);
+				var record = DbSet.AsNoTracking().FirstOrDefault(i => i.User == user);
+				item.Id = record is not null ? record.Id : 0;
 
-				if (prefs.Any()) {
+				DbSet.Update(item);
+				DbContext.SaveChanges();
 
-					DbSet.Add(item);
-					DbContext.SaveChanges();
-
-				} else {
-
-					DbSet.Update(item);
-					DbContext.SaveChanges();
-
-				}
-
-				return Ok(item);
+				if (!response) return Ok();
+				var result = DbSet.AsNoTracking().Where(i => i.Id == item.Id);
+				return Ok(SingleResult.Create(result));
 
 			} catch (Exception ex) {
 

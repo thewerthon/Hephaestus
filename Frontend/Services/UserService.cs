@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+﻿using Hephaestus.Architect.Models;
 using Hephaestus.Frontend.Pages;
 
 namespace Hephaestus.Frontend.Services {
@@ -16,6 +16,7 @@ namespace Hephaestus.Frontend.Services {
 		public AppUser CurrentUser = new();
 		public AppPreferences Preferences = new();
 
+		private bool Fetching = false;
 		private AppUser LocalUser = new();
 		private UserInfo ServerUser = new();
 		private GraphUser GraphUser = new();
@@ -24,7 +25,7 @@ namespace Hephaestus.Frontend.Services {
 		private DateTime LastFetched = default;
 		private byte[]? UserPhoto;
 
-		private void InitializeUser() {
+		private void SetCurrentUser() {
 
 			CurrentUser.Id = User;
 			CurrentUser.Guid = Guid;
@@ -54,7 +55,7 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		private async Task GetLocalUserAsync() {
+		public async Task GetLocalUserAsync() {
 
 			try {
 
@@ -69,7 +70,7 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		private async Task GetServerUserAsync() {
+		public async Task GetServerUserAsync() {
 
 			try {
 
@@ -84,11 +85,11 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		private async Task GetGraphUserAsync() {
+		public async Task GetGraphUserAsync() {
 
 			try {
 
-				Console.WriteLine("graph fetch");
+				Console.WriteLine("Fetching user from Microsoft Graph");
 				var graph = ClientFactory.CreateClient("GraphAPI");
 				var task1 = graph.GetFromJsonAsync<GraphUser>("v1.0/me?$select=id,displayName,givenName,surname,country,officeLocation,department,jobTitle,mail,accountEnabled");
 				var task2 = graph.GetByteArrayAsync("v1.0/me/photos/96x96/$value");
@@ -106,7 +107,7 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		private async Task GetLocalPreferencesAsync() {
+		public async Task GetLocalPreferencesAsync() {
 
 			try {
 
@@ -121,7 +122,7 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		private async Task GetServerPreferencesAsync() {
+		public async Task GetServerPreferencesAsync() {
 
 			try {
 
@@ -136,47 +137,13 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		private async Task InitializeLocalUserAsync() {
-
-			await GetLocalUserAsync();
-			CurrentUser = LocalUser;
-
-		}
-
-		private async Task InitializeServerUserAsync() {
-
-			await GetServerUserAsync();
-			CurrentUser = ServerUser;
-
-		}
-
-		private async Task InitializeGraphUserAsync() {
-
-			await GetGraphUserAsync();
-			CurrentUser = GraphUser;
-			CurrentUser.Photo = UserPhoto == null ? CurrentUser.Photo : "data:image/jpeg;base64," + Convert.ToBase64String(UserPhoto);
-
-		}
-
-		private async Task InitializeLocalPreferencesAsync() {
-
-			await GetLocalPreferencesAsync();
-			Preferences = LocalPreferences;
-
-		}
-
-		private async Task InitializeServerPreferencesAsync() {
-
-			await GetServerPreferencesAsync();
-			Preferences = ServerPreferences;
-
-		}
-
 		private async Task SaveLocalUserAsync() {
 
 			if (CurrentUser is not null) {
 
+				SetCurrentUser();
 				await LocalStorage.SetItemAsync("CurrentUser", CurrentUser);
+				LocalUser = CurrentUser;
 
 			}
 
@@ -186,6 +153,8 @@ namespace Hephaestus.Frontend.Services {
 
 			if (CurrentUser is not null) {
 
+				SetCurrentUser();
+
 				var odata = ClientFactory.CreateClient("OData");
 				var endpoint = new Uri(odata.BaseAddress!, $"User/{Guid}");
 				var message = new HttpRequestMessage(HttpMethod.Put, endpoint) {
@@ -194,6 +163,7 @@ namespace Hephaestus.Frontend.Services {
 
 				var response = await odata.SendAsync(message);
 				var userinfo = await HttpResponseMessageExtensions.ReadAsync<UserInfo>(response);
+				if (userinfo != null) ServerUser = userinfo;
 
 			}
 
@@ -203,7 +173,9 @@ namespace Hephaestus.Frontend.Services {
 
 			if (Preferences is not null) {
 
+				SetCurrentUser();
 				await LocalStorage.SetItemAsync("Preferences", Preferences);
+				LocalPreferences = Preferences;
 
 			}
 
@@ -213,10 +185,11 @@ namespace Hephaestus.Frontend.Services {
 
 			if (Preferences is not null) {
 
+				SetCurrentUser();
 				var odata = ClientFactory.CreateClient("OData");
-				var endpoint = new Uri(odata.BaseAddress!, $"Preferences/{User}");
+				var endpoint = new Uri(odata.BaseAddress!, $"Preferences/{User}?response=false");
 				var message = new HttpRequestMessage(HttpMethod.Put, endpoint) {
-					Content = new StringContent(ODataJsonSerializer.Serialize(CurrentUser), Encoding.UTF8, "application/json")
+					Content = new StringContent(ODataJsonSerializer.Serialize(Preferences), Encoding.UTF8, "application/json")
 				};
 
 				await odata.SendAsync(message);
@@ -268,46 +241,88 @@ namespace Hephaestus.Frontend.Services {
 		public async Task FecthUserAsync(bool force = false) {
 
 			await GetFetchedAsync();
-			await InitializeLocalUserAsync();
+			await GetLocalUserAsync();
+			CurrentUser = LocalUser;
 
-			if (LocalUser.Id == 0) force = true;
-			if (LocalUser.Guid != Guid) force = true;
-			if (LocalUser.Role != Role) force = true;
+			if (CurrentUser.Id == 0) force = true;
+			if (CurrentUser.Guid != Guid) force = true;
+			if (CurrentUser.Role != Role) force = true;
 
 			if (DateTime.UtcNow > LastFetched.AddHours(24) || force) {
 
-				await InitializeServerUserAsync();
-				await InitializeGraphUserAsync();
-				await SaveServerUserAsync();
+				if (!Fetching) {
 
-				User = ServerUser.Id;
-				InitializeUser();
+					Fetching = true;
 
-				await SaveLocalUserAsync();
-				await SetFetchedAsync();
+					try {
+
+						await GetGraphUserAsync();
+						CurrentUser = GraphUser;
+						CurrentUser.Photo
+							= UserPhoto == null
+							? CurrentUser.Photo
+							: "data:image/jpeg;base64,"
+							+ Convert.ToBase64String(UserPhoto);
+
+						await SaveServerUserAsync();
+						User = ServerUser.Id;
+
+						await SaveLocalUserAsync();
+						await SetFetchedAsync();
+
+					} catch (Exception ex) {
+
+						Console.WriteLine("An error ocurred while fetching user.");
+						Console.WriteLine(ex.Message);
+
+					} finally {
+
+						Fetching = false;
+
+					}
+
+				}
 
 			} else {
 
 				User = LocalUser.Id;
-				InitializeUser();
 
 			}
 
-			await InitializeLocalPreferencesAsync();
-			await InitializeServerPreferencesAsync();
-			await SetThemeAsync(Preferences.Theme, false);
-			await SetLanguageAsync(Preferences.Language, false);
+			await GetLocalPreferencesAsync();
+			await GetServerPreferencesAsync();
 
-			//InitializeUser();
-			//await SavePreferencesAsync(true, true);
+			if (ServerPreferences.Id > 0) {
+
+				Preferences = ServerPreferences;
+				await SetThemeAsync(Preferences.Theme, false);
+				await SetLanguageAsync(Preferences.Language, false);
+
+			} else {
+
+				Preferences = LocalPreferences;
+				await SavePreferencesAsync(true, true);
+
+			}
+
+		}
+
+		public async Task ToggleThemeAsync(bool save = true) {
+
+			var theme = await JSRuntime.InvokeAsync<string>("toggleTheme");
+
+			Preferences.Theme = theme;
+			LocalPreferences.Theme = theme;
+			await SavePreferencesAsync(true, save);
 
 		}
 
 		public async Task SetThemeAsync(string? theme, bool save = true) {
 
-			if (Preferences.Theme != theme) {
+			if (LocalPreferences.Theme != theme) {
 
 				Preferences.Theme = theme;
+				LocalPreferences.Theme = theme;
 				await JSRuntime.InvokeVoidAsync("applyTheme", theme);
 				await SavePreferencesAsync(true, save);
 
@@ -317,13 +332,10 @@ namespace Hephaestus.Frontend.Services {
 
 		public async Task SetLanguageAsync(string? language, bool save = true) {
 
-			if (Preferences.Language != language) {
+			if (LocalPreferences.Language != language) {
 
-				CultureInfo culture;
 				Preferences.Language = language;
-				culture = new CultureInfo(Preferences.Language ?? "pt");
-				CultureInfo.DefaultThreadCurrentCulture = culture;
-				CultureInfo.DefaultThreadCurrentUICulture = culture;
+				LocalPreferences.Theme = language;
 				await SavePreferencesAsync(true, save);
 
 			}

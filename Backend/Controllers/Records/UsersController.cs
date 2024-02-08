@@ -4,27 +4,18 @@ using Microsoft.AspNetCore.OData.Routing.Attributes;
 
 namespace Hephaestus.Backend.Controllers {
 
-	public class UsersController : BaseController<UserInfo> {
+	public class UsersController(DatabaseContext context) : BaseController<UserInfo>(context) {
 
-		public UsersController(DatabaseContext context) : base(context) {
-
-			AllowGet = true;
-			AllowList = true;
-			AllowPost = true;
-			AllowPut = true;
-			AllowPatch = true;
-
-		}
-
+		// GET By Guid
 		[ODataIgnored]
-		[HttpGet("odata/User/{guid}")] // GET By Guid
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
+		[HttpGet("odata/User/{guid}")]
+		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
 		public ActionResult<SingleResult<UserInfo>> GetByGuid(string guid) {
 
 			try {
 
-				var user = DbSet.AsNoTracking().Where(i => i.Guid == guid);
-				return user.Any() ? Ok(SingleResult.Create(user)) : Ok(null);
+				var record = DbSet.AsNoTracking().Where(i => i.Guid == guid);
+				return record.Any() ? Ok(SingleResult.Create(record)) : Ok(null);
 
 			} catch (Exception ex) {
 
@@ -35,22 +26,26 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
+		// PUT By Guid
 		[ODataIgnored]
-		[HttpPut("odata/User/{guid}")] // PUT By Guid
-		public ActionResult<UserInfo> PutByGuid(string guid, [FromBody] UserInfo item) {
+		[HttpPut("odata/User/{guid}")]
+		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
+		public ActionResult PutByGuid(string guid, [FromBody] UserInfo item, [FromQuery] bool response = true) {
 
 			try {
 
-				if (guid == string.Empty) return BadRequest();
-				if (item == null) return BadRequest("Item cannot be null.");
+				if (item == null) return BadRequest("Invalid data.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				var user = DbSet.AsNoTracking().FirstOrDefault(i => i.Guid == guid);
-				if (user is not null) item.Id = user.Id;
+				var record = DbSet.AsNoTracking().FirstOrDefault(i => i.Guid == guid);
+				item.Id = record is not null ? record.Id : 0;
 
 				DbSet.Update(item);
 				DbContext.SaveChanges();
-				return Ok(item);
+
+				if (!response) return Ok();
+				var result = DbSet.AsNoTracking().Where(i => i.Id == item.Id);
+				return Ok(SingleResult.Create(result));
 
 			} catch (Exception ex) {
 
