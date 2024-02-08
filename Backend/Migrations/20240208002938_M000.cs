@@ -6,7 +6,7 @@
 
 namespace Backend.Migrations {
 	/// <inheritdoc />
-	public partial class M0000 : Migration {
+	public partial class M000 : Migration {
 		/// <inheritdoc />
 		protected override void Up(MigrationBuilder migrationBuilder) {
 			migrationBuilder.CreateTable(

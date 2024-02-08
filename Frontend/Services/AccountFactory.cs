@@ -17,8 +17,9 @@ namespace Hephaestus.Frontend.Services {
 				var identity = (ClaimsIdentity)user.Identity;
 				account?.Roles?.ForEach((role) => { identity.AddClaim(new Claim("role", role)); });
 
-				UserService.Claims = user;
-				await UserService.FecthUserAsync(navigation.Uri.Contains("/auth"));
+				UserService.Guid = identity.FindFirst("oid")?.Value ?? "";
+				UserService.Role = identity.FindFirst("role")?.Value ?? "System.User";
+				if (navigation.Uri.Contains("/auth")) await UserService.FecthUserAsync();
 
 			}
 

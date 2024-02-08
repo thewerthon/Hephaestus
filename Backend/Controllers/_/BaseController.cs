@@ -51,7 +51,7 @@ namespace Hephaestus.Backend.Controllers {
 
 		[HttpPost] // POST Item Method
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public virtual IActionResult Post([FromBody] T item, [FromQuery] bool response = true) {
+		public virtual IActionResult Post([FromBody] T item) {
 
 			try {
 
@@ -59,16 +59,15 @@ namespace Hephaestus.Backend.Controllers {
 				if (item == null) return BadRequest("Item cannot be null.");
 				if (item.Id != 0) return BadRequest("Id must be 0 for new items.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
-				if (!BeforeCreate(ref item)) return BadRequest(ResponseMessage);
+
+				if (!BeforeCreate(ref item))
+					return BadRequest(ResponseMessage);
 
 				DbSet.Add(item);
 				DbContext.SaveChanges();
 
 				OnCreated(ref item);
-				if (!response) return Ok();
-
-				var result = DbSet.Where(i => i.Id == item.Id);
-				return Ok(SingleResult.Create(result));
+				return Ok(item);
 
 			} catch (Exception ex) {
 
@@ -110,10 +109,18 @@ namespace Hephaestus.Backend.Controllers {
 				if (key <= 0) return BadRequest();
 
 				var item = DbSet.AsNoTracking().Where(i => i.Id == key);
-				var result = SingleResult.Create(item);
 
-				OnRead(ref result);
-				return Ok(result);
+				if (item.Any()) {
+
+					var result = SingleResult.Create(item);
+					OnRead(ref result);
+					return Ok(result);
+
+				} else {
+
+					return Ok(null);
+
+				}
 
 			} catch (Exception ex) {
 
@@ -126,7 +133,7 @@ namespace Hephaestus.Backend.Controllers {
 
 		[HttpPut] // PUT Item Method
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public virtual IActionResult Put(int key, [FromBody] T item, [FromQuery] bool upsert = false, [FromQuery] bool response = true) {
+		public virtual IActionResult Put(int key, [FromBody] T item, [FromQuery] bool upsert = false) {
 
 			try {
 
@@ -140,15 +147,16 @@ namespace Hephaestus.Backend.Controllers {
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
 				var insert = false;
-				var check = DbSet.AsNoTracking().Where(i => i.Id == item.Id).FirstOrDefault();
-				if (check == null && !upsert) return NotFound("Item not found.");
-				if (check == null && upsert) insert = true;
+				var exists = DbSet.AsNoTracking().Any(i => i.Id == item.Id);
+				if (!exists && !upsert) return NotFound("Item not found.");
+				if (!exists && upsert) insert = true;
 
 				if (insert) {
 
 					if (!BeforeCreate(ref item))
 						return BadRequest(ResponseMessage);
 
+					item.Id = 0;
 					DbSet.Add(item);
 					DbContext.SaveChanges();
 					OnCreated(ref item);
@@ -164,10 +172,7 @@ namespace Hephaestus.Backend.Controllers {
 
 				}
 
-				if (!response) return Ok();
-
-				var result = DbSet.Where(i => i.Id == item.Id);
-				return Ok(SingleResult.Create(result));
+				return Ok(item);
 
 			} catch (Exception ex) {
 
@@ -180,7 +185,7 @@ namespace Hephaestus.Backend.Controllers {
 
 		[HttpPatch] // PATCH Item Method
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public virtual IActionResult Patch(int key, [FromBody] Delta<T> item, [FromQuery] bool response = true) {
+		public virtual IActionResult Patch(int key, [FromBody] Delta<T> item) {
 
 			try {
 
@@ -190,20 +195,18 @@ namespace Hephaestus.Backend.Controllers {
 				if (!item.GetChangedPropertyNames().Any()) return BadRequest("Data cannot be empty.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				var check = DbSet.Where(i => i.Id == key).FirstOrDefault();
-				if (check == null) return NotFound("Item not found.");
+				var i = DbSet.Where(i => i.Id == key).FirstOrDefault();
+				if (i == null) return NotFound("Item not found.");
 
-				item.Patch(check);
-				if (!BeforeUpdate(ref check)) return BadRequest(ResponseMessage);
+				item.Patch(i);
+				if (!BeforeUpdate(ref i))
+					return BadRequest(ResponseMessage);
 
-				DbSet.Update(check);
+				DbSet.Update(i);
 				DbContext.SaveChanges();
 
-				OnUpdated(ref check);
-				if (!response) return Ok();
-
-				var result = DbSet.Where(i => i.Id == key);
-				return Ok(SingleResult.Create(result));
+				OnUpdated(ref i);
+				return Ok(i);
 
 			} catch (Exception ex) {
 

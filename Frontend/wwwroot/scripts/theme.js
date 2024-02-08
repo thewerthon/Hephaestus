@@ -14,18 +14,23 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", eve
 
 });
 
+function setTheme(theme) {
+
+	var preferences = JSON.parse(localStorage.getItem("Preferences")) || {};
+	theme !== "light" && theme !== "dark" ? "auto" : theme;
+	preferences.Theme = theme;
+
+	localStorage.setItem("Preferences", JSON.stringify(preferences));
+
+}
+
 function getTheme() {
-	
-    var info = localStorage.getItem('UserInfo');
-    var user = info ? JSON.parse(info) : null;
-    var lang = user?.Preferences?.Theme;
-	
-    if (typeof lang === 'string') {
-        return lang;
-    } else {
-        return "auto";
-    }
-	
+
+	var preferences = JSON.parse(localStorage.getItem("Preferences")) || {};
+	var theme = preferences.Theme || "auto";
+
+	return theme !== "light" && theme !== "dark" ? "auto" : theme;
+
 }
 
 function getCurrentTheme() {
@@ -39,20 +44,6 @@ function getCurrentTheme() {
 
 	return theme;
 
-}
-
-function setTheme(theme) {
-	
-    var info = localStorage.getItem('UserInfo');
-    var user = info ? JSON.parse(info) : {};
-    
-    if (!user.Preferences) {
-        user.Preferences = {};
-    }
-
-    user.Preferences.Theme = theme;
-	localStorage.setItem('UserInfo', JSON.stringify(user));
-	
 }
 
 function setToggle() {

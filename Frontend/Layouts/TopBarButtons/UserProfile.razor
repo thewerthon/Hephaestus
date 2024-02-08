@@ -33,11 +33,9 @@
 
 	private AppUser? User;
 
-	protected override async Task OnInitializedAsync() {
+	protected override void OnInitialized() {
 
-		//await UserService.GetLocalUserAsync();
-
-		User = UserService.AppUser;
+		User = UserService.CurrentUser;
 		User.Name ??= AppText["0033"];
 		User.Role ??= AppText["0034"];
 
@@ -47,11 +45,8 @@
 
 		if (firstRender) {
 
-			//await UserService.FecthUserAsync();
-
-			User = UserService.AppUser;
+			User = UserService.CurrentUser;
 			User.Role = AppRole[(User.Role ?? "System.User").Replace(".", string.Empty)];
-
 			await JSRuntime.InvokeVoidAsync("isAppInstalled");
 			StateHasChanged();
 

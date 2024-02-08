@@ -10,36 +10,21 @@ namespace Hephaestus.Backend.Controllers {
 
 			AllowGet = true;
 			AllowList = true;
+			AllowPost = true;
+			AllowPut = true;
+			AllowPatch = true;
 
 		}
 
 		[ODataIgnored]
-		[HttpPut("odata/User/{guid}")] // PUT By Guid
+		[HttpGet("odata/User/{guid}")] // GET By Guid
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public ActionResult<SingleResult<UserInfo>> PutByGuid(string guid, [FromBody] UserInfo item) {
+		public ActionResult<SingleResult<UserInfo>> GetByGuid(string guid) {
 
 			try {
 
-				if (guid == string.Empty) return BadRequest();
-				if (item == null) return BadRequest("Item cannot be null.");
-				if (!ModelState.IsValid) return BadRequest(ModelState);
-
-				var exists = DbSet.AsNoTracking().Any(i => i.Guid == item.Guid);
-
-				if (exists) {
-
-					DbSet.Update(item);
-					DbContext.SaveChanges();
-
-				} else {
-
-					DbSet.Add(item);
-					DbContext.SaveChanges();
-
-				}
-
-				var result = DbSet.Where(i => i.Guid == item.Guid);
-				return Ok(SingleResult.Create(result));
+				var user = DbSet.AsNoTracking().Where(i => i.Guid == guid);
+				return user.Any() ? Ok(SingleResult.Create(user)) : Ok(null);
 
 			} catch (Exception ex) {
 
@@ -51,16 +36,21 @@ namespace Hephaestus.Backend.Controllers {
 		}
 
 		[ODataIgnored]
-		[HttpGet("odata/User/{guid}")] // GET By Guid
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public ActionResult<SingleResult<UserInfo>> GetByGuid(string guid) {
+		[HttpPut("odata/User/{guid}")] // PUT By Guid
+		public ActionResult<UserInfo> PutByGuid(string guid, [FromBody] UserInfo item) {
 
 			try {
 
 				if (guid == string.Empty) return BadRequest();
-				var item = DbSet.AsNoTracking().Where(i => i.Guid == guid);
-				var result = SingleResult.Create(item);
-				return Ok(result);
+				if (item == null) return BadRequest("Item cannot be null.");
+				if (!ModelState.IsValid) return BadRequest(ModelState);
+
+				var user = DbSet.AsNoTracking().FirstOrDefault(i => i.Guid == guid);
+				if (user is not null) item.Id = user.Id;
+
+				DbSet.Update(item);
+				DbContext.SaveChanges();
+				return Ok(item);
 
 			} catch (Exception ex) {
 

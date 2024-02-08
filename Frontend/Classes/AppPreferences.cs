@@ -5,6 +5,7 @@ namespace Hephaestus.Frontend.Classes {
 	public class AppPreferences : IPreferences {
 
 		public int Id { get; set; } = 0;
+		public int User { get; set; } = 0;
 		public string? Theme { get; set; } = "auto";
 		public string? Language { get; set; } = "pt";
 
@@ -13,6 +14,7 @@ namespace Hephaestus.Frontend.Classes {
 			return new AppPreferences {
 
 				Id = preferences.Id,
+				User = preferences.User,
 				Theme = preferences.Theme,
 				Language = preferences.Language
 
@@ -29,6 +31,7 @@ namespace Hephaestus.Frontend.Classes {
 			return new AppPreferences {
 
 				Id = preferences.Id,
+				User = preferences.User,
 				Theme = preferences.Theme,
 				Language = preferences.Language
 

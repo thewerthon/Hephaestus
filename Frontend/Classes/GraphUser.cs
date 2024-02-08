@@ -5,7 +5,7 @@ namespace Hephaestus.Frontend.Classes {
 
 	public class GraphUser : IUser {
 
-		[JsonPropertyName("i")]
+		[JsonPropertyName("0")]
 		public int Id { get; set; } = 0;
 
 		[JsonPropertyName("id")]

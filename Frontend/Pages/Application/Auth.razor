@@ -55,8 +55,7 @@
 	}
 
 	private async Task LogoutSucceeded() {
-		await LocalStorage.RemoveItemAsync("UserInfo");
-		await LocalStorage.RemoveItemAsync("UserFetched");
+		await UserService.ClearLocalUserAsync(true, true, true);
 	}
 
 	private void DoLogin() {

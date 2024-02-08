@@ -1,27 +1,18 @@
-function getLanguage() {
-	
-    var info = localStorage.getItem('UserInfo');
-    var user = info ? JSON.parse(info) : null;
-    var lang = user?.Preferences?.Language;
-	
-    if (typeof lang === 'string') {
-        return lang;
-    } else {
-        return "pt";
-    }
-	
+function setLanguage(language) {
+
+	var preferences = JSON.parse(localStorage.getItem("Preferences")) || {};
+	language = language !== "en" && language !== "es" ? "pt" : language;
+	preferences.Language = language;
+
+	localStorage.setItem("Preferences", JSON.stringify(preferences));
+
 }
 
-function setLanguage(language) {
-	
-    var info = localStorage.getItem('UserInfo');
-    var user = info ? JSON.parse(info) : {};
-    
-    if (!user.Preferences) {
-        user.Preferences = {};
-    }
+function getLanguage() {
 
-    user.Preferences.Language = language;
-	localStorage.setItem('UserInfo', JSON.stringify(user));
-	
+	var preferences = JSON.parse(localStorage.getItem("Preferences")) || {};
+	var language = preferences.Language || "pt";
+
+	return language !== "en" && language !== "es" ? "pt" : language;
+
 }
