@@ -1,7 +1,4 @@
-﻿using Hephaestus.Architect.Models;
-using Hephaestus.Frontend.Pages;
-
-namespace Hephaestus.Frontend.Services {
+﻿namespace Hephaestus.Frontend.Services {
 
 	public class UserService(IHttpClientFactory client, ILocalStorageService storage, IJSRuntime runtime) {
 
@@ -18,7 +15,7 @@ namespace Hephaestus.Frontend.Services {
 
 		private bool Fetching = false;
 		private AppUser LocalUser = new();
-		private UserInfo ServerUser = new();
+		private User ServerUser = new();
 		private GraphUser GraphUser = new();
 		private AppPreferences LocalPreferences = new();
 		private Preferences ServerPreferences = new();
@@ -28,7 +25,7 @@ namespace Hephaestus.Frontend.Services {
 		private void SetCurrentUser() {
 
 			CurrentUser.Id = User;
-			CurrentUser.Guid = Guid;
+			CurrentUser.Guid = Guid ?? string.Empty;
 			CurrentUser.Role = Role;
 			Preferences.User = User;
 
@@ -75,7 +72,7 @@ namespace Hephaestus.Frontend.Services {
 			try {
 
 				var odata = ClientFactory.CreateClient("OData");
-				ServerUser = await odata.GetFromJsonAsync<UserInfo>($"User/{Guid}") ?? ServerUser;
+				ServerUser = await odata.GetFromJsonAsync<User>($"User/{Guid}") ?? ServerUser;
 
 			} catch {
 
@@ -156,14 +153,14 @@ namespace Hephaestus.Frontend.Services {
 				SetCurrentUser();
 
 				var odata = ClientFactory.CreateClient("OData");
-				var endpoint = new Uri(odata.BaseAddress!, $"User/{Guid}");
+				var endpoint = new Uri(odata.BaseAddress!, $"User/{Guid}?user={User}");
 				var message = new HttpRequestMessage(HttpMethod.Put, endpoint) {
 					Content = new StringContent(ODataJsonSerializer.Serialize(CurrentUser), Encoding.UTF8, "application/json")
 				};
 
 				var response = await odata.SendAsync(message);
-				var userinfo = await HttpResponseMessageExtensions.ReadAsync<UserInfo>(response);
-				if (userinfo != null) ServerUser = userinfo;
+				var user = await HttpResponseMessageExtensions.ReadAsync<User>(response);
+				if (user != null) ServerUser = user;
 
 			}
 
@@ -288,6 +285,10 @@ namespace Hephaestus.Frontend.Services {
 				User = LocalUser.Id;
 
 			}
+
+		}
+
+		public async Task FecthPreferencesAsync() {
 
 			await GetLocalPreferencesAsync();
 			await GetServerPreferencesAsync();

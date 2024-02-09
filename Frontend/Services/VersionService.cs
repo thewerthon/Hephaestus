@@ -7,24 +7,24 @@
 		private readonly IJSRuntime JSRuntime = jsRuntime;
 
 		public DateTime UpdateChecked = DateTime.UtcNow;
-		public AppVersion LocalVersion = new();
-		public AppVersion ServerVersion = new();
+		public Architect.Models.Version LocalVersion = new();
+		public Architect.Models.Version ServerVersion = new();
 		public bool UpdateAvailable = false;
 		public bool UpdateDismissed = false;
 		public bool UpdateForced = false;
 
-		public static AppVersion GetLocalVersion() {
+		public static Architect.Models.Version GetLocalVersion() {
 
-			var localVersion = new AppVersion();
+			var localVersion = new Architect.Models.Version();
 			return localVersion;
 
 		}
 
-		public async Task<AppVersion> GetServerVersionAsync() {
+		public async Task<Architect.Models.Version> GetServerVersionAsync() {
 
 			try {
 
-				var serverVersion = await HttpClient.GetFromJsonAsync<AppVersion>("odata/version");
+				var serverVersion = await HttpClient.GetFromJsonAsync<Architect.Models.Version>("odata/version");
 				return serverVersion ?? new() { Build = 0, Force = 0, Name = "Unknow" };
 
 			} catch (Exception) {

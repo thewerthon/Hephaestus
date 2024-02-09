@@ -6,31 +6,31 @@
 <PageTitle>@(AppText["0025"])</PageTitle>
 <RadzenText Text="@AppText["0025"]" TextStyle="Radzen.Blazor.TextStyle.DisplayH3" TagName="Radzen.Blazor.TagName.Auto"></RadzenText>
 
-@if (localVersion != null) {
+@if (LocalVersion != null) {
 	<h3>Local Version</h3>
-	<p>Id: @localVersion.Build</p>
-	<p>Name: @localVersion.Name</p>
+	<p>Id: @LocalVersion.Build</p>
+	<p>Name: @LocalVersion.Name</p>
 }
 
 <br />
 
-@if (serverVersion != null) {
+@if (ServerVersion != null) {
 	<h3>Server Version</h3>
-	<p>Id: @serverVersion.Build</p>
-	<p>Name: @serverVersion.Name</p>
+	<p>Id: @ServerVersion.Build</p>
+	<p>Name: @ServerVersion.Name</p>
 }
 
 @code {
 
-	private Architect.Models.AppVersion? serverVersion;
-	private Architect.Models.AppVersion? localVersion;
+	private Architect.Models.Version? ServerVersion;
+	private Architect.Models.Version? LocalVersion;
 
 	protected override async Task OnInitializedAsync() {
 
 		try {
 
-			localVersion = VersionService.GetLocalVersion();
-			serverVersion = await VersionService.GetServerVersionAsync();
+			LocalVersion = VersionService.GetLocalVersion();
+			ServerVersion = await VersionService.GetServerVersionAsync();
 
 		} catch (AccessTokenNotAvailableException exception) {
 

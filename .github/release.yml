@@ -1,0 +1,17 @@
+changelog:
+  exclude:
+    labels:
+      - documentation
+      - others
+    authors:
+      - dependabot
+  categories:
+    - title: ✨ New Features
+      labels:
+        - features
+    - title: 💻 Development
+      labels:
+        - development
+    - title: 🛠️ Bug Fixes
+      labels:
+        - bugs

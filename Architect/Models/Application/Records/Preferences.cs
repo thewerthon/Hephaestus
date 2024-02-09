@@ -8,15 +8,15 @@
 
 		[ForeignKey("User")]
 		public int User { get; set; }
-		public UserInfo? UserData { get; set; }
+		public virtual User? UserData { get; set; }
 
 		[ForeignKey("Theme")]
 		public string? Theme { get; set; } = "auto";
-		public Theme? ThemeData { get; set; }
+		public virtual Theme? ThemeData { get; set; }
 
 		[ForeignKey("Language")]
 		public string? Language { get; set; } = "pt";
-		public Language? LanguageData { get; set; }
+		public virtual Language? LanguageData { get; set; }
 
 	}
 

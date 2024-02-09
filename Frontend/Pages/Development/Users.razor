@@ -18,27 +18,27 @@
 	<RadzenRow>
 		<RadzenColumn SizeMD=12>
 			<RadzenDataGrid @ref="grid" Data="@users" Count="@count"
-											LoadData="@GridLoadData" TItem="UserInfo"
+											LoadData="@GridLoadData" TItem="User"
 											AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" AllowGrouping="true"
 											AllowRowSelectOnRowClick="true" Responsive="false" ShowCellDataAsTooltip="true" ShowColumnTitleAsTooltip="true" ShowMultiColumnSortingIndex="true" AllowMultiColumnSorting="true"
 											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@(new int[]{10, 20, 50, 100})
 											RowDoubleClick="@EditRow">
 				<Columns>
-					<RadzenDataGridColumn TItem="UserInfo" Property="Photo" Title="Photo" Filterable="false" Sortable="false" Resizable="false" Reorderable="false" Pickable="false" Groupable="false" MinWidth="64px" Width="64px" TextAlign="TextAlign.Center" Visible="true">
+					<RadzenDataGridColumn TItem="User" Property="Photo" Title="Photo" Filterable="false" Sortable="false" Resizable="false" Reorderable="false" Pickable="false" Groupable="false" MinWidth="64px" Width="64px" TextAlign="TextAlign.Center" Visible="true">
 						<Template Context="user">
 							<RadzenImage Path="@user.Photo" Style="width:32px;height:32px" class="rounded-circle" />
 						</Template>
 					</RadzenDataGridColumn>
-					<RadzenDataGridColumn TItem="UserInfo" Property="Id" Title="Id" Visible="false" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Name" Title="Name" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Office" Title="Office" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Title" Title="Title" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Email" Title="Email" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Role" Title="Role" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property=@AppField["HiddenDataName"] Title="Hidden" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property=@AppField["ActiveDataName"] Title="Active" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Preferences.ThemeData.Name" Title="Theme" Visible="true" />
-					<RadzenDataGridColumn TItem="UserInfo" Property="Preferences.LanguageData.Name" Title="Language" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property="Id" Title="Id" Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property="Name" Title="Name" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property="Office" Title="Office" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property="Title" Title="Title" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property="Email" Title="Email" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property="Role" Title="Role" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@AppField["HiddenDataName"] Title="Hidden" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@AppField["ActiveDataName"] Title="Active" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property="Preferences.ThemeData.Name" Title="Theme" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property="Preferences.LanguageData.Name" Title="Language" Visible="true" />
 				</Columns>
 
 			</RadzenDataGrid>
@@ -49,14 +49,14 @@
 @code {
 
 	protected int count;
-	protected IEnumerable<UserInfo>? users;
-	protected RadzenDataGrid<UserInfo>? grid;
+	protected IEnumerable<User>? users;
+	protected RadzenDataGrid<User>? grid;
 
 	protected async Task GridLoadData(LoadDataArgs args) {
 
 		try {
 
-			var result = await DatabaseService.GetItemsAsync<UserInfo>(table: "users", expand: "hiddendata,activedata,preferences(expand=themedata,languagedata)", filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
+			var result = await DatabaseService.GetItemsAsync<User>(table: "users", expand: "hiddendata,activedata,preferences(expand=themedata,languagedata)", filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
 			users = result.Value.AsODataEnumerable();
 			count = result.Count;
 
@@ -75,14 +75,14 @@
 
 	}
 
-	protected async Task EditRow(DataGridRowMouseEventArgs<UserInfo> args) {
+	protected async Task EditRow(DataGridRowMouseEventArgs<User> args) {
 
 		//await DialogService.OpenAsync<EditUser>("Edit User", new Dictionary<string, object> { { "Id", args.Data.Id } });
 		if (grid is not null) await grid.Reload();
 
 	}
 
-	protected async Task GridDeleteButtonClick(MouseEventArgs args, UserInfo user) {
+	protected async Task GridDeleteButtonClick(MouseEventArgs args, User user) {
 
 		try {
 
