@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240209185920_M000")]
+    [Migration("20240212194717_M000")]
     partial class M000
     {
         /// <inheritdoc />
@@ -197,6 +197,22 @@ namespace Backend.Migrations
                         .IsUnique();
 
                     b.ToTable("Preferences", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Language = "pt",
+                            Theme = "auto",
+                            User = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Language = "pt",
+                            Theme = "auto",
+                            User = 2
+                        });
                 });
 
             modelBuilder.Entity("Hephaestus.Architect.Models.Theme", b =>
@@ -354,6 +370,30 @@ namespace Backend.Migrations
                     b.HasIndex("UpdatedBy");
 
                     b.ToTable("Users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Active = true,
+                            Email = "system@siw.ind.br",
+                            Guid = "00000000-0000-0000-0000-000000000000",
+                            Hidden = true,
+                            Name = "Sistema",
+                            Photo = "images/users/unknown.jpg",
+                            Role = "System.Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Active = true,
+                            Email = "autobot@siw.ind.br",
+                            Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
+                            Hidden = true,
+                            Name = "Autobot",
+                            Photo = "images/users/unknown.jpg",
+                            Role = "System.Admin"
+                        });
                 });
 
             modelBuilder.Entity("Hephaestus.Architect.Models.UserRole", b =>

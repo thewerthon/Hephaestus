@@ -6,7 +6,7 @@ namespace Hephaestus.Backend.Controllers {
 		[HttpGet]
 		public ActionResult<Architect.Models.Version> Get() {
 
-			return base.Ok(new Architect.Models.Version());
+			return Ok(new Architect.Models.Version());
 
 		}
 

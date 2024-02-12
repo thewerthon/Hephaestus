@@ -30,7 +30,7 @@ namespace Hephaestus.Backend.Controllers {
 
 			try {
 
-				var items = DbSet.AsNoTracking().AsQueryable();
+				var items = DbSet.AsNoTracking();
 				return Ok(items);
 
 			} catch (Exception ex) {

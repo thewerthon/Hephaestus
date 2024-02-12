@@ -1,4 +1,6 @@
-﻿namespace Hephaestus.Frontend.Services {
+﻿using System.Security.Claims;
+
+namespace Hephaestus.Frontend.Services {
 
 	public class UserService(IHttpClientFactory client, ILocalStorageService storage, IJSRuntime runtime) {
 
@@ -6,14 +8,15 @@
 		private readonly ILocalStorageService LocalStorage = storage;
 		private readonly IJSRuntime JSRuntime = runtime;
 
-		public int User;
+		public int User = 1;
 		public string? Guid;
 		public string? Role;
 
 		public AppUser CurrentUser = new();
 		public AppPreferences Preferences = new();
+		public ClaimsPrincipal Claims = new();
+		public bool Initialized = false;
 
-		private bool Fetching = false;
 		private AppUser LocalUser = new();
 		private User ServerUser = new();
 		private GraphUser GraphUser = new();
@@ -21,6 +24,30 @@
 		private Preferences ServerPreferences = new();
 		private DateTime LastFetched = default;
 		private byte[]? UserPhoto;
+
+		public bool IsAdmin() {
+
+			return Claims.IsInRole("System.Admin");
+
+		}
+
+		public bool IsModder() {
+
+			return Claims.IsInRole("System.Admin") || Claims.IsInRole("System.Member");
+
+		}
+
+		public bool IsInRole(string role) {
+
+			return Claims.IsInRole(role);
+
+		}
+
+		public bool IsAuthenticated() {
+
+			return Claims.Identity?.IsAuthenticated ?? false;
+
+		}
 
 		private void SetCurrentUser() {
 
@@ -72,7 +99,8 @@
 			try {
 
 				var odata = ClientFactory.CreateClient("OData");
-				ServerUser = await odata.GetFromJsonAsync<User>($"User/{Guid}") ?? ServerUser;
+				var result = await odata.GetFromJsonAsync<User>($"User/{Guid}");
+				ServerUser = result ?? ServerUser;
 
 			} catch {
 
@@ -124,7 +152,8 @@
 			try {
 
 				var odata = ClientFactory.CreateClient("OData");
-				ServerPreferences = await odata.GetFromJsonAsync<Preferences>($"Preferences/{User}") ?? ServerPreferences;
+				var result = await odata.GetFromJsonAsync<Preferences>($"Preferences/{User}");
+				ServerPreferences = result ?? ServerPreferences;
 
 			} catch {
 
@@ -235,54 +264,56 @@
 
 		}
 
-		public async Task FecthUserAsync(bool force = false) {
+		public async Task InitUserAsync(bool force = false) {
 
-			await GetFetchedAsync();
 			await GetLocalUserAsync();
 			CurrentUser = LocalUser;
+			User = LocalUser.Id > 1 ? LocalUser.Id : 1;
 
-			if (CurrentUser.Id == 0) force = true;
+			if (CurrentUser.Id <= 1) force = true;
 			if (CurrentUser.Guid != Guid) force = true;
 			if (CurrentUser.Role != Role) force = true;
 
+			if (force) {
+				Initialized = true;
+				await FecthUserAsync(true);
+				await FecthPreferencesAsync();
+			}
+
+		}
+
+		public async Task FecthUserAsync(bool force = false) {
+
+			await GetFetchedAsync();
+
 			if (DateTime.UtcNow > LastFetched.AddHours(24) || force) {
 
-				if (!Fetching) {
+				try {
 
-					Fetching = true;
+					await GetGraphUserAsync();
+					CurrentUser = GraphUser;
+					CurrentUser.Photo
+						= UserPhoto == null
+						? CurrentUser.Photo
+						: "data:image/jpeg;base64,"
+						+ Convert.ToBase64String(UserPhoto);
 
-					try {
+					await SaveServerUserAsync();
+					User = ServerUser.Id > 1 ? ServerUser.Id : 1;
 
-						await GetGraphUserAsync();
-						CurrentUser = GraphUser;
-						CurrentUser.Photo
-							= UserPhoto == null
-							? CurrentUser.Photo
-							: "data:image/jpeg;base64,"
-							+ Convert.ToBase64String(UserPhoto);
+					await SaveLocalUserAsync();
+					await SetFetchedAsync();
 
-						await SaveServerUserAsync();
-						User = ServerUser.Id;
+				} catch (Exception ex) {
 
-						await SaveLocalUserAsync();
-						await SetFetchedAsync();
-
-					} catch (Exception ex) {
-
-						Console.WriteLine("An error ocurred while fetching user.");
-						Console.WriteLine(ex.Message);
-
-					} finally {
-
-						Fetching = false;
-
-					}
+					Console.WriteLine("An error ocurred while fetching user.");
+					Console.WriteLine(ex.Message);
 
 				}
 
 			} else {
 
-				User = LocalUser.Id;
+				User = LocalUser.Id > 1 ? LocalUser.Id : 1;
 
 			}
 
@@ -298,6 +329,7 @@
 				Preferences = ServerPreferences;
 				await SetThemeAsync(Preferences.Theme, false);
 				await SetLanguageAsync(Preferences.Language, false);
+				await SavePreferencesAsync(true, false);
 
 			} else {
 

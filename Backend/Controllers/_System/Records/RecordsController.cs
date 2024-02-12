@@ -78,7 +78,7 @@ namespace Hephaestus.Backend.Controllers {
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
 				var record = DbSet.AsNoTracking().Where(i => i.Id == key);
-				return record.Any() ? Ok(SingleResult.Create(record)) : Ok(null);
+				return Ok(SingleResult.Create(record));
 
 			} catch (Exception ex) {
 
@@ -193,7 +193,7 @@ namespace Hephaestus.Backend.Controllers {
 
 			try {
 
-				var items = DbSet.AsNoTracking().AsQueryable();
+				var items = DbSet.AsNoTracking();
 				return Ok(items);
 
 			} catch (Exception ex) {

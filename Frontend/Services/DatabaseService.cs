@@ -94,6 +94,16 @@
 
 		}
 
+		public async Task<bool> CheckStatusAsync() {
+
+			var uri = new Uri(BaseUri, $"status");
+			var message = new HttpRequestMessage(HttpMethod.Get, uri);
+			var result = await HttpClient.SendAsync(message);
+
+			return result.IsSuccessStatusCode;
+
+		}
+
 	}
 
 }

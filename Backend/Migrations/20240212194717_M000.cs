@@ -276,6 +276,24 @@ namespace Backend.Migrations
                 columns: new[] { "Build", "Force", "Name", "Notes" },
                 values: new object[] { 3, 3, "v2.0.0 (Alpha 3)", "" });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Active", "Country", "CreatedAt", "CreatedBy", "DeletedAt", "DeletedBy", "Department", "Email", "FirstName", "Guid", "Hidden", "Name", "Office", "Photo", "Role", "SecondName", "Title", "UpdatedAt", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, true, null, null, null, null, null, null, "system@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", true, "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, null, null, null },
+                    { 2, true, null, null, null, null, null, null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", true, "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, null, null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Preferences",
+                columns: new[] { "Id", "Language", "Theme", "User" },
+                values: new object[,]
+                {
+                    { 1, "pt", "auto", 1 },
+                    { 2, "pt", "auto", 2 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Preferences_Language",
                 table: "Preferences",

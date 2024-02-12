@@ -4,17 +4,17 @@
 
 		protected override bool OnUpdate(ref T item, int? user) {
 
-			item.CreatedBy ??= user;
+			item.CreatedBy ??= user ?? 1;
 			item.CreatedAt ??= DateTime.UtcNow;
 
 			if (item.Active) {
 
-				item.UpdatedBy = user;
+				item.UpdatedBy = user ?? 1;
 				item.UpdatedAt = DateTime.UtcNow;
 
 			} else {
 
-				item.DeletedBy = user;
+				item.DeletedBy = user ?? 1;
 				item.DeletedAt = DateTime.UtcNow;
 
 			}

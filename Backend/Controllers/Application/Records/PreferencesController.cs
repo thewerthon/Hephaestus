@@ -6,7 +6,7 @@ namespace Hephaestus.Backend.Controllers {
 
 	public class PreferencesController(DatabaseContext context) : RecordsController<Preferences>(context) {
 
-		// GET User
+		// GET By User
 		[ODataIgnored]
 		[HttpGet("odata/Preferences/{user}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
@@ -15,7 +15,7 @@ namespace Hephaestus.Backend.Controllers {
 			try {
 
 				var record = DbSet.AsNoTracking().Where(i => i.User == user);
-				return record.Any() ? Ok(SingleResult.Create(record)) : Ok(null);
+				return Ok(SingleResult.Create(record));
 
 			} catch (Exception ex) {
 
@@ -26,7 +26,7 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
-		// PUT User
+		// PUT By User
 		[ODataIgnored]
 		[HttpPut("odata/Preferences/{user}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]

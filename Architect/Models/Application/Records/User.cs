@@ -76,7 +76,7 @@
 		public virtual User? DeletedByData { get; set; }
 		public DateTime? DeletedAt { get; set; }
 
-		// Navigation Propertiy
+		// Navigation Propety
 		public virtual Preferences? Preferences { get; set; }
 
 	}

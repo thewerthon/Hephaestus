@@ -4,10 +4,10 @@
 
 		protected override bool OnCreate(ref T item, int? user) {
 
-			item.CreatedBy = user;
+			item.CreatedBy = user ?? 1;
 			item.CreatedAt = DateTime.UtcNow;
 
-			item.UpdatedBy = user;
+			item.UpdatedBy = user ?? 1;
 			item.UpdatedAt = DateTime.UtcNow;
 
 			return true;
@@ -16,10 +16,10 @@
 
 		protected override bool OnUpdate(ref T item, int? user) {
 
-			item.CreatedBy ??= user;
+			item.CreatedBy ??= user ?? 1;
 			item.CreatedAt ??= DateTime.UtcNow;
 
-			item.UpdatedBy = user;
+			item.UpdatedBy = user ?? 1;
 			item.UpdatedAt = DateTime.UtcNow;
 
 			return true;

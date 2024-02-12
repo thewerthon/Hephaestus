@@ -38,6 +38,7 @@
 		User = UserService.CurrentUser;
 		User.Name ??= AppText["0033"];
 		User.Role ??= AppText["0034"];
+		User.Role = AppRole[(User.Role ?? "System.User").Replace(".", string.Empty)];
 
 	}
 
@@ -46,6 +47,11 @@
 		if (firstRender) {
 
 			await JSRuntime.InvokeVoidAsync("isAppInstalled");
+
+			if (!UserService.Initialized) {
+				await UserService.FecthUserAsync();
+				await UserService.FecthPreferencesAsync();
+			}
 
 			User = UserService.CurrentUser;
 			User.Role = AppRole[(User.Role ?? "System.User").Replace(".", string.Empty)];

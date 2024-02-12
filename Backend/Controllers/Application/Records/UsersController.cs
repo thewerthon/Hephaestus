@@ -6,7 +6,7 @@ namespace Hephaestus.Backend.Controllers {
 
 	public class UsersController(DatabaseContext context) : RecordsTracedActiveController<User>(context) {
 
-		// GET Guid
+		// GET By Guid
 		[ODataIgnored]
 		[HttpGet("odata/User/{guid}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
@@ -15,7 +15,7 @@ namespace Hephaestus.Backend.Controllers {
 			try {
 
 				var record = DbSet.AsNoTracking().Where(i => i.Guid == guid);
-				return record.Any() ? Ok(SingleResult.Create(record)) : Ok(null);
+				return Ok(SingleResult.Create(record));
 
 			} catch (Exception ex) {
 
@@ -26,7 +26,7 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
-		// PUT Guid
+		// PUT By Guid
 		[ODataIgnored]
 		[HttpPut("odata/User/{guid}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
