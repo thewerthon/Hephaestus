@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.OData.UriParser;
 
 // WebApplication
 var builder = WebApplication.CreateBuilder(args);
@@ -30,12 +31,12 @@ builder.Services.AddDbContext<DatabaseContext>(options => {
 var models = new ODataConventionModelBuilder();
 
 // Add Entity Sets
-foreach (var entity in DatabaseMappings.EntityMappings) {
+foreach (var table in DatabaseTables.Tables) {
 
 	typeof(ODataConventionModelBuilder)
 		.GetMethod("EntitySet")!
-		.MakeGenericMethod(entity.Type)
-		.Invoke(models, new object[] { entity.Name });
+		.MakeGenericMethod(table.Type)
+		.Invoke(models, new object[] { table.Name });
 
 }
 
@@ -59,9 +60,9 @@ builder.Services.AddControllers(options => {
 	options.RouteOptions.EnableDollarCountRouting = true;
 	options.RouteOptions.EnablePropertyNameCaseInsensitive = true;
 	options.RouteOptions.EnableControllerNameCaseInsensitive = true;
-	options.AddRouteComponents("odata", models.GetEdmModel(), services =>
-		services.AddSingleton<ISearchBinder, SearchBinder>()
-	).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
+	options.AddRouteComponents("odata", models.GetEdmModel(), services => {
+		services.AddSingleton<ISearchBinder, SearchBinder>();
+	}).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
 });
 
 // Application

@@ -1,7 +1,7 @@
 ﻿@namespace Hephaestus.Frontend.Layouts.TopBarButtons
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
-<RadzenButton Variant="Variant.Text" ContextMenu=@(args => ShowContextMenu(args)) class="topbar-icon" title="@AppText["0015"]" Click="@(() => ToggleTheme())">
+<RadzenButton Variant="Variant.Text" ContextMenu=@(args => ShowContextMenu(args)) class="topbar-icon" title="@AppText["0015"]" Click="@(() => ToggleThemeAsync())">
 	<LordIcon Icon="/topbar/bulb.json" Anim="@anim" Trigger="auto" State="hover-bulb" Morph="morph-bulb-OFF" Size="24px" Target=".rz-button" Title="@AppText["0015"]" Id="theme-icon" />
 </RadzenButton>
 
@@ -11,27 +11,46 @@
 	private string theme = string.Empty;
 
 	protected override async Task OnInitializedAsync() {
+
 		theme = await JSRuntime.InvokeAsync<string>("getCurrentTheme");
 		anim = theme == "dark" ? "morphend" : "morphstart";
-	}
 
-	private void ToggleTheme() {
-		_ = JSRuntime.InvokeVoidAsync("toggleTheme");
 	}
 
 	private void ShowContextMenu(MouseEventArgs args) => ContextMenuService.Open(args, ds =>
-	@<RadzenMenu Click="ApplyTheme">
+	@<RadzenMenu Click="ApplyThemeAsync">
 		<RadzenMenuItem Text=@AppText["0016"] Value="0" Icon="brightness_4"></RadzenMenuItem>
 		<RadzenMenuItem Text=@AppText["0018"] Value="1" Icon="brightness_high"></RadzenMenuItem>
 		<RadzenMenuItem Text=@AppText["0020"] Value="2" Icon="mode_night"></RadzenMenuItem>
-	</RadzenMenu>);
+	</RadzenMenu>
+	);
 
-	private void ApplyTheme(MenuItemEventArgs args) {
-		_ = args.Value switch {
-			1 => JSRuntime.InvokeVoidAsync("applyTheme", "light"),
-			2 => JSRuntime.InvokeVoidAsync("applyTheme", "dark"),
-			_ => JSRuntime.InvokeVoidAsync("applyTheme", "auto")
-		}; ContextMenuService.Close();
+	private async Task ToggleThemeAsync() {
+
+		await UserService.ToggleThemeAsync(true);
+
+	}
+
+	private async Task ApplyThemeAsync(MenuItemEventArgs args) {
+
+		ContextMenuService.Close();
+
+		switch (args.Value) {
+
+			case 1:
+				await UserService.SetThemeAsync("light", true);
+				break;
+
+			case 2:
+				await UserService.SetThemeAsync("dark", true);
+				break;
+
+			default:
+				await UserService.SetThemeAsync("auto", true);
+				break;
+
+		}
+
 	}
 
 }

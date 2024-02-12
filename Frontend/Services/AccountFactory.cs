@@ -4,27 +4,26 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
 
 namespace Hephaestus.Frontend.Services {
 
-	public class AccountFactory(IAccessTokenProviderAccessor accessor, UserService service) : AccountClaimsPrincipalFactory<AppUser>(accessor) {
+	public class AccountFactory(IAccessTokenProviderAccessor accessor, UserService service) : AccountClaimsPrincipalFactory<RemoteUser>(accessor) {
 
-		private readonly UserService Service = service;
+		private readonly UserService UserService = service;
 
-		public override async ValueTask<ClaimsPrincipal> CreateUserAsync(AppUser account, RemoteAuthenticationUserOptions options) {
+		public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUser account, RemoteAuthenticationUserOptions options) {
 
 			var user = await base.CreateUserAsync(account, options);
 
 			if (user.Identity is not null && user.Identity.IsAuthenticated) {
 
-				var userIdentity = (ClaimsIdentity)user.Identity;
+				var identity = (ClaimsIdentity)user.Identity;
+				account?.Roles?.ForEach((role) => { identity.AddClaim(new Claim("role", role)); });
 
-				account?.Roles?.ForEach((role) => {
-
-					userIdentity.AddClaim(new Claim("role", role));
-
-				});
+				UserService.Claims = user;
+				UserService.Guid = identity.FindFirst("oid")?.Value ?? "";
+				UserService.Role = identity.FindFirst("role")?.Value ?? "System.User";
+				await UserService.InitUserAsync();
 
 			}
 
-			Service.UserAccount = user;
 			return user;
 
 		}

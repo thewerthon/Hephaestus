@@ -3,7 +3,7 @@ loadTheme();
 function loadTheme() {
 
 	const theme = getTheme();
-	applyTheme(theme);
+	applyTheme(theme, false);
 
 }
 
@@ -14,17 +14,28 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", eve
 
 });
 
+function setTheme(theme) {
+
+	var preferences = JSON.parse(localStorage.getItem("Preferences")) || {};
+	theme !== "light" && theme !== "dark" ? "auto" : theme;
+	preferences.Theme = theme;
+
+	localStorage.setItem("Preferences", JSON.stringify(preferences));
+
+}
+
 function getTheme() {
 
-	userPreferences.refresh();
-	return userPreferences.theme;
+	var preferences = JSON.parse(localStorage.getItem("Preferences")) || {};
+	var theme = preferences.Theme || "auto";
+
+	return theme !== "light" && theme !== "dark" ? "auto" : theme;
 
 }
 
 function getCurrentTheme() {
 
-	userPreferences.refresh();
-	let theme = userPreferences.theme;
+	let theme = getTheme();
 
 	if (theme == "auto") {
 		if (window.matchMedia("(prefers-color-scheme: light)").matches) theme = "light";
@@ -32,13 +43,6 @@ function getCurrentTheme() {
 	}
 
 	return theme;
-
-}
-
-function setTheme(theme) {
-
-	userPreferences.theme = theme;
-	userPreferences.save()
 
 }
 
@@ -78,18 +82,20 @@ async function toggleTheme() {
 		case "light":
 			setTimeout(() => { applyTheme("dark"); }, 250)
 			if (toggle) toggle.trigger = "morphin";
+			return "dark";
 			break;
 
 		case "dark":
 			setTimeout(() => { applyTheme("light"); }, 350)
 			if (toggle) toggle.trigger = "morphout";
+			return "light";
 			break;
 
 	}
 
 }
 
-async function applyTheme(theme) {
+async function applyTheme(theme, save = true) {
 
 	const titles = document.head.querySelectorAll("meta[name='theme-color']")
 	const styles = document.head.querySelectorAll("link[rel='stylesheet']")
@@ -100,7 +106,7 @@ async function applyTheme(theme) {
 			addStylesheet("css/base-light.css");
 			addStylesheet("css/custom-light.css");
 			addStylesheet("css/default.css");
-			setTheme("light");
+			if (save) setTheme("light");
 			setToggle();
 			break;
 
@@ -109,7 +115,7 @@ async function applyTheme(theme) {
 			addStylesheet("css/base-dark.css");
 			addStylesheet("css/custom-dark.css");
 			addStylesheet("css/default.css");
-			setTheme("dark");
+			if (save) setTheme("dark");
 			setToggle();
 			break;
 
@@ -121,7 +127,7 @@ async function applyTheme(theme) {
 			addStylesheet("css/custom-light.css", "(prefers-color-scheme: light)");
 			addStylesheet("css/custom-dark.css", "(prefers-color-scheme: dark)");
 			addStylesheet("css/default.css");
-			setTheme("auto");
+			if (save) setTheme("auto");
 			setToggle();
 
 	}

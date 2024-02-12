@@ -1,8 +1,13 @@
 ﻿// System
+global using System.Text;
 global using System.Net.Http.Json;
 
 // Microsoft
 global using Microsoft.JSInterop;
+global using Microsoft.AspNetCore.Components;
+
+// Radzen
+global using Radzen;
 
 // Blazored
 global using Blazored.LocalStorage;

@@ -45,6 +45,7 @@
 @inject IStringLocalizer<AppMenu> AppMenu
 @inject IStringLocalizer<AppIcon> AppIcon
 @inject IStringLocalizer<AppText> AppText
+@inject IStringLocalizer<AppField> AppField
 @inject IStringLocalizer<AppError> AppError
 @inject IStringLocalizer<AppButton> AppButton
 
@@ -57,6 +58,8 @@
 
 // Frontend Services
 @using Hephaestus.Frontend.Services
+@inject CursorService CursorService
+@inject DatabaseService DatabaseService
 @inject VersionService VersionService
 @inject UserService UserService
 

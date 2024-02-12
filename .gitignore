@@ -223,6 +223,9 @@ _pkginfo.txt
 *.appxbundle
 *.appxupload
 
+# PowerShell Scripts
+*.ps1
+
 # Visual Studio cache files
 # files ending in .cache can be ignored
 *.[Cc]ache
@@ -238,6 +241,7 @@ ClientBin/
 *.jfm
 *.pfx
 *.publishsettings
+appsettings*.json
 orleans.codegen.cs
 
 # Including strong name files can present a security risk

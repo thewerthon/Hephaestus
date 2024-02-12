@@ -9,22 +9,14 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<UserSecretsId>Hephaestus.Frontend.Debug</UserSecretsId>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<UserSecretsId>Hephaestus.Frontend.Release</UserSecretsId>
-	</PropertyGroup>
-
 	<PropertyGroup>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Bootstrap" Version="5.3.2" IncludeAssets="compile" />
-		<PackageReference Include="Radzen.Blazor" Version="4.24.5" IncludeAssets="all" />
-		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" IncludeAssets="all" />
+		<PackageReference Include="Bootstrap" Version="5.3.2" ExcludeAssets="contentFiles" />
+		<PackageReference Include="Radzen.Blazor" Version="4.24.6" IncludeAssets="all" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.5.0" IncludeAssets="all" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.1" IncludeAssets="all" />
@@ -43,11 +35,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Content Update="wwwroot\appsettings.json" Visible="false" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Architect\Architect.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\Architect\Models\Application\AppVersion.cs" Link="Version.cs" />
+		<None Include="..\Architect\Models\Application\Records\Version.cs" Link="Version.cs" />
 	</ItemGroup>
 
 </Project>
