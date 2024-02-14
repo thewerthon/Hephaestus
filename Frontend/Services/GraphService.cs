@@ -9,7 +9,7 @@ namespace Hephaestus.Frontend.Services {
 
 			var url = config.GetValue<string>("MicrosoftGraph:BaseUrl");
 			var scopes = config.GetSection("MicrosoftGraph:Scopes").Get<List<string>>();
-			ConfigureHandler(authorizedUrls: new[] { url ?? string.Empty }, scopes: scopes ?? []);
+			ConfigureHandler(authorizedUrls: [url ?? string.Empty], scopes: scopes ?? []);
 
 		}
 

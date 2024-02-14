@@ -36,7 +36,7 @@ foreach (var table in DatabaseTables.Tables) {
 	typeof(ODataConventionModelBuilder)
 		.GetMethod("EntitySet")!
 		.MakeGenericMethod(table.Type)
-		.Invoke(models, new object[] { table.Name });
+		.Invoke(models, [table.Name]);
 
 }
 
