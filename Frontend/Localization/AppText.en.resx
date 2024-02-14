@@ -273,4 +273,22 @@ Do you wish to continue?</value>
   <data name="0049" xml:space="preserve">
     <value>You have logged out.</value>
   </data>
+  <data name="0050" xml:space="preserve">
+    <value>Good morning</value>
+  </data>
+  <data name="0051" xml:space="preserve">
+    <value>Good afternoon</value>
+  </data>
+  <data name="0052" xml:space="preserve">
+    <value>Good evening</value>
+  </data>
+  <data name="0053" xml:space="preserve">
+    <value>Good night</value>
+  </data>
+  <data name="0054" xml:space="preserve">
+    <value>What are we going to do today?</value>
+  </data>
+  <data name="0055" xml:space="preserve">
+    <value>What would you like to do?</value>
+  </data>
 </root>

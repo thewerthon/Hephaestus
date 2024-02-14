@@ -8,7 +8,7 @@
 	padding: 0.6rem 1.25rem 0.7rem 1.25rem;
 	position: fixed;
 	width: 100%;
-	z-index: 1000;
+	z-index: 9999;
 }
 
 #blazor-error-ui .dismiss {
@@ -441,4 +441,29 @@ a:focus {
 .lang-contextmenu img {
 	border-radius: 4px;
 	margin-right: 8px;
+}
+
+.cardbutton {
+
+	width: 260px;
+	height: 110px;
+	cursor: pointer;
+	border-radius: 20px;
+	box-shadow: var(--rz-shadow-2);
+	transition: box-shadow ease-in-out 0.2s;
+	
+	
+}
+
+.cardbutton:hover {
+
+	box-shadow: var(--rz-shadow-4);
+	
+}
+
+.cardbutton .lord-icon-container {
+
+	border-radius: 50%;
+	background-color: var(--lord-icon-background);
+	
 }

@@ -1,0 +1,42 @@
+﻿@namespace Hephaestus.Frontend.Components
+
+<RadzenCard Variant="Variant.Filled" @onclick="OnClick" class="cardbutton">
+	<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Start" Gap="1rem" Style="height: 100%">
+		<LordIcon Icon="@Icon" State="@State" Anim="state" Trigger="hover-click" Stroke="bold" Size="70px" Target=".cardbutton" />
+		<RadzenText Text="@Text" Style="font-size: 18px" class="rz-m-0" />
+	</RadzenStack>
+</RadzenCard>
+
+@code {
+
+	/// <summary>
+	/// Text to be displayed.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Text { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Path to navigate.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Path { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Path to icon's json file.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Icon { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The state animation name.
+	/// </summary>
+	[Parameter]
+	public string State { get; set; } = "default";
+
+	private void OnClick() {
+
+		NavigationManager.NavigateTo(Path);
+
+	}
+
+}

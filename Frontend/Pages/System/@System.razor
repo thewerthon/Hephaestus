@@ -1,0 +1,15 @@
+﻿@page "/sistema"
+@page "/system"
+@namespace Hephaestus.Frontend.Pages
+
+<PageTitle>@(AppMenu["1000"])</PageTitle>
+
+<NavigationPage Title="@AppMenu["1000"]" Subtitle="@AppText["0055"]">
+
+	<NavigationGroup Text="Configurações do Sistema">
+		<NavigationItem Icon="/menus/avatars.json" Path="" Text="Usuários" />
+		<NavigationItem Icon="/menus/padlock.json" Path="" Text="Permissões" />
+		<NavigationItem Icon="/menus/table.json" Path="" Text="Cadastros" />
+	</NavigationGroup>
+
+</NavigationPage>

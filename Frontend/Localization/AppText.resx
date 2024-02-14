@@ -267,4 +267,22 @@
   <data name="0049" xml:space="preserve">
     <value>LogOutSucceededText</value>
   </data>
+  <data name="0050" xml:space="preserve">
+    <value>DaySaudation</value>
+  </data>
+  <data name="0051" xml:space="preserve">
+    <value>AfternoonSaudation</value>
+  </data>
+  <data name="0052" xml:space="preserve">
+    <value>EveningSaudation</value>
+  </data>
+  <data name="0053" xml:space="preserve">
+    <value>NightSaudation</value>
+  </data>
+  <data name="0054" xml:space="preserve">
+    <value>SaudationSubtitle1</value>
+  </data>
+  <data name="0055" xml:space="preserve">
+    <value>SaudationSubtitle2</value>
+  </data>
 </root>

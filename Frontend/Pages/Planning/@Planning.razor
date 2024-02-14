@@ -1,0 +1,21 @@
+﻿@page "/planejamento"
+@page "/planning"
+@page "/planificacion"
+@namespace Hephaestus.Frontend.Pages
+
+<PageTitle>@(AppMenu["2300"])</PageTitle>
+
+<NavigationPage Title="@AppMenu["2300"]" Subtitle="@AppText["0055"]">
+
+	<NavigationGroup Text="Funções Principais">
+		<NavigationItem Icon="/menus/order.json" Path="" Text="Ordens de Produção" />
+		<NavigationItem Icon="/menus/write.json" Path="" Text="Ordens de Serviço" />
+		<NavigationItem Icon="/menus/stock.json" Path="" Text="Controle de Estoque" />
+	</NavigationGroup>
+
+	<NavigationGroup Text="Funções Auxiliares">
+		<NavigationItem Icon="/menus/selling.json" Path="" Text="Ordens de Venda" />
+		<NavigationItem Icon="/menus/purchasing.json" Path="" Text="Ordens de Compra" />
+	</NavigationGroup>
+
+</NavigationPage>

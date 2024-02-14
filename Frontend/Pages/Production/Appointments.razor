@@ -1,0 +1,23 @@
+﻿@page "/producao/apontamentos"
+@page "/production/appointments"
+@page "/produccion/registros"
+@namespace Hephaestus.Frontend.Pages
+
+<PageTitle>@(AppMenu["2400"])</PageTitle>
+
+<NavigationPage Title="@AppMenu["2400"]" Subtitle="@AppText["0055"]">
+
+	<NavigationGroup Text="Apontamentos Individuais">
+		<NavigationItem Icon="/menus/play.json" Path="" Text="Início" />
+		<NavigationItem Icon="/menus/minus.json" Path="" Text="Consumo" />
+		<NavigationItem Icon="/menus/plus.json" Path="" Text="Produto" />
+		<NavigationItem Icon="/menus/pause.json" Path="" Text="Paradas" />
+		<NavigationItem Icon="/menus/cross.json" Path="" Text="Perdas" />
+		<NavigationItem Icon="/menus/done.json" Path="" Text="Fim" />
+	</NavigationGroup>
+
+	<NavigationGroup Text="Apontamento Guiado">
+		<NavigationItem Icon="/menus/forward.json" Path="" Text="Passo a Passo" />
+	</NavigationGroup>
+
+</NavigationPage>

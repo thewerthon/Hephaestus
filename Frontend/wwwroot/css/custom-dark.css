@@ -157,6 +157,8 @@
 :root {
 	--lord-icon-primary: var(--rz-white);
 	--lord-icon-secondary: var(--rz-secondary-light);
+	--lord-icon-background: #2d405a;
+	--lord-icon-hoverlayer: #ffffff05;
 }
 
 :root {

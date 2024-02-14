@@ -1,0 +1,26 @@
+﻿@page "/qualidade"
+@page "/quality"
+@page "/calidad"
+@namespace Hephaestus.Frontend.Pages
+
+<PageTitle>@(AppMenu["2100"])</PageTitle>
+
+<NavigationPage Title="@AppMenu["2100"]" Subtitle="@AppText["0055"]">
+
+	<NavigationGroup Text="Funções Principais">
+		<NavigationItem Icon="/menus/magnifier.json" Path="/qualidade/inspecoes" Text="Inspeções" />
+		<NavigationItem Icon="/menus/cross.json" Path="/qualidade/bloqueios" Text="Bloqueios" />
+		<NavigationItem Icon="/menus/done.json" Path="/qualidade/liberacoes" Text="Liberações" />
+		<NavigationItem Icon="/menus/cert.json" Path="" Text="Certificados" />
+	</NavigationGroup>
+
+	<NavigationGroup Text="Funções Auxiliares">
+		<NavigationItem Icon="/menus/approved.json" Path="/qualidade/padroes" Text="Padrões de Inspeção" />
+		<NavigationItem Icon="/menus/rules.json" Path="" Text="Parâmetros" />
+	</NavigationGroup>
+
+	<NavigationGroup Text="Funções Correlatas">
+		<NavigationItem Icon="/menus/book.json" Path="" Text="Documentação" />
+	</NavigationGroup>
+
+</NavigationPage>

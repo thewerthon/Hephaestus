@@ -312,4 +312,7 @@
   <data name="0050" xml:space="preserve">
     <value>/sobre</value>
   </data>
+  <data name="3300" xml:space="preserve">
+    <value>/pessoal</value>
+  </data>
 </root>

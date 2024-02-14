@@ -17,8 +17,8 @@
 	/// The state animation name.
 	/// Only apply to 'state' and 'loop' animations.
 	/// </summary>
-	[Parameter]
-	public string State { get; set; } = "default";
+	[Parameter, EditorRequired]
+	public string State { get; set; } = string.Empty;
 
 	/// <summary>
 	/// The morph animation name.

@@ -273,4 +273,22 @@ Los datos no guardados se perderán.&lt;br/&gt;
   <data name="0049" xml:space="preserve">
     <value>Has cerrado sesión en tu cuenta.</value>
   </data>
+  <data name="0050" xml:space="preserve">
+    <value>Buenos días</value>
+  </data>
+  <data name="0051" xml:space="preserve">
+    <value>Buenas tardes</value>
+  </data>
+  <data name="0052" xml:space="preserve">
+    <value>Buenas noches</value>
+  </data>
+  <data name="0053" xml:space="preserve">
+    <value>Buenas noches</value>
+  </data>
+  <data name="0054" xml:space="preserve">
+    <value>¿Que vamos a hacer hoy?</value>
+  </data>
+  <data name="0055" xml:space="preserve">
+    <value>¿Qué te gustaría hacer?</value>
+  </data>
 </root>

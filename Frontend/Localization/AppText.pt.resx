@@ -273,4 +273,22 @@ Deseja continuar?</value>
   <data name="0049" xml:space="preserve">
     <value>Você saiu da sua conta.</value>
   </data>
+  <data name="0050" xml:space="preserve">
+    <value>Bom dia</value>
+  </data>
+  <data name="0051" xml:space="preserve">
+    <value>Boa tarde</value>
+  </data>
+  <data name="0052" xml:space="preserve">
+    <value>Boa noite</value>
+  </data>
+  <data name="0053" xml:space="preserve">
+    <value>Boa noite</value>
+  </data>
+  <data name="0054" xml:space="preserve">
+    <value>O que iremos fazer hoje?</value>
+  </data>
+  <data name="0055" xml:space="preserve">
+    <value>O que gostaria de fazer?</value>
+  </data>
 </root>

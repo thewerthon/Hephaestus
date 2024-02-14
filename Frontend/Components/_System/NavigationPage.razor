@@ -1,0 +1,32 @@
+﻿@namespace Hephaestus.Frontend.Components
+
+<UpdateChecker CheckUpdates="true" DisplayBanner="true" BlockNavigation="true" />
+
+<RadzenText Text="@Title" TextStyle="Radzen.Blazor.TextStyle.DisplayH4" class="mt-4" />
+<RadzenText Text="@Subtitle" TextStyle="Radzen.Blazor.TextStyle.DisplayH5" class="mt-0" />
+
+<RadzenStack Orientation="Orientation.Horizontal" Wrap="FlexWrap.Wrap" Gap="20px" class="rz-pt-4 rz-pb-12">
+	@ChildContent
+</RadzenStack>
+
+@code {
+
+	/// <summary>
+	/// Page's title.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Title { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Page's subtitle.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Subtitle { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Navigation items.
+	/// </summary>
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+}
