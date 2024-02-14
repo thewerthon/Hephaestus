@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="0000" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="0001" xml:space="preserve">
+    <value>/about</value>
+  </data>
+  <data name="0002" xml:space="preserve">
+    <value>/version</value>
+  </data>
+  <data name="0003" xml:space="preserve">
+    <value>/changelog</value>
+  </data>
+  <data name="0004" xml:space="preserve">
+    <value>/install</value>
+  </data>
+  <data name="0005" xml:space="preserve">
+    <value>/update</value>
+  </data>
+  <data name="0006" xml:space="preserve">
+    <value>/terms</value>
+  </data>
+  <data name="0007" xml:space="preserve">
+    <value>/policy</value>
+  </data>
+  <data name="0008" xml:space="preserve">
+    <value>/login</value>
+  </data>
+  <data name="0009" xml:space="preserve">
+    <value>/logout</value>
+  </data>
+  <data name="0010" xml:space="preserve">
+    <value>/profile</value>
+  </data>
+  <data name="0011" xml:space="preserve">
+    <value>/preferences</value>
+  </data>
+  <data name="0012" xml:space="preserve">
+    <value>/home</value>
+  </data>
+  <data name="0013" xml:space="preserve">
+    <value>/help</value>
+  </data>
+  <data name="0014" xml:space="preserve">
+    <value>/error</value>
+  </data>
+  <data name="0100" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="0110" xml:space="preserve">
+    <value>/reports</value>
+  </data>
+  <data name="0020" xml:space="preserve">
+    <value>/dashboards</value>
+  </data>
+  <data name="0030" xml:space="preserve">
+    <value>/flows</value>
+  </data>
+  <data name="0040" xml:space="preserve">
+    <value>/documentation</value>
+  </data>
+  <data name="0050" xml:space="preserve">
+    <value>/tutorials</value>
+  </data>
+  <data name="0200" xml:space="preserve">
+    <value>/system</value>
+  </data>
+  <data name="0210" xml:space="preserve">
+    <value>/system/users</value>
+  </data>
+  <data name="0220" xml:space="preserve">
+    <value>/system/permissions</value>
+  </data>
+  <data name="0230" xml:space="preserve">
+    <value>/system/registers</value>
+  </data>
+  <data name="1000" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="1100" xml:space="preserve">
+    <value>/commercial</value>
+  </data>
+  <data name="1110" xml:space="preserve">
+    <value>/commercial/orders/sales</value>
+  </data>
+  <data name="1120" xml:space="preserve">
+    <value>/commercial/prices</value>
+  </data>
+  <data name="1200" xml:space="preserve">
+    <value>/engineering</value>
+  </data>
+  <data name="1210" xml:space="preserve">
+    <value>/engineering/products</value>
+  </data>
+  <data name="1220" xml:space="preserve">
+    <value>/engineering/processes</value>
+  </data>
+  <data name="1230" xml:space="preserve">
+    <value>/engineering/datasheets</value>
+  </data>
+  <data name="1240" xml:space="preserve">
+    <value>/engineering/documentation</value>
+  </data>
+  <data name="1250" xml:space="preserve">
+    <value>/engineering/trainings</value>
+  </data>
+  <data name="1300" xml:space="preserve">
+    <value>/supplies</value>
+  </data>
+  <data name="1310" xml:space="preserve">
+    <value>/supplies/requests/purchase</value>
+  </data>
+  <data name="1320" xml:space="preserve">
+    <value>/supplies/orders/purchase</value>
+  </data>
+  <data name="1400" xml:space="preserve">
+    <value>/warehouse</value>
+  </data>
+  <data name="1410" xml:space="preserve">
+    <value>/warehouse/movements</value>
+  </data>
+  <data name="1411" xml:space="preserve">
+    <value>/warehouse/movements/invoice/receipt</value>
+  </data>
+  <data name="1412" xml:space="preserve">
+    <value>/warehouse/movements/invoice/separation</value>
+  </data>
+  <data name="1413" xml:space="preserve">
+    <value>/warehouse/movements/order/receipt</value>
+  </data>
+  <data name="1414" xml:space="preserve">
+    <value>/warehouse/movements/order/separation</value>
+  </data>
+  <data name="1415" xml:space="preserve">
+    <value>/warehouse/movements/manual/input</value>
+  </data>
+  <data name="1416" xml:space="preserve">
+    <value>/warehouse/movements/manual/output</value>
+  </data>
+  <data name="1417" xml:space="preserve">
+    <value>/warehouse/movements/transfer</value>
+  </data>
+  <data name="1418" xml:space="preserve">
+    <value>/warehouse/movements/disposal</value>
+  </data>
+  <data name="1420" xml:space="preserve">
+    <value>/warehouse/labels</value>
+  </data>
+  <data name="1430" xml:space="preserve">
+    <value>/warehouse/orders/production</value>
+  </data>
+  <data name="1440" xml:space="preserve">
+    <value>/warehouse/orders/operation</value>
+  </data>
+  <data name="1500" xml:space="preserve">
+    <value>/planning</value>
+  </data>
+  <data name="1510" xml:space="preserve">
+    <value>/planning/orders/production</value>
+  </data>
+  <data name="1520" xml:space="preserve">
+    <value>/planning/orders/operation</value>
+  </data>
+  <data name="1530" xml:space="preserve">
+    <value>/planning/stock</value>
+  </data>
+  <data name="1540" xml:space="preserve">
+    <value>/planning/orders/sales</value>
+  </data>
+  <data name="1550" xml:space="preserve">
+    <value>/planning/orders/purchases</value>
+  </data>
+  <data name="1600" xml:space="preserve">
+    <value>/production</value>
+  </data>
+  <data name="1610" xml:space="preserve">
+    <value>/production/records</value>
+  </data>
+  <data name="1611" xml:space="preserve">
+    <value>/production/records/start</value>
+  </data>
+  <data name="1612" xml:space="preserve">
+    <value>/production/records/consumption</value>
+  </data>
+  <data name="1613" xml:space="preserve">
+    <value>/production/records/production</value>
+  </data>
+  <data name="1614" xml:space="preserve">
+    <value>/production/records/breakings</value>
+  </data>
+  <data name="1615" xml:space="preserve">
+    <value>/production/records/reworks</value>
+  </data>
+  <data name="1616" xml:space="preserve">
+    <value>/production/records/losses</value>
+  </data>
+  <data name="1617" xml:space="preserve">
+    <value>/production/records/end</value>
+  </data>
+  <data name="1620" xml:space="preserve">
+    <value>/production/labels</value>
+  </data>
+  <data name="1630" xml:space="preserve">
+    <value>/production/orders/production</value>
+  </data>
+  <data name="1640" xml:space="preserve">
+    <value>/production/orders/operation</value>
+  </data>
+  <data name="1700" xml:space="preserve">
+    <value>/quality</value>
+  </data>
+  <data name="1710" xml:space="preserve">
+    <value>/quality/inspections</value>
+  </data>
+  <data name="1711" xml:space="preserve">
+    <value>/quality/inspections/products</value>
+  </data>
+  <data name="1712" xml:space="preserve">
+    <value>/quality/inspections/processes</value>
+  </data>
+  <data name="1713" xml:space="preserve">
+    <value>/quality/inspections/periodical</value>
+  </data>
+  <data name="1720" xml:space="preserve">
+    <value>/quality/nonconformities</value>
+  </data>
+  <data name="1730" xml:space="preserve">
+    <value>/quality/blockings</value>
+  </data>
+  <data name="1731" xml:space="preserve">
+    <value>/quality/blockings/products</value>
+  </data>
+  <data name="1732" xml:space="preserve">
+    <value>/quality/blockings/processes</value>
+  </data>
+  <data name="1740" xml:space="preserve">
+    <value>/quality/clearances</value>
+  </data>
+  <data name="1741" xml:space="preserve">
+    <value>/quality/clearances/products</value>
+  </data>
+  <data name="1742" xml:space="preserve">
+    <value>/quality/clearances/processes</value>
+  </data>
+  <data name="1750" xml:space="preserve">
+    <value>/quality/patterns</value>
+  </data>
+  <data name="1751" xml:space="preserve">
+    <value>/quality/patterns/products</value>
+  </data>
+  <data name="1752" xml:space="preserve">
+    <value>/quality/patterns/processes</value>
+  </data>
+  <data name="1753" xml:space="preserve">
+    <value>/quality/patterns/periodical</value>
+  </data>
+  <data name="1760" xml:space="preserve">
+    <value>/quality/patterns/parameters</value>
+  </data>
+  <data name="1770" xml:space="preserve">
+    <value>/quality/patterns/certificates</value>
+  </data>
+  <data name="1780" xml:space="preserve">
+    <value>/quality/patterns/documentation</value>
+  </data>
+  <data name="1800" xml:space="preserve">
+    <value>/fiscal</value>
+  </data>
+  <data name="1810" xml:space="preserve">
+    <value>/fiscal/requests/sales</value>
+  </data>
+  <data name="1820" xml:space="preserve">
+    <value>/fiscal/invoices/purchase</value>
+  </data>
+  <data name="1830" xml:space="preserve">
+    <value>/fiscal/invoices/sales</value>
+  </data>
+  <data name="1840" xml:space="preserve">
+    <value>/fiscal/scenarios</value>
+  </data>
+  <data name="1900" xml:space="preserve">
+    <value>/logistics</value>
+  </data>
+  <data name="1910" xml:space="preserve">
+    <value>/logistics/receivings</value>
+  </data>
+  <data name="1920" xml:space="preserve">
+    <value>/logistics/deliveries</value>
+  </data>
+  <data name="2000" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="2100" xml:space="preserve">
+    <value>/personnel</value>
+  </data>
+  <data name="2110" xml:space="preserve">
+    <value>/personnel/employees</value>
+  </data>
+  <data name="2120" xml:space="preserve">
+    <value>/personnel/absenteeism</value>
+  </data>
+  <data name="2130" xml:space="preserve">
+    <value>/personnel/overtime</value>
+  </data>
+  <data name="2140" xml:space="preserve">
+    <value>/personnel/trainings</value>
+  </data>
+  <data name="2200" xml:space="preserve">
+    <value>/safety</value>
+  </data>
+  <data name="2210" xml:space="preserve">
+    <value>/safety/equipments/control</value>
+  </data>
+  <data name="2220" xml:space="preserve">
+    <value>/safety/deviations</value>
+  </data>
+  <data name="2230" xml:space="preserve">
+    <value>/safety/equipments</value>
+  </data>
+  <data name="2240" xml:space="preserve">
+    <value>/safety/stock</value>
+  </data>
+  <data name="2300" xml:space="preserve">
+    <value>/facilities</value>
+  </data>
+  <data name="2400" xml:space="preserve">
+    <value>/maintenance</value>
+  </data>
+  <data name="2410" xml:space="preserve">
+    <value>/maintenance/services</value>
+  </data>
+  <data name="2420" xml:space="preserve">
+    <value>/maintenance/inspections</value>
+  </data>
+  <data name="2430" xml:space="preserve">
+    <value>/maintenance/machines</value>
+  </data>
+  <data name="2440" xml:space="preserve">
+    <value>/maintenance/tools</value>
+  </data>
+  <data name="2450" xml:space="preserve">
+    <value>/maintenance/materials</value>
+  </data>
+  <data name="2460" xml:space="preserve">
+    <value>/maintenance/stock</value>
+  </data>
+  <data name="2500" xml:space="preserve">
+    <value>/financial</value>
+  </data>
+  <data name="2600" xml:space="preserve">
+    <value>/improvements</value>
+  </data>
+  <data name="2610" xml:space="preserve">
+    <value>/improvements/solutions</value>
+  </data>
+  <data name="2620" xml:space="preserve">
+    <value>/improvements/fivesenses</value>
+  </data>
+  <data name="2630" xml:space="preserve">
+    <value>/improvements/suggestions</value>
+  </data>
+  <data name="2700" xml:space="preserve">
+    <value>/marketing</value>
+  </data>
+  <data name="2800" xml:space="preserve">
+    <value>/technology</value>
+  </data>
+</root>

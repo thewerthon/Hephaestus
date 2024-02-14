@@ -451,19 +451,23 @@ a:focus {
 	border-radius: 20px;
 	box-shadow: var(--rz-shadow-2);
 	transition: box-shadow ease-in-out 0.2s;
+	background-image: url("/images/stains/1.svg");
+	background-clip: padding-box;
+	background-repeat: no-repeat;
+	background-position: 8%;
+	background-size: 80px;
 	
+}
+
+.cardbutton.disabled {
+	
+	filter: opacity(0.5);
+	pointer-events: none;
 	
 }
 
 .cardbutton:hover {
-
-	box-shadow: var(--rz-shadow-4);
 	
-}
-
-.cardbutton .lord-icon-container {
-
-	border-radius: 50%;
-	background-color: var(--lord-icon-background);
+	box-shadow: var(--rz-shadow-4);
 	
 }
