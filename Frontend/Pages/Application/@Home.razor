@@ -1,28 +1,20 @@
 ﻿@page "/"
-@page "/home"
 @page "/inicio"
+@page "/home"
+
 @namespace Hephaestus.Frontend.Pages
 
-<PageTitle>@(AppMenu["0200"])</PageTitle>
+<NavigationPage Code="0100" Title="@($"{AppText[VariablesService.SaudationCode()]}, {UserService.CurrentUser.FirstName}.")" Subtitle="@AppText["0054"]">
 
-<NavigationPage Title="@($"{AppText[VariablesService.SaudationCode()]}, {UserService.CurrentUser.FirstName}.")" Subtitle="@AppText["0054"]">
-
-	<NavigationGroup Text="Acesso Rápido">
-		<NavigationItem Icon="/menus/edit.json" Path="" Text="Apontamentos" />
-		<NavigationItem Icon="/menus/magnifier.json" Path="" Text="Inspeções" />
-		<NavigationItem Icon="/menus/arrows.json" Path="/almoxarifado/movimentos" Text="Movimentações" />
+	<NavigationGroup Text="Funções Principais">
+		<NavigationItem Code="0110" />
+		<NavigationItem Code="0120" />
+		<NavigationItem Code="0130" Active=false />
 	</NavigationGroup>
 
-	<NavigationGroup Text="Visualizações Comuns">
-		<NavigationItem Icon="/menus/checklist.json" Path="" Text="Ordens de Produção" />
-		<NavigationItem Icon="/menus/write.json" Path="" Text="Ordens de Serviço" />
-		<NavigationItem Icon="/menus/stock.json" Path="" Text="Controle de Estoque" />
-	</NavigationGroup>
-
-	<NavigationGroup Text="Funções do Sistema">
-		<NavigationItem Icon="/menus/document.json" Path="" Text="Relatórios" />
-		<NavigationItem Icon="/menus/chart.json" Path="" Text="Dashboards" />
-		<NavigationItem Icon="/menus/question.json" Path="" Text="Tutoriais" />
+	<NavigationGroup Text="Funções Auxiliares">
+		<NavigationItem Code="0140" />
+		<NavigationItem Code="0150" />
 	</NavigationGroup>
 
 </NavigationPage>

@@ -2,7 +2,7 @@
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <RadzenButton Variant="Variant.Text" ContextMenu=@(args => ShowContextMenu(args)) class="topbar-icon" title="@AppText["0015"]" Click="@(() => ToggleThemeAsync())">
-	<LordIcon Icon="/topbar/bulb.json" Anim="@anim" Trigger="auto" State="hover-bulb" Morph="morph-bulb-OFF" Size="24px" Target=".rz-button" Title="@AppText["0015"]" Id="theme-icon" />
+	<LordIcon Icon="/lordicon/topbar/bulb.json" Anim="@anim" Trigger="auto" State="hover-bulb" Morph="morph-bulb-OFF" Size="24px" Target=".rz-button" Title="@AppText["0015"]" Id="theme-icon" />
 </RadzenButton>
 
 @code {

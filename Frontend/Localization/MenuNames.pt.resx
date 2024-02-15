@@ -168,20 +168,20 @@
   <data name="0110" xml:space="preserve">
     <value>Relatórios</value>
   </data>
-  <data name="0020" xml:space="preserve">
+  <data name="0120" xml:space="preserve">
     <value>Dashboards</value>
   </data>
-  <data name="0030" xml:space="preserve">
+  <data name="0130" xml:space="preserve">
     <value>Fluxos</value>
   </data>
-  <data name="0040" xml:space="preserve">
+  <data name="0140" xml:space="preserve">
     <value>Documentação</value>
   </data>
-  <data name="0050" xml:space="preserve">
+  <data name="0150" xml:space="preserve">
     <value>Tutoriais</value>
   </data>
   <data name="0200" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Sistema</value>
   </data>
   <data name="0210" xml:space="preserve">
     <value>Usuários</value>

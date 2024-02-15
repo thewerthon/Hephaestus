@@ -117,4 +117,370 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="0000" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="0001" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="0002" xml:space="preserve">
+    <value>Versão</value>
+  </data>
+  <data name="0003" xml:space="preserve">
+    <value>Notas da Versão</value>
+  </data>
+  <data name="0004" xml:space="preserve">
+    <value>Instalar Aplicativo</value>
+  </data>
+  <data name="0005" xml:space="preserve">
+    <value>Atualizar Aplicativo</value>
+  </data>
+  <data name="0006" xml:space="preserve">
+    <value>Termos de Uso</value>
+  </data>
+  <data name="0007" xml:space="preserve">
+    <value>Política de Privacidade</value>
+  </data>
+  <data name="0008" xml:space="preserve">
+    <value>Fazer Login</value>
+  </data>
+  <data name="0009" xml:space="preserve">
+    <value>Fazer Logout</value>
+  </data>
+  <data name="0010" xml:space="preserve">
+    <value>Meu Perfil</value>
+  </data>
+  <data name="0011" xml:space="preserve">
+    <value>Preferências</value>
+  </data>
+  <data name="0012" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="0013" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="0014" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="0100" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="0110" xml:space="preserve">
+    <value>Relatórios</value>
+  </data>
+  <data name="0120" xml:space="preserve">
+    <value>Dashboards</value>
+  </data>
+  <data name="0130" xml:space="preserve">
+    <value>Fluxos</value>
+  </data>
+  <data name="0140" xml:space="preserve">
+    <value>Documentação</value>
+  </data>
+  <data name="0150" xml:space="preserve">
+    <value>Tutoriais</value>
+  </data>
+  <data name="0200" xml:space="preserve">
+    <value>Módulo de Sistema</value>
+  </data>
+  <data name="0210" xml:space="preserve">
+    <value>Usuários</value>
+  </data>
+  <data name="0220" xml:space="preserve">
+    <value>Permissões</value>
+  </data>
+  <data name="0230" xml:space="preserve">
+    <value>Cadastros</value>
+  </data>
+  <data name="1000" xml:space="preserve">
+    <value>Módulos Principais</value>
+  </data>
+  <data name="1100" xml:space="preserve">
+    <value>Módulo Comercial</value>
+  </data>
+  <data name="1110" xml:space="preserve">
+    <value>Ordens de Venda</value>
+  </data>
+  <data name="1120" xml:space="preserve">
+    <value>Tabelas de Preço</value>
+  </data>
+  <data name="1200" xml:space="preserve">
+    <value>Módulo de Engenharia</value>
+  </data>
+  <data name="1210" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="1220" xml:space="preserve">
+    <value>Processos</value>
+  </data>
+  <data name="1230" xml:space="preserve">
+    <value>Fichas Técnicas</value>
+  </data>
+  <data name="1240" xml:space="preserve">
+    <value>Documentação</value>
+  </data>
+  <data name="1250" xml:space="preserve">
+    <value>Treinamentos</value>
+  </data>
+  <data name="1300" xml:space="preserve">
+    <value>Módulo de Suprimentos</value>
+  </data>
+  <data name="1310" xml:space="preserve">
+    <value>Requisições de Compra</value>
+  </data>
+  <data name="1320" xml:space="preserve">
+    <value>Ordens de Compra</value>
+  </data>
+  <data name="1400" xml:space="preserve">
+    <value>Módulo de Almoxarifado</value>
+  </data>
+  <data name="1410" xml:space="preserve">
+    <value>Movimentos</value>
+  </data>
+  <data name="1411" xml:space="preserve">
+    <value>Recebimento por Nota Fiscal</value>
+  </data>
+  <data name="1412" xml:space="preserve">
+    <value>Separação por Nota Fiscal</value>
+  </data>
+  <data name="1413" xml:space="preserve">
+    <value>Recebimento por Ordem de Operação</value>
+  </data>
+  <data name="1414" xml:space="preserve">
+    <value>Separação por Ordem de Operação</value>
+  </data>
+  <data name="1415" xml:space="preserve">
+    <value>Entrada Manual</value>
+  </data>
+  <data name="1416" xml:space="preserve">
+    <value>Saída Manual</value>
+  </data>
+  <data name="1417" xml:space="preserve">
+    <value>Transferência</value>
+  </data>
+  <data name="1418" xml:space="preserve">
+    <value>Descarte</value>
+  </data>
+  <data name="1420" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
+  <data name="1430" xml:space="preserve">
+    <value>Ordens de Produção</value>
+  </data>
+  <data name="1440" xml:space="preserve">
+    <value>Ordens de Operação</value>
+  </data>
+  <data name="1500" xml:space="preserve">
+    <value>Módulo de Planejamento</value>
+  </data>
+  <data name="1510" xml:space="preserve">
+    <value>Ordens de Produção</value>
+  </data>
+  <data name="1520" xml:space="preserve">
+    <value>Ordens de Operação</value>
+  </data>
+  <data name="1530" xml:space="preserve">
+    <value>Controle de Estoque</value>
+  </data>
+  <data name="1540" xml:space="preserve">
+    <value>Ordens de Venda</value>
+  </data>
+  <data name="1550" xml:space="preserve">
+    <value>Ordens de Compra</value>
+  </data>
+  <data name="1600" xml:space="preserve">
+    <value>Módulo de Produção</value>
+  </data>
+  <data name="1610" xml:space="preserve">
+    <value>Apontamentos</value>
+  </data>
+  <data name="1611" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="1612" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="1613" xml:space="preserve">
+    <value>Produto</value>
+  </data>
+  <data name="1614" xml:space="preserve">
+    <value>Paradas</value>
+  </data>
+  <data name="1615" xml:space="preserve">
+    <value>Retrabalhos</value>
+  </data>
+  <data name="1616" xml:space="preserve">
+    <value>Perdas</value>
+  </data>
+  <data name="1617" xml:space="preserve">
+    <value>Fim</value>
+  </data>
+  <data name="1620" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
+  <data name="1630" xml:space="preserve">
+    <value>Ordens de Produção</value>
+  </data>
+  <data name="1640" xml:space="preserve">
+    <value>Ordens de Operação</value>
+  </data>
+  <data name="1700" xml:space="preserve">
+    <value>Módulo de Qualidade</value>
+  </data>
+  <data name="1710" xml:space="preserve">
+    <value>Inspeções</value>
+  </data>
+  <data name="1711" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="1712" xml:space="preserve">
+    <value>Processos</value>
+  </data>
+  <data name="1713" xml:space="preserve">
+    <value>Periódicas</value>
+  </data>
+  <data name="1720" xml:space="preserve">
+    <value>Não Conformidades</value>
+  </data>
+  <data name="1730" xml:space="preserve">
+    <value>Bloqueios</value>
+  </data>
+  <data name="1731" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="1732" xml:space="preserve">
+    <value>Processos</value>
+  </data>
+  <data name="1740" xml:space="preserve">
+    <value>Liberações</value>
+  </data>
+  <data name="1741" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="1742" xml:space="preserve">
+    <value>Bloqueios</value>
+  </data>
+  <data name="1750" xml:space="preserve">
+    <value>Padrões de Inspeção</value>
+  </data>
+  <data name="1751" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="1752" xml:space="preserve">
+    <value>Processos</value>
+  </data>
+  <data name="1753" xml:space="preserve">
+    <value>Periódicas</value>
+  </data>
+  <data name="1760" xml:space="preserve">
+    <value>Parâmetros</value>
+  </data>
+  <data name="1770" xml:space="preserve">
+    <value>Certificados</value>
+  </data>
+  <data name="1780" xml:space="preserve">
+    <value>Documentação</value>
+  </data>
+  <data name="1800" xml:space="preserve">
+    <value>Módulo Fiscal</value>
+  </data>
+  <data name="1810" xml:space="preserve">
+    <value>Requisição de Venda</value>
+  </data>
+  <data name="1820" xml:space="preserve">
+    <value>Notas de Compra</value>
+  </data>
+  <data name="1830" xml:space="preserve">
+    <value>Notas de Venda</value>
+  </data>
+  <data name="1840" xml:space="preserve">
+    <value>Cenários Fiscais</value>
+  </data>
+  <data name="1900" xml:space="preserve">
+    <value>Módulo de Logística</value>
+  </data>
+  <data name="1910" xml:space="preserve">
+    <value>Recebimentos</value>
+  </data>
+  <data name="1920" xml:space="preserve">
+    <value>Entregas</value>
+  </data>
+  <data name="2000" xml:space="preserve">
+    <value>Módulos Auxiliares</value>
+  </data>
+  <data name="2100" xml:space="preserve">
+    <value>Módulo de Pessoal</value>
+  </data>
+  <data name="2110" xml:space="preserve">
+    <value>Colaboradores</value>
+  </data>
+  <data name="2120" xml:space="preserve">
+    <value>Absenteísmo</value>
+  </data>
+  <data name="2130" xml:space="preserve">
+    <value>Horas Extras</value>
+  </data>
+  <data name="2140" xml:space="preserve">
+    <value>Treinamentos</value>
+  </data>
+  <data name="2200" xml:space="preserve">
+    <value>Módulo de Segurança</value>
+  </data>
+  <data name="2210" xml:space="preserve">
+    <value>Controle de EPI</value>
+  </data>
+  <data name="2220" xml:space="preserve">
+    <value>Desvios de Segurança</value>
+  </data>
+  <data name="2230" xml:space="preserve">
+    <value>Equipamentos</value>
+  </data>
+  <data name="2240" xml:space="preserve">
+    <value>Controle de Estoque</value>
+  </data>
+  <data name="2300" xml:space="preserve">
+    <value>Módulo de Facilities</value>
+  </data>
+  <data name="2400" xml:space="preserve">
+    <value>Módulo de Manutenção</value>
+  </data>
+  <data name="2410" xml:space="preserve">
+    <value>Ordens de Serviço</value>
+  </data>
+  <data name="2420" xml:space="preserve">
+    <value>Inspeções</value>
+  </data>
+  <data name="2430" xml:space="preserve">
+    <value>Máquinas</value>
+  </data>
+  <data name="2440" xml:space="preserve">
+    <value>Ferramentas</value>
+  </data>
+  <data name="2450" xml:space="preserve">
+    <value>Materiais de Consumo</value>
+  </data>
+  <data name="2460" xml:space="preserve">
+    <value>Controle de Estoque</value>
+  </data>
+  <data name="2500" xml:space="preserve">
+    <value>Módulo Financeiro</value>
+  </data>
+  <data name="2600" xml:space="preserve">
+    <value>Módulo de Melhoria</value>
+  </data>
+  <data name="2610" xml:space="preserve">
+    <value>Soluções de Problemas</value>
+  </data>
+  <data name="2620" xml:space="preserve">
+    <value>Programa 5S</value>
+  </data>
+  <data name="2630" xml:space="preserve">
+    <value>Sugestões de Melhoria</value>
+  </data>
+  <data name="2700" xml:space="preserve">
+    <value>Módulo de Marketing</value>
+  </data>
+  <data name="2800" xml:space="preserve">
+    <value>Módulo de Tecnologia</value>
+  </data>
 </root>

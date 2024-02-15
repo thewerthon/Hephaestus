@@ -163,324 +163,324 @@
     <value>report</value>
   </data>
   <data name="0100" xml:space="preserve">
-    <value>images/menus/home.svg</value>
+    <value>/images/menus/home.svg</value>
   </data>
   <data name="0110" xml:space="preserve">
-    <value>lordicon/menus/document.json</value>
+    <value>/lordicon/menus/document.json</value>
   </data>
-  <data name="0020" xml:space="preserve">
-    <value>lordicon/menus/chart.json</value>
+  <data name="0120" xml:space="preserve">
+    <value>/lordicon/menus/chart.json</value>
   </data>
-  <data name="0030" xml:space="preserve">
-    <value>lordicon/menus/flow.json</value>
+  <data name="0130" xml:space="preserve">
+    <value>/lordicon/menus/flow.json</value>
   </data>
-  <data name="0040" xml:space="preserve">
-    <value>lordicon/menus/book.json</value>
+  <data name="0140" xml:space="preserve">
+    <value>/lordicon/menus/book.json</value>
   </data>
-  <data name="0050" xml:space="preserve">
-    <value>lordicon/menus/question.json</value>
+  <data name="0150" xml:space="preserve">
+    <value>/lordicon/menus/question.json</value>
   </data>
   <data name="0200" xml:space="preserve">
-    <value>images/menus/settings.svg</value>
+    <value>/images/menus/settings.svg</value>
   </data>
   <data name="0210" xml:space="preserve">
-    <value>lordicon/menus/avatars.json</value>
+    <value>/lordicon/menus/avatars.json</value>
   </data>
   <data name="0220" xml:space="preserve">
-    <value>lordicon/menus/padlock.json</value>
+    <value>/lordicon/menus/padlock.json</value>
   </data>
   <data name="0230" xml:space="preserve">
-    <value>lordicon/menus/table.json</value>
+    <value>/lordicon/menus/table.json</value>
   </data>
   <data name="1000" xml:space="preserve">
     <value>none</value>
   </data>
   <data name="1100" xml:space="preserve">
-    <value>images/menus/comercial.svg</value>
+    <value>/images/menus/comercial.svg</value>
   </data>
   <data name="1110" xml:space="preserve">
-    <value>lordicon/menus/invoice.json</value>
+    <value>/lordicon/menus/invoice.json</value>
   </data>
   <data name="1120" xml:space="preserve">
-    <value>lordicon/menus/estimate.json</value>
+    <value>/lordicon/menus/estimate.json</value>
   </data>
   <data name="1200" xml:space="preserve">
-    <value>images/menus/engineering.svg</value>
+    <value>/images/menus/engineering.svg</value>
   </data>
   <data name="1210" xml:space="preserve">
-    <value>lordicon/menus/product.json</value>
+    <value>/lordicon/menus/product.json</value>
   </data>
   <data name="1711" xml:space="preserve">
-    <value>lordicon/menus/product.json</value>
+    <value>/lordicon/menus/product.json</value>
   </data>
   <data name="1731" xml:space="preserve">
-    <value>lordicon/menus/product.json</value>
+    <value>/lordicon/menus/product.json</value>
   </data>
   <data name="1741" xml:space="preserve">
-    <value>lordicon/menus/product.json</value>
+    <value>/lordicon/menus/product.json</value>
   </data>
   <data name="1751" xml:space="preserve">
-    <value>lordicon/menus/product.json</value>
+    <value>/lordicon/menus/product.json</value>
   </data>
   <data name="1220" xml:space="preserve">
-    <value>lordicon/menus/process.json</value>
+    <value>/lordicon/menus/process.json</value>
   </data>
   <data name="1712" xml:space="preserve">
-    <value>lordicon/menus/process.json</value>
+    <value>/lordicon/menus/process.json</value>
   </data>
   <data name="1732" xml:space="preserve">
-    <value>lordicon/menus/process.json</value>
+    <value>/lordicon/menus/process.json</value>
   </data>
   <data name="1742" xml:space="preserve">
-    <value>lordicon/menus/process.json</value>
+    <value>/lordicon/menus/process.json</value>
   </data>
   <data name="1752" xml:space="preserve">
-    <value>lordicon/menus/process.json</value>
+    <value>/lordicon/menus/process.json</value>
   </data>
   <data name="1230" xml:space="preserve">
-    <value>lordicon/menus/checklist.json</value>
+    <value>/lordicon/menus/checklist.json</value>
   </data>
   <data name="1240" xml:space="preserve">
-    <value>lordicon/menus/book.json</value>
+    <value>/lordicon/menus/book.json</value>
   </data>
   <data name="1780" xml:space="preserve">
-    <value>lordicon/menus/book.json</value>
+    <value>/lordicon/menus/book.json</value>
   </data>
   <data name="1250" xml:space="preserve">
-    <value>lordicon/menus/graduation.json</value>
+    <value>/lordicon/menus/graduation.json</value>
   </data>
   <data name="2140" xml:space="preserve">
-    <value>lordicon/menus/graduation.json</value>
+    <value>/lordicon/menus/graduation.json</value>
   </data>
   <data name="1300" xml:space="preserve">
-    <value>images/menus/supplies.svg</value>
+    <value>/images/menus/supplies.svg</value>
   </data>
   <data name="1400" xml:space="preserve">
-    <value>images/menus/warehouse.svg</value>
+    <value>/images/menus/warehouse.svg</value>
   </data>
   <data name="1500" xml:space="preserve">
-    <value>images/menus/planning.svg</value>
+    <value>/images/menus/planning.svg</value>
   </data>
   <data name="1600" xml:space="preserve">
-    <value>images/menus/production.svg</value>
+    <value>/images/menus/production.svg</value>
   </data>
   <data name="1700" xml:space="preserve">
-    <value>images/menus/quality.svg</value>
+    <value>/images/menus/quality.svg</value>
   </data>
   <data name="1800" xml:space="preserve">
-    <value>images/menus/fiscal.svg</value>
+    <value>/images/menus/fiscal.svg</value>
   </data>
   <data name="1900" xml:space="preserve">
-    <value>images/menus/logistics.svg</value>
+    <value>/images/menus/logistics.svg</value>
   </data>
   <data name="2100" xml:space="preserve">
-    <value>images/menus/personnel.svg</value>
+    <value>/images/menus/personnel.svg</value>
   </data>
   <data name="2200" xml:space="preserve">
-    <value>images/menus/safety.svg</value>
+    <value>/images/menus/safety.svg</value>
   </data>
   <data name="2300" xml:space="preserve">
-    <value>images/menus/facilities.svg</value>
+    <value>/images/menus/facilities.svg</value>
   </data>
   <data name="2400" xml:space="preserve">
-    <value>images/menus/maintenance.svg</value>
+    <value>/images/menus/maintenance.svg</value>
   </data>
   <data name="2500" xml:space="preserve">
-    <value>images/menus/financial.svg</value>
+    <value>/images/menus/financial.svg</value>
   </data>
   <data name="2600" xml:space="preserve">
-    <value>images/menus/improvements.svg</value>
+    <value>/images/menus/improvements.svg</value>
   </data>
   <data name="2700" xml:space="preserve">
-    <value>images/menus/marketing.svg</value>
+    <value>/images/menus/marketing.svg</value>
   </data>
   <data name="2800" xml:space="preserve">
-    <value>images/menus/technology.svg</value>
+    <value>/images/menus/technology.svg</value>
   </data>
   <data name="1320" xml:space="preserve">
-    <value>lordicon/menus/purchasing.json</value>
+    <value>/lordicon/menus/purchasing.json</value>
   </data>
   <data name="1550" xml:space="preserve">
-    <value>lordicon/menus/purchasing.json</value>
+    <value>/lordicon/menus/purchasing.json</value>
   </data>
   <data name="1310" xml:space="preserve">
-    <value>lordicon/menus/shopping.json</value>
+    <value>/lordicon/menus/shopping.json</value>
   </data>
   <data name="1410" xml:space="preserve">
-    <value>lordicon/menus/arrows.json</value>
+    <value>/lordicon/menus/arrows.json</value>
   </data>
   <data name="1411" xml:space="preserve">
-    <value>lordicon/menus/invoice.json</value>
+    <value>/lordicon/menus/invoice.json</value>
   </data>
   <data name="1412" xml:space="preserve">
-    <value>lordicon/menus/invoice.json</value>
+    <value>/lordicon/menus/invoice.json</value>
   </data>
   <data name="1820" xml:space="preserve">
-    <value>lordicon/menus/invoice.json</value>
+    <value>/lordicon/menus/invoice.json</value>
   </data>
   <data name="1830" xml:space="preserve">
-    <value>lordicon/menus/invoice.json</value>
+    <value>/lordicon/menus/invoice.json</value>
   </data>
   <data name="1840" xml:space="preserve">
-    <value>lordicon/menus/taxes.json</value>
+    <value>/lordicon/menus/taxes.json</value>
   </data>
   <data name="1810" xml:space="preserve">
-    <value>lordicon/menus/ticket.json</value>
+    <value>/lordicon/menus/ticket.json</value>
   </data>
   <data name="1413" xml:space="preserve">
-    <value>lordicon/menus/checklist.json</value>
+    <value>/lordicon/menus/checklist.json</value>
   </data>
   <data name="1414" xml:space="preserve">
-    <value>lordicon/menus/checklist.json</value>
+    <value>/lordicon/menus/checklist.json</value>
   </data>
   <data name="1415" xml:space="preserve">
-    <value>lordicon/menus/cargo-load.json</value>
+    <value>/lordicon/menus/cargo-load.json</value>
   </data>
   <data name="1416" xml:space="preserve">
-    <value>lordicon/menus/cargo-unload.json</value>
+    <value>/lordicon/menus/cargo-unload.json</value>
   </data>
   <data name="1417" xml:space="preserve">
-    <value>lordicon/menus/stock-cart.json</value>
+    <value>/lordicon/menus/stock-cart.json</value>
   </data>
   <data name="1418" xml:space="preserve">
-    <value>lordicon/menus/disposal.json</value>
+    <value>/lordicon/menus/disposal.json</value>
   </data>
   <data name="1420" xml:space="preserve">
-    <value>lordicon/menus/label.json</value>
+    <value>/lordicon/menus/label.json</value>
   </data>
   <data name="1430" xml:space="preserve">
-    <value>lordicon/menus/checklist.json</value>
+    <value>/lordicon/menus/checklist.json</value>
   </data>
   <data name="1440" xml:space="preserve">
-    <value>lordicon/menus/write.json</value>
+    <value>/lordicon/menus/write.json</value>
   </data>
   <data name="1510" xml:space="preserve">
-    <value>lordicon/menus/checklist.json</value>
+    <value>/lordicon/menus/checklist.json</value>
   </data>
   <data name="1520" xml:space="preserve">
-    <value>lordicon/menus/write.json</value>
+    <value>/lordicon/menus/write.json</value>
   </data>
   <data name="1630" xml:space="preserve">
-    <value>lordicon/menus/checklist.json</value>
+    <value>/lordicon/menus/checklist.json</value>
   </data>
   <data name="1640" xml:space="preserve">
-    <value>lordicon/menus/write.json</value>
+    <value>/lordicon/menus/write.json</value>
   </data>
   <data name="1530" xml:space="preserve">
-    <value>lordicon/menus/stock.json</value>
+    <value>/lordicon/menus/stock.json</value>
   </data>
   <data name="1540" xml:space="preserve">
-    <value>lordicon/menus/invoice.json</value>
+    <value>/lordicon/menus/invoice.json</value>
   </data>
   <data name="1610" xml:space="preserve">
-    <value>lordicon/menus/edit.json</value>
+    <value>/lordicon/menus/edit.json</value>
   </data>
   <data name="1611" xml:space="preserve">
-    <value>lordicon/menus/play.json</value>
+    <value>/lordicon/menus/play.json</value>
   </data>
   <data name="1612" xml:space="preserve">
-    <value>lordicon/menus/minus.json</value>
+    <value>/lordicon/menus/minus.json</value>
   </data>
   <data name="1613" xml:space="preserve">
-    <value>lordicon/menus/plus.json</value>
+    <value>/lordicon/menus/plus.json</value>
   </data>
   <data name="1614" xml:space="preserve">
-    <value>lordicon/menus/pause.json</value>
+    <value>/lordicon/menus/pause.json</value>
   </data>
   <data name="1615" xml:space="preserve">
-    <value>lordicon/menus/turn-back.json</value>
+    <value>/lordicon/menus/turn-back.json</value>
   </data>
   <data name="1616" xml:space="preserve">
-    <value>lordicon/menus/cross.json</value>
+    <value>/lordicon/menus/cross.json</value>
   </data>
   <data name="1617" xml:space="preserve">
-    <value>lordicon/menus/done.json</value>
+    <value>/lordicon/menus/done.json</value>
   </data>
   <data name="1620" xml:space="preserve">
-    <value>lordicon/menus/label.json</value>
+    <value>/lordicon/menus/label.json</value>
   </data>
   <data name="1710" xml:space="preserve">
-    <value>lordicon/menus/magnifier.json</value>
+    <value>/lordicon/menus/magnifier.json</value>
   </data>
   <data name="1713" xml:space="preserve">
-    <value>lordicon/menus/calendar.json</value>
+    <value>/lordicon/menus/calendar.json</value>
   </data>
   <data name="1753" xml:space="preserve">
-    <value>lordicon/menus/calendar.json</value>
+    <value>/lordicon/menus/calendar.json</value>
   </data>
   <data name="1720" xml:space="preserve">
-    <value>lordicon/menus/alert.json</value>
+    <value>/lordicon/menus/alert.json</value>
   </data>
   <data name="1730" xml:space="preserve">
-    <value>lordicon/menus/cross.json</value>
+    <value>/lordicon/menus/cross.json</value>
   </data>
   <data name="1740" xml:space="preserve">
-    <value>lordicon/menus/done.json</value>
+    <value>/lordicon/menus/done.json</value>
   </data>
   <data name="1750" xml:space="preserve">
-    <value>lordicon/menus/approved.json</value>
+    <value>/lordicon/menus/approved.json</value>
   </data>
   <data name="1760" xml:space="preserve">
-    <value>lordicon/menus/rules.json</value>
+    <value>/lordicon/menus/rules.json</value>
   </data>
   <data name="1770" xml:space="preserve">
-    <value>lordicon/menus/prize.json</value>
+    <value>/lordicon/menus/prize.json</value>
   </data>
   <data name="1910" xml:space="preserve">
-    <value>lordicon/menus/receiving.json</value>
+    <value>/lordicon/menus/receiving.json</value>
   </data>
   <data name="1920" xml:space="preserve">
-    <value>lordicon/menus/delivery.json</value>
+    <value>/lordicon/menus/delivery.json</value>
   </data>
   <data name="2000" xml:space="preserve">
     <value>none</value>
   </data>
   <data name="2110" xml:space="preserve">
-    <value>lordicon/menus/group.json</value>
+    <value>/lordicon/menus/group.json</value>
   </data>
   <data name="2120" xml:space="preserve">
-    <value>lordicon/menus/sick.json</value>
+    <value>/lordicon/menus/sick.json</value>
   </data>
   <data name="2130" xml:space="preserve">
-    <value>lordicon/menus/clock.json</value>
+    <value>/lordicon/menus/clock.json</value>
   </data>
   <data name="2210" xml:space="preserve">
-    <value>lordicon/menus/worker.json</value>
+    <value>/lordicon/menus/worker.json</value>
   </data>
   <data name="2220" xml:space="preserve">
-    <value>lordicon/menus/siren.json</value>
+    <value>/lordicon/menus/siren.json</value>
   </data>
   <data name="2230" xml:space="preserve">
-    <value>lordicon/menus/mask.json</value>
+    <value>/lordicon/menus/mask.json</value>
   </data>
   <data name="2450" xml:space="preserve">
-    <value>lordicon/menus/screw.json</value>
+    <value>/lordicon/menus/screw.json</value>
   </data>
   <data name="2240" xml:space="preserve">
-    <value>lordicon/menus/stock.json</value>
+    <value>/lordicon/menus/stock.json</value>
   </data>
   <data name="2460" xml:space="preserve">
-    <value>lordicon/menus/stock.json</value>
+    <value>/lordicon/menus/stock.json</value>
   </data>
   <data name="2410" xml:space="preserve">
-    <value>lordicon/menus/service.json</value>
+    <value>/lordicon/menus/service.json</value>
   </data>
   <data name="2430" xml:space="preserve">
-    <value>lordicon/menus/cogs.json</value>
+    <value>/lordicon/menus/cogs.json</value>
   </data>
   <data name="2440" xml:space="preserve">
-    <value>lordicon/menus/tools.json</value>
+    <value>/lordicon/menus/tools.json</value>
   </data>
   <data name="2420" xml:space="preserve">
-    <value>lordicon/menus/magnifier.json</value>
+    <value>/lordicon/menus/magnifier.json</value>
   </data>
   <data name="2610" xml:space="preserve">
-    <value>lordicon/menus/support.json</value>
+    <value>/lordicon/menus/support.json</value>
   </data>
   <data name="2630" xml:space="preserve">
-    <value>lordicon/menus/idea.json</value>
+    <value>/lordicon/menus/idea.json</value>
   </data>
   <data name="2620" xml:space="preserve">
-    <value>lordicon/menus/archive.json</value>
+    <value>/lordicon/menus/archive.json</value>
   </data>
 </root>
