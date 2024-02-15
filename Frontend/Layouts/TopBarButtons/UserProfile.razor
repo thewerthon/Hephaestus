@@ -5,7 +5,7 @@
 
 	<!-- Profile Info -->
 	<Template>
-		<RadzenStack Orientation="Orientation.Horizontal" Gap="10px" class="rz-mr-2" title="@AppText["0035"]">
+		<RadzenStack Orientation="Orientation.Horizontal" Gap="10px" class="rz-mr-2" title="@AppTexts["0035"]">
 			<RadzenStack AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center">
 				<RadzenImage Path="@User?.Photo" Style="width:38px;height:38px" class="user-size rounded-circle" />
 			</RadzenStack>
@@ -18,13 +18,13 @@
 
 	<!-- Menu Items -->
 	<ChildContent>
-		<RadzenProfileMenuItem Text="@AppText["0024"]" Icon="@AppIcon["0600"]" Path="@AppPath["0600"]" />
-		<RadzenProfileMenuItem Text="@AppText["0025"]" Icon="@AppIcon["0500"]" Path="@AppPath["0500"]" />
-		<RadzenProfileMenuItem Text="@AppText["0026"]" Icon="@AppIcon["0800"]" Value="AppInstall" Style="display:none" id="app-install" />
-		<RadzenProfileMenuItem Text="@AppText["0027"]" Icon="@AppIcon["0700"]" Value="Update" />
-		<RadzenProfileMenuItem Text="@AppText["0028"]" Icon="@AppIcon["0050"]" Path="@AppPath["0050"]" />
-		<RadzenProfileMenuItem Text="@AppText["0029"]" Icon="@AppIcon["0400"]" Path="@AppPath["0400"]" />
-		<RadzenProfileMenuItem Text="@AppText["0030"]" Icon="@AppIcon["0900"]" Value="Logout" />
+		<RadzenProfileMenuItem Text="@AppNames["0010"]" Icon="@MenuIcons["0010"]" Value="Profile" Path="@AppPaths["0010"]" />
+		<RadzenProfileMenuItem Text="@AppNames["0003"]" Icon="@MenuIcons["0003"]" Value="Changelog" Path="@AppPaths["0003"]" />
+		<RadzenProfileMenuItem Text="@AppNames["0004"]" Icon="@MenuIcons["0004"]" Value="Install" Style="display:none" id="app-install" />
+		<RadzenProfileMenuItem Text="@AppNames["0005"]" Icon="@MenuIcons["0005"]" Value="Update" />
+		<RadzenProfileMenuItem Text="@AppNames["0001"]" Icon="@MenuIcons["0001"]" Value="About" Path="@AppPaths["0001"]" />
+		<RadzenProfileMenuItem Text="@AppNames["0013"]" Icon="@MenuIcons["0013"]" Value="Help" Path="@AppPaths["0013"]" />
+		<RadzenProfileMenuItem Text="@AppNames["0009"]" Icon="@MenuIcons["0009"]" Value="Logout" />
 	</ChildContent>
 
 </RadzenProfileMenu>
@@ -36,9 +36,9 @@
 	protected override void OnInitialized() {
 
 		User = UserService.CurrentUser;
-		User.Name ??= AppText["0033"];
-		User.Role ??= AppText["0034"];
-		User.Role = AppRole[(User.Role ?? "System.User").Replace(".", string.Empty)];
+		User.Name ??= AppTexts["0033"];
+		User.Role ??= AppTexts["0034"];
+		User.Role = AppRoles[(User.Role ?? "System.User").Replace(".", string.Empty)];
 
 	}
 
@@ -54,7 +54,7 @@
 			}
 
 			User = UserService.CurrentUser;
-			User.Role = AppRole[(User.Role ?? "System.User").Replace(".", string.Empty)];
+			User.Role = AppRoles[(User.Role ?? "System.User").Replace(".", string.Empty)];
 			StateHasChanged();
 
 		}
@@ -63,9 +63,9 @@
 
 	protected async void ProfileMenuClick(RadzenProfileMenuItem args) {
 
-		if (args.Value == "AppInstall") await AppInstall();
-		if (args.Value == "Logout") await LogoutConfirm();
+		if (args.Value == "Install") await AppInstall();
 		if (args.Value == "Update") await ForceUpdate();
+		if (args.Value == "Logout") await LogoutConfirm();
 
 	}
 
@@ -77,9 +77,9 @@
 
 	private async Task ForceUpdate() {
 
-		var result = await DialogService.Confirm(AppText["0031"], AppText["0027"], new ConfirmOptions() {
-				OkButtonText = AppButton["Confirm"],
-				CancelButtonText = AppButton["Cancel"],
+		var result = await DialogService.Confirm(AppTexts["0031"], AppTexts["0027"], new ConfirmOptions() {
+				OkButtonText = AppButtons["Confirm"],
+				CancelButtonText = AppButtons["Cancel"],
 				AutoFocusFirstElement = false,
 				CloseDialogOnOverlayClick = true,
 				CloseDialogOnEsc = true
@@ -95,9 +95,9 @@
 
 	private async Task LogoutConfirm() {
 
-		var result = await DialogService.Confirm(AppText["0032"], AppText["0030"], new ConfirmOptions() {
-				OkButtonText = AppButton["Confirm"],
-				CancelButtonText = AppButton["Cancel"],
+		var result = await DialogService.Confirm(AppTexts["0032"], AppTexts["0030"], new ConfirmOptions() {
+				OkButtonText = AppButtons["Confirm"],
+				CancelButtonText = AppButtons["Cancel"],
 				AutoFocusFirstElement = false,
 				CloseDialogOnOverlayClick = true,
 				CloseDialogOnEsc = true

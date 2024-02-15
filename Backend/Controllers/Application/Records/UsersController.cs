@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Results;
-using Microsoft.AspNetCore.OData.Routing.Attributes;
 
 namespace Hephaestus.Backend.Controllers {
 
 	public class UsersController(DatabaseContext context) : RecordsTracedActiveController<User>(context) {
 
 		// GET By Guid
-		[ODataIgnored]
-		[HttpGet("odata/User/{guid}")]
+		[HttpGet("odata/Users/{guid:guid}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
 		public ActionResult<SingleResult<User>> GetByGuid(string guid) {
 
@@ -27,8 +25,7 @@ namespace Hephaestus.Backend.Controllers {
 		}
 
 		// PUT By Guid
-		[ODataIgnored]
-		[HttpPut("odata/User/{guid}")]
+		[HttpPut("odata/Users/{guid:guid}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
 		public ActionResult PutByGuid(string guid, [FromBody] User item, [FromQuery] int user = 0, [FromQuery] bool response = true) {
 

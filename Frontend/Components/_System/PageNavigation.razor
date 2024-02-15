@@ -1,0 +1,31 @@
+﻿@namespace Hephaestus.Frontend.Components
+
+<PageTitle>@(PageTitle ?? AppNames[Code])</PageTitle>
+
+<RadzenText Text=@(Title ?? AppTitles[Code]) TextStyle="Radzen.Blazor.TextStyle.DisplayH4" class="mt-4" />
+<RadzenText Text=@(Subtitle ?? AppTexts["0055"]) TextStyle="Radzen.Blazor.TextStyle.DisplayH5" class="mt-0" />
+
+<UpdateChecker CheckUpdates="true" DisplayBanner="true" BlockNavigation="true" />
+
+<RadzenStack Orientation="Orientation.Horizontal" Wrap="FlexWrap.Wrap" Gap="20px" class="rz-pt-4 rz-pb-12">
+	@ChildContent
+</RadzenStack>
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string Code { get; set; } = string.Empty;
+
+	[Parameter]
+	public string? Title { get; set; }
+
+	[Parameter]
+	public string? Subtitle { get; set; }
+
+	[Parameter]
+	public string? PageTitle { get; set; }
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+}

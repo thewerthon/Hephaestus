@@ -36,7 +36,7 @@ foreach (var table in DatabaseTables.Tables) {
 	typeof(ODataConventionModelBuilder)
 		.GetMethod("EntitySet")!
 		.MakeGenericMethod(table.Type)
-		.Invoke(models, new object[] { table.Name });
+		.Invoke(models, [table.Name]);
 
 }
 
@@ -55,9 +55,13 @@ builder.Services.AddControllers(options => {
 	options.Filters.Add(new AuthorizeFilter(policy));
 }).AddOData(options => {
 	options.EnableAttributeRouting = true;
+	options.EnableNoDollarQueryOptions = true;
 	options.RouteOptions.EnableKeyAsSegment = false;
 	options.RouteOptions.EnableDollarValueRouting = true;
 	options.RouteOptions.EnableDollarCountRouting = true;
+	options.RouteOptions.EnableQualifiedOperationCall = false;
+	options.RouteOptions.EnableUnqualifiedOperationCall = true;
+	options.RouteOptions.EnableActionNameCaseInsensitive = true;
 	options.RouteOptions.EnablePropertyNameCaseInsensitive = true;
 	options.RouteOptions.EnableControllerNameCaseInsensitive = true;
 	options.AddRouteComponents("odata", models.GetEdmModel(), services => {
@@ -82,6 +86,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
+app.MapFallbackToFile("app/{**slug}", "404");
 app.MapFallbackToFile("odata/{**slug}", "404");
 app.MapFallbackToFile("{**slug}", "index.html");
 

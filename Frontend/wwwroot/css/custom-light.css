@@ -126,7 +126,7 @@
 	--rz-panel-menu-item-active-background-color: rgba(0, 0, 0, 0.15);
 	--rz-panel-menu-item-background-color: rgba(125, 173, 249, 0.03);
 	--rz-panel-menu-item-2nd-level-padding: var(--rz-panel-menu-item-padding);
-	--rz-panel-menu-item-2nd-level-offset: 70px;
+	--rz-panel-menu-item-2nd-level-offset: 60px;
 	--rz-panel-menu-item-2nd-level-hover-background-color: rgba(125, 173, 249, 0.07);
 	--rz-panel-menu-item-2nd-level-background-color: rgba(125, 173, 249, 0.03);
 	--rz-panel-menu-item-2nd-level-active-background-color: rgba(125, 173, 249, 0.1);
@@ -157,6 +157,8 @@
 :root {
 	--lord-icon-primary: var(--rz-primary);
 	--lord-icon-secondary: var(--rz-secondary);
+	--lord-icon-background: #f5f5f5;
+	--lord-icon-hoverlayer: #00000005;
 }
 
 :root {

@@ -24,7 +24,7 @@
 
 			try {
 
-				var serverVersion = await HttpClient.GetFromJsonAsync<Architect.Models.Version>("odata/version");
+				var serverVersion = await HttpClient.GetFromJsonAsync<Architect.Models.Version>("app/version");
 				return serverVersion ?? new() { Build = 0, Force = 0, Name = "Unknow" };
 
 			} catch (Exception) {

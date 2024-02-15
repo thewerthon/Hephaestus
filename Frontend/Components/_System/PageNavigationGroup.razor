@@ -1,0 +1,14 @@
+﻿@namespace Hephaestus.Frontend.Components
+
+<RadzenText Text="@Text" Style="width: 100%" class="rz-mt-2 rz-mb-0" />
+@ChildContent
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string Text { get; set; } = string.Empty;
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+}

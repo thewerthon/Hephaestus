@@ -1,0 +1,22 @@
+﻿@page "/"
+@page "/inicio"
+@page "/home"
+
+@namespace Hephaestus.Frontend.Pages
+
+<PageNavigation Code="0100" Title="@($"{AppTexts[VariablesService.SaudationCode()]}, {UserService.CurrentUser.FirstName}.")" Subtitle="@AppTexts["0054"]">
+
+	<RadzenAlert AlertStyle="AlertStyle.Primary" Shade="Shade.Lighter" Variant="Variant.Flat" Title="Seja bem vindo(a)!" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae ullamcorper velit. Duis in augue vitae lacus blandit lacinia. Pellentesque suscipit consequat augue et elementum. In tortor felis, rhoncus nec metus eget, sollicitudin varius nisi. Pellentesque eu odio varius, elementum justo et, euismod arcu. Aenean auctor eget nibh eget suscipit." />
+
+	<PageNavigationGroup Text="@AppTexts["0056"]">
+		<PageNavigationItem Code="0110" />
+		<PageNavigationItem Code="0120" />
+		<PageNavigationItem Code="0130" />
+	</PageNavigationGroup>
+
+	<PageNavigationGroup Text="@AppTexts["0057"]">
+		<PageNavigationItem Code="0140" />
+		<PageNavigationItem Code="0150" />
+	</PageNavigationGroup>
+
+</PageNavigation>

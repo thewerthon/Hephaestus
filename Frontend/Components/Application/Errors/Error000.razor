@@ -1,18 +1,16 @@
 ﻿@namespace Hephaestus.Frontend.Components
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
-<RadzenRow>
-	<RadzenColumn Size="12" class="rz-my-5">
-		<LordIcon Icon="@Icon" Anim="@Anim" Trigger="@Trigger" Intro="@Intro" State="@State" Morph="@Morph" Stroke="bold" Size="120px" Id="icon-error-anim" />
-		<RadzenText Text="@ErrorTitle" TextStyle="TextStyle.DisplayH3" TextAlign="TextAlign.Center" class="rz-mb-2 fadein" />
-		<RadzenText Text="@ErrorDescription" TextStyle="TextStyle.H6" TextAlign="TextAlign.Center" TagName="Radzen.Blazor.TagName.P" class="rz-my-0 fadein" />
-	</RadzenColumn>
-</RadzenRow>
+<RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Vertical" Gap="0px" class="rz-pt-10">
+	<LordIcon Icon=@Icon Anim="@Anim" Trigger="@Trigger" Intro="@Intro" State="@State" Morph="@Morph" Stroke="bold" Size="120px" Id="icon-error-anim" />
+	<RadzenText Text="@ErrorTitle" TextStyle="TextStyle.DisplayH3" TextAlign="TextAlign.Center" class="rz-mb-2 fadein" />
+	<RadzenText Text="@ErrorDescription" TextStyle="TextStyle.H6" TextAlign="TextAlign.Center" TagName="Radzen.Blazor.TagName.P" class="rz-my-0 fadein" />
+</RadzenStack>
 
 @code {
 
 	[Parameter]
-	public string Icon { get; set; } = "/pages/error.json";
+	public string Icon { get; set; } = "/lordicon/pages/error.json";
 
 	[Parameter]
 	public string Anim { get; set; } = "state";
@@ -37,8 +35,8 @@
 
 	protected override void OnInitialized() {
 
-		ErrorTitle = string.IsNullOrEmpty(ErrorTitle) ? AppError["0001"] : ErrorTitle;
-		ErrorDescription = string.IsNullOrEmpty(ErrorDescription) ? AppError["0002"] : ErrorDescription;
+		ErrorTitle = string.IsNullOrEmpty(ErrorTitle) ? AppErrors["0001"] : ErrorTitle;
+		ErrorDescription = string.IsNullOrEmpty(ErrorDescription) ? AppErrors["0002"] : ErrorDescription;
 
 	}
 

@@ -1,19 +1,19 @@
-﻿using Microsoft.AspNetCore.OData.Query;
+﻿using Microsoft.AspNetCore.OData.Formatter;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Results;
-using Microsoft.AspNetCore.OData.Routing.Attributes;
 
 namespace Hephaestus.Backend.Controllers {
 
 	public class PreferencesController(DatabaseContext context) : RecordsController<Preferences>(context) {
 
 		// GET By User
-		[ODataIgnored]
-		[HttpGet("odata/Preferences/{user}")]
+		[HttpGet("odata/Preferences/{user:int}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
 		public ActionResult<SingleResult<User>> GetByUser(int user) {
 
 			try {
 
+				if (user < 0) user = 0;
 				var record = DbSet.AsNoTracking().Where(i => i.User == user);
 				return Ok(SingleResult.Create(record));
 
@@ -27,8 +27,7 @@ namespace Hephaestus.Backend.Controllers {
 		}
 
 		// PUT By User
-		[ODataIgnored]
-		[HttpPut("odata/Preferences/{user}")]
+		[HttpPut("odata/Preferences/{user:int}")]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
 		public ActionResult PutByUser(int user, [FromBody] Preferences item, [FromQuery] bool response = true) {
 
