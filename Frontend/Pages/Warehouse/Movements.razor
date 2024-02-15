@@ -1,27 +1,5 @@
 ﻿@page "/almoxarifado/movimentos"
 @page "/warehouse/movements"
 @page "/almacen/movimientos"
+
 @namespace Hephaestus.Frontend.Pages
-
-<PageTitle>@(AppMenu["2200"])</PageTitle>
-
-<NavigationPage Title="@AppMenu["2200"]" Subtitle="@AppText["0055"]">
-
-	<NavigationGroup Text="Movimentos de Entrada">
-		<NavigationItem Icon="/menus/invoice.json" Path="" Text="Entrada por Nota Fiscal" />
-		<NavigationItem Icon="/menus/write.json" Path="" Text="Devolução da Ordem de Serviço" />
-		<NavigationItem Icon="/menus/cargo-load.json" Path="" Text="Entrada Manual" />
-	</NavigationGroup>
-
-	<NavigationGroup Text="Movimentos de Saída">
-		<NavigationItem Icon="/menus/invoice.json" Path="" Text="Saída por Nota Fiscal" />
-		<NavigationItem Icon="/menus/write.json" Path="" Text="Separação da Ordem de Serviço" />
-		<NavigationItem Icon="/menus/cargo-unload.json" Path="" Text="Saída Manual" />
-	</NavigationGroup>
-
-	<NavigationGroup Text="Outros Movimentos">
-		<NavigationItem Icon="/menus/stock-cart.json" Path="" Text="Transferências" />
-		<NavigationItem Icon="/menus/disposal.json" Path="" Text="Descartes" />
-	</NavigationGroup>
-
-</NavigationPage>

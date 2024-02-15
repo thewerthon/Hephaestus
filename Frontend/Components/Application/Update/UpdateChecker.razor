@@ -2,11 +2,11 @@
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
-<RadzenAlert Title="@AppText["0008"]" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="update-banner">
+<RadzenAlert Title="@AppTexts["0008"]" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="update-banner">
 	@if (VersionService.ServerVersion != null) {
-		<p class="m-0">@($"{AppText["0013"]} {VersionService.ServerVersion.Name}:")</p>
-		<pre class="text-wrap" style="margin: 0 0 4px 0;">@(string.IsNullOrEmpty(VersionService.ServerVersion.Notes) ? AppText["0038"] : VersionService.ServerVersion.Notes)</pre>
-		<p class="mt-2 mb-0">@AppText["0012"]</p>
+		<p class="m-0">@($"{AppTexts["0013"]} {VersionService.ServerVersion.Name}:")</p>
+		<pre class="text-wrap" style="margin: 0 0 4px 0;">@(string.IsNullOrEmpty(VersionService.ServerVersion.Notes) ? AppTexts["0038"] : VersionService.ServerVersion.Notes)</pre>
+		<p class="mt-2 mb-0">@AppTexts["0012"]</p>
 	}
 </RadzenAlert>
 
@@ -43,9 +43,9 @@
 
 		if (BlockNavigation && VersionService.UpdateAvailable && VersionService.UpdateForced) {
 
-			var result = await DialogService.Confirm(AppText["0011"], AppText["0009"], new ConfirmOptions() {
-					OkButtonText = AppButton["Update"],
-					CancelButtonText = AppButton["Cancel"],
+			var result = await DialogService.Confirm(AppTexts["0011"], AppTexts["0009"], new ConfirmOptions() {
+					OkButtonText = AppButtons["Update"],
+					CancelButtonText = AppButtons["Cancel"],
 					AutoFocusFirstElement = false,
 					CloseDialogOnOverlayClick = true,
 					CloseDialogOnEsc = true

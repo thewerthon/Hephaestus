@@ -1,17 +1,17 @@
 ﻿@namespace Hephaestus.Frontend.Layouts.TopBarButtons
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
-<RadzenButton Variant="Variant.Text" ContextMenu="@(args => None())" Style="display: none;" Click="@(() => Update())" class="topbar-icon" title="@AppText["0007"]" id="update-button">
-	<LordIcon Icon="/lordicon/topbar/autorenew.json" Anim="state" Trigger="hover" Intro="in-autorenew" State="hover-autorenew" Size="24px" Target=".rz-button" Title="@AppText["0007"]" />
+<RadzenButton Variant="Variant.Text" ContextMenu="@(args => None())" Style="display: none;" Click="@(() => Update())" class="topbar-icon" title="@AppTexts["0007"]" id="update-button">
+	<LordIcon Icon="/lordicon/topbar/autorenew.json" Anim="state" Trigger="hover" Intro="in-autorenew" State="hover-autorenew" Size="24px" Target=".rz-button" Title="@AppTexts["0007"]" />
 </RadzenButton>
 
 @code {
 
 	private async Task Update() {
 
-		var result = await DialogService.Confirm(AppText["0010"], AppText["0007"], new ConfirmOptions() {
-				OkButtonText = AppButton["Update"],
-				CancelButtonText = AppButton["Cancel"],
+		var result = await DialogService.Confirm(AppTexts["0010"], AppTexts["0007"], new ConfirmOptions() {
+				OkButtonText = AppButtons["Update"],
+				CancelButtonText = AppButtons["Cancel"],
 				AutoFocusFirstElement = false,
 				CloseDialogOnOverlayClick = true,
 				CloseDialogOnEsc = true

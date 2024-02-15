@@ -1,0 +1,24 @@
+﻿@namespace Hephaestus.Frontend.Components
+
+<RadzenCard Variant="Variant.Filled" Style=@($"background-image: url({ButtonStains[Code]});") class=@($"cardbutton{(Active ? "" : " disabled")}") @onclick="OnClick">
+	<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Start" Gap="1rem" Style="height: 100%">
+		<LordIcon Icon="@ButtonAnims[Code]" State="default" Anim="state" Trigger="hover-click" Stroke="bold" Size="70px" Target=".cardbutton" />
+		<RadzenText Text="@AppNames[Code]" Style="font-size: 18px" class="rz-m-0" />
+	</RadzenStack>
+</RadzenCard>
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string Code { get; set; } = string.Empty;
+
+	[Parameter]
+	public bool Active { get; set; } = true;
+
+	private void OnClick() {
+
+		NavigationManager.NavigateTo(AppPaths[Code]);
+
+	}
+
+}

@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="0000" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="0001" xml:space="preserve">
+    <value>Acerca</value>
+  </data>
+  <data name="0002" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="0003" xml:space="preserve">
+    <value>Notas de Lanzamiento</value>
+  </data>
+  <data name="0004" xml:space="preserve">
+    <value>Instalar Aplicación</value>
+  </data>
+  <data name="0005" xml:space="preserve">
+    <value>Actualizar Aplicación</value>
+  </data>
+  <data name="0006" xml:space="preserve">
+    <value>Términos de Uso</value>
+  </data>
+  <data name="0007" xml:space="preserve">
+    <value>Política de Privacidad</value>
+  </data>
+  <data name="0008" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="0009" xml:space="preserve">
+    <value>Cerrar Sesión</value>
+  </data>
+  <data name="0010" xml:space="preserve">
+    <value>Mi Perfil</value>
+  </data>
+  <data name="0011" xml:space="preserve">
+    <value>Preferencias</value>
+  </data>
+  <data name="0012" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="0013" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="0014" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="0100" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="0110" xml:space="preserve">
+    <value>Reportes</value>
+  </data>
+  <data name="0120" xml:space="preserve">
+    <value>Tableros</value>
+  </data>
+  <data name="0130" xml:space="preserve">
+    <value>Flujos</value>
+  </data>
+  <data name="0140" xml:space="preserve">
+    <value>Configuraciones del Sistema</value>
+  </data>
+  <data name="0150" xml:space="preserve">
+    <value>Tutoriales</value>
+  </data>
+  <data name="0200" xml:space="preserve">
+    <value>Módulo del Sistema</value>
+  </data>
+  <data name="0210" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="0220" xml:space="preserve">
+    <value>Permisos</value>
+  </data>
+  <data name="0230" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="1000" xml:space="preserve">
+    <value>Módulos Principales</value>
+  </data>
+  <data name="1100" xml:space="preserve">
+    <value>Módulo Comercial</value>
+  </data>
+  <data name="1110" xml:space="preserve">
+    <value>Ordenes de Venta</value>
+  </data>
+  <data name="1120" xml:space="preserve">
+    <value>Tablas de Precios</value>
+  </data>
+  <data name="1200" xml:space="preserve">
+    <value>Módulo de Ingeniería</value>
+  </data>
+  <data name="1210" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="1220" xml:space="preserve">
+    <value>Procesos</value>
+  </data>
+  <data name="1230" xml:space="preserve">
+    <value>Hojas de Datos</value>
+  </data>
+  <data name="1240" xml:space="preserve">
+    <value>Documentación</value>
+  </data>
+  <data name="1250" xml:space="preserve">
+    <value>Entrenamientos</value>
+  </data>
+  <data name="1300" xml:space="preserve">
+    <value>Módulo de Suministros</value>
+  </data>
+  <data name="1310" xml:space="preserve">
+    <value>Solicitudes de Compra</value>
+  </data>
+  <data name="1320" xml:space="preserve">
+    <value>Ordenes de compra</value>
+  </data>
+  <data name="1400" xml:space="preserve">
+    <value>Módulo del Depósito</value>
+  </data>
+  <data name="1410" xml:space="preserve">
+    <value>Movimientos</value>
+  </data>
+  <data name="1411" xml:space="preserve">
+    <value>Recibo por Factura</value>
+  </data>
+  <data name="1412" xml:space="preserve">
+    <value>Separación por Factura</value>
+  </data>
+  <data name="1413" xml:space="preserve">
+    <value>Recibo por Orden de Operación</value>
+  </data>
+  <data name="1414" xml:space="preserve">
+    <value>Separación por Orden de Operación</value>
+  </data>
+  <data name="1415" xml:space="preserve">
+    <value>Entrada Manual</value>
+  </data>
+  <data name="1416" xml:space="preserve">
+    <value>Salida Manual</value>
+  </data>
+  <data name="1417" xml:space="preserve">
+    <value>Transferir</value>
+  </data>
+  <data name="1418" xml:space="preserve">
+    <value>Desecho</value>
+  </data>
+  <data name="1420" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
+  <data name="1430" xml:space="preserve">
+    <value>Órdenes de Producción</value>
+  </data>
+  <data name="1440" xml:space="preserve">
+    <value>Órdenes de Operación</value>
+  </data>
+  <data name="1500" xml:space="preserve">
+    <value>Módulo de Planificación</value>
+  </data>
+  <data name="1510" xml:space="preserve">
+    <value>Órdenes de Producción</value>
+  </data>
+  <data name="1520" xml:space="preserve">
+    <value>Órdenes de Operación</value>
+  </data>
+  <data name="1530" xml:space="preserve">
+    <value>Control de Inventario</value>
+  </data>
+  <data name="1540" xml:space="preserve">
+    <value>Ordenes de Venta</value>
+  </data>
+  <data name="1550" xml:space="preserve">
+    <value>Órdenes de Compra</value>
+  </data>
+  <data name="1600" xml:space="preserve">
+    <value>Módulo de Producción</value>
+  </data>
+  <data name="1610" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="1611" xml:space="preserve">
+    <value>Comenzar</value>
+  </data>
+  <data name="1612" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="1613" xml:space="preserve">
+    <value>Producción</value>
+  </data>
+  <data name="1614" xml:space="preserve">
+    <value>Paradas</value>
+  </data>
+  <data name="1615" xml:space="preserve">
+    <value>Reprocesos</value>
+  </data>
+  <data name="1616" xml:space="preserve">
+    <value>Pérdidas</value>
+  </data>
+  <data name="1617" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="1620" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
+  <data name="1630" xml:space="preserve">
+    <value>Órdenes de Producción</value>
+  </data>
+  <data name="1640" xml:space="preserve">
+    <value>Órdenes de Operación</value>
+  </data>
+  <data name="1700" xml:space="preserve">
+    <value>Módulo de Calidad</value>
+  </data>
+  <data name="1710" xml:space="preserve">
+    <value>Inspecciones</value>
+  </data>
+  <data name="1711" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="1712" xml:space="preserve">
+    <value>Procesos</value>
+  </data>
+  <data name="1713" xml:space="preserve">
+    <value>Periódico</value>
+  </data>
+  <data name="1720" xml:space="preserve">
+    <value>No Conformidades</value>
+  </data>
+  <data name="1730" xml:space="preserve">
+    <value>Bloqueos</value>
+  </data>
+  <data name="1731" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="1732" xml:space="preserve">
+    <value>Procesos</value>
+  </data>
+  <data name="1740" xml:space="preserve">
+    <value>Lanzamientos</value>
+  </data>
+  <data name="1741" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="1742" xml:space="preserve">
+    <value>Procesos</value>
+  </data>
+  <data name="1750" xml:space="preserve">
+    <value>Patrones de Inspecciones</value>
+  </data>
+  <data name="1751" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="1752" xml:space="preserve">
+    <value>Procesos</value>
+  </data>
+  <data name="1753" xml:space="preserve">
+    <value>Periódico</value>
+  </data>
+  <data name="1760" xml:space="preserve">
+    <value>Parámetros</value>
+  </data>
+  <data name="1770" xml:space="preserve">
+    <value>Certificados</value>
+  </data>
+  <data name="1780" xml:space="preserve">
+    <value>Documentación</value>
+  </data>
+  <data name="1800" xml:space="preserve">
+    <value>Módulo de Impuestos</value>
+  </data>
+  <data name="1810" xml:space="preserve">
+    <value>Solicitud de Venta</value>
+  </data>
+  <data name="1820" xml:space="preserve">
+    <value>Facturas de Compra</value>
+  </data>
+  <data name="1830" xml:space="preserve">
+    <value>Facturas de Venta</value>
+  </data>
+  <data name="1840" xml:space="preserve">
+    <value>Escenarios Fiscales</value>
+  </data>
+  <data name="1900" xml:space="preserve">
+    <value>Módulo de Logística</value>
+  </data>
+  <data name="1910" xml:space="preserve">
+    <value>Recibos</value>
+  </data>
+  <data name="1920" xml:space="preserve">
+    <value>Envíos</value>
+  </data>
+  <data name="2000" xml:space="preserve">
+    <value>Módulos Auxiliares</value>
+  </data>
+  <data name="2100" xml:space="preserve">
+    <value>Módulo de Personal</value>
+  </data>
+  <data name="2110" xml:space="preserve">
+    <value>Colaboradores</value>
+  </data>
+  <data name="2120" xml:space="preserve">
+    <value>Absentismo</value>
+  </data>
+  <data name="2130" xml:space="preserve">
+    <value>Horas Extras</value>
+  </data>
+  <data name="2140" xml:space="preserve">
+    <value>Entrenamientos</value>
+  </data>
+  <data name="2200" xml:space="preserve">
+    <value>Módulo de Seguridad</value>
+  </data>
+  <data name="2210" xml:space="preserve">
+    <value>Control de Equipos</value>
+  </data>
+  <data name="2220" xml:space="preserve">
+    <value>Desviaciones de Seguridad</value>
+  </data>
+  <data name="2230" xml:space="preserve">
+    <value>Equipos</value>
+  </data>
+  <data name="2240" xml:space="preserve">
+    <value>Control de stock</value>
+  </data>
+  <data name="2300" xml:space="preserve">
+    <value>Módulo de Instalaciones</value>
+  </data>
+  <data name="2400" xml:space="preserve">
+    <value>Módulo de Mantenimiento</value>
+  </data>
+  <data name="2410" xml:space="preserve">
+    <value>Órdenes de Servicio</value>
+  </data>
+  <data name="2420" xml:space="preserve">
+    <value>Inspecciones</value>
+  </data>
+  <data name="2430" xml:space="preserve">
+    <value>Máquinas</value>
+  </data>
+  <data name="2440" xml:space="preserve">
+    <value>Herramientas</value>
+  </data>
+  <data name="2450" xml:space="preserve">
+    <value>Materiales</value>
+  </data>
+  <data name="2460" xml:space="preserve">
+    <value>Control de Inventario</value>
+  </data>
+  <data name="2500" xml:space="preserve">
+    <value>Módulo Financiero</value>
+  </data>
+  <data name="2600" xml:space="preserve">
+    <value>Módulo de Mejoras</value>
+  </data>
+  <data name="2610" xml:space="preserve">
+    <value>Resolución de Problemas</value>
+  </data>
+  <data name="2620" xml:space="preserve">
+    <value>Sugerencias de Mejora</value>
+  </data>
+  <data name="2630" xml:space="preserve">
+    <value>Programa 5S</value>
+  </data>
+  <data name="2700" xml:space="preserve">
+    <value>Módulo de Mercadotecnia</value>
+  </data>
+  <data name="2800" xml:space="preserve">
+    <value>Módulo de Tecnología</value>
+  </data>
+</root>

@@ -3,12 +3,17 @@
 
 @namespace Hephaestus.Frontend.Pages
 
-<NavigationPage Code="0200">
+<PageNavigation Code="0200">
 
-	<NavigationGroup Text="Configurações do Sistema">
-		<NavigationItem Code="0210" />
-		<NavigationItem Code="0220" />
-		<NavigationItem Code="0230" />
-	</NavigationGroup>
+	<PageNavigationGroup Text="@AppTexts["0056"]">
+		<PageNavigationItem Code="0110" />
+		<PageNavigationItem Code="0120" />
+		<PageNavigationItem Code="0130" />
+	</PageNavigationGroup>
 
-</NavigationPage>
+	<PageNavigationGroup Text="@AppTexts["0057"]">
+		<PageNavigationItem Code="0140" />
+		<PageNavigationItem Code="0150" />
+	</PageNavigationGroup>
+
+</PageNavigation>

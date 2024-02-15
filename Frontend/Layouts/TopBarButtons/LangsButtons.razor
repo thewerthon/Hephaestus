@@ -1,8 +1,8 @@
 ﻿@namespace Hephaestus.Frontend.Layouts.TopBarButtons
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
-<RadzenButton Variant="Variant.Text" Click=@(args => ShowContextMenu(args)) ContextMenu="@(args => None())" class="topbar-icon desktop-only" title="@AppText["0014"]">
-	<LordIcon Icon="/lordicon/topbar/language.json" Anim="state" Trigger="click" State="hover-language" Size="24px" Target=".rz-button" Title="@AppText["0014"]" />
+<RadzenButton Variant="Variant.Text" Click=@(args => ShowContextMenu(args)) ContextMenu="@(args => None())" class="topbar-icon desktop-only" title="@AppTexts["0014"]">
+	<LordIcon Icon="/lordicon/topbar/language.json" Anim="state" Trigger="click" State="hover-language" Size="24px" Target=".rz-button" Title="@AppTexts["0014"]" />
 </RadzenButton>
 
 @code {
@@ -24,9 +24,9 @@
 
 	private async Task SetLanguage(string lang) {
 
-		var result = await DialogService.Confirm(AppText["0036"], AppText["0037"], new ConfirmOptions() {
-				OkButtonText = AppButton["Confirm"],
-				CancelButtonText = AppButton["Cancel"],
+		var result = await DialogService.Confirm(AppTexts["0036"], AppTexts["0037"], new ConfirmOptions() {
+				OkButtonText = AppButtons["Confirm"],
+				CancelButtonText = AppButtons["Cancel"],
 				AutoFocusFirstElement = false,
 				CloseDialogOnOverlayClick = true,
 				CloseDialogOnEsc = true

@@ -1,6 +1,6 @@
 namespace Hephaestus.Backend.Controllers {
 
-	[Route("odata/Version")]
+	[Route("app/version")]
 	public class VersionController : ControllerBase {
 
 		[HttpGet]

@@ -173,7 +173,7 @@
 	}
 
 	.sidebar-backdrop {
-		z-index: 2000;
+		z-index: 500;
 		display: flex;
 		position: absolute;
 	}

@@ -182,7 +182,7 @@ namespace Hephaestus.Frontend.Services {
 				SetCurrentUser();
 
 				var odata = ClientFactory.CreateClient("OData");
-				var endpoint = new Uri(odata.BaseAddress!, $"User/{Guid}?user={User}");
+				var endpoint = new Uri(odata.BaseAddress!, $"Users/{Guid}?user={User}");
 				var message = new HttpRequestMessage(HttpMethod.Put, endpoint) {
 					Content = new StringContent(ODataJsonSerializer.Serialize(CurrentUser), Encoding.UTF8, "application/json")
 				};
@@ -350,9 +350,9 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		public async Task SetThemeAsync(string? theme, bool save = true) {
+		public async Task SetThemeAsync(string? theme, bool save = true, bool force = false) {
 
-			if (LocalPreferences.Theme != theme) {
+			if (LocalPreferences.Theme != theme || force) {
 
 				Preferences.Theme = theme;
 				LocalPreferences.Theme = theme;
@@ -363,12 +363,12 @@ namespace Hephaestus.Frontend.Services {
 
 		}
 
-		public async Task SetLanguageAsync(string? language, bool save = true) {
+		public async Task SetLanguageAsync(string? language, bool save = true, bool force = false) {
 
-			if (LocalPreferences.Language != language) {
+			if (LocalPreferences.Language != language || force) {
 
 				Preferences.Language = language;
-				LocalPreferences.Theme = language;
+				LocalPreferences.Language = language;
 				await SavePreferencesAsync(true, save);
 
 			}

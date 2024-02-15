@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Results;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Routing.Attributes;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 
@@ -67,6 +68,25 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
+		// LIST
+		[HttpGet]
+		[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
+		public virtual ActionResult<IQueryable<T>> Get() {
+
+			try {
+
+				var items = DbSet.AsNoTracking();
+				return Ok(items);
+
+			} catch (Exception ex) {
+
+				HandleException(ex);
+				return BadRequest(ModelState);
+
+			}
+
+		}
+
 		// GET
 		[HttpGet]
 		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
@@ -75,8 +95,6 @@ namespace Hephaestus.Backend.Controllers {
 			try {
 
 				if (key <= 0) return BadRequest("Invalid key.");
-				if (!ModelState.IsValid) return BadRequest(ModelState);
-
 				var record = DbSet.AsNoTracking().Where(i => i.Id == key);
 				return Ok(SingleResult.Create(record));
 
@@ -165,8 +183,6 @@ namespace Hephaestus.Backend.Controllers {
 			try {
 
 				if (key <= 0) return BadRequest("Invalid key.");
-				if (!ModelState.IsValid) return BadRequest(ModelState);
-
 				var record = DbSet.AsNoTracking().FirstOrDefault(i => i.Id == key);
 				if (record is null) return NotFound("Item not exists.");
 				if (!OnDelete(ref record, user)) return BadRequest(ResponseMessage);
@@ -186,22 +202,10 @@ namespace Hephaestus.Backend.Controllers {
 
 		}
 
-		// LIST
-		[HttpGet]
-		[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-		public virtual ActionResult<IQueryable<T>> Get() {
+		// Get Parameters
+		protected static TParam? GetParameter<TParam>(ODataActionParameters parameters, string name) {
 
-			try {
-
-				var items = DbSet.AsNoTracking();
-				return Ok(items);
-
-			} catch (Exception ex) {
-
-				HandleException(ex);
-				return BadRequest(ModelState);
-
-			}
+			return parameters.TryGetValue(name, out var value) && value is TParam t ? t : default;
 
 		}
 

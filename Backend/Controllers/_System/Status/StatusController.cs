@@ -1,6 +1,6 @@
 namespace Hephaestus.Backend.Controllers {
 
-	[Route("odata/Status")]
+	[Route("app/status")]
 	public class StatusController : ControllerBase {
 
 		[HttpGet]
