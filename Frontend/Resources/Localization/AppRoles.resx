@@ -118,93 +118,93 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="SystemAdmin" xml:space="preserve">
-    <value>System.Admin</value>
+    <value>Administrador</value>
   </data>
   <data name="SystemMember" xml:space="preserve">
-    <value>System.Member</value>
+    <value>Moderador</value>
   </data>
   <data name="SystemUser" xml:space="preserve">
-    <value>System.User</value>
+    <value>Usuário Padrão</value>
   </data>
   <data name="EngineeringAdmin" xml:space="preserve">
-    <value>Engineering.Admin</value>
+    <value>Engenharia (Gestão)</value>
   </data>
   <data name="EngineeringMember" xml:space="preserve">
-    <value>Engineering.Member</value>
+    <value>Engenharia (Membro)</value>
   </data>
   <data name="EngineeringUser" xml:space="preserve">
-    <value>Engineering.User</value>
+    <value>Engenharia (Usuário)</value>
   </data>
   <data name="WarehouseAdmin" xml:space="preserve">
-    <value>Warehouse.Admin</value>
+    <value>Almoxarifado (Gestão)</value>
   </data>
   <data name="WarehouseMember" xml:space="preserve">
-    <value>Warehouse.Member</value>
+    <value>Almoxarifado (Membro)</value>
   </data>
   <data name="WarehouseUser" xml:space="preserve">
-    <value>Warehouse.User</value>
+    <value>Almoxarifado (Usuário)</value>
   </data>
   <data name="PlanningAdmin" xml:space="preserve">
-    <value>Planning.Admin</value>
+    <value>Planejamento (Gestão)</value>
   </data>
   <data name="PlanningMember" xml:space="preserve">
-    <value>Planning.Member</value>
+    <value>Planejamento (Membro)</value>
   </data>
   <data name="PlanningUser" xml:space="preserve">
-    <value>Planning.User</value>
+    <value>Planejamento (Usuário)</value>
   </data>
   <data name="ProductionAdmin" xml:space="preserve">
-    <value>Production.Admin</value>
+    <value>Produção (Gestão)</value>
   </data>
   <data name="ProductionMember" xml:space="preserve">
-    <value>Production.Member</value>
+    <value>Produção (Membro)</value>
   </data>
   <data name="ProductionUser" xml:space="preserve">
-    <value>Production.User</value>
+    <value>Produção (Usuário)</value>
   </data>
   <data name="QualityAdmin" xml:space="preserve">
-    <value>Quality.Admin</value>
+    <value>Qualidade (Gestão)</value>
   </data>
   <data name="QualityMember" xml:space="preserve">
-    <value>Quality.Member</value>
+    <value>Qualidade (Membro)</value>
   </data>
   <data name="QualityUser" xml:space="preserve">
-    <value>Quality.User</value>
+    <value>Qualidade (Usuário)</value>
   </data>
   <data name="FiscalAdmin" xml:space="preserve">
-    <value>Fiscal.Admin</value>
+    <value>Fiscal (Gestão)</value>
   </data>
   <data name="FiscalMember" xml:space="preserve">
-    <value>Fiscal.Member</value>
+    <value>Fiscal (Membro)</value>
   </data>
   <data name="FiscalUser" xml:space="preserve">
-    <value>Fiscal.User</value>
+    <value>Fiscal (Usuário)</value>
   </data>
   <data name="LogisticsAdmin" xml:space="preserve">
-    <value>Logistics.Admin</value>
+    <value>Logística (Gestão)</value>
   </data>
   <data name="LogisticsMember" xml:space="preserve">
-    <value>Logistics.Member</value>
+    <value>Logística (Membro)</value>
   </data>
   <data name="LogisticsUser" xml:space="preserve">
-    <value>Logistics.User</value>
+    <value>Logística (Usuário)</value>
   </data>
   <data name="SafetyAdmin" xml:space="preserve">
-    <value>Safety.Admin</value>
+    <value>Segurança (Gestão)</value>
   </data>
   <data name="SafetyMember" xml:space="preserve">
-    <value>Safety.Member</value>
+    <value>Segurança (Membro)</value>
   </data>
   <data name="SafetyUser" xml:space="preserve">
-    <value>Safety.User</value>
+    <value>Segurança (Usuário)</value>
   </data>
   <data name="MaintenanceAdmin" xml:space="preserve">
-    <value>Maintenance.Admin</value>
+    <value>Manutenção (Gestão)</value>
   </data>
   <data name="MaintenanceMember" xml:space="preserve">
-    <value>Maintenance.Member</value>
+    <value>Manutenção (Membro)</value>
   </data>
   <data name="MaintenanceUser" xml:space="preserve">
-    <value>Maintenance.User</value>
+    <value>Manutenção (Usuário)</value>
   </data>
 </root>

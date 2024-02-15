@@ -119,260 +119,346 @@
   </resheader>
   <data name="0110" xml:space="preserve">
     <value>/lordicon/menus/document.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0120" xml:space="preserve">
     <value>/lordicon/menus/chart.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0130" xml:space="preserve">
     <value>/lordicon/menus/flow.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0140" xml:space="preserve">
     <value>/lordicon/menus/settings.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0150" xml:space="preserve">
     <value>/lordicon/menus/question.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0210" xml:space="preserve">
     <value>/lordicon/menus/avatars.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0220" xml:space="preserve">
     <value>/lordicon/menus/padlock.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0230" xml:space="preserve">
     <value>/lordicon/menus/table.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1110" xml:space="preserve">
     <value>/lordicon/menus/invoice.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1120" xml:space="preserve">
     <value>/lordicon/menus/estimate.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1210" xml:space="preserve">
     <value>/lordicon/menus/product.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1220" xml:space="preserve">
     <value>/lordicon/menus/process.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1230" xml:space="preserve">
     <value>/lordicon/menus/checklist.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1240" xml:space="preserve">
     <value>/lordicon/menus/book.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1250" xml:space="preserve">
     <value>/lordicon/menus/graduation.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1310" xml:space="preserve">
     <value>/lordicon/menus/shopping.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1320" xml:space="preserve">
     <value>/lordicon/menus/purchasing.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1410" xml:space="preserve">
     <value>/lordicon/menus/arrows.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1411" xml:space="preserve">
     <value>/lordicon/menus/invoice.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1412" xml:space="preserve">
     <value>/lordicon/menus/invoice.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1413" xml:space="preserve">
     <value>/lordicon/menus/checklist.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1414" xml:space="preserve">
     <value>/lordicon/menus/checklist.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1415" xml:space="preserve">
     <value>/lordicon/menus/cargo-load.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1416" xml:space="preserve">
     <value>/lordicon/menus/cargo-unload.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1417" xml:space="preserve">
     <value>/lordicon/menus/stock-cart.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1418" xml:space="preserve">
     <value>/lordicon/menus/disposal.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1420" xml:space="preserve">
     <value>/lordicon/menus/label.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1430" xml:space="preserve">
     <value>/lordicon/menus/checklist.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1440" xml:space="preserve">
     <value>/lordicon/menus/write.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1510" xml:space="preserve">
     <value>/lordicon/menus/checklist.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1520" xml:space="preserve">
     <value>/lordicon/menus/write.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1530" xml:space="preserve">
     <value>/lordicon/menus/stock.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1540" xml:space="preserve">
     <value>/lordicon/menus/invoice.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1550" xml:space="preserve">
     <value>/lordicon/menus/purchasing.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1610" xml:space="preserve">
     <value>/lordicon/menus/edit.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1611" xml:space="preserve">
     <value>/lordicon/menus/play.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1612" xml:space="preserve">
     <value>/lordicon/menus/minus.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1613" xml:space="preserve">
     <value>/lordicon/menus/plus.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1614" xml:space="preserve">
     <value>/lordicon/menus/pause.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1615" xml:space="preserve">
     <value>/lordicon/menus/turn-back.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1616" xml:space="preserve">
     <value>/lordicon/menus/cross.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1617" xml:space="preserve">
     <value>/lordicon/menus/done.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1620" xml:space="preserve">
     <value>/lordicon/menus/label.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1630" xml:space="preserve">
     <value>/lordicon/menus/checklist.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1640" xml:space="preserve">
     <value>/lordicon/menus/write.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1710" xml:space="preserve">
     <value>/lordicon/menus/magnifier.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1711" xml:space="preserve">
     <value>/lordicon/menus/product.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1712" xml:space="preserve">
     <value>/lordicon/menus/process.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1713" xml:space="preserve">
     <value>/lordicon/menus/calendar.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1720" xml:space="preserve">
     <value>/lordicon/menus/alert.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1730" xml:space="preserve">
     <value>/lordicon/menus/cross.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1731" xml:space="preserve">
     <value>/lordicon/menus/product.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1732" xml:space="preserve">
     <value>/lordicon/menus/process.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1740" xml:space="preserve">
     <value>/lordicon/menus/done.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1741" xml:space="preserve">
     <value>/lordicon/menus/product.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1742" xml:space="preserve">
     <value>/lordicon/menus/process.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1750" xml:space="preserve">
     <value>/lordicon/menus/approved.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1751" xml:space="preserve">
     <value>/lordicon/menus/product.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1752" xml:space="preserve">
     <value>/lordicon/menus/process.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1753" xml:space="preserve">
     <value>/lordicon/menus/calendar.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1760" xml:space="preserve">
     <value>/lordicon/menus/rules.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1770" xml:space="preserve">
     <value>/lordicon/menus/prize.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1780" xml:space="preserve">
     <value>/lordicon/menus/book.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1810" xml:space="preserve">
     <value>/lordicon/menus/ticket.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1820" xml:space="preserve">
     <value>/lordicon/menus/invoice.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1830" xml:space="preserve">
     <value>/lordicon/menus/invoice.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1840" xml:space="preserve">
     <value>/lordicon/menus/taxes.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1910" xml:space="preserve">
     <value>/lordicon/menus/receiving.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1920" xml:space="preserve">
     <value>/lordicon/menus/delivery.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2110" xml:space="preserve">
     <value>/lordicon/menus/group.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2120" xml:space="preserve">
     <value>/lordicon/menus/sick.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2130" xml:space="preserve">
     <value>/lordicon/menus/clock.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2140" xml:space="preserve">
     <value>/lordicon/menus/graduation.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2210" xml:space="preserve">
     <value>/lordicon/menus/worker.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2220" xml:space="preserve">
     <value>/lordicon/menus/siren.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2230" xml:space="preserve">
     <value>/lordicon/menus/mask.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2240" xml:space="preserve">
     <value>/lordicon/menus/stock.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2410" xml:space="preserve">
     <value>/lordicon/menus/service.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2420" xml:space="preserve">
     <value>/lordicon/menus/magnifier.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2430" xml:space="preserve">
     <value>/lordicon/menus/cogs.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2440" xml:space="preserve">
     <value>/lordicon/menus/tools.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2450" xml:space="preserve">
     <value>/lordicon/menus/screw.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2460" xml:space="preserve">
     <value>/lordicon/menus/stock.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2610" xml:space="preserve">
     <value>/lordicon/menus/support.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2620" xml:space="preserve">
     <value>/lordicon/menus/idea.json</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2630" xml:space="preserve">
     <value>/lordicon/menus/archive.json</value>
+    <comment>@Invariant</comment>
   </data>
 </root>

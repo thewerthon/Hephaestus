@@ -118,180 +118,186 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="0000" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Bem-vindo(a)!</value>
   </data>
   <data name="0001" xml:space="preserve">
-    <value>DoLogin</value>
+    <value>Faça login para prosseguir.</value>
   </data>
   <data name="0002" xml:space="preserve">
-    <value>LoginConsent</value>
+    <value>Ao fazer login, você concorda com</value>
   </data>
   <data name="0003" xml:space="preserve">
-    <value>LoginConsentTerms</value>
+    <value>termos de uso</value>
   </data>
   <data name="0004" xml:space="preserve">
-    <value>LoginConsentAnd</value>
+    <value> e </value>
   </data>
   <data name="0005" xml:space="preserve">
-    <value>LoginConsentPolicy</value>
+    <value>política de privacidade</value>
   </data>
   <data name="0006" xml:space="preserve">
-    <value>ToogleMenu</value>
+    <value>Alternar Menu</value>
   </data>
   <data name="0007" xml:space="preserve">
-    <value>UpdateApp</value>
+    <value>Atualizar Aplicativo</value>
   </data>
   <data name="0008" xml:space="preserve">
-    <value>UpdateAvailable</value>
+    <value>Atualização Disponível</value>
   </data>
   <data name="0009" xml:space="preserve">
-    <value>UpdateForced</value>
+    <value>Atualização Necessária</value>
   </data>
   <data name="0010" xml:space="preserve">
-    <value>UpdateConfirmMessage</value>
+    <value>Uma atualização do aplicativo está disponível, deseja atualizar agora?&lt;br/&gt;
+Dados não salvos serão perdidos.</value>
   </data>
   <data name="0011" xml:space="preserve">
-    <value>UpdateConfirmMessageForced</value>
+    <value>É necessária uma atualização do aplicativo para prosseguir.&lt;br/&gt;
+Deseja atualizar agora?</value>
   </data>
   <data name="0012" xml:space="preserve">
-    <value>UpdateBannerText</value>
+    <value>Utilize o botão no topo da página para atualizar.</value>
   </data>
   <data name="0013" xml:space="preserve">
-    <value>UpdateBannerChangelog</value>
+    <value>Novidades da</value>
   </data>
   <data name="0014" xml:space="preserve">
-    <value>ChangeLanguage</value>
+    <value>Alterar Idioma</value>
   </data>
   <data name="0015" xml:space="preserve">
-    <value>ChangeTheme</value>
+    <value>Alterar Tema</value>
   </data>
   <data name="0016" xml:space="preserve">
-    <value>ThemeAuto</value>
+    <value>Automático</value>
   </data>
   <data name="0017" xml:space="preserve">
-    <value>ThemeAutoTitle</value>
+    <value>Exibir de acordo com o dispositivo.</value>
   </data>
   <data name="0018" xml:space="preserve">
-    <value>ThemeLight</value>
+    <value>Tema Claro</value>
   </data>
   <data name="0019" xml:space="preserve">
-    <value>ThemeLightTitle</value>
+    <value>Exibir sempre no tema claro.</value>
   </data>
   <data name="0020" xml:space="preserve">
-    <value>ThemeDark</value>
+    <value>Tema Escuro</value>
   </data>
   <data name="0021" xml:space="preserve">
-    <value>ThemeDarkTitle</value>
+    <value>Exibir sempre no tema escuro.</value>
   </data>
   <data name="0022" xml:space="preserve">
-    <value>Notifications</value>
+    <value>Notificações</value>
   </data>
   <data name="0023" xml:space="preserve">
-    <value>NoNotifications</value>
+    <value>Não há notificações.</value>
   </data>
   <data name="0024" xml:space="preserve">
-    <value>MyProfile</value>
+    <value>Meu Perfil</value>
   </data>
   <data name="0025" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Notas da Versão</value>
   </data>
   <data name="0026" xml:space="preserve">
-    <value>InstallApp</value>
+    <value>Instalar Aplicativo</value>
   </data>
   <data name="0027" xml:space="preserve">
-    <value>ForceUpdate</value>
+    <value>Forçar Atualização</value>
   </data>
   <data name="0028" xml:space="preserve">
-    <value>AboutSystem</value>
+    <value>Sobre o Sistema</value>
   </data>
   <data name="0029" xml:space="preserve">
-    <value>GetHelp</value>
+    <value>Obter Ajuda</value>
   </data>
   <data name="0030" xml:space="preserve">
-    <value>DoLogout</value>
+    <value>Fazer Logout</value>
   </data>
   <data name="0031" xml:space="preserve">
-    <value>ForceUpdateMessage</value>
+    <value>Forçar atualização do aplicativo?&lt;br/&gt;
+Isso pode resolver problemas de performance e conectividade.</value>
   </data>
   <data name="0032" xml:space="preserve">
-    <value>DoLogoutMessage</value>
+    <value>Confirmar saída do aplicativo?&lt;br/&gt;
+Após sair, você precisará fazer login novamente.</value>
   </data>
   <data name="0033" xml:space="preserve">
-    <value>UnknownUser</value>
+    <value>Usuário Desconhecido</value>
   </data>
   <data name="0034" xml:space="preserve">
-    <value>DefaultUser</value>
+    <value>Usuário Padrão</value>
   </data>
   <data name="0035" xml:space="preserve">
-    <value>MoreOptions</value>
+    <value>Mais Opções</value>
   </data>
   <data name="0036" xml:space="preserve">
-    <value>ChangeLanguageConfirmMessage</value>
+    <value>Alterar o idioma fará com que o aplicativo seja recarregado.&lt;br/&gt;
+Dados não salvos serão perdidos.&lt;br/&gt;
+Deseja continuar?</value>
   </data>
   <data name="0037" xml:space="preserve">
-    <value>ChangeLanguage</value>
+    <value>Alterar o Idioma</value>
   </data>
   <data name="0038" xml:space="preserve">
-    <value>DefaultChangLog</value>
+    <value>- Melhorias de usabilidade e correções gerais.</value>
   </data>
   <data name="0039" xml:space="preserve">
-    <value>DoLogin</value>
+    <value>Fazer Login</value>
   </data>
   <data name="0040" xml:space="preserve">
-    <value>LoggingIn</value>
+    <value>Iniciando Login...</value>
   </data>
   <data name="0041" xml:space="preserve">
-    <value>CompletingLoggingIn</value>
+    <value>Finalizando Login...</value>
   </data>
   <data name="0042" xml:space="preserve">
-    <value>LogInFailedButton</value>
+    <value>Tentar Novamente</value>
   </data>
   <data name="0043" xml:space="preserve">
-    <value>LogInFailedText</value>
+    <value>Processo de login falhou.</value>
   </data>
   <data name="0044" xml:space="preserve">
-    <value>LogOut</value>
+    <value>Iniciando Logout...</value>
   </data>
   <data name="0045" xml:space="preserve">
-    <value>CompletingLogOut</value>
+    <value>Finalizando Logout...</value>
   </data>
   <data name="0046" xml:space="preserve">
-    <value>LogOutFailedButton</value>
+    <value>Retornar ao Início</value>
   </data>
   <data name="0047" xml:space="preserve">
-    <value>LogOutFailedText</value>
+    <value>Processo de logout falhou.</value>
   </data>
   <data name="0048" xml:space="preserve">
-    <value>LogOutSucceededButton</value>
+    <value>Novo Login</value>
   </data>
   <data name="0049" xml:space="preserve">
-    <value>LogOutSucceededText</value>
+    <value>Você saiu da sua conta.</value>
   </data>
   <data name="0050" xml:space="preserve">
-    <value>DaySaudation</value>
+    <value>Bom dia</value>
   </data>
   <data name="0051" xml:space="preserve">
-    <value>AfternoonSaudation</value>
+    <value>Boa tarde</value>
   </data>
   <data name="0052" xml:space="preserve">
-    <value>EveningSaudation</value>
+    <value>Boa noite</value>
   </data>
   <data name="0053" xml:space="preserve">
-    <value>NightSaudation</value>
+    <value>Boa noite</value>
   </data>
   <data name="0054" xml:space="preserve">
-    <value>SaudationSubtitle1</value>
+    <value>O que iremos fazer hoje?</value>
   </data>
   <data name="0055" xml:space="preserve">
-    <value>SaudationSubtitle2</value>
+    <value>O que gostaria de fazer?</value>
   </data>
   <data name="0056" xml:space="preserve">
-    <value>MainFunctions</value>
+    <value>Funções Principais</value>
   </data>
   <data name="0057" xml:space="preserve">
-    <value>SideFunctions</value>
+    <value>Funções Auxiliares</value>
   </data>
   <data name="0058" xml:space="preserve">
-    <value>SharedFunctions</value>
+    <value>Funções Compartilhadas</value>
   </data>
 </root>

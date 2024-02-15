@@ -119,59 +119,78 @@
   </resheader>
   <data name="0100" xml:space="preserve">
     <value>/images/menus/home.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="0200" xml:space="preserve">
     <value>/images/menus/system.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1100" xml:space="preserve">
     <value>/images/menus/comercial.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1200" xml:space="preserve">
     <value>/images/menus/engineering.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1300" xml:space="preserve">
     <value>/images/menus/supplies.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1400" xml:space="preserve">
     <value>/images/menus/warehouse.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1500" xml:space="preserve">
     <value>/images/menus/planning.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1600" xml:space="preserve">
     <value>/images/menus/production.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1700" xml:space="preserve">
     <value>/images/menus/quality.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1800" xml:space="preserve">
     <value>/images/menus/fiscal.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="1900" xml:space="preserve">
     <value>/images/menus/logistics.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2100" xml:space="preserve">
     <value>/images/menus/personnel.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2200" xml:space="preserve">
     <value>/images/menus/safety.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2300" xml:space="preserve">
     <value>/images/menus/facilities.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2400" xml:space="preserve">
     <value>/images/menus/maintenance.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2500" xml:space="preserve">
     <value>/images/menus/financial.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2600" xml:space="preserve">
     <value>/images/menus/improvements.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2700" xml:space="preserve">
     <value>/images/menus/marketing.svg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="2800" xml:space="preserve">
     <value>/images/menus/technology.svg</value>
+    <comment>@Invariant</comment>
   </data>
 </root>
