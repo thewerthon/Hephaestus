@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.OData.UriParser;
 
 // WebApplication
 var builder = WebApplication.CreateBuilder(args);
@@ -32,12 +31,10 @@ var models = new ODataConventionModelBuilder();
 
 // Add Entity Sets
 foreach (var table in DatabaseTables.Tables) {
-
 	typeof(ODataConventionModelBuilder)
 		.GetMethod("EntitySet")!
 		.MakeGenericMethod(table.Type)
 		.Invoke(models, [table.Name]);
-
 }
 
 // Razor Pages
@@ -69,6 +66,15 @@ builder.Services.AddControllers(options => {
 	}).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
 });
 
+// Output Cache
+builder.Services.AddOutputCache(options => {
+	options.SizeLimit = 256;
+	options.MaximumBodySize = 64;
+	options.DefaultExpirationTimeSpan = TimeSpan.FromSeconds(60);
+	options.AddPolicy("Default", DefaultCachePolicy.Instance);
+	options.AddPolicy("NoCache", builder => builder.NoCache());
+});
+
 // Application
 var app = builder.Build();
 
@@ -86,6 +92,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
+app.UseOutputCache();
 app.MapFallbackToFile("app/{**slug}", "404");
 app.MapFallbackToFile("odata/{**slug}", "404");
 app.MapFallbackToFile("{**slug}", "index.html");
