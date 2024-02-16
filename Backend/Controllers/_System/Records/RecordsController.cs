@@ -32,32 +32,31 @@ namespace Hephaestus.Backend.Controllers {
 
 		// Virtual Action Methods
 		protected string ResponseMessage = string.Empty;
-		protected virtual bool OnCreate(ref T item, int? user) { return true; }
-		protected virtual bool OnUpdate(ref T item, int? user) { return true; }
-		protected virtual bool OnDelete(ref T item, int? user) { return true; }
+		protected virtual (bool Success, string? Message) OnCreate(ref T item, int? user) { return (true, null); }
+		protected virtual (bool Success, string? Message) OnUpdate(ref T item, int? user) { return (true, null); }
+		protected virtual (bool Success, string? Message) OnDelete(ref T item, int? user) { return (true, null); }
 		protected virtual void OnCreated(T item, int? user) { }
 		protected virtual void OnUpdated(T item, int? user) { }
 		protected virtual void OnDeleted(T item, int? user) { }
 
 		// POST
 		[HttpPost]
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
-		public virtual IActionResult Post([FromBody] T item, [FromQuery] int? user, [FromQuery] bool response = true) {
+		public virtual async Task<IActionResult> PostAsync([FromBody] T item, [FromQuery] int? user) {
 
 			try {
 
 				if (item == null) return BadRequest("Invalid data.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
-				if (!OnCreate(ref item, user)) return BadRequest(ResponseMessage);
+
+				var (success, message) = OnCreate(ref item, user);
+				if (!success) return BadRequest(message);
 
 				item.Id = 0;
 				DbSet.Add(item);
-				DbContext.SaveChanges();
+				await DbContext.SaveChangesAsync();
 				OnCreated(item, user);
 
-				if (!response) return Ok();
-				var result = DbSet.AsNoTracking().Where(i => i.Id == item.Id);
-				return Ok(SingleResult.Create(result));
+				return Created(item);
 
 			} catch (Exception ex) {
 
@@ -109,26 +108,49 @@ namespace Hephaestus.Backend.Controllers {
 
 		// PUT
 		[HttpPut]
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
-		public virtual IActionResult Put(int key, [FromBody] T item, [FromQuery] int? user, [FromQuery] bool response = true) {
+		public virtual async Task<IActionResult> PutAsync(int key, [FromBody] T item, [FromQuery] int? user) {
 
 			try {
 
 				if (key < 0) return BadRequest("Ivalid key.");
 				if (item == null) return BadRequest("Invalid data.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
-				if (!OnUpdate(ref item, user)) return BadRequest(ResponseMessage);
 
-				var record = DbSet.AsNoTracking().FirstOrDefault(i => i.Id == key);
-				item.Id = record is not null ? record.Id : 0;
+				var record = await DbSet.FirstOrDefaultAsync(i => i.Id == key);
 
-				DbSet.Update(item);
-				DbContext.SaveChanges();
-				OnUpdated(item, user);
+				if (record == null) {
 
-				if (!response) return Ok();
-				var result = DbSet.AsNoTracking().Where(i => i.Id == item.Id);
-				return Ok(SingleResult.Create(result));
+					var (success, message) = OnCreate(ref item, user);
+					if (!success) return BadRequest(message);
+
+					item.Id = 0;
+					DbSet.Add(item);
+					await DbContext.SaveChangesAsync();
+					OnCreated(item, user);
+
+					return Created(item);
+
+				} else {
+
+					var (success, message) = OnUpdate(ref record, user);
+					if (!success) return BadRequest(message);
+
+					item.Id = record.Id;
+					var patch = new Delta<T>();
+					patch.CopyUnchangedValues(record);
+					patch.CopyChangedValues(item);
+
+					patch.TrySetPropertyValue("Id", key);
+					patch.Patch(record);
+
+					DbSet.Update(record);
+					//DbSet.Entry(record).CurrentValues.SetValues(item);
+					await DbContext.SaveChangesAsync();
+					OnUpdated(record, user);
+
+					return Ok(record);
+
+				}
 
 			} catch (Exception ex) {
 
@@ -141,8 +163,7 @@ namespace Hephaestus.Backend.Controllers {
 
 		// PATCH
 		[HttpPatch]
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
-		public virtual IActionResult Patch(int key, [FromBody] Delta<T> item, [FromQuery] int? user, [FromQuery] bool response = true) {
+		public virtual async Task<IActionResult> PatchAsync(int key, [FromBody] Delta<T> item, [FromQuery] int? user) {
 
 			try {
 
@@ -151,20 +172,20 @@ namespace Hephaestus.Backend.Controllers {
 				if (!item.GetChangedPropertyNames().Any()) return BadRequest("Invalid data.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				var record = DbSet.FirstOrDefault(i => i.Id == key);
+				var record = await DbSet.FirstOrDefaultAsync(i => i.Id == key);
 				if (record is null) return NotFound("Item not exists.");
-				if (!OnUpdate(ref record, user)) return BadRequest(ResponseMessage);
+
+				var (success, message) = OnUpdate(ref record, user);
+				if (!success) return BadRequest(message);
 
 				item.TrySetPropertyValue("Id", key);
 				item.Patch(record);
 
 				DbSet.Update(record);
-				DbContext.SaveChanges();
+				await DbContext.SaveChangesAsync();
 				OnUpdated(record, user);
 
-				if (!response) return Ok();
-				var result = DbSet.AsNoTracking().Where(i => i.Id == record.Id);
-				return Ok(SingleResult.Create(result));
+				return Ok(record);
 
 			} catch (Exception ex) {
 
@@ -177,18 +198,19 @@ namespace Hephaestus.Backend.Controllers {
 
 		// DELETE
 		[HttpDelete]
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
-		public virtual IActionResult Delete(int key, [FromQuery] int? user) {
+		public virtual async Task<IActionResult> DeleteAsync(int key, [FromQuery] int? user) {
 
 			try {
 
 				if (key <= 0) return BadRequest("Invalid key.");
-				var record = DbSet.AsNoTracking().FirstOrDefault(i => i.Id == key);
+				var record = await DbSet.FirstOrDefaultAsync(i => i.Id == key);
 				if (record is null) return NotFound("Item not exists.");
-				if (!OnDelete(ref record, user)) return BadRequest(ResponseMessage);
+
+				var (success, message) = OnDelete(ref record, user);
+				if (!success) return BadRequest(message);
 
 				DbSet.Remove(record);
-				DbContext.SaveChanges();
+				await DbContext.SaveChangesAsync();
 				OnDeleted(record, user);
 
 				return NoContent();

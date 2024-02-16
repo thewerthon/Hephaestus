@@ -2,10 +2,7 @@
 
 	public abstract class RecordsTracedActiveController<T>(DatabaseContext context) : RecordsTracedController<T>(context) where T : class, IRecordTracedActive {
 
-		protected override bool OnUpdate(ref T item, int? user) {
-
-			item.CreatedBy ??= user ?? 1;
-			item.CreatedAt ??= DateTime.UtcNow;
+		protected override (bool Success, string? Message) OnUpdate(ref T item, int? user) {
 
 			if (item.Active) {
 
@@ -19,7 +16,7 @@
 
 			}
 
-			return true;
+			return (true, null);
 
 		}
 
