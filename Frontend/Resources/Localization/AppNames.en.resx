@@ -121,19 +121,19 @@
     <value>System</value>
   </data>
   <data name="0001" xml:space="preserve">
-    <value>About</value>
+    <value>About System</value>
   </data>
   <data name="0002" xml:space="preserve">
-    <value>Version</value>
+    <value>System Version</value>
   </data>
   <data name="0003" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Release Notes</value>
   </data>
   <data name="0004" xml:space="preserve">
     <value>Install Application</value>
   </data>
   <data name="0005" xml:space="preserve">
-    <value>Update Application</value>
+    <value>Restore Application</value>
   </data>
   <data name="0006" xml:space="preserve">
     <value>Usage Terms</value>
@@ -142,10 +142,10 @@
     <value>Privacy Policy</value>
   </data>
   <data name="0008" xml:space="preserve">
-    <value>Log In</value>
+    <value>Do Login</value>
   </data>
   <data name="0009" xml:space="preserve">
-    <value>Log Out</value>
+    <value>Do Logout</value>
   </data>
   <data name="0010" xml:space="preserve">
     <value>My Profile</value>
@@ -157,7 +157,7 @@
     <value>Home</value>
   </data>
   <data name="0013" xml:space="preserve">
-    <value>Help</value>
+    <value>Get Help</value>
   </data>
   <data name="0014" xml:space="preserve">
     <value>Error</value>

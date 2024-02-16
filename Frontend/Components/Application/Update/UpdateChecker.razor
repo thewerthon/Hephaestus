@@ -2,7 +2,7 @@
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
-<RadzenAlert Title="@AppTexts["0008"]" Icon="autorenew" AlertStyle="AlertStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="update-banner">
+<RadzenAlert Title="@AppTexts["0008"]" Icon="auto_awesome" AlertStyle="AlertStyle.Secondary" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="update-banner">
 	@if (VersionService.ServerVersion != null) {
 		<p class="m-0">@($"{AppTexts["0013"]} {VersionService.ServerVersion.Name}:")</p>
 		<pre class="text-wrap" style="margin: 0 0 4px 0;">@(string.IsNullOrEmpty(VersionService.ServerVersion.Notes) ? AppTexts["0038"] : VersionService.ServerVersion.Notes)</pre>

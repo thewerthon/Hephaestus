@@ -5,10 +5,12 @@
 <RadzenText Text=@(Title ?? AppTitles[Code]) TextStyle="Radzen.Blazor.TextStyle.DisplayH4" class="mt-4" />
 <RadzenText Text=@(Subtitle ?? AppTexts["0055"]) TextStyle="Radzen.Blazor.TextStyle.DisplayH5" class="mt-0" />
 
-<UpdateChecker CheckUpdates="true" DisplayBanner="true" BlockNavigation="true" />
-
 <RadzenStack Orientation="Orientation.Horizontal" Wrap="FlexWrap.Wrap" Gap="20px" class="rz-pt-4 rz-pb-12">
+
+	<UpdateChecker CheckUpdates="true" DisplayBanner="true" BlockNavigation="true" />
+
 	@ChildContent
+
 </RadzenStack>
 
 @code {

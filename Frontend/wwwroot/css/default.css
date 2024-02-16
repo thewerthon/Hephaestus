@@ -82,10 +82,17 @@
 	flex-wrap: nowrap;
 }
 
+.app-sidebar-backdrop {
+	display: none;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 0.7;
+}
+
 .app-sidebar-logo {
 	display: inherit;
-	padding-top: 1.5rem !important;
-	padding-bottom: 1.0rem !important;
+	padding: 24px 16px !important;
 }
 
 .app-sidebar-logo .logo {
@@ -158,9 +165,7 @@
 
 	.app-sidebar-logo {
 		display: inherit !important;
-		padding-top: 12px !important;
-		padding-bottom: 8px !important;
-		padding-left: 20px !important;
+		padding: 14px 16px !important;
 		align-items: start !important;
 	}
 
@@ -172,7 +177,7 @@
 		height: 38px !important;
 	}
 
-	.sidebar-backdrop {
+	.app-sidebar-backdrop {
 		z-index: 500;
 		display: flex;
 		position: absolute;
@@ -407,11 +412,18 @@ a:focus {
 	display: none;
 }
 
-.update-banner {
-	margin-top: 0px;
+.welcome-banner {
+	margin: 0px;
+	width: 820px;
 	position: relative;
 	padding: 1rem 1.5rem;
-	width: 100%;
+}
+
+.update-banner {
+	margin: 0px;
+	width: 820px;
+	position: relative;
+	padding: 1rem 1.5rem;
 }
 
 .popup-frame {

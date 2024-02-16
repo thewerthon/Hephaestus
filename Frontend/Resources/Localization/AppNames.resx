@@ -121,10 +121,10 @@
     <value>Sistema</value>
   </data>
   <data name="0001" xml:space="preserve">
-    <value>Sobre</value>
+    <value>Sobre o Sistema</value>
   </data>
   <data name="0002" xml:space="preserve">
-    <value>Versão</value>
+    <value>Versão do Sistema</value>
   </data>
   <data name="0003" xml:space="preserve">
     <value>Notas da Versão</value>
@@ -133,7 +133,7 @@
     <value>Instalar Aplicativo</value>
   </data>
   <data name="0005" xml:space="preserve">
-    <value>Atualizar Aplicativo</value>
+    <value>Restaurar Aplicativo</value>
   </data>
   <data name="0006" xml:space="preserve">
     <value>Termos de Uso</value>
@@ -142,10 +142,10 @@
     <value>Política de Privacidade</value>
   </data>
   <data name="0008" xml:space="preserve">
-    <value>Login</value>
+    <value>Fazer Login</value>
   </data>
   <data name="0009" xml:space="preserve">
-    <value>Sair</value>
+    <value>Fazer Logout</value>
   </data>
   <data name="0010" xml:space="preserve">
     <value>Meu Perfil</value>
@@ -157,7 +157,7 @@
     <value>Início</value>
   </data>
   <data name="0013" xml:space="preserve">
-    <value>Ajuda</value>
+    <value>Obter Ajuda</value>
   </data>
   <data name="0014" xml:space="preserve">
     <value>Erro</value>

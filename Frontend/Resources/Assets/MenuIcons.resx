@@ -134,11 +134,11 @@
     <comment>@Invariant</comment>
   </data>
   <data name="0004" xml:space="preserve">
-    <value>system_update_alt</value>
+    <value>download</value>
     <comment>@Invariant</comment>
   </data>
   <data name="0005" xml:space="preserve">
-    <value>autorenew</value>
+    <value>restore</value>
     <comment>@Invariant</comment>
   </data>
   <data name="0006" xml:space="preserve">
