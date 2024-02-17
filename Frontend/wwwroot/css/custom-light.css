@@ -214,8 +214,9 @@ ul.rz-profile-menu {
 }
 
 .rz-dialog-mask {
-	background: #000000;
-	opacity: 0.7;
+	backdrop-filter: blur(2px);
+	background: linear-gradient(#00000000, #00000077);
+	opacity: 1;
 }
 
 .rz-button {
@@ -327,6 +328,11 @@ ul.rz-profile-menu {
 	width: 45px;
 	height: 45px;
 	font-size: 20px;
+	color: #788396;
+}
+
+.rz-profile-menu .rz-navigation-item-link {
+	height: 36px !important;
 }
 
 .rz-profile-menu .rzi.rz-navigation-item-icon-children {
@@ -355,5 +361,5 @@ ul.rz-profile-menu {
 
 hr {
 	border: none;
-    border-top: 0.1px solid #00000022;
+	border-top: 0.1px solid #00000022;
 }

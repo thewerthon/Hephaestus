@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Models {
 
-	public class User : IUser, IRecordTracedActive, IRecordHidden {
+	public class User : IRecordTracedComplete, IRecordHidden, IRecordActive {
 
 		[Key]
 		[Required]
@@ -51,7 +51,7 @@
 
 		[ForeignKey("Role")]
 		public string? Role { get; set; }
-		public virtual UserRole? RoleData { get; set; }
+		public virtual Role? RoleData { get; set; }
 
 		[ForeignKey("Hidden")]
 		public bool Hidden { get; set; } = false;

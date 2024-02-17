@@ -27,8 +27,7 @@ namespace Hephaestus.Backend.Controllers {
 
 		// PUT By User
 		[HttpPut("odata/Preferences/{user:int}")]
-		[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
-		public ActionResult PutByUser(int user, [FromBody] Preferences item, [FromQuery] bool response = true) {
+		public async Task<ActionResult> PutByUserAsync(int user, [FromBody] Preferences item) {
 
 			try {
 
@@ -36,15 +35,33 @@ namespace Hephaestus.Backend.Controllers {
 				if (item == null) return BadRequest("Invalid data.");
 				if (!ModelState.IsValid) return BadRequest(ModelState);
 
-				var record = DbSet.AsNoTracking().FirstOrDefault(i => i.User == user);
-				item.Id = record is not null ? record.Id : 0;
+				var record = await DbSet.AsNoTracking().FirstOrDefaultAsync(i => i.User == user);
 
-				DbSet.Update(item);
-				DbContext.SaveChanges();
+				if (record == null) {
 
-				if (!response) return Ok();
-				var result = DbSet.AsNoTracking().Where(i => i.Id == item.Id);
-				return Ok(SingleResult.Create(result));
+					var (success, message) = OnCreate(ref item, user);
+					if (!success) return BadRequest(message);
+
+					item.Id = 0;
+					DbSet.Add(item);
+					await DbContext.SaveChangesAsync();
+					OnCreated(item, user);
+
+					return Created(item);
+
+				} else {
+
+					var (success, message) = OnUpdate(ref item, record, user);
+					if (!success) return BadRequest(message);
+
+					item.Id = record.Id;
+					DbSet.Update(item);
+					await DbContext.SaveChangesAsync();
+					OnUpdated(item, user);
+
+					return Ok(item);
+
+				}
 
 			} catch (Exception ex) {
 

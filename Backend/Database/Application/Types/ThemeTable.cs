@@ -13,9 +13,9 @@
 
 			// Data Seed
 			builder.HasData(
-				new Theme { Key = "auto", Name = "Automatic", Name_pt = "Automático", Name_en = "Automatic", Name_es = "Automático" },
-				new Theme { Key = "light", Name = "Light Theme", Name_pt = "Tema Claro", Name_en = "Light Theme", Name_es = "Tema Claro" },
-				new Theme { Key = "dark", Name = "Dark Theme", Name_pt = "Tema Escuro", Name_en = "Dark Theme", Name_es = "Tema Oscuro" }
+				new Theme { Key = "auto", Name = "Automático", Name_en = "Automatic", Name_es = "Automático" },
+				new Theme { Key = "light", Name = "Tema Claro", Name_en = "Light Theme", Name_es = "Tema Claro" },
+				new Theme { Key = "dark", Name = "Tema Escuro", Name_en = "Dark Theme", Name_es = "Tema Oscuro" }
 			);
 
 		}

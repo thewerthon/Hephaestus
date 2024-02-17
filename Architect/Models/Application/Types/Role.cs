@@ -1,19 +1,20 @@
 ﻿namespace Hephaestus.Architect.Models {
 
-	public class Hidden : IBool {
+	public class Role : IKey {
 
 		[Key]
 		[Required]
-		public bool Id { get; set; }
+		[MaxLength(32)]
+		public string Key { get; set; } = string.Empty;
 
 		[Required]
-		[MaxLength(8)]
+		[MaxLength(32)]
 		public string Name { get; set; } = string.Empty;
 
-		[MaxLength(8)]
+		[MaxLength(32)]
 		public string? Name_en { get; set; }
 
-		[MaxLength(8)]
+		[MaxLength(32)]
 		public string? Name_es { get; set; }
 
 	}

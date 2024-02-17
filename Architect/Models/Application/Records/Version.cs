@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Models {
 
-	public class Version : IVersion {
+	public class Version {
 
 		[Key]
 		[Required]

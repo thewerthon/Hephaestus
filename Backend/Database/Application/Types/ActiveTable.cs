@@ -13,8 +13,8 @@
 
 			// Data Seed
 			builder.HasData(
-				new Hidden { Id = true, Name = "Yes", Name_pt = "Sim", Name_en = "Yes", Name_es = "Sí" },
-				new Hidden { Id = false, Name = "No", Name_pt = "Não", Name_en = "No", Name_es = "No" }
+				new Hidden { Id = true, Name = "Sim", Name_en = "Yes", Name_es = "Sí" },
+				new Hidden { Id = false, Name = "Não", Name_en = "No", Name_es = "No" }
 			);
 
 		}

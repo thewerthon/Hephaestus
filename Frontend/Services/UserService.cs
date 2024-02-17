@@ -12,15 +12,15 @@ namespace Hephaestus.Frontend.Services {
 		public string? Guid;
 		public string? Role;
 
-		public AppUser CurrentUser = new();
-		public AppPreferences Preferences = new();
+		public User CurrentUser = new();
+		public Preferences Preferences = new();
 		public ClaimsPrincipal Claims = new();
 		public bool Initialized = false;
 
-		private AppUser LocalUser = new();
+		private User LocalUser = new();
 		private User ServerUser = new();
 		private GraphUser GraphUser = new();
-		private AppPreferences LocalPreferences = new();
+		private Preferences LocalPreferences = new();
 		private Preferences ServerPreferences = new();
 		private DateTime LastFetched = default;
 		private byte[]? UserPhoto;
@@ -83,7 +83,7 @@ namespace Hephaestus.Frontend.Services {
 
 			try {
 
-				LocalUser = await LocalStorage.GetItemAsync<AppUser?>("CurrentUser") ?? new();
+				LocalUser = await LocalStorage.GetItemAsync<User?>("CurrentUser") ?? new();
 
 			} catch {
 
@@ -136,7 +136,7 @@ namespace Hephaestus.Frontend.Services {
 
 			try {
 
-				LocalPreferences = await LocalStorage.GetItemAsync<AppPreferences?>("Preferences") ?? new();
+				LocalPreferences = await LocalStorage.GetItemAsync<Preferences?>("Preferences") ?? new();
 
 			} catch {
 
@@ -213,7 +213,7 @@ namespace Hephaestus.Frontend.Services {
 
 				SetCurrentUser();
 				var odata = ClientFactory.CreateClient("OData");
-				var endpoint = new Uri(odata.BaseAddress!, $"Preferences/{User}?response=false");
+				var endpoint = new Uri(odata.BaseAddress!, $"Preferences/{User}");
 				var message = new HttpRequestMessage(HttpMethod.Put, endpoint) {
 					Content = new StringContent(ODataJsonSerializer.Serialize(Preferences), Encoding.UTF8, "application/json")
 				};

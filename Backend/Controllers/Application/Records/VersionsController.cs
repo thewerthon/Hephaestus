@@ -1,6 +1,8 @@
-﻿namespace Hephaestus.Backend.Controllers {
+﻿using Version = Hephaestus.Architect.Models.Version;
+
+namespace Hephaestus.Backend.Controllers {
 
 	public class VersionsController(DatabaseContext context)
-		: TypesController<Architect.Models.Version>(context) { }
+		: TypesController<Version>(context) { }
 
 }

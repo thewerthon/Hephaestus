@@ -12,9 +12,6 @@
 		public string Name { get; set; } = string.Empty;
 
 		[MaxLength(16)]
-		public string? Name_pt { get; set; }
-
-		[MaxLength(16)]
 		public string? Name_en { get; set; }
 
 		[MaxLength(16)]
