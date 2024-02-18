@@ -2,10 +2,6 @@
 
 public class Preferences : BaseEntity {
 
-	[Key]
-	[Required]
-	public new int Id { get; set; } = 0;
-
 	[Required]
 	[ForeignKey("User")]
 	public int? User { get; set; }

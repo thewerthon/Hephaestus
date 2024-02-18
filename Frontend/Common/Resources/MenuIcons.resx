@@ -210,315 +210,315 @@
     <comment>@Invariant</comment>
   </data>
   <data name="1110" xml:space="preserve">
-    <value />
+    <value>attach_money</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1120" xml:space="preserve">
-    <value />
+    <value>table_view</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1210" xml:space="preserve">
-    <value />
+    <value>inventory_2</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1220" xml:space="preserve">
-    <value />
+    <value>schema</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1230" xml:space="preserve">
-    <value />
+    <value>task</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1240" xml:space="preserve">
-    <value />
+    <value>book</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1250" xml:space="preserve">
-    <value />
+    <value>school</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1310" xml:space="preserve">
-    <value />
+    <value>shopping_basket</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1320" xml:space="preserve">
-    <value />
+    <value>shopping_cart</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1410" xml:space="preserve">
-    <value />
+    <value>swap_horiz</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1411" xml:space="preserve">
-    <value />
+    <value>request_quote</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1412" xml:space="preserve">
-    <value />
+    <value>assignment_turned_in</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1413" xml:space="preserve">
-    <value />
+    <value>file_download</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1414" xml:space="preserve">
-    <value />
+    <value>request_quote</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1415" xml:space="preserve">
-    <value />
+    <value>assignment_turned_in</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1416" xml:space="preserve">
-    <value />
+    <value>file_upload</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1417" xml:space="preserve">
-    <value />
+    <value>transfer_within_a_station</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1418" xml:space="preserve">
-    <value />
+    <value>delete</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1420" xml:space="preserve">
-    <value />
+    <value>sell</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1430" xml:space="preserve">
-    <value />
+    <value>assignment_turned_in</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1440" xml:space="preserve">
-    <value />
+    <value>note_alt</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1510" xml:space="preserve">
-    <value />
+    <value>assignment_turned_in</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1520" xml:space="preserve">
-    <value />
+    <value>note_alt</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1530" xml:space="preserve">
-    <value />
+    <value>warehouse</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1540" xml:space="preserve">
-    <value />
+    <value>attach_money</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1550" xml:space="preserve">
-    <value />
+    <value>shopping_cart</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1610" xml:space="preserve">
-    <value />
+    <value>edit</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1611" xml:space="preserve">
-    <value />
+    <value>play_circle</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1612" xml:space="preserve">
-    <value />
+    <value>remove_circle</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1613" xml:space="preserve">
-    <value />
+    <value>add_circle</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1614" xml:space="preserve">
-    <value />
+    <value>pause_circle</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1615" xml:space="preserve">
-    <value />
+    <value>restore</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1616" xml:space="preserve">
-    <value />
+    <value>cancel</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1617" xml:space="preserve">
-    <value />
+    <value>check_circle</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1620" xml:space="preserve">
-    <value />
+    <value>sell</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1630" xml:space="preserve">
-    <value />
+    <value>assignment_turned_in</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1640" xml:space="preserve">
-    <value />
+    <value>note_alt</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1710" xml:space="preserve">
-    <value />
+    <value>search</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1711" xml:space="preserve">
-    <value />
+    <value>inventory_2</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1712" xml:space="preserve">
-    <value />
+    <value>schema</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1713" xml:space="preserve">
-    <value />
+    <value>event</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1720" xml:space="preserve">
-    <value />
+    <value>report</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1730" xml:space="preserve">
-    <value />
+    <value>cancel</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1731" xml:space="preserve">
-    <value />
+    <value>inventory_2</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1732" xml:space="preserve">
-    <value />
+    <value>schema</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1740" xml:space="preserve">
-    <value />
+    <value>check_circle</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1741" xml:space="preserve">
-    <value />
+    <value>inventory_2</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1742" xml:space="preserve">
-    <value />
+    <value>schema</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1750" xml:space="preserve">
-    <value />
+    <value>task</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1751" xml:space="preserve">
-    <value />
+    <value>inventory_2</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1752" xml:space="preserve">
-    <value />
+    <value>schema</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1753" xml:space="preserve">
-    <value />
+    <value>event</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1760" xml:space="preserve">
-    <value />
+    <value>rule</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1770" xml:space="preserve">
-    <value />
+    <value>workspace_premium</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1780" xml:space="preserve">
-    <value />
+    <value>book</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1810" xml:space="preserve">
-    <value />
+    <value>receipt_long</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1820" xml:space="preserve">
-    <value />
+    <value>request_quote</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1830" xml:space="preserve">
-    <value />
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1840" xml:space="preserve">
-    <value />
+    <value>request_quote</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1910" xml:space="preserve">
-    <value />
+    <value>warehouse</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1920" xml:space="preserve">
-    <value />
+    <value>local_shipping</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2110" xml:space="preserve">
-    <value />
+    <value>groups</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2120" xml:space="preserve">
-    <value />
+    <value>personal_injury</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2130" xml:space="preserve">
-    <value />
+    <value>schedule</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2140" xml:space="preserve">
-    <value />
+    <value>school</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2210" xml:space="preserve">
-    <value />
+    <value>engineering</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2220" xml:space="preserve">
-    <value />
+    <value>report</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2230" xml:space="preserve">
-    <value />
+    <value>masks</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2240" xml:space="preserve">
-    <value />
+    <value>warehouse</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2410" xml:space="preserve">
-    <value />
+    <value>handyman</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2420" xml:space="preserve">
-    <value />
+    <value>search</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2430" xml:space="preserve">
-    <value />
+    <value>settings_applications</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2440" xml:space="preserve">
-    <value />
+    <value>build</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2450" xml:space="preserve">
-    <value />
+    <value>home_repair_service</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2460" xml:space="preserve">
-    <value />
+    <value>warehouse</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2610" xml:space="preserve">
-    <value />
+    <value>fact_check</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2620" xml:space="preserve">
-    <value />
+    <value>emoji_objects</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2630" xml:space="preserve">
-    <value />
+    <value>cleaning_services</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="1790" xml:space="preserve">
+    <value>straighten</value>
     <comment>@Invariant</comment>
   </data>
 </root>

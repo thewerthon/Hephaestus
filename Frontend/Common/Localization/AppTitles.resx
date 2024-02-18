@@ -163,7 +163,7 @@
     <value>Erro</value>
   </data>
   <data name="0100" xml:space="preserve">
-    <value>Início</value>
+    <value>Página Inicial</value>
   </data>
   <data name="0110" xml:space="preserve">
     <value>Relatórios</value>
@@ -235,7 +235,7 @@
     <value>Módulo de Almoxarifado</value>
   </data>
   <data name="1410" xml:space="preserve">
-    <value>Movimentos</value>
+    <value>Movimentos de Almoxarifado</value>
   </data>
   <data name="1411" xml:space="preserve">
     <value>Recebimento por Nota Fiscal</value>
@@ -292,7 +292,7 @@
     <value>Módulo de Produção</value>
   </data>
   <data name="1610" xml:space="preserve">
-    <value>Apontamentos</value>
+    <value>Apontamentos de Produção</value>
   </data>
   <data name="1611" xml:space="preserve">
     <value>Início</value>
@@ -328,7 +328,7 @@
     <value>Módulo de Qualidade</value>
   </data>
   <data name="1710" xml:space="preserve">
-    <value>Inspeções</value>
+    <value>Inspeções de Qualidade</value>
   </data>
   <data name="1711" xml:space="preserve">
     <value>Produtos</value>
@@ -343,7 +343,7 @@
     <value>Não Conformidades</value>
   </data>
   <data name="1730" xml:space="preserve">
-    <value>Bloqueios</value>
+    <value>Bloqueios de Qualidade</value>
   </data>
   <data name="1731" xml:space="preserve">
     <value>Produtos</value>
@@ -352,7 +352,7 @@
     <value>Processos</value>
   </data>
   <data name="1740" xml:space="preserve">
-    <value>Liberações</value>
+    <value>Liberações de Qualidade</value>
   </data>
   <data name="1741" xml:space="preserve">
     <value>Produtos</value>
@@ -392,9 +392,6 @@
   </data>
   <data name="1830" xml:space="preserve">
     <value>Notas de Venda</value>
-  </data>
-  <data name="1840" xml:space="preserve">
-    <value>Cenários Fiscais</value>
   </data>
   <data name="1900" xml:space="preserve">
     <value>Módulo de Logística</value>
@@ -482,5 +479,8 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>Módulo de Tecnologia</value>
+  </data>
+  <data name="1790" xml:space="preserve">
+    <value>Equipamentos</value>
   </data>
 </root>

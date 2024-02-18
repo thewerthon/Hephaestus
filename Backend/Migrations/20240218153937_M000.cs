@@ -131,8 +131,8 @@ namespace Backend.Migrations
                     Email = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role = table.Column<string>(type: "varchar(900)", nullable: true),
-                    Hidden = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     Active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    Hidden = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     CreatedBy = table.Column<int>(type: "int", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedBy = table.Column<int>(type: "int", nullable: true),
@@ -293,7 +293,7 @@ namespace Backend.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "Department", "Email", "FirstName", "Guid", "Hidden", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
-                values: new object[] { 1, true, null, 1, new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4811), null, "system@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", true, null, "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4827) });
+                values: new object[] { 1, true, null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1669), null, "system@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", true, null, "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1680) });
 
             migrationBuilder.InsertData(
                 table: "Preferences",
@@ -303,7 +303,7 @@ namespace Backend.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "Department", "Email", "FirstName", "Guid", "Hidden", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
-                values: new object[] { 2, true, null, 1, new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4830), null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", true, null, "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4831) });
+                values: new object[] { 2, true, null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1683), null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", true, null, "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1684) });
 
             migrationBuilder.InsertData(
                 table: "Preferences",

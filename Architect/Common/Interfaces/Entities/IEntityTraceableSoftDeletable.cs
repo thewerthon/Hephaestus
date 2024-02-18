@@ -1,3 +1,7 @@
 ﻿namespace Hephaestus.Architect.Application.Interfaces;
 
-public interface IEntityTraceableSoftDeletable : IEntityTraceable, IEntitySoftDeletable { }
+public interface IEntityTraceableSoftDeletable : IEntityTraceable, IEntitySoftDeletable {
+
+
+
+}

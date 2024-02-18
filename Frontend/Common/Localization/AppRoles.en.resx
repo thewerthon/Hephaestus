@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SystemAdmin" xml:space="preserve">
-    <value>Administrator</value>
-  </data>
-  <data name="SystemMember" xml:space="preserve">
-    <value>Moderator</value>
-  </data>
-  <data name="SystemUser" xml:space="preserve">
-    <value>System User</value>
-  </data>
   <data name="EngineeringAdmin" xml:space="preserve">
     <value>Engineering (Manager)</value>
   </data>
@@ -135,14 +126,32 @@
   <data name="EngineeringUser" xml:space="preserve">
     <value>Engineering (User)</value>
   </data>
-  <data name="WarehouseAdmin" xml:space="preserve">
-    <value>Warehouse (Manager)</value>
+  <data name="FiscalAdmin" xml:space="preserve">
+    <value>Fiscal (Manager)</value>
   </data>
-  <data name="WarehouseMember" xml:space="preserve">
-    <value>Warehouse (Member)</value>
+  <data name="FiscalMember" xml:space="preserve">
+    <value>Fiscal (Member)</value>
   </data>
-  <data name="WarehouseUser" xml:space="preserve">
-    <value>Warehouse (User)</value>
+  <data name="FiscalUser" xml:space="preserve">
+    <value>Fiscal (User)</value>
+  </data>
+  <data name="LogisticsAdmin" xml:space="preserve">
+    <value>Logistics (Manager)</value>
+  </data>
+  <data name="LogisticsMember" xml:space="preserve">
+    <value>Logistics (Member)</value>
+  </data>
+  <data name="LogisticsUser" xml:space="preserve">
+    <value>Logistics (User)</value>
+  </data>
+  <data name="MaintenanceAdmin" xml:space="preserve">
+    <value>Maintenance (Manager)</value>
+  </data>
+  <data name="MaintenanceMember" xml:space="preserve">
+    <value>Maintenance (Member)</value>
+  </data>
+  <data name="MaintenanceUser" xml:space="preserve">
+    <value>Maintenance (User)</value>
   </data>
   <data name="PlanningAdmin" xml:space="preserve">
     <value>Planning (Manager)</value>
@@ -171,24 +180,6 @@
   <data name="QualityUser" xml:space="preserve">
     <value>Quality (User)</value>
   </data>
-  <data name="FiscalAdmin" xml:space="preserve">
-    <value>Fiscal (Manager)</value>
-  </data>
-  <data name="FiscalMember" xml:space="preserve">
-    <value>Fiscal (Member)</value>
-  </data>
-  <data name="FiscalUser" xml:space="preserve">
-    <value>Fiscal (User)</value>
-  </data>
-  <data name="LogisticsAdmin" xml:space="preserve">
-    <value>Logistics (Manager)</value>
-  </data>
-  <data name="LogisticsMember" xml:space="preserve">
-    <value>Logistics (Member)</value>
-  </data>
-  <data name="LogisticsUser" xml:space="preserve">
-    <value>Logistics (User)</value>
-  </data>
   <data name="SafetyAdmin" xml:space="preserve">
     <value>Safety (Manager)</value>
   </data>
@@ -198,13 +189,22 @@
   <data name="SafetyUser" xml:space="preserve">
     <value>Safety (User)</value>
   </data>
-  <data name="MaintenanceAdmin" xml:space="preserve">
-    <value>Maintenance (Manager)</value>
+  <data name="SystemAdmin" xml:space="preserve">
+    <value>Administrator</value>
   </data>
-  <data name="MaintenanceMember" xml:space="preserve">
-    <value>Maintenance (Member)</value>
+  <data name="SystemMember" xml:space="preserve">
+    <value>Moderator</value>
   </data>
-  <data name="MaintenanceUser" xml:space="preserve">
-    <value>Maintenance (User)</value>
+  <data name="SystemUser" xml:space="preserve">
+    <value>System User</value>
+  </data>
+  <data name="WarehouseAdmin" xml:space="preserve">
+    <value>Warehouse (Manager)</value>
+  </data>
+  <data name="WarehouseMember" xml:space="preserve">
+    <value>Warehouse (Member)</value>
+  </data>
+  <data name="WarehouseUser" xml:space="preserve">
+    <value>Warehouse (User)</value>
   </data>
 </root>

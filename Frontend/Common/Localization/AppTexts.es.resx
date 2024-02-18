@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="0000" xml:space="preserve">
-    <value>¡Bienvenido!</value>
+    <value>Bien-venido(a)</value>
   </data>
   <data name="0001" xml:space="preserve">
     <value>Inicie sesión para continuar.</value>
@@ -299,5 +299,20 @@ Los datos no guardados se perderán.&lt;br/&gt;
   </data>
   <data name="0058" xml:space="preserve">
     <value>Funciones Compartidas</value>
+  </data>
+  <data name="0059" xml:space="preserve">
+    <value>Funciones del Sistema</value>
+  </data>
+  <data name="0060" xml:space="preserve">
+    <value>Ajustes del Sistema</value>
+  </data>
+  <data name="0061" xml:space="preserve">
+    <value>Movimientos de Entrada</value>
+  </data>
+  <data name="0062" xml:space="preserve">
+    <value>Movimientos de Salida</value>
+  </data>
+  <data name="0063" xml:space="preserve">
+    <value>Otros Movimientos</value>
   </data>
 </root>

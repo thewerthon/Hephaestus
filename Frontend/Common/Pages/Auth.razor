@@ -44,10 +44,11 @@
 
 	[Parameter]
 	public string? Action { get; set; }
-	private string returnPath = string.Empty;
+	private string? returnPath;
 
 	protected override async Task OnInitializedAsync() {
-		returnPath = await SessionStorage.GetItemAsStringAsync("ReturnPath") ?? AppPaths["0012"].Value.Replace("/", string.Empty);
+		returnPath = await SessionStorage.GetItemAsStringAsync("ReturnPath");
+		if (string.IsNullOrEmpty(returnPath)) returnPath = AppPaths["0012"].Value.Replace("/", string.Empty);
 	}
 
 	private void LoginSucceeded(RemoteAuthenticationState state) {

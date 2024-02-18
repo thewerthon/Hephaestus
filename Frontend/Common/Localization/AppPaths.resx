@@ -393,9 +393,6 @@
   <data name="1830" xml:space="preserve">
     <value>/fiscal/notas/venda</value>
   </data>
-  <data name="1840" xml:space="preserve">
-    <value>/fiscal/cenarios</value>
-  </data>
   <data name="1900" xml:space="preserve">
     <value>/logistica</value>
   </data>
@@ -482,5 +479,8 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>/tecnologia</value>
+  </data>
+  <data name="1790" xml:space="preserve">
+    <value>/qualidade/equipamentos</value>
   </data>
 </root>

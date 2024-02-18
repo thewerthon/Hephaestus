@@ -223,13 +223,13 @@
     <value>/ingenieria/capacitaciones</value>
   </data>
   <data name="1300" xml:space="preserve">
-    <value>/supplies</value>
+    <value>/suministros</value>
   </data>
   <data name="1310" xml:space="preserve">
-    <value>/supplies/solicitudes/compra</value>
+    <value>/suministros/solicitudes/compra</value>
   </data>
   <data name="1320" xml:space="preserve">
-    <value>/supplies/ordenes/compra</value>
+    <value>/suministros/ordenes/compra</value>
   </data>
   <data name="1400" xml:space="preserve">
     <value>/almacen</value>
@@ -361,7 +361,7 @@
     <value>/calidad/liberaciones/procesos</value>
   </data>
   <data name="1750" xml:space="preserve">
-    <value>/calidad/patrones</value>
+    <value>/calidad/estandares</value>
   </data>
   <data name="1751" xml:space="preserve">
     <value>/calidad/patrones/productos</value>
@@ -392,9 +392,6 @@
   </data>
   <data name="1830" xml:space="preserve">
     <value>/fiscal/facturas/venta</value>
-  </data>
-  <data name="1840" xml:space="preserve">
-    <value>/fiscal/escenarios</value>
   </data>
   <data name="1900" xml:space="preserve">
     <value>/logistica</value>
@@ -482,5 +479,8 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>/tecnologia</value>
+  </data>
+  <data name="1790" xml:space="preserve">
+    <value>/calidad/equipos</value>
   </data>
 </root>
