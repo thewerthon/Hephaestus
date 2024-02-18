@@ -10,6 +10,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>$(SolutionName).$(MSBuildProjectName)</RootNamespace>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	</PropertyGroup>
 
@@ -43,7 +45,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\Architect\Models\Application\Records\Version.cs" Link="Version.cs" />
+		<None Include="..\Architect\System\Models\Entities\Version.cs" Link="Version.cs" />
 	</ItemGroup>
 
 </Project>

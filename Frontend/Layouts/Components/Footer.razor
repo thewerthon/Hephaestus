@@ -1,0 +1,30 @@
+﻿@namespace Hephaestus.Frontend.Application.Layouts.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<RadzenStack AlignItems="Radzen.AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0" class="rz-pt-2 rz-pb-4">
+	@if (InSidebar) {
+		<RadzenText Text="@($"{copyRgt}{curYear} - {curVers}")" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="color:var(--rz-sidebar-label-color)" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+		<RadzenText Text="@($"{appName}")" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="color:var(--rz-sidebar-label-color)" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+	} else {
+		<RadzenText Text="@($"{copyRgt}{curYear} - {appName} - {curVers}")" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+	}
+</RadzenStack>
+
+@code {
+
+	[Parameter]
+	public bool InSidebar { get; set; } = true;
+
+	private string copyRgt = "Ⓒ";
+	private string appName = string.Empty;
+	private string curVers = string.Empty;
+	private string curYear = DateTime.Now.Year.ToString();
+
+	protected override void OnInitialized() {
+
+		appName = AppInfo["Organization"];
+		curVers = VersionService.GetLocalVersion().Name;
+
+	}
+
+}

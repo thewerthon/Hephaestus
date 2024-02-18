@@ -30,7 +30,7 @@ builder.Services.AddDbContext<DatabaseContext>(options => {
 var models = new ODataConventionModelBuilder();
 
 // Add Entity Sets
-foreach (var table in DatabaseTables.Tables) {
+foreach (var table in DatabaseMappings.Tables) {
 	typeof(ODataConventionModelBuilder)
 		.GetMethod("EntitySet")!
 		.MakeGenericMethod(table.Type)
@@ -71,7 +71,7 @@ builder.Services.AddOutputCache(options => {
 	options.SizeLimit = 256;
 	options.MaximumBodySize = 64;
 	options.DefaultExpirationTimeSpan = TimeSpan.FromSeconds(60);
-	options.AddPolicy("Default", DefaultCachePolicy.Instance);
+	options.AddPolicy("Default", CachePolicy.Instance);
 	options.AddPolicy("NoCache", builder => builder.NoCache());
 });
 

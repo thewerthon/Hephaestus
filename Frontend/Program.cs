@@ -1,4 +1,4 @@
-using Hephaestus.Frontend;
+using Hephaestus.Frontend.Application;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
