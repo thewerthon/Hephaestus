@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="0010" xml:space="preserve">
-    <value>Intente acceder a esta página más tarde.</value>
+  <data name="0001" xml:space="preserve">
+    <value>Error Desconocido</value>
   </data>
-  <data name="0009" xml:space="preserve">
-    <value>En Manutención</value>
+  <data name="0002" xml:space="preserve">
+    <value>Se ha producido un error desconocido y no se puede mostrar la página.</value>
   </data>
   <data name="0003" xml:space="preserve">
     <value>No Autorizado</value>
@@ -141,10 +141,10 @@
   <data name="0008" xml:space="preserve">
     <value>La página a la que intentaste acceder no existe.</value>
   </data>
-  <data name="0001" xml:space="preserve">
-    <value>Error Desconocido</value>
+  <data name="0009" xml:space="preserve">
+    <value>En Manutención</value>
   </data>
-  <data name="0002" xml:space="preserve">
-    <value>Se ha producido un error desconocido y no se puede mostrar la página.</value>
+  <data name="0010" xml:space="preserve">
+    <value>Intente acceder a esta página más tarde.</value>
   </data>
 </root>

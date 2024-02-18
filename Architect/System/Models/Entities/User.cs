@@ -2,10 +2,6 @@
 
 public class User : BaseEntityTraceable, IEntityHideable, IEntityActivable {
 
-	[Key]
-	[Required]
-	public new int Id { get; set; } = 0;
-
 	[Required]
 	[MinLength(36)]
 	[MaxLength(36)]
@@ -53,13 +49,13 @@ public class User : BaseEntityTraceable, IEntityHideable, IEntityActivable {
 	public string? Role { get; set; }
 	public virtual Role? RoleData { get; set; }
 
-	[ForeignKey("Hidden")]
-	public bool Hidden { get; set; } = false;
-	public Hidden? HiddenData { get; set; }
-
 	[ForeignKey("Active")]
 	public bool Active { get; set; } = true;
 	public Active? ActiveData { get; set; }
+
+	[ForeignKey("Hidden")]
+	public bool Hidden { get; set; } = false;
+	public Hidden? HiddenData { get; set; }
 
 	// Navigation Propety
 	public virtual Preferences? Preferences { get; set; }

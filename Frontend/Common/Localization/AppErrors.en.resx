@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="0010" xml:space="preserve">
-    <value>Try accessing this page later.</value>
+  <data name="0001" xml:space="preserve">
+    <value>Unknown error</value>
   </data>
-  <data name="0009" xml:space="preserve">
-    <value>Under Maintenance</value>
+  <data name="0002" xml:space="preserve">
+    <value>An unknown error has occurred and the page cannot be displayed.</value>
   </data>
   <data name="0003" xml:space="preserve">
     <value>Not Authorized</value>
@@ -141,10 +141,10 @@
   <data name="0008" xml:space="preserve">
     <value>The page you tried to access does not exist.</value>
   </data>
-  <data name="0001" xml:space="preserve">
-    <value>Unknown error</value>
+  <data name="0009" xml:space="preserve">
+    <value>Under Maintenance</value>
   </data>
-  <data name="0002" xml:space="preserve">
-    <value>An unknown error has occurred and the page cannot be displayed.</value>
+  <data name="0010" xml:space="preserve">
+    <value>Try accessing this page later.</value>
   </data>
 </root>

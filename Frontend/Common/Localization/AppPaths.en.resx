@@ -361,7 +361,7 @@
     <value>/quality/clearances/processes</value>
   </data>
   <data name="1750" xml:space="preserve">
-    <value>/quality/patterns</value>
+    <value>/quality/standards</value>
   </data>
   <data name="1751" xml:space="preserve">
     <value>/quality/patterns/products</value>
@@ -392,9 +392,6 @@
   </data>
   <data name="1830" xml:space="preserve">
     <value>/fiscal/invoices/sales</value>
-  </data>
-  <data name="1840" xml:space="preserve">
-    <value>/fiscal/scenarios</value>
   </data>
   <data name="1900" xml:space="preserve">
     <value>/logistics</value>
@@ -482,5 +479,8 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>/technology</value>
+  </data>
+  <data name="1790" xml:space="preserve">
+    <value>/quality/equipments</value>
   </data>
 </root>

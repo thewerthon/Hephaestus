@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="0000" xml:space="preserve">
-    <value>Bem-vindo(a)!</value>
+    <value>Bem-vindo(a)</value>
   </data>
   <data name="0001" xml:space="preserve">
     <value>Faça login para prosseguir.</value>
@@ -299,5 +299,20 @@ Deseja continuar?</value>
   </data>
   <data name="0058" xml:space="preserve">
     <value>Funções Compartilhadas</value>
+  </data>
+  <data name="0059" xml:space="preserve">
+    <value>Funções do Sistema</value>
+  </data>
+  <data name="0060" xml:space="preserve">
+    <value>Configurações do Sistema</value>
+  </data>
+  <data name="0061" xml:space="preserve">
+    <value>Movimentos de Entrada</value>
+  </data>
+  <data name="0062" xml:space="preserve">
+    <value>Movimentos de Saída</value>
+  </data>
+  <data name="0063" xml:space="preserve">
+    <value>Outros Movimentos</value>
   </data>
 </root>

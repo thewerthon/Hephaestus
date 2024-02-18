@@ -162,35 +162,11 @@
   <data name="0014" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="0100" xml:space="preserve">
-    <value>Inicio</value>
-  </data>
-  <data name="0110" xml:space="preserve">
-    <value>Reportes</value>
-  </data>
-  <data name="0120" xml:space="preserve">
-    <value>Tableros</value>
-  </data>
-  <data name="0130" xml:space="preserve">
-    <value>Flujos</value>
-  </data>
   <data name="0140" xml:space="preserve">
     <value>Configuraciones del Sistema</value>
   </data>
-  <data name="0150" xml:space="preserve">
-    <value>Tutoriales</value>
-  </data>
   <data name="0200" xml:space="preserve">
     <value>Módulo del Sistema</value>
-  </data>
-  <data name="0210" xml:space="preserve">
-    <value>Usuarios</value>
-  </data>
-  <data name="0220" xml:space="preserve">
-    <value>Permisos</value>
-  </data>
-  <data name="0230" xml:space="preserve">
-    <value>Registros</value>
   </data>
   <data name="1000" xml:space="preserve">
     <value>Módulos Principales</value>
@@ -233,9 +209,6 @@
   </data>
   <data name="1400" xml:space="preserve">
     <value>Módulo del Depósito</value>
-  </data>
-  <data name="1410" xml:space="preserve">
-    <value>Movimientos</value>
   </data>
   <data name="1411" xml:space="preserve">
     <value>Recibo por Factura</value>
@@ -291,9 +264,6 @@
   <data name="1600" xml:space="preserve">
     <value>Módulo de Producción</value>
   </data>
-  <data name="1610" xml:space="preserve">
-    <value>Registros</value>
-  </data>
   <data name="1611" xml:space="preserve">
     <value>Comenzar</value>
   </data>
@@ -327,9 +297,6 @@
   <data name="1700" xml:space="preserve">
     <value>Módulo de Calidad</value>
   </data>
-  <data name="1710" xml:space="preserve">
-    <value>Inspecciones</value>
-  </data>
   <data name="1711" xml:space="preserve">
     <value>Productos</value>
   </data>
@@ -342,26 +309,17 @@
   <data name="1720" xml:space="preserve">
     <value>No Conformidades</value>
   </data>
-  <data name="1730" xml:space="preserve">
-    <value>Bloqueos</value>
-  </data>
   <data name="1731" xml:space="preserve">
     <value>Productos</value>
   </data>
   <data name="1732" xml:space="preserve">
     <value>Procesos</value>
   </data>
-  <data name="1740" xml:space="preserve">
-    <value>Lanzamientos</value>
-  </data>
   <data name="1741" xml:space="preserve">
     <value>Productos</value>
   </data>
   <data name="1742" xml:space="preserve">
     <value>Procesos</value>
-  </data>
-  <data name="1750" xml:space="preserve">
-    <value>Patrones de Inspecciones</value>
   </data>
   <data name="1751" xml:space="preserve">
     <value>Productos</value>
@@ -392,9 +350,6 @@
   </data>
   <data name="1830" xml:space="preserve">
     <value>Facturas de Venta</value>
-  </data>
-  <data name="1840" xml:space="preserve">
-    <value>Escenarios Fiscales</value>
   </data>
   <data name="1900" xml:space="preserve">
     <value>Módulo de Logística</value>
@@ -482,5 +437,50 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>Módulo de Tecnología</value>
+  </data>
+  <data name="0120" xml:space="preserve">
+    <value>Tableros</value>
+  </data>
+  <data name="0100" xml:space="preserve">
+    <value>Página de Inicio</value>
+  </data>
+  <data name="0110" xml:space="preserve">
+    <value>Informes</value>
+  </data>
+  <data name="0130" xml:space="preserve">
+    <value>Flujos</value>
+  </data>
+  <data name="0150" xml:space="preserve">
+    <value>Tutoriales</value>
+  </data>
+  <data name="0210" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="0220" xml:space="preserve">
+    <value>Permisos</value>
+  </data>
+  <data name="0230" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="1410" xml:space="preserve">
+    <value>Movimientos de Almacén</value>
+  </data>
+  <data name="1610" xml:space="preserve">
+    <value>Registros de Producción</value>
+  </data>
+  <data name="1710" xml:space="preserve">
+    <value>Inspecciones de Calidad</value>
+  </data>
+  <data name="1730" xml:space="preserve">
+    <value>Cerraduras de Calidad</value>
+  </data>
+  <data name="1740" xml:space="preserve">
+    <value>Lanzamientos de Calidad</value>
+  </data>
+  <data name="1750" xml:space="preserve">
+    <value>Estándares de Inspección</value>
+  </data>
+  <data name="1790" xml:space="preserve">
+    <value>Equipos</value>
   </data>
 </root>

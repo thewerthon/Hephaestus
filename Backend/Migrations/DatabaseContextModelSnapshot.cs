@@ -661,7 +661,7 @@ namespace Backend.Migrations
                             Id = 1,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4811),
+                            CreatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1669),
                             Email = "system@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000000",
                             Hidden = true,
@@ -669,14 +669,14 @@ namespace Backend.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4827)
+                            UpdatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1680)
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4830),
+                            CreatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1683),
                             Email = "autobot@siw.ind.br",
                             Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
                             Hidden = true,
@@ -684,7 +684,7 @@ namespace Backend.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 18, 0, 51, 24, 904, DateTimeKind.Local).AddTicks(4831)
+                            UpdatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1684)
                         });
                 });
 

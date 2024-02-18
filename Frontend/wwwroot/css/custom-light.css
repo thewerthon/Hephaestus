@@ -214,7 +214,7 @@ ul.rz-profile-menu {
 }
 
 .rz-dialog-mask {
-	backdrop-filter: blur(2px);
+	backdrop-filter: blur(3px);
 	background: linear-gradient(#00000000, #00000077);
 	opacity: 1;
 }
