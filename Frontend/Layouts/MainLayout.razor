@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Layouts
+﻿@namespace Hephaestus.Frontend.Application.Layouts
 @inherits Microsoft.AspNetCore.Components.LayoutComponentBase
 
 <!-- Components -->
@@ -19,7 +19,7 @@
 
 	<!-- Body -->
 	<RadzenBody>
-		<RadzenRow class="rz-mx-auto rz-px-4 rz-py-2" Style="max-width: 1800px;">
+		<RadzenRow class="rz-mx-auto rz-px-4 rz-py-2">
 			<RadzenColumn Size="12">
 				@Body
 			</RadzenColumn>
@@ -27,7 +27,7 @@
 	</RadzenBody>
 
 	@if (sidebarExpanded) {
-		<div @onclick="@(() => sidebarExpanded = false)" class="sidebar-backdrop"></div>
+		<div @onclick="@(() => sidebarExpanded = false)" class="app-sidebar-backdrop"></div>
 	}
 
 </RadzenLayout>

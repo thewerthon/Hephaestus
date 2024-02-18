@@ -82,10 +82,18 @@
 	flex-wrap: nowrap;
 }
 
+.app-sidebar-backdrop {
+	display: none;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(2px);
+	background: linear-gradient(#00000000, #00000077);
+	opacity: 1;
+}
+
 .app-sidebar-logo {
 	display: inherit;
-	padding-top: 1.5rem !important;
-	padding-bottom: 1.0rem !important;
+	padding: 24px 16px !important;
 }
 
 .app-sidebar-logo .logo {
@@ -107,7 +115,7 @@
 
 @media (display-mode: minimal-ui) {
 	.app-layout {
-		grid-template-areas: 'rz-header rz-header rz-header' 'rz-sidebar rz-body';
+		grid-template-areas: 'rz-header rz-header rz-header' 'rz-sidebar rz-body rz-body';
 	}
 
 	.app-header-logo {
@@ -121,7 +129,7 @@
 
 @media (display-mode: standalone) {
 	.app-layout {
-		grid-template-areas: 'rz-header rz-header rz-header' 'rz-sidebar rz-body';
+		grid-template-areas: 'rz-header rz-header rz-header' 'rz-sidebar rz-body rz-body';
 	}
 
 	.app-header-logo {
@@ -158,9 +166,7 @@
 
 	.app-sidebar-logo {
 		display: inherit !important;
-		padding-top: 12px !important;
-		padding-bottom: 8px !important;
-		padding-left: 20px !important;
+		padding: 14px 16px !important;
 		align-items: start !important;
 	}
 
@@ -172,7 +178,7 @@
 		height: 38px !important;
 	}
 
-	.sidebar-backdrop {
+	.app-sidebar-backdrop {
 		z-index: 500;
 		display: flex;
 		position: absolute;
@@ -407,11 +413,18 @@ a:focus {
 	display: none;
 }
 
-.update-banner {
-	margin-top: 0px;
+.welcome-banner {
+	margin: 0px;
+	width: 820px;
 	position: relative;
 	padding: 1rem 1.5rem;
-	width: 100%;
+}
+
+.update-banner {
+	margin: 0px;
+	width: 820px;
+	position: relative;
+	padding: 1rem 1.5rem;
 }
 
 .popup-frame {
@@ -450,7 +463,6 @@ a:focus {
 }
 
 .cardbutton {
-
 	width: 260px;
 	height: 110px;
 	cursor: pointer;
@@ -462,18 +474,13 @@ a:focus {
 	background-position: 8%;
 	background-size: 80px;
 	user-select: none;
-	
 }
 
 .cardbutton.disabled {
-	
 	filter: opacity(0.5);
 	pointer-events: none;
-	
 }
 
 .cardbutton:hover {
-	
 	box-shadow: var(--rz-shadow-4);
-	
 }

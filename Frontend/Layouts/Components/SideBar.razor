@@ -1,0 +1,165 @@
+﻿@namespace Hephaestus.Frontend.Application.Layouts.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<!-- Logo -->
+<RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0px" Style="padding:var(--rz-panel-menu-item-padding);border-bottom:var(--rz-panel-menu-item-border);cursor:pointer" class="app-sidebar-logo rz-pt-4 rz-pb-2" @onclick="@OnToggle">
+	<RadzenRow AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Gap="10px" Style="flex-wrap:nowrap">
+		<RadzenIcon Icon="arrow_back_ios" Style="display:none" class="back-icon" title="@AppTexts["0006"]" />
+		<RadzenImage style="width:fit-content;height:38px;" class="logo logo-dark" title="@AppInfo["Fullname"]"></RadzenImage>
+	</RadzenRow>
+</RadzenStack>
+
+<!-- Panel Menu -->
+<RadzenPanelMenu Multiple="false" Style="height:100%" class="sidebar-scrollbox scrollbar-hidden">
+
+	<!-- Home -->
+	<PanelNavigationItem Code="0100" Click="@OnNavigate" />
+
+	<!-- System -->
+	<PanelNavigationItem Code="0200">
+		<PanelNavigationSubitem Code="0110" Click="@OnNavigate" />
+		<PanelNavigationSubitem Code="0120" Click="@OnNavigate" />
+		<PanelNavigationSubitem Code="0130" Click="@OnNavigate" />
+		<PanelNavigationSubitem Code="0140" Click="@OnNavigate" />
+		<PanelNavigationSubitem Code="0150" Click="@OnNavigate" />
+	</PanelNavigationItem>
+
+	<!-- Main Modules -->
+	<PanelNavigationGroup Code="1000">
+
+		<!-- Comercial -->
+		<PanelNavigationItem Code="1100">
+			<PanelNavigationSubitem Code="1110" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1120" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Engineering -->
+		<PanelNavigationItem Code="1200">
+			<PanelNavigationSubitem Code="1210" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1220" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1230" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1240" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1250" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Supplies -->
+		<PanelNavigationItem Code="1300">
+			<PanelNavigationSubitem Code="1310" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1320" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Warehouse -->
+		<PanelNavigationItem Code="1400">
+			<PanelNavigationSubitem Code="1410" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1420" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1430" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1440" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Planning -->
+		<PanelNavigationItem Code="1500">
+			<PanelNavigationSubitem Code="1510" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1520" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1530" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1540" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1550" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Production -->
+		<PanelNavigationItem Code="1600">
+			<PanelNavigationSubitem Code="1610" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1620" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1630" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1640" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Quality -->
+		<PanelNavigationItem Code="1700">
+			<PanelNavigationSubitem Code="1710" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1720" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1730" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1740" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1750" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1760" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1770" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1780" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Fiscal -->
+		<PanelNavigationItem Code="1800">
+			<PanelNavigationSubitem Code="1810" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1820" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1830" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1840" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Logistics -->
+		<PanelNavigationItem Code="1900">
+			<PanelNavigationSubitem Code="1910" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="1920" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+	</PanelNavigationGroup>
+
+	<!-- Side Modules -->
+	<PanelNavigationGroup Code="2000">
+
+		<!-- Personnel -->
+		<PanelNavigationItem Code="2100">
+			<PanelNavigationSubitem Code="2110" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2120" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2130" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2140" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Safety -->
+		<PanelNavigationItem Code="2200">
+			<PanelNavigationSubitem Code="2210" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2220" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2230" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2240" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Maintenance -->
+		<PanelNavigationItem Code="2400">
+			<PanelNavigationSubitem Code="2410" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2420" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2430" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2440" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2450" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2460" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+		<!-- Improvements -->
+		<PanelNavigationItem Code="2600">
+			<PanelNavigationSubitem Code="2610" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2620" Click="@OnNavigate" />
+			<PanelNavigationSubitem Code="2630" Click="@OnNavigate" />
+		</PanelNavigationItem>
+
+	</PanelNavigationGroup>
+
+</RadzenPanelMenu>
+
+<!-- Footer -->
+<Footer InSidebar="true" />
+
+@code {
+
+	[Parameter]
+	public EventCallback<EventArgs> Toggle { get; set; }
+
+	public async Task OnToggle(EventArgs args) {
+
+		await Toggle.InvokeAsync(args);
+
+	}
+
+	public async Task OnNavigate(EventArgs args) {
+
+		var width = await JSRuntime.InvokeAsync<int>("getWindowWidth");
+		if (width <= 768) await Toggle.InvokeAsync(args);
+
+	}
+
+}

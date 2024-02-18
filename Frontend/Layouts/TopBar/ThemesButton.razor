@@ -1,0 +1,56 @@
+﻿@namespace Hephaestus.Frontend.Application.Layouts.TopBar
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<RadzenButton Variant="Variant.Text" ContextMenu=@(args => ShowContextMenu(args)) class="topbar-icon" title="@AppTexts["0015"]" Click="@(() => ToggleThemeAsync())">
+	<LordIcon Icon="/lordicon/topbar/bulb.json" Anim="@anim" Trigger="auto" State="hover-bulb" Morph="morph-bulb-OFF" Size="24px" Target=".rz-button" Title="@AppTexts["0015"]" Id="theme-icon" />
+</RadzenButton>
+
+@code {
+
+	private string anim = string.Empty;
+	private string theme = string.Empty;
+
+	protected override async Task OnInitializedAsync() {
+
+		theme = await JSRuntime.InvokeAsync<string>("getCurrentTheme");
+		anim = theme == "dark" ? "morphend" : "morphstart";
+
+	}
+
+	private void ShowContextMenu(MouseEventArgs args) => ContextMenuService.Open(args, ds =>
+	@<RadzenMenu Click="ApplyThemeAsync">
+		<RadzenMenuItem Text=@AppTexts["0016"] Value="0" Icon="brightness_4"></RadzenMenuItem>
+		<RadzenMenuItem Text=@AppTexts["0018"] Value="1" Icon="brightness_high"></RadzenMenuItem>
+		<RadzenMenuItem Text=@AppTexts["0020"] Value="2" Icon="mode_night"></RadzenMenuItem>
+	</RadzenMenu>
+	);
+
+	private async Task ToggleThemeAsync() {
+
+		await UserService.ToggleThemeAsync(true);
+
+	}
+
+	private async Task ApplyThemeAsync(MenuItemEventArgs args) {
+
+		ContextMenuService.Close();
+
+		switch (args.Value) {
+
+			case 1:
+				await UserService.SetThemeAsync("light", true);
+				break;
+
+			case 2:
+				await UserService.SetThemeAsync("dark", true);
+				break;
+
+			default:
+				await UserService.SetThemeAsync("auto", true);
+				break;
+
+		}
+
+	}
+
+}

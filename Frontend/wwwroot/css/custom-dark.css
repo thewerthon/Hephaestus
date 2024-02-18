@@ -121,11 +121,11 @@
 :root {
 	--rz-panel-menu-background-color: var(--rz-sidebar-background-color);
 	--rz-panel-menu-hover-background-color: rgba(0, 0, 0, 0.07);
-	--rz-panel-menu-item-padding: 0.60rem 1rem;
+	--rz-panel-menu-item-padding: 0 0 0 18px;
 	--rz-panel-menu-item-border: 0px solid #2c394d;
 	--rz-panel-menu-item-active-background-color: rgba(0, 0, 0, 0.15);
 	--rz-panel-menu-item-background-color: rgba(125, 173, 249, 0.03);
-	--rz-panel-menu-item-2nd-level-padding: var(--rz-panel-menu-item-padding);
+	--rz-panel-menu-item-2nd-level-padding: 14px 18px;
 	--rz-panel-menu-item-2nd-level-offset: 60px;
 	--rz-panel-menu-item-2nd-level-hover-background-color: rgba(125, 173, 249, 0.07);
 	--rz-panel-menu-item-2nd-level-background-color: rgba(125, 173, 249, 0.03);
@@ -214,8 +214,8 @@ ul.rz-profile-menu {
 }
 
 .rz-dialog-mask {
-	background: linear-gradient(#00000000, #00000066);
-	backdrop-filter: blur(5px);
+	backdrop-filter: blur(2px);
+	background: linear-gradient(#00000000, #00000077);
 	opacity: 1;
 }
 
@@ -316,6 +316,29 @@ ul.rz-profile-menu {
 	backdrop-filter: blur(10px);
 }
 
+.rz-alert .rz-button .rzi {
+	font-size: 20px;
+}
+
+.rz-sidebar .rz-navigation-item-wrapper a {
+	height: 45px !important;
+}
+
+.rz-sidebar .rzi.rz-navigation-item-icon-children {
+	width: 45px;
+	height: 45px;
+	font-size: 20px;
+	color: #788396;
+}
+
+.rz-profile-menu .rz-navigation-item-link {
+	height: 36px !important;
+}
+
+.rz-profile-menu .rzi.rz-navigation-item-icon-children {
+	font-size: 20px;
+}
+
 .logo {
 	content: url("/images/logos/app-dark.svg");
 	width: fit-content;
@@ -336,10 +359,7 @@ ul.rz-profile-menu {
 	position: relative;
 }
 
-.sidebar-backdrop {
-	display: none;
-	width: 100%;
-	height: 100%;
-	backdrop-filter: blur(5px);
-	background: linear-gradient(#00000000, #00000066);
+hr {
+	border: none;
+	border-top: 0.1px solid #ffffff22;
 }

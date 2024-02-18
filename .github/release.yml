@@ -6,12 +6,15 @@ changelog:
     authors:
       - dependabot
   categories:
-    - title: ✨ New Features
-      labels:
-        - features
     - title: 💻 Development
       labels:
         - development
+    - title: ✨ New Features
+      labels:
+        - features
+    - title: 🪄 Enhancements
+      labels:
+        - enhancements
     - title: 🛠️ Bug Fixes
       labels:
         - bugs

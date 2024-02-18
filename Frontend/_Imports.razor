@@ -36,9 +36,31 @@
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 
-// Localization Service
+// Architect Models
+@using Hephaestus.Architect.Application.Models
+
+// Frontend Components
+@using Hephaestus.Frontend.Application.Layouts
+@using Hephaestus.Frontend.Application.Components
+@using Hephaestus.Frontend.Application.Resources
+
+// Frontend Services
+@using Hephaestus.Frontend.Application.Services
+@inject CursorService CursorService
+@inject VariablesService VariablesService
+@inject DatabaseService DatabaseService
+@inject VersionService VersionService
+@inject UserService UserService
+
+// Assets Services
+@inject IStringLocalizer<MenuIcons> MenuIcons
+@inject IStringLocalizer<MenuImages> MenuImages
+@inject IStringLocalizer<ButtonAnims> ButtonAnims
+@inject IStringLocalizer<ButtonStains> ButtonStains
+
+// Localization Services
+@using Hephaestus.Frontend.Application.Localization
 @using Microsoft.Extensions.Localization
-@using Hephaestus.Frontend.Localization
 @inject IStringLocalizer<AppInfo> AppInfo
 @inject IStringLocalizer<AppRoles> AppRoles
 @inject IStringLocalizer<AppNames> AppNames
@@ -48,27 +70,6 @@
 @inject IStringLocalizer<AppErrors> AppErrors
 @inject IStringLocalizer<AppFields> AppFields
 @inject IStringLocalizer<AppButtons> AppButtons
-
-// Assets Service
-@inject IStringLocalizer<MenuIcons> MenuIcons
-@inject IStringLocalizer<MenuImages> MenuImages
-@inject IStringLocalizer<ButtonAnims> ButtonAnims
-@inject IStringLocalizer<ButtonStains> ButtonStains
-
-// Architect Models
-@using Hephaestus.Architect.Models
-
-// Frontend Components
-@using Hephaestus.Frontend.Layouts
-@using Hephaestus.Frontend.Components
-
-// Frontend Services
-@using Hephaestus.Frontend.Services
-@inject CursorService CursorService
-@inject VariablesService VariablesService
-@inject DatabaseService DatabaseService
-@inject VersionService VersionService
-@inject UserService UserService
 
 // Authorization
 @attribute [Authorize]

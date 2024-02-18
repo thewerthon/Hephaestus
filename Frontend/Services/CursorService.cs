@@ -1,26 +1,24 @@
-﻿namespace Hephaestus.Frontend.Services {
+﻿namespace Hephaestus.Frontend.Application.Services;
 
-	public class CursorService(IJSRuntime runtime) {
+public class CursorService(IJSRuntime runtime) {
 
-		private readonly IJSRuntime JSRuntime = runtime;
+	private readonly IJSRuntime JSRuntime = runtime;
 
-		public async Task SetDefaultAsync() {
+	public async Task SetDefaultAsync() {
 
-			await JSRuntime.InvokeVoidAsync("setCursor", "default");
+		await JSRuntime.InvokeVoidAsync("setCursor", "default");
 
-		}
+	}
 
-		public async Task SetHourglassAsync() {
+	public async Task SetHourglassAsync() {
 
-			await JSRuntime.InvokeVoidAsync("setCursor", "wait");
+		await JSRuntime.InvokeVoidAsync("setCursor", "wait");
 
-		}
+	}
 
-		public async Task SetPointerAsync() {
+	public async Task SetPointerAsync() {
 
-			await JSRuntime.InvokeVoidAsync("setCursor", "pointer");
-
-		}
+		await JSRuntime.InvokeVoidAsync("setCursor", "pointer");
 
 	}
 
