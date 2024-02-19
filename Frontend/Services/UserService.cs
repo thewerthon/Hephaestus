@@ -267,7 +267,10 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 	public async Task InitUserAsync(bool force = false) {
 
 		await GetLocalUserAsync();
+		await GetLocalPreferencesAsync();
+
 		CurrentUser = LocalUser;
+		Preferences = LocalPreferences;
 		User = LocalUser.Id > 1 ? LocalUser.Id : 1;
 
 		if (CurrentUser.Id <= 1) force = true;
@@ -337,6 +340,15 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 			await SavePreferencesAsync(true, true);
 
 		}
+
+	}
+
+	public async Task FeatureAlertDismissAsync(bool save = true) {
+
+		var build = new Version().Build;
+		Preferences.FeatureAlert = build;
+		LocalPreferences.FeatureAlert = build;
+		await SavePreferencesAsync(true, save);
 
 	}
 

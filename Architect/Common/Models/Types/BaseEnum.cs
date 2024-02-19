@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Models;
 
-public abstract class BaseEnum : BaseType, IEnum {
+public abstract class BaseEnum : BaseType {
 
 	[Key]
 	[Required]

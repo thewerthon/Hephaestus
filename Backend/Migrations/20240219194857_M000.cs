@@ -14,52 +14,10 @@ namespace Backend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Active",
-                columns: table => new
-                {
-                    Key = table.Column<bool>(type: "bit", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    Value_en = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
-                    Value_es = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Active", x => x.Key);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Deleted",
-                columns: table => new
-                {
-                    Key = table.Column<bool>(type: "bit", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    Value_en = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
-                    Value_es = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Deleted", x => x.Key);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Hidden",
-                columns: table => new
-                {
-                    Key = table.Column<bool>(type: "bit", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    Value_en = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
-                    Value_es = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Hidden", x => x.Key);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Languages",
                 columns: table => new
                 {
-                    Key = table.Column<string>(type: "varchar(900)", unicode: false, nullable: false),
+                    Key = table.Column<string>(type: "varchar(2)", unicode: false, maxLength: 2, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Value_en = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     Value_es = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
@@ -74,7 +32,7 @@ namespace Backend.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Key = table.Column<string>(type: "varchar(900)", unicode: false, nullable: false),
+                    Key = table.Column<string>(type: "varchar(32)", unicode: false, maxLength: 32, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Value_en = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     Value_es = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
@@ -89,7 +47,7 @@ namespace Backend.Migrations
                 name: "Themes",
                 columns: table => new
                 {
-                    Key = table.Column<string>(type: "varchar(900)", unicode: false, nullable: false),
+                    Key = table.Column<string>(type: "varchar(5)", unicode: false, maxLength: 5, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Value_en = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     Value_es = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
@@ -115,6 +73,20 @@ namespace Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "YesNo",
+                columns: table => new
+                {
+                    Key = table.Column<bool>(type: "bit", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
+                    Value_en = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
+                    Value_es = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_YesNo", x => x.Key);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -130,29 +102,18 @@ namespace Backend.Migrations
                     Title = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Role = table.Column<string>(type: "varchar(900)", nullable: true),
+                    Role = table.Column<string>(type: "varchar(32)", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    Hidden = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     CreatedBy = table.Column<int>(type: "int", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedBy = table.Column<int>(type: "int", nullable: true),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedBy = table.Column<int>(type: "int", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Active_Active",
-                        column: x => x.Active,
-                        principalTable: "Active",
-                        principalColumn: "Key",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Users_Hidden_Hidden",
-                        column: x => x.Hidden,
-                        principalTable: "Hidden",
-                        principalColumn: "Key",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Roles_Role",
                         column: x => x.Role,
@@ -164,10 +125,21 @@ namespace Backend.Migrations
                         principalTable: "Users",
                         principalColumn: "Id");
                     table.ForeignKey(
+                        name: "FK_Users_Users_DeletedBy",
+                        column: x => x.DeletedBy,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Users_Users_UpdatedBy",
                         column: x => x.UpdatedBy,
                         principalTable: "Users",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Users_YesNo_Active",
+                        column: x => x.Active,
+                        principalTable: "YesNo",
+                        principalColumn: "Key",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -177,8 +149,9 @@ namespace Backend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     User = table.Column<int>(type: "int", nullable: false),
-                    Theme = table.Column<string>(type: "varchar(900)", nullable: true),
-                    Language = table.Column<string>(type: "varchar(900)", nullable: true)
+                    Theme = table.Column<string>(type: "varchar(5)", nullable: true),
+                    Language = table.Column<string>(type: "varchar(2)", nullable: true),
+                    FeatureAlert = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -199,33 +172,6 @@ namespace Backend.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Active",
-                columns: new[] { "Key", "Value", "Value_en", "Value_es" },
-                values: new object[,]
-                {
-                    { false, "Não", "No", "No" },
-                    { true, "Sim", "Yes", "Sí" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Deleted",
-                columns: new[] { "Key", "Value", "Value_en", "Value_es" },
-                values: new object[,]
-                {
-                    { false, "Não", "No", "No" },
-                    { true, "Sim", "Yes", "Sí" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Hidden",
-                columns: new[] { "Key", "Value", "Value_en", "Value_es" },
-                values: new object[,]
-                {
-                    { false, "Não", "No", "No" },
-                    { true, "Sim", "Yes", "Sí" }
                 });
 
             migrationBuilder.InsertData(
@@ -291,24 +237,38 @@ namespace Backend.Migrations
                 values: new object[] { 3, 3, "v2.0.0 (Alpha 3)", "" });
 
             migrationBuilder.InsertData(
+                table: "YesNo",
+                columns: new[] { "Key", "Value", "Value_en", "Value_es" },
+                values: new object[,]
+                {
+                    { false, "Não", "No", "No" },
+                    { true, "Sim", "Yes", "Sí" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "Department", "Email", "FirstName", "Guid", "Hidden", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
-                values: new object[] { 1, true, null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1669), null, "system@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", true, null, "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1680) });
+                columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "DeletedBy", "DeletedOn", "Department", "Email", "FirstName", "Guid", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
+                values: new object[] { 1, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9720), null, null, null, "system@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", null, "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9732) });
 
             migrationBuilder.InsertData(
                 table: "Preferences",
-                columns: new[] { "Id", "Language", "Theme", "User" },
-                values: new object[] { 1, "pt", "auto", 1 });
+                columns: new[] { "Id", "FeatureAlert", "Language", "Theme", "User" },
+                values: new object[] { 1, null, "pt", "auto", 1 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "Department", "Email", "FirstName", "Guid", "Hidden", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
-                values: new object[] { 2, true, null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1683), null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", true, null, "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1684) });
+                columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "DeletedBy", "DeletedOn", "Department", "Email", "FirstName", "Guid", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
+                values: new object[,]
+                {
+                    { 2, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9734), null, null, null, "portal-user@siw.ind.br", null, "00000000-0000-0000-0000-000000000001", null, "Usuário do Portal", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9735) },
+                    { 3, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9737), null, null, null, "external-user@siw.ind.br", null, "00000000-0000-0000-0000-000000000002", null, "Usuário Externo", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9737) },
+                    { 4, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9739), null, null, null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", null, "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9739) }
+                });
 
             migrationBuilder.InsertData(
                 table: "Preferences",
-                columns: new[] { "Id", "Language", "Theme", "User" },
-                values: new object[] { 2, "pt", "auto", 2 });
+                columns: new[] { "Id", "FeatureAlert", "Language", "Theme", "User" },
+                values: new object[] { 2, null, "pt", "auto", 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Preferences_Language",
@@ -337,6 +297,11 @@ namespace Backend.Migrations
                 column: "CreatedBy");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_DeletedBy",
+                table: "Users",
+                column: "DeletedBy");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
                 table: "Users",
                 column: "Email",
@@ -347,11 +312,6 @@ namespace Backend.Migrations
                 table: "Users",
                 column: "Guid",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_Hidden",
-                table: "Users",
-                column: "Hidden");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Role",
@@ -379,9 +339,6 @@ namespace Backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Deleted");
-
-            migrationBuilder.DropTable(
                 name: "Preferences");
 
             migrationBuilder.DropTable(
@@ -397,13 +354,10 @@ namespace Backend.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Active");
-
-            migrationBuilder.DropTable(
-                name: "Hidden");
-
-            migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "YesNo");
         }
     }
 }
