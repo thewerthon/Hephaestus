@@ -256,11 +256,17 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 
 	}
 
-	public async Task ClearLocalUserAsync(bool user = true, bool lastfetch = true, bool preferences = true) {
+	public async Task ClearLocalUserAsync(bool user = true, bool preferences = true) {
 
-		if (user) await LocalStorage.RemoveItemAsync("CurrentUser");
-		if (lastfetch) await LocalStorage.RemoveItemAsync("LastFetched");
-		if (preferences) await LocalStorage.RemoveItemAsync("Preferences");
+		if (user) {
+			await LocalStorage.RemoveItemAsync("CurrentUser");
+			await LocalStorage.RemoveItemAsync("LastFetched");
+			await LocalStorage.RemoveItemAsync("LastLogged");
+		}
+
+		if (preferences) {
+			await LocalStorage.RemoveItemAsync("Preferences");
+		}
 
 	}
 

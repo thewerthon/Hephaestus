@@ -16,6 +16,7 @@ public static class DatabaseMappings {
 		new(name: "Users", type: typeof(User), map: typeof(UserMap)),
 		new(name: "Versions", type: typeof(Version), map: typeof(VersionMap)),
 		new(name: "Preferences", type: typeof(Preferences), map: typeof(PreferencesMap)),
+		new(name: "UsageLogs", type: typeof(UsageLog), map: typeof(UsageLogMap)),
 
 	];
 

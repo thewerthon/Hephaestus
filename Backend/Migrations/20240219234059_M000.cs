@@ -174,6 +174,40 @@ namespace Backend.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UsageLogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Action = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
+                    Details = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    AppBuild = table.Column<int>(type: "int", nullable: true),
+                    AppVersion = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    PlatformName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    PlatformLayout = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    PlatformVersion = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    PlatformProduct = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    PlatformLanguage = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    PlatformManufacturer = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    SystemFamily = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    SystemVersion = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    SystemArchitecture = table.Column<int>(type: "int", nullable: true),
+                    User = table.Column<int>(type: "int", nullable: true),
+                    UserTheme = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true),
+                    UserLanguage = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsageLogs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsageLogs_Users_User",
+                        column: x => x.User,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "Languages",
                 columns: new[] { "Key", "Active", "Value", "Value_en", "Value_es" },
@@ -248,7 +282,7 @@ namespace Backend.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "DeletedBy", "DeletedOn", "Department", "Email", "FirstName", "Guid", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
-                values: new object[] { 1, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9720), null, null, null, "system@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", null, "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9732) });
+                values: new object[] { 1, true, null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8171), null, null, null, "system@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", null, "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8185) });
 
             migrationBuilder.InsertData(
                 table: "Preferences",
@@ -260,9 +294,9 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "DeletedBy", "DeletedOn", "Department", "Email", "FirstName", "Guid", "LastName", "Name", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
                 values: new object[,]
                 {
-                    { 2, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9734), null, null, null, "portal-user@siw.ind.br", null, "00000000-0000-0000-0000-000000000001", null, "Usuário do Portal", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9735) },
-                    { 3, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9737), null, null, null, "external-user@siw.ind.br", null, "00000000-0000-0000-0000-000000000002", null, "Usuário Externo", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9737) },
-                    { 4, true, null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9739), null, null, null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", null, "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9739) }
+                    { 2, true, null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8188), null, null, null, "portal-user@siw.ind.br", null, "00000000-0000-0000-0000-000000000001", null, "Usuário do Portal", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8189) },
+                    { 3, true, null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8191), null, null, null, "external-user@siw.ind.br", null, "00000000-0000-0000-0000-000000000002", null, "Usuário Externo", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8192) },
+                    { 4, true, null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8195), null, null, null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", null, "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8196) }
                 });
 
             migrationBuilder.InsertData(
@@ -285,6 +319,11 @@ namespace Backend.Migrations
                 table: "Preferences",
                 column: "User",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsageLogs_User",
+                table: "UsageLogs",
+                column: "User");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Active",
@@ -340,6 +379,9 @@ namespace Backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Preferences");
+
+            migrationBuilder.DropTable(
+                name: "UsageLogs");
 
             migrationBuilder.DropTable(
                 name: "Versions");

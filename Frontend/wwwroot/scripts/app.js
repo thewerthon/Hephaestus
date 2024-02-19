@@ -89,6 +89,22 @@ function setCursor(state) {
 
 }
 
+function getBrowserInfo() {
+
+    return {
+		PlatformName: platform.name,
+		PlatformLayout: platform.layout,
+		PlatformVersion: platform.version,
+		PlatformProduct: platform.product,
+		PlatformLanguage: navigator.language,
+		PlatformManufacturer: platform.manufacturer,
+		SystemFamily: platform.os.family,
+		SystemVersion: platform.os.version,
+		SystemArchitecture: platform.os.architecture
+	};
+	
+}
+
 function log(message) {
 
 	console.log(message);

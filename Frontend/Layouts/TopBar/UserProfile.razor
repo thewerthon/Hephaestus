@@ -62,6 +62,8 @@
 			Photo = UserService.CurrentUser.Photo ?? "images/users/unknown.jpg";
 			StateHasChanged();
 
+			await UsageLogService.LogLoginAsync();
+
 		}
 
 	}

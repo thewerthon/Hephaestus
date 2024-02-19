@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240219194857_M000")]
+    [Migration("20240219234059_M000")]
     partial class M000
     {
         /// <inheritdoc />
@@ -452,6 +452,86 @@ namespace Backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Hephaestus.Architect.Application.Models.UsageLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<int?>("AppBuild")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppVersion")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("PlatformLanguage")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformLayout")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformManufacturer")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformName")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformProduct")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformVersion")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<int?>("SystemArchitecture")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SystemFamily")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("SystemVersion")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<int?>("User")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserLanguage")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<string>("UserTheme")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("User");
+
+                    b.ToTable("UsageLogs", (string)null);
+                });
+
             modelBuilder.Entity("Hephaestus.Architect.Application.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -554,56 +634,56 @@ namespace Backend.Migrations
                             Id = 1,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9720),
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8171),
                             Email = "system@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000000",
                             Name = "Sistema",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9732)
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8185)
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9734),
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8188),
                             Email = "portal-user@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000001",
                             Name = "Usuário do Portal",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9735)
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8189)
                         },
                         new
                         {
                             Id = 3,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9737),
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8191),
                             Email = "external-user@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000002",
                             Name = "Usuário Externo",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9737)
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8192)
                         },
                         new
                         {
                             Id = 4,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9739),
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8195),
                             Email = "autobot@siw.ind.br",
                             Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
                             Name = "Autobot",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 19, 16, 48, 56, 901, DateTimeKind.Local).AddTicks(9739)
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8196)
                         });
                 });
 
@@ -700,6 +780,15 @@ namespace Backend.Migrations
                     b.Navigation("LanguageData");
 
                     b.Navigation("ThemeData");
+
+                    b.Navigation("UserData");
+                });
+
+            modelBuilder.Entity("Hephaestus.Architect.Application.Models.UsageLog", b =>
+                {
+                    b.HasOne("Hephaestus.Architect.Application.Models.User", "UserData")
+                        .WithMany()
+                        .HasForeignKey("User");
 
                     b.Navigation("UserData");
                 });
