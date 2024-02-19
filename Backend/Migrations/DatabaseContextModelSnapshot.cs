@@ -22,128 +22,12 @@ namespace Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Hephaestus.Architect.Application.Models.Active", b =>
-                {
-                    b.Property<bool>("Key")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<string>("Value_en")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<string>("Value_es")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.HasKey("Key");
-
-                    b.ToTable("Active", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Key = true,
-                            Value = "Sim",
-                            Value_en = "Yes",
-                            Value_es = "Sí"
-                        },
-                        new
-                        {
-                            Key = false,
-                            Value = "Não",
-                            Value_en = "No",
-                            Value_es = "No"
-                        });
-                });
-
-            modelBuilder.Entity("Hephaestus.Architect.Application.Models.Deleted", b =>
-                {
-                    b.Property<bool>("Key")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<string>("Value_en")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<string>("Value_es")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.HasKey("Key");
-
-                    b.ToTable("Deleted", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Key = true,
-                            Value = "Sim",
-                            Value_en = "Yes",
-                            Value_es = "Sí"
-                        },
-                        new
-                        {
-                            Key = false,
-                            Value = "Não",
-                            Value_en = "No",
-                            Value_es = "No"
-                        });
-                });
-
-            modelBuilder.Entity("Hephaestus.Architect.Application.Models.Hidden", b =>
-                {
-                    b.Property<bool>("Key")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<string>("Value_en")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<string>("Value_es")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.HasKey("Key");
-
-                    b.ToTable("Hidden", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Key = true,
-                            Value = "Sim",
-                            Value_en = "Yes",
-                            Value_es = "Sí"
-                        },
-                        new
-                        {
-                            Key = false,
-                            Value = "Não",
-                            Value_en = "No",
-                            Value_es = "No"
-                        });
-                });
-
             modelBuilder.Entity("Hephaestus.Architect.Application.Models.Language", b =>
                 {
                     b.Property<string>("Key")
+                        .HasMaxLength(2)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(900)");
+                        .HasColumnType("varchar(2)");
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -200,11 +84,14 @@ namespace Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("FeatureAlert")
+                        .HasColumnType("int");
+
                     b.Property<string>("Language")
-                        .HasColumnType("varchar(900)");
+                        .HasColumnType("varchar(2)");
 
                     b.Property<string>("Theme")
-                        .HasColumnType("varchar(900)");
+                        .HasColumnType("varchar(5)");
 
                     b.Property<int?>("User")
                         .IsRequired()
@@ -241,8 +128,9 @@ namespace Backend.Migrations
             modelBuilder.Entity("Hephaestus.Architect.Application.Models.Role", b =>
                 {
                     b.Property<string>("Key")
+                        .HasMaxLength(32)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(900)");
+                        .HasColumnType("varchar(32)");
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -510,8 +398,9 @@ namespace Backend.Migrations
             modelBuilder.Entity("Hephaestus.Architect.Application.Models.Theme", b =>
                 {
                     b.Property<string>("Key")
+                        .HasMaxLength(5)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(900)");
+                        .HasColumnType("varchar(5)");
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -560,6 +449,86 @@ namespace Backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Hephaestus.Architect.Application.Models.UsageLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<int?>("AppBuild")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppVersion")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("PlatformLanguage")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformLayout")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformManufacturer")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformName")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformProduct")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("PlatformVersion")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<int?>("SystemArchitecture")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SystemFamily")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("SystemVersion")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<int?>("User")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserLanguage")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<string>("UserTheme")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("User");
+
+                    b.ToTable("UsageLogs", (string)null);
+                });
+
             modelBuilder.Entity("Hephaestus.Architect.Application.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -583,6 +552,12 @@ namespace Backend.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Department")
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
@@ -601,11 +576,6 @@ namespace Backend.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<bool>("Hidden")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("LastName")
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
@@ -623,7 +593,7 @@ namespace Backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
-                        .HasColumnType("varchar(900)");
+                        .HasColumnType("varchar(32)");
 
                     b.Property<string>("Title")
                         .HasMaxLength(64)
@@ -641,13 +611,13 @@ namespace Backend.Migrations
 
                     b.HasIndex("CreatedBy");
 
+                    b.HasIndex("DeletedBy");
+
                     b.HasIndex("Email")
                         .IsUnique();
 
                     b.HasIndex("Guid")
                         .IsUnique();
-
-                    b.HasIndex("Hidden");
 
                     b.HasIndex("Role");
 
@@ -661,30 +631,56 @@ namespace Backend.Migrations
                             Id = 1,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1669),
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8171),
                             Email = "system@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000000",
-                            Hidden = true,
                             Name = "Sistema",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1680)
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8185)
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1683),
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8188),
+                            Email = "portal-user@siw.ind.br",
+                            Guid = "00000000-0000-0000-0000-000000000001",
+                            Name = "Usuário do Portal",
+                            Photo = "images/users/unknown.jpg",
+                            Role = "System.User",
+                            UpdatedBy = 1,
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8189)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Active = true,
+                            CreatedBy = 1,
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8191),
+                            Email = "external-user@siw.ind.br",
+                            Guid = "00000000-0000-0000-0000-000000000002",
+                            Name = "Usuário Externo",
+                            Photo = "images/users/unknown.jpg",
+                            Role = "System.User",
+                            UpdatedBy = 1,
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8192)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Active = true,
+                            CreatedBy = 1,
+                            CreatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8195),
                             Email = "autobot@siw.ind.br",
                             Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
-                            Hidden = true,
                             Name = "Autobot",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 18, 12, 39, 36, 70, DateTimeKind.Local).AddTicks(1684)
+                            UpdatedOn = new DateTime(2024, 2, 19, 20, 40, 58, 999, DateTimeKind.Local).AddTicks(8196)
                         });
                 });
 
@@ -723,6 +719,45 @@ namespace Backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Hephaestus.Architect.Application.Models.YesNo", b =>
+                {
+                    b.Property<bool>("Key")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("Value_en")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("Value_es")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.HasKey("Key");
+
+                    b.ToTable("YesNo", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Key = true,
+                            Value = "Sim",
+                            Value_en = "Yes",
+                            Value_es = "Sí"
+                        },
+                        new
+                        {
+                            Key = false,
+                            Value = "Não",
+                            Value_en = "No",
+                            Value_es = "No"
+                        });
+                });
+
             modelBuilder.Entity("Hephaestus.Architect.Application.Models.Preferences", b =>
                 {
                     b.HasOne("Hephaestus.Architect.Application.Models.Language", "LanguageData")
@@ -746,9 +781,18 @@ namespace Backend.Migrations
                     b.Navigation("UserData");
                 });
 
+            modelBuilder.Entity("Hephaestus.Architect.Application.Models.UsageLog", b =>
+                {
+                    b.HasOne("Hephaestus.Architect.Application.Models.User", "UserData")
+                        .WithMany()
+                        .HasForeignKey("User");
+
+                    b.Navigation("UserData");
+                });
+
             modelBuilder.Entity("Hephaestus.Architect.Application.Models.User", b =>
                 {
-                    b.HasOne("Hephaestus.Architect.Application.Models.Active", "ActiveData")
+                    b.HasOne("Hephaestus.Architect.Application.Models.YesNo", "ActiveData")
                         .WithMany()
                         .HasForeignKey("Active")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -758,11 +802,9 @@ namespace Backend.Migrations
                         .WithMany()
                         .HasForeignKey("CreatedBy");
 
-                    b.HasOne("Hephaestus.Architect.Application.Models.Hidden", "HiddenData")
+                    b.HasOne("Hephaestus.Architect.Application.Models.User", "DeletedByData")
                         .WithMany()
-                        .HasForeignKey("Hidden")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DeletedBy");
 
                     b.HasOne("Hephaestus.Architect.Application.Models.Role", "RoleData")
                         .WithMany()
@@ -776,7 +818,7 @@ namespace Backend.Migrations
 
                     b.Navigation("CreatedByData");
 
-                    b.Navigation("HiddenData");
+                    b.Navigation("DeletedByData");
 
                     b.Navigation("RoleData");
 

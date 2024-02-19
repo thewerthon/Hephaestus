@@ -20,6 +20,7 @@ builder.Services.AddBlazoredSessionStorage();
 
 // Frontend Services
 builder.Services.AddScoped<CursorService>();
+builder.Services.AddScoped<UsageLogService>();
 builder.Services.AddScoped<VariablesService>();
 builder.Services.AddScoped<DatabaseService>();
 builder.Services.AddScoped<VersionService>();

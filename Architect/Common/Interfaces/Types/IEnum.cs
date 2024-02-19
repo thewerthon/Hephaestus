@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Interfaces;
 
-public interface IEnum : IType {
+public interface IEnum<T> : IType {
 
 	[Key]
 	[Required]

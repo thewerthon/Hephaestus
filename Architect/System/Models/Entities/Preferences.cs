@@ -15,4 +15,6 @@ public class Preferences : BaseEntity {
 	public string? Language { get; set; } = "pt";
 	public virtual Language? LanguageData { get; set; }
 
+	public int? FeatureAlert { get; set; }
+
 }

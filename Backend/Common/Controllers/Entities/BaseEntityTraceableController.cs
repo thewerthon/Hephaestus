@@ -22,6 +22,23 @@ public abstract class BaseEntityTraceableController<T>(DatabaseContext context) 
 		item.UpdatedBy = user;
 		item.UpdatedOn = DateTime.UtcNow;
 
+		if (!item.Active) {
+
+			item.DeletedBy = record.DeletedBy ?? user;
+			item.DeletedOn = record.DeletedOn ?? DateTime.UtcNow;
+
+		}
+
+		return (true, null);
+
+	}
+
+	protected override (bool Success, string? Message) OnDelete(ref T item, int? user) {
+
+		item.Active = false;
+		item.DeletedBy = user;
+		item.DeletedOn = DateTime.UtcNow;
+
 		return (true, null);
 
 	}

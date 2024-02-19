@@ -315,4 +315,15 @@ Los datos no guardados se perderán.&lt;br/&gt;
   <data name="0063" xml:space="preserve">
     <value>Otros Movimientos</value>
   </data>
+  <data name="0065" xml:space="preserve">
+    <value>¡Bienvenidos al nuevo Sistema de Control de Producción! Estamos felices de tenerte aquí.
+Para navegar entre las diferentes áreas del sistema y aprovechar sus características, utilice el menú lateral.
+¡Haz clic en el botón de abajo para ver todo lo nuevo en SCP 2.0!</value>
+  </data>
+  <data name="0064" xml:space="preserve">
+    <value>¡Bienvenido!</value>
+  </data>
+  <data name="0066" xml:space="preserve">
+    <value>Saber Más</value>
+  </data>
 </root>

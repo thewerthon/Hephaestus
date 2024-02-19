@@ -315,4 +315,15 @@ Do you wish to continue?</value>
   <data name="0063" xml:space="preserve">
     <value>Other Movements</value>
   </data>
+  <data name="0064" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+  <data name="0065" xml:space="preserve">
+    <value>Welcome to the new Production Control System! We are happy to have you here.
+To navigate between the different areas of the system and take advantage of its features, use the side menu.
+Click the button below to check out everything new in SCP 2.0!</value>
+  </data>
+  <data name="0066" xml:space="preserve">
+    <value>Learn More</value>
+  </data>
 </root>

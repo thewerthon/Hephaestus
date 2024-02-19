@@ -56,7 +56,7 @@
 	}
 
 	private async Task LogoutSucceeded() {
-		await UserService.ClearLocalUserAsync(true, true, true);
+		await UserService.ClearLocalUserAsync(true, true);
 	}
 
 	private void DoLogin() {

@@ -256,18 +256,27 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 
 	}
 
-	public async Task ClearLocalUserAsync(bool user = true, bool lastfetch = true, bool preferences = true) {
+	public async Task ClearLocalUserAsync(bool user = true, bool preferences = true) {
 
-		if (user) await LocalStorage.RemoveItemAsync("CurrentUser");
-		if (lastfetch) await LocalStorage.RemoveItemAsync("LastFetched");
-		if (preferences) await LocalStorage.RemoveItemAsync("Preferences");
+		if (user) {
+			await LocalStorage.RemoveItemAsync("CurrentUser");
+			await LocalStorage.RemoveItemAsync("LastFetched");
+			await LocalStorage.RemoveItemAsync("LastLogged");
+		}
+
+		if (preferences) {
+			await LocalStorage.RemoveItemAsync("Preferences");
+		}
 
 	}
 
 	public async Task InitUserAsync(bool force = false) {
 
 		await GetLocalUserAsync();
+		await GetLocalPreferencesAsync();
+
 		CurrentUser = LocalUser;
+		Preferences = LocalPreferences;
 		User = LocalUser.Id > 1 ? LocalUser.Id : 1;
 
 		if (CurrentUser.Id <= 1) force = true;
@@ -337,6 +346,15 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 			await SavePreferencesAsync(true, true);
 
 		}
+
+	}
+
+	public async Task FeatureAlertDismissAsync(bool save = true) {
+
+		var build = new Version().Build;
+		Preferences.FeatureAlert = build;
+		LocalPreferences.FeatureAlert = build;
+		await SavePreferencesAsync(true, save);
 
 	}
 

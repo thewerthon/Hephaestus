@@ -10,9 +10,7 @@ public static class EdmModelBuilder {
 	public static IEdmModel GetEdmModel() {
 
 		// Bools
-		Builder.EntitySet<Active>("Active");
-		Builder.EntitySet<Hidden>("Hidden");
-		Builder.EntitySet<Deleted>("Deleted");
+		Builder.EntitySet<YesNo>("YesNo");
 
 		// Keys
 		Builder.EntitySet<Role>("Roles");

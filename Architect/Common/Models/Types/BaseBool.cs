@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Models;
 
-public abstract class BaseBool : BaseType, IBool {
+public abstract class BaseBool : BaseType {
 
 	[Key]
 	[Required]

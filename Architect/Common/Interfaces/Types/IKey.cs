@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Interfaces;
 
-public interface IKey : IType {
+public interface IKey<T> : IType {
 
 	[Key]
 	[Required]

@@ -78,6 +78,11 @@ builder.Services.AddOutputCache(options => {
 // Application
 var app = builder.Build();
 
+// Database Migration
+using var scope = app.Services.CreateScope();
+using var dbContext = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+dbContext.Database.Migrate();
+
 // Development Environment
 if (app.Environment.IsDevelopment()) {
 	app.UseODataRouteDebug();
