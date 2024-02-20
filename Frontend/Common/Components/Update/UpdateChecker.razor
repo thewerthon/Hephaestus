@@ -2,11 +2,14 @@
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
-<RadzenAlert Title="@AppTexts["0008"]" Icon="auto_awesome" AlertStyle="AlertStyle.Secondary" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="home-banner">
+<RadzenAlert Title="@AppTexts["0008"]" Icon="downloading" AlertStyle="AlertStyle.Secondary" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="home-banner">
 	@if (VersionService.ServerVersion != null) {
 		<p class="m-0">@($"{AppTexts["0013"]} {VersionService.ServerVersion.Name}:")</p>
 		<pre class="text-wrap" style="margin: 0 0 4px 0;">@(string.IsNullOrEmpty(VersionService.ServerVersion.Notes) ? AppTexts["0038"] : VersionService.ServerVersion.Notes)</pre>
-		<p class="mt-2 mb-0">@AppTexts["0012"]</p>
+		<RadzenStack Orientation="Orientation.Horizontal" Wrap="FlexWrap.Wrap" Gap="10px" class="rz-pt-3">
+			<RadzenButton Text="@AppTexts["0066"]" ButtonStyle="ButtonStyle.Success" Shade="Shade.Dark" Click="@Update" Style="text-wrap: nowrap" />
+			<RadzenButton Text="@AppTexts["0067"]" ButtonStyle="ButtonStyle.Success" Shade="Shade.Lighter" Click="BannerDismiss" Disabled="VersionService.UpdateForced" Style="text-wrap: nowrap" class="desktop-only" />
+		</RadzenStack>
 	}
 </RadzenAlert>
 
@@ -62,6 +65,12 @@
 			}
 
 		}
+
+	}
+
+	private async Task Update() {
+
+		await JSRuntime.InvokeVoidAsync("update");
 
 	}
 

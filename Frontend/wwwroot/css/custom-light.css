@@ -189,6 +189,10 @@
 	--rz-notification-warning-icon-color: var(--rz-on-warning-lighter);
 }
 
+.rz-body {
+	background-color: var(--rz-body-background-color);
+}
+
 .rz-panel-menu .rz-navigation-item-link {
 	color: #ffffffdd;
 	font-weight: normal;
@@ -241,7 +245,7 @@ ul.rz-profile-menu {
 .rz-button:not(.rz-state-disabled):active:before {
 	transition: background 0s, opacity 0s;
 	background-size: 100%;
-	opacity: .3
+	opacity: .1
 }
 
 .rz-button:not(:hover).rz-variant-text.rz-primary .rzi {
@@ -314,6 +318,12 @@ ul.rz-profile-menu {
 
 .rz-growl-item {
 	backdrop-filter: blur(10px);
+}
+
+.rz-alert {
+	gap: 0px;
+	padding: 16px 18px!important;
+	border-radius: 16px;
 }
 
 .rz-alert .rz-button .rzi {

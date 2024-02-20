@@ -413,10 +413,6 @@ body {
 	background-color: var(--rz-body-background-color);
 }
 
-.rz-body {
-	background-color: var(--rz-body-background-color);
-}
-
 a {
 	color: var(--rz-link-color);
 }

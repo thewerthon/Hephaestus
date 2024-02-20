@@ -134,11 +134,11 @@
     <comment>@Invariant</comment>
   </data>
   <data name="0004" xml:space="preserve">
-    <value>download</value>
+    <value>download_for_offline</value>
     <comment>@Invariant</comment>
   </data>
   <data name="0005" xml:space="preserve">
-    <value>restore</value>
+    <value>auto_mode</value>
     <comment>@Invariant</comment>
   </data>
   <data name="0006" xml:space="preserve">

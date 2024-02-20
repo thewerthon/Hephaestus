@@ -70,6 +70,9 @@ async function update() {
 	);
 
 	self.caches.keys().then(keys => { keys.forEach(key => self.caches.delete(key)) })
+	
+	localStorage.removeItem("LastLogged");
+	localStorage.removeItem("LastFetched");
 	sessionStorage.removeItem("UpdateAvailable");
 	sessionStorage.removeItem("UpdateForced");
 	await new Promise(r => setTimeout(r, 500));

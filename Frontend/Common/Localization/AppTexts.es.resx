@@ -155,9 +155,6 @@
     <value>Se requiere una actualización de la aplicación para continuar.&lt;br/&gt;
 ¿Quieres actualizar ahora?</value>
   </data>
-  <data name="0012" xml:space="preserve">
-    <value>Utilice el botón en la parte superior de la página para actualizar.</value>
-  </data>
   <data name="0013" xml:space="preserve">
     <value>Noticias de</value>
   </data>
@@ -200,9 +197,6 @@
   <data name="0026" xml:space="preserve">
     <value>Instalar Aplicación</value>
   </data>
-  <data name="0027" xml:space="preserve">
-    <value>Forzar Actualización</value>
-  </data>
   <data name="0028" xml:space="preserve">
     <value>Acerca del Sistema</value>
   </data>
@@ -211,10 +205,6 @@
   </data>
   <data name="0030" xml:space="preserve">
     <value>Cerrar Sesión</value>
-  </data>
-  <data name="0031" xml:space="preserve">
-    <value>¿Forçar actualização do aplicativo?&lt;br/&gt;
-Esto puede solucionar problemas de rendimiento y conectividad.</value>
   </data>
   <data name="0032" xml:space="preserve">
     <value>¿Confirmar salida de la aplicación?&lt;br/&gt;
@@ -323,7 +313,20 @@ Para navegar entre las diferentes áreas del sistema y aprovechar sus caracterí
   <data name="0064" xml:space="preserve">
     <value>¡Bienvenido!</value>
   </data>
+  <data name="0012" xml:space="preserve">
+    <value>Mira las Noticias</value>
+  </data>
   <data name="0066" xml:space="preserve">
-    <value>Saber Más</value>
+    <value>Actualizar Ahora</value>
+  </data>
+  <data name="0067" xml:space="preserve">
+    <value>Recuérdame más Tarde</value>
+  </data>
+  <data name="0027" xml:space="preserve">
+    <value>Restaurar Aplicación</value>
+  </data>
+  <data name="0031" xml:space="preserve">
+    <value>¿Forzar restauración de la aplicación?&lt;br/&gt;
+Esto puede resolver problemas de rendimiento y conectividad.</value>
   </data>
 </root>

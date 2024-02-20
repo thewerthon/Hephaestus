@@ -156,7 +156,7 @@ Dados não salvos serão perdidos.</value>
 Deseja atualizar agora?</value>
   </data>
   <data name="0012" xml:space="preserve">
-    <value>Utilize o botão no topo da página para atualizar.</value>
+    <value>Conferir as Novidades</value>
   </data>
   <data name="0013" xml:space="preserve">
     <value>Novidades da</value>
@@ -201,7 +201,7 @@ Deseja atualizar agora?</value>
     <value>Instalar Aplicativo</value>
   </data>
   <data name="0027" xml:space="preserve">
-    <value>Forçar Atualização</value>
+    <value>Restaurar Aplicativo</value>
   </data>
   <data name="0028" xml:space="preserve">
     <value>Sobre o Sistema</value>
@@ -213,8 +213,8 @@ Deseja atualizar agora?</value>
     <value>Fazer Logout</value>
   </data>
   <data name="0031" xml:space="preserve">
-    <value>Forçar atualização do aplicativo?&lt;br/&gt;
-Isso pode resolver problemas de performance e conectividade.</value>
+    <value>Forçar restauração do aplicativo?&lt;br/&gt;
+Isso pode resolver problemas de performance e de conectividade.</value>
   </data>
   <data name="0032" xml:space="preserve">
     <value>Confirmar saída do aplicativo?&lt;br/&gt;
@@ -324,6 +324,9 @@ Para navegar entre as diversas áreas do sistema e aproveitar suas funcionalidad
 Clique no botão abaixo para para conferir tudo que há de novo no SCP 2.0!</value>
   </data>
   <data name="0066" xml:space="preserve">
-    <value>Saiba Mais</value>
+    <value>Atualizar Agora</value>
+  </data>
+  <data name="0067" xml:space="preserve">
+    <value>Lembrar Depois</value>
   </data>
 </root>

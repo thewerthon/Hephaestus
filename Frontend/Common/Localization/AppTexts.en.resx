@@ -155,9 +155,6 @@ Unsaved data will be lost.</value>
     <value>An app update is required to proceed.&lt;br/&gt;
 Do you want to update now?</value>
   </data>
-  <data name="0012" xml:space="preserve">
-    <value>Use the button at the top of the page to update.</value>
-  </data>
   <data name="0013" xml:space="preserve">
     <value>News in</value>
   </data>
@@ -200,9 +197,6 @@ Do you want to update now?</value>
   <data name="0026" xml:space="preserve">
     <value>Install Application</value>
   </data>
-  <data name="0027" xml:space="preserve">
-    <value>Force Update</value>
-  </data>
   <data name="0028" xml:space="preserve">
     <value>About System</value>
   </data>
@@ -211,10 +205,6 @@ Do you want to update now?</value>
   </data>
   <data name="0030" xml:space="preserve">
     <value>Log Out</value>
-  </data>
-  <data name="0031" xml:space="preserve">
-    <value>Force app update?&lt;br/&gt;
-This may resolve performance and connectivity issues.</value>
   </data>
   <data name="0032" xml:space="preserve">
     <value>Confirm exit from the application?&lt;br/&gt;
@@ -323,7 +313,20 @@ Do you wish to continue?</value>
 To navigate between the different areas of the system and take advantage of its features, use the side menu.
 Click the button below to check out everything new in SCP 2.0!</value>
   </data>
+  <data name="0012" xml:space="preserve">
+    <value>Check out the News</value>
+  </data>
   <data name="0066" xml:space="preserve">
-    <value>Learn More</value>
+    <value>Update now</value>
+  </data>
+  <data name="0067" xml:space="preserve">
+    <value>Remember Later</value>
+  </data>
+  <data name="0027" xml:space="preserve">
+    <value>Restore Application</value>
+  </data>
+  <data name="0031" xml:space="preserve">
+    <value>Force restore the application?&lt;br/&gt;
+This can resolve performance and connectivity issues.</value>
   </data>
 </root>
