@@ -1,6 +1,6 @@
 ﻿@namespace Hephaestus.Frontend.Application.Components
 
-<RadzenCard Variant="Variant.Filled" Style=@($"background-image: url({ButtonStains[Code]});") class=@($"cardbutton{(Active ? "" : " disabled")}") @onclick="OnClick">
+<RadzenCard Variant="Variant.Filled" ContextMenu=@(args => ShowContextMenu(args)) Style=@($"background-image: url({ButtonStains[Code]});") class=@($"cardbutton{(Active ? "" : " disabled")}") @onclick="OnClick">
 	<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Start" Gap="1rem" Style="height: 100%">
 		<LordIcon Icon="@ButtonAnims[Code]" State="default" Anim="state" Trigger="hover-click" Stroke="bold" Size="70px" Target=".cardbutton" />
 		<RadzenText Text="@AppNames[Code]" Style="font-size: 18px" class="rz-m-0" />
@@ -13,7 +13,27 @@
 	public string Code { get; set; } = string.Empty;
 
 	[Parameter]
+	public bool Favorite { get; set; } = false;
+
+	[Parameter]
 	public bool Active { get; set; } = true;
+
+	void ShowContextMenu(MouseEventArgs args) {
+
+		ContextMenuService.Open(args,
+		new List<ContextMenuItem> {
+			new ContextMenuItem(){ Text = "Favoritar", Value = 1, Icon = "star" },
+			new ContextMenuItem(){ Text = "Remover", Value = 2, Icon = "star_outline" } }, OnMenuItemClick);
+
+	}
+
+	void OnMenuItemClick(MenuItemEventArgs args) {
+
+		if (!args.Value.Equals(3) && !args.Value.Equals(4)) {
+			ContextMenuService.Close();
+		}
+
+	}
 
 	private void OnClick() {
 

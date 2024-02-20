@@ -136,7 +136,7 @@
     <value>Intente acceder a esta página más tarde.</value>
   </data>
   <data name="0007" xml:space="preserve">
-    <value>No Encontrado</value>
+    <value>No Encontrada</value>
   </data>
   <data name="0008" xml:space="preserve">
     <value>La página a la que intentaste acceder no existe.</value>
@@ -146,5 +146,11 @@
   </data>
   <data name="0010" xml:space="preserve">
     <value>Intente acceder a esta página más tarde.</value>
+  </data>
+  <data name="0011" xml:space="preserve">
+    <value>Desconectado del Servidor</value>
+  </data>
+  <data name="0012" xml:space="preserve">
+    <value>No se puede establecer una conexión con el servidor en este momento.</value>
   </data>
 </root>

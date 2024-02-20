@@ -36,6 +36,13 @@
 
 	bool sidebarExpanded = true;
 
+	protected override async Task OnInitializedAsync() {
+
+		var checkStatus = await VersionService.GetServerStatusAsync();
+		if (!checkStatus) NotificationService.Notify(NotificationSeverity.Error, AppErrors["0011"], AppErrors["0012"], 15000);
+
+	}
+
 	protected override void OnInitialized() {
 
 		JSRuntime.InvokeVoidAsync("disposeLoader");

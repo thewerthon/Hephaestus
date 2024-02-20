@@ -147,4 +147,10 @@
   <data name="0010" xml:space="preserve">
     <value>Try accessing this page later.</value>
   </data>
+  <data name="0011" xml:space="preserve">
+    <value>Disconnected from Server</value>
+  </data>
+  <data name="0012" xml:space="preserve">
+    <value>Unable to establish a server connection at the moment.</value>
+  </data>
 </root>

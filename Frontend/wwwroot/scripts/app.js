@@ -62,7 +62,9 @@ function newUpdate() {
 }
 
 async function update() {
-
+	
+	setCursor("wait");
+	
 	navigator.serviceWorker.getRegistrations().then(
 		registrations => registrations.forEach(
 			registration => registration.unregister()

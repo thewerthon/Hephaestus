@@ -36,6 +36,13 @@ public class VersionService(HttpClient httpClient, ILocalStorageService localSto
 
 	}
 
+	public async Task<bool> GetServerStatusAsync() {
+
+		var status = await HttpClient.GetAsync("app/status");
+		return status.IsSuccessStatusCode;
+
+	}
+
 	public async Task CheckForUpdatesAsync() {
 
 		var defaultDate = new DateTime(1994, 03, 09, 16, 00, 00);
