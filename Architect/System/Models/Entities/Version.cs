@@ -4,15 +4,15 @@ public class Version {
 
 	[Key]
 	[Required]
-	public int Build { get; set; } = 3;
+	public int Build { get; set; } = 4;
 
 	[Required]
-	public int Force { get; set; } = 3;
+	public int Force { get; set; } = 4;
 
 	[Required]
 	[MinLength(6)]
 	[MaxLength(32)]
-	public string Name { get; set; } = "v2.0.0 (Alpha 3)";
+	public string Name { get; set; } = "v2.0.0 (Alpha 4)";
 
 	[MaxLength()]
 	public string? Notes { get; set; } =
