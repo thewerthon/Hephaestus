@@ -10,7 +10,7 @@ public class UsageLog : BaseEntity {
 	public string Action { get; set; } = string.Empty;
 
 	[MaxLength(255)]
-	public string? Details { get; set; } = string.Empty;
+	public string? Details { get; set; }
 
 	public int? AppBuild { get; set; }
 
