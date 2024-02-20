@@ -6,7 +6,7 @@ public class UsageLog : BaseEntity {
 	public DateTime DateTime { get; set; }
 
 	[Required]
-	[MaxLength(64)]
+	[MaxLength(32)]
 	public string Action { get; set; } = string.Empty;
 
 	[MaxLength(255)]
@@ -23,13 +23,13 @@ public class UsageLog : BaseEntity {
 	[MaxLength(32)]
 	public string? PlatformLayout { get; set; }
 
-	[MaxLength(32)]
+	[MaxLength(16)]
 	public string? PlatformVersion { get; set; }
 
 	[MaxLength(32)]
 	public string? PlatformProduct { get; set; }
 
-	[MaxLength(32)]
+	[MaxLength(8)]
 	public string? PlatformLanguage { get; set; }
 
 	[MaxLength(32)]
@@ -38,7 +38,7 @@ public class UsageLog : BaseEntity {
 	[MaxLength(32)]
 	public string? SystemFamily { get; set; }
 
-	[MaxLength(32)]
+	[MaxLength(16)]
 	public string? SystemVersion { get; set; }
 
 	public int? SystemArchitecture { get; set; }

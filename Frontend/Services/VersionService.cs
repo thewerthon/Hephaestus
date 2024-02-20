@@ -1,8 +1,9 @@
 ﻿namespace Hephaestus.Frontend.Application.Services;
 
-public class VersionService(HttpClient httpClient, ISessionStorageService sessionStorage, IJSRuntime jsRuntime) {
+public class VersionService(HttpClient httpClient, ILocalStorageService localStorage, ISessionStorageService sessionStorage, IJSRuntime jsRuntime) {
 
 	private readonly HttpClient HttpClient = httpClient;
+	private readonly ILocalStorageService LocalStorage = localStorage;
 	private readonly ISessionStorageService SessionStorage = sessionStorage;
 	private readonly IJSRuntime JSRuntime = jsRuntime;
 
@@ -46,6 +47,7 @@ public class VersionService(HttpClient httpClient, ISessionStorageService sessio
 
 			LocalVersion = GetLocalVersion();
 			ServerVersion = await GetServerVersionAsync();
+			await LocalStorage.SetItemAsync("CurrentVersion", LocalVersion);
 			await SessionStorage.SetItemAsync("UpdateChecked", DateTime.UtcNow);
 
 			if (LocalVersion != null && ServerVersion != null && LocalVersion.Build < ServerVersion.Build) {

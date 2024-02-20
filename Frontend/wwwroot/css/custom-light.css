@@ -345,6 +345,7 @@ ul.rz-profile-menu {
 }
 
 .login-bg {
+	background-attachment: fixed !important;
 	background: radial-gradient(#ffffff10, #001F4055);
 	background-size: cover;
 }

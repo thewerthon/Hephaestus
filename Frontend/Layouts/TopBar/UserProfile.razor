@@ -51,18 +51,12 @@
 		if (firstRender) {
 
 			await JSRuntime.InvokeVoidAsync("isAppInstalled");
-
-			if (!UserService.Initialized) {
-				await UserService.FecthUserAsync();
-				await UserService.FecthPreferencesAsync();
-			}
+			if (!UserService.Initialized) await UserService.FecthUserAsync();
 
 			Name = UserService.CurrentUser.Name ?? AppTexts["0033"];
 			Role = AppRoles[(UserService.CurrentUser.Role ?? "System.User").Replace(".", string.Empty)];
 			Photo = UserService.CurrentUser.Photo ?? "images/users/unknown.jpg";
 			StateHasChanged();
-
-			await UsageLogService.LogLoginAsync();
 
 		}
 

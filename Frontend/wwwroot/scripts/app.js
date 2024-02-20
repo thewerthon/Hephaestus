@@ -14,6 +14,12 @@ window.addEventListener("appinstalled", () => {
 
 });
 
+function disposeLoader() {
+	
+	document.getElementById("loader").remove()
+	
+}
+
 function isAppInstalled() {
 
 	const appInstallButton = document.getElementById("app-install");
@@ -68,10 +74,16 @@ async function update() {
 	sessionStorage.removeItem("UpdateForced");
 	await new Promise(r => setTimeout(r, 500));
 
-	location.reload();
-	location.reload();
-	location.reload();
+	reload();
 
+}
+
+function reload() {
+
+	location.reload();
+	location.reload();
+	location.reload();
+	
 }
 
 async function fireIconAnim(iconId) {
@@ -89,9 +101,15 @@ function setCursor(state) {
 
 }
 
-function getBrowserInfo() {
+function getUsageLogInfo() {
+
+	var user = JSON.parse(localStorage.getItem("CurrentUser")) || {};
+	var version = JSON.parse(localStorage.getItem("CurrentVersion")) || {};
+	var preferences = JSON.parse(localStorage.getItem("Preferences")) || {};
 
     return {
+		AppBuild: version.Build,
+		AppVersion: version.Name,
 		PlatformName: platform.name,
 		PlatformLayout: platform.layout,
 		PlatformVersion: platform.version,
@@ -100,7 +118,10 @@ function getBrowserInfo() {
 		PlatformManufacturer: platform.manufacturer,
 		SystemFamily: platform.os.family,
 		SystemVersion: platform.os.version,
-		SystemArchitecture: platform.os.architecture
+		SystemArchitecture: platform.os.architecture,
+		User: user.Id,
+		UserTheme: preferences.Theme,
+		UserLanguage: preferences.Language
 	};
 	
 }
