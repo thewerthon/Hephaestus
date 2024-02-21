@@ -38,8 +38,16 @@ public class VersionService(HttpClient httpClient, ILocalStorageService localSto
 
 	public async Task<bool> GetServerStatusAsync() {
 
-		var status = await HttpClient.GetAsync("app/status");
-		return status.IsSuccessStatusCode;
+		try {
+
+			var status = await HttpClient.GetAsync("app/status");
+			return status.IsSuccessStatusCode;
+
+		} catch (Exception) {
+
+			return false;
+
+		}
 
 	}
 
