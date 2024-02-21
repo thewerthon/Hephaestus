@@ -14,11 +14,11 @@ global using Blazored.LocalStorage;
 global using Blazored.SessionStorage;
 
 // Architect
-global using Hephaestus.Architect.Application.Models;
+global using Hephaestus.Architect.System.Models;
 
 // Frontend
 global using Hephaestus.Frontend.Application.Models;
 global using Hephaestus.Frontend.Application.Services;
 
 // Alias
-global using Version = Hephaestus.Architect.Application.Models.Version;
+global using Version = Hephaestus.Architect.System.Models.Version;

@@ -45,7 +45,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\Architect\System\Models\Entities\Version.cs" Link="Version.cs" />
+		<None Include="..\Architect\Models\System\Version.cs" Link="Version.cs" />
 	</ItemGroup>
 
 </Project>
