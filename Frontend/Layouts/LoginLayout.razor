@@ -18,7 +18,7 @@
 					</RadzenColumn>
 					<RadzenColumn Size="12" SizeSM="7" class="rz-p-12">
 						<RadzenStack AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Style="width:100%; height:100%">
-							<LordIcon Icon="/lordicon/pages/avatar.json" Anim="state" Trigger="auto-hover-click" Intro="in-reveal" State="hover-looking-around" Stroke="bold" Size="120px" />
+							<LordIcon Icon="/lordicon/pages/avatar.json" Anim="state" Trigger="auto-hover-click" Intro="in-reveal" State="hover-looking-around" Stroke="bold" Size="120px" Delay="300" />
 							@Body
 							<RadzenText Text="@AppTexts["0002"]" TextStyle="Radzen.Blazor.TextStyle.Caption" style="font-size:12px" class="rz-pt-6 rz-mb-0" />
 							<RadzenRow Gap="5px" JustifyContent="JustifyContent.Center">
@@ -48,6 +48,12 @@
 
 		await UserService.SetLanguageAsync(lang, false, true);
 		NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+
+	}
+
+	protected override void OnInitialized() {
+
+		JSRuntime.InvokeVoidAsync("onLoad");
 
 	}
 

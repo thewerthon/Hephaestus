@@ -14,7 +14,7 @@ window.addEventListener("appinstalled", () => {
 
 });
 
-function disposeLoader() {
+function onLoad() {
 	
 	document.getElementById("loader").remove()
 	
