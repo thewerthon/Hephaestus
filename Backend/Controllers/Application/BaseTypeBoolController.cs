@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.OData.Results;
 
 namespace Hephaestus.Backend.Application.Controllers;
 
-public abstract class BaseTypeBoolController<TType>(DatabaseContext context) : BaseTypeController<TType>(context) where TType : class, ITypeBool {
+public abstract class BaseTypeBoolController<TType>(DatabaseContext context) : BaseTypeController<TType>(context) where TType : class, IBool {
 
 	// GET By Key
 	[HttpGet]

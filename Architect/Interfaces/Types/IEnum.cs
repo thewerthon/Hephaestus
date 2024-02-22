@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Interfaces;
 
-public interface ITypeEnum : IType {
+public interface IEnum : ILocalizableValue {
 
 	[Key]
 	[Required]

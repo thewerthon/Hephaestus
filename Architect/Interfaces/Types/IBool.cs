@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Interfaces;
 
-public interface ITypeBool : IType {
+public interface IBool : ILocalizableValue {
 
 	[Key]
 	[Required]

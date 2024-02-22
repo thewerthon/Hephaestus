@@ -103,7 +103,7 @@ public abstract class BaseEntityController<TEntity> : ODataController where TEnt
 
 		try {
 
-			var record = DbSet.AsNoTracking().Where(predicate).AsQueryable();
+			var record = DbSet.AsNoTracking().Where(predicate);
 			return Ok(SingleResult.Create(record));
 
 		} catch (Exception ex) {

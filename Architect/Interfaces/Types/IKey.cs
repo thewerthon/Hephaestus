@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Interfaces;
 
-public interface ITypeKey : IType {
+public interface IKey : ILocalizableValue {
 
 	[Key]
 	[Required]

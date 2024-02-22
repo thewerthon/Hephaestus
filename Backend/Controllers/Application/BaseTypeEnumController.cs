@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.OData.Results;
 
 namespace Hephaestus.Backend.Application.Controllers;
 
-public abstract class BaseTypeEnumController<TType>(DatabaseContext context) : BaseTypeController<TType>(context) where TType : class, ITypeEnum {
+public abstract class BaseTypeEnumController<TType>(DatabaseContext context) : BaseTypeController<TType>(context) where TType : class, IEnum {
 
 	// GET By Key
 	[HttpGet]
