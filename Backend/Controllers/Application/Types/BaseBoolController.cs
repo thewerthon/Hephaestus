@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.OData.Results;
 
 namespace Hephaestus.Backend.Application.Controllers;
 
-public abstract class BaseTypeKeyController<TType>(DatabaseContext context) : BaseTypeController<TType>(context) where TType : class, Ikey {
+public abstract class BaseBoolController<TType>(DatabaseContext context) : BaseTypeController<TType>(context) where TType : class, IBool {
 
 	// GET By Key
 	[HttpGet]
 	[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
-	public virtual ActionResult<SingleResult<TType>> Get(string key) {
+	public virtual ActionResult<SingleResult<TType>> Get(bool key) {
 
 		var result = GetBy(i => i.Key == key);
 		return result;

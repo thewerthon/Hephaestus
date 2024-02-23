@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.OData.Routing.Controllers;
 namespace Hephaestus.Backend.Application.Controllers;
 
 [ODataAttributeRouting]
-public abstract class BaseTypeController<TType> : ODataController where TType : class {
+public abstract class BaseTypeController<TType> : ODataController where TType : class, IEnum {
 
 	// DbContext and DbSet
 	protected readonly DatabaseContext DbContext;
@@ -42,6 +42,16 @@ public abstract class BaseTypeController<TType> : ODataController where TType : 
 			return BadRequest(ModelState);
 
 		}
+
+	}
+
+	// GET By Key
+	[HttpGet]
+	[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
+	public virtual ActionResult<SingleResult<TType>> Get(byte key) {
+
+		var result = GetBy(i => i.Key == key);
+		return result;
 
 	}
 
