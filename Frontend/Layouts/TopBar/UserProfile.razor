@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Layouts.TopBar
+﻿@namespace Hephaestus.Frontend.Layouts.TopBar
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <RadzenProfileMenu Click="@ProfileMenuClick" ContextMenu="@(args => None())" class="rz-p-2">
@@ -33,9 +33,9 @@
 
 @code {
 
-	private string Name = string.Empty;
-	private string Role = string.Empty;
-	private string Photo = string.Empty;
+	private string Name = default!;
+	private string Role = default!;
+	private string Photo = default!;
 
 	protected override void OnInitialized() {
 

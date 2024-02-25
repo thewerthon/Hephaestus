@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Components
+﻿@namespace Hephaestus.Frontend.Components
 
 <PageTitle>@(PageTitle ?? AppNames[Code])</PageTitle>
 
@@ -16,7 +16,7 @@
 @code {
 
 	[Parameter, EditorRequired]
-	public string Code { get; set; } = string.Empty;
+	public string Code { get; set; } = default!;
 
 	[Parameter]
 	public string? Title { get; set; }

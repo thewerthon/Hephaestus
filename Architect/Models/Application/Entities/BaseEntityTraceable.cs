@@ -1,10 +1,6 @@
-﻿namespace Hephaestus.Architect.Application.Models;
+﻿namespace Hephaestus.Architect.Models;
 
 public abstract class BaseEntityTraceable : BaseEntity, IEntityTraceable {
-
-	[ForeignKey("Active")]
-	public bool Active { get; set; }
-	public virtual YesNo? ActiveData { get; set; }
 
 	[ForeignKey("CreatedBy")]
 	public int? CreatedBy { get; set; }
@@ -15,10 +11,5 @@ public abstract class BaseEntityTraceable : BaseEntity, IEntityTraceable {
 	public int? UpdatedBy { get; set; }
 	public virtual User? UpdatedByData { get; set; }
 	public DateTime? UpdatedOn { get; set; }
-
-	[ForeignKey("DeletedBy")]
-	public int? DeletedBy { get; set; }
-	public virtual User? DeletedByData { get; set; }
-	public DateTime? DeletedOn { get; set; }
 
 }

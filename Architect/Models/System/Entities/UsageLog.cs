@@ -1,4 +1,4 @@
-﻿namespace Hephaestus.Architect.System.Models;
+﻿namespace Hephaestus.Architect.Models;
 
 public class UsageLog : BaseEntity {
 
@@ -7,7 +7,7 @@ public class UsageLog : BaseEntity {
 
 	[Required]
 	[MaxLength(32)]
-	public string Action { get; set; } = string.Empty;
+	public string Action { get; set; } = default!;
 
 	[MaxLength(255)]
 	public string? Details { get; set; }

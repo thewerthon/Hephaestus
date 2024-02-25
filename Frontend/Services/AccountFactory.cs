@@ -3,7 +3,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
 
-namespace Hephaestus.Frontend.Application.Services;
+namespace Hephaestus.Frontend.Services;
 
 public class AccountFactory(IAccessTokenProviderAccessor accessor, UserService service, UsageLogService usage, NavigationManager navigator) : AccountClaimsPrincipalFactory<RemoteUser>(accessor) {
 

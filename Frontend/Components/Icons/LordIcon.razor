@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Components
+﻿@namespace Hephaestus.Frontend.Components
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <div class="lord-icon-container">
@@ -11,14 +11,14 @@
 	/// Path to icon's json file.
 	/// </summary>
 	[Parameter, EditorRequired]
-	public string Icon { get; set; } = string.Empty;
+	public string Icon { get; set; } = default!;
 
 	/// <summary>
 	/// The state animation name.
 	/// Only apply to 'state' and 'loop' animations.
 	/// </summary>
 	[Parameter, EditorRequired]
-	public string State { get; set; } = string.Empty;
+	public string State { get; set; } = default!;
 
 	/// <summary>
 	/// The morph animation name.
@@ -33,7 +33,7 @@
 	/// Defaults to 'state' if using state and defaults to 'morph' if using morph.
 	/// </summary>
 	[Parameter]
-	public string Anim { get; set; } = string.Empty;
+	public string Anim { get; set; } = default!;
 
 	/// <summary>
 	/// The animation trigger.
@@ -42,7 +42,7 @@
 	/// Defaults to 'click' if using state and defaults to 'hover' if using morph.
 	/// </summary>
 	[Parameter]
-	public string Trigger { get; set; } = string.Empty;
+	public string Trigger { get; set; } = default!;
 
 	/// <summary>
 	/// The intro animation name.
@@ -126,19 +126,19 @@
 	/// Defaults to icon itself.
 	/// </summary>
 	[Parameter]
-	public string Target { get; set; } = string.Empty;
+	public string Target { get; set; } = default!;
 
 	/// <summary>
 	/// Sets the 'title' of the icon element.
 	/// </summary>
 	[Parameter]
-	public string Title { get; set; } = string.Empty;
+	public string Title { get; set; } = default!;
 
 	/// <summary>
 	/// Sets the 'id' of the icon element.
 	/// </summary>
 	[Parameter]
-	public string Id { get; set; } = string.Empty;
+	public string Id { get; set; } = default!;
 
 	protected override void OnInitialized() {
 

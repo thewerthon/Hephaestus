@@ -1,7 +1,7 @@
 ﻿using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
 
-namespace Hephaestus.Backend.Application.Database;
+namespace Hephaestus.Backend.Database;
 
 public static class ODataModel {
 

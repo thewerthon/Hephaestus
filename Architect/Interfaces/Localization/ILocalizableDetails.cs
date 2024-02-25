@@ -1,4 +1,4 @@
-﻿namespace Hephaestus.Architect.Application.Interfaces;
+﻿namespace Hephaestus.Architect.Interfaces;
 
 public interface ILocalizableDetails {
 

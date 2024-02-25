@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Routing.Attributes;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 
-namespace Hephaestus.Backend.Application.Controllers;
+namespace Hephaestus.Backend.Controllers;
 
 [ODataAttributeRouting]
 public abstract class BaseODataController<T> : ODataController where T : class {
@@ -16,47 +16,51 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	// Constructor
 	public BaseODataController(DatabaseContext context) {
+
 		DbContext = context;
 		DbSet = DbContext.Set<T>();
+
 	}
 
 	// Query Options for Collections
-	protected const AllowedQueryOptions CollectionQueryOptions =
-		AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
-		AllowedQueryOptions.Count | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.SkipToken |
-		AllowedQueryOptions.Search | AllowedQueryOptions.Apply | AllowedQueryOptions.Compute;
+	protected const AllowedQueryOptions CollectionQueryOptions = AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Count | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.SkipToken | AllowedQueryOptions.Search | AllowedQueryOptions.Apply | AllowedQueryOptions.Compute;
 
 	// Query Options for Single Item
-	protected const AllowedQueryOptions SingleItemQueryOptions =
-		AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Compute;
+	protected const AllowedQueryOptions SingleItemQueryOptions = AllowedQueryOptions.Select | AllowedQueryOptions.Expand | AllowedQueryOptions.Compute;
+
+	// Permissions Properties
+	protected bool AllowPost = true;
+	protected bool AllowPut = true;
+	protected bool AllowPatch = true;
+	protected bool AllowUpsert = true;
+	protected bool AllowDelete = true;
+	protected bool SoftDeletable = false;
 
 	// Virtual Action Methods
-	protected bool SoftDeletable = false;
-	protected virtual (bool Success, string? Message) OnCreate(ref T item, int? user) { return (true, null); }
-	protected virtual (bool Success, string? Message) OnUpdate(ref T item, T record, int? user) { return (true, null); }
-	protected virtual (bool Success, string? Message) OnDelete(ref T item, int? user) { return (true, null); }
-	protected virtual void OnCreated(T item, int? user) { }
-	protected virtual void OnUpdated(T item, int? user) { }
-	protected virtual void OnDeleted(T item, int? user) { }
+	protected virtual (bool Success, string? Message) OnCreate(ref T item) { return (true, null); }
+	protected virtual (bool Success, string? Message) OnUpdate(ref T item) { return (true, null); }
+	protected virtual (bool Success, string? Message) OnDelete(ref T item) { return (true, null); }
+	protected virtual void OnCreated(T item) { }
+	protected virtual void OnUpdated(T item) { }
+	protected virtual void OnDeleted(T item) { }
 
-	// POST
-	[HttpPost]
-	public virtual async Task<IActionResult> PostAsync([FromBody] T item, [FromQuery] int? user) {
+	// POST Item
+	protected virtual async Task<IActionResult> PostItemAsync(T item, int? user) {
+
+		if (!AllowPost) return StatusCode(405);
 
 		try {
 
 			if (item == null) return BadRequest("Invalid data.");
 			if (!ModelState.IsValid) return BadRequest(ModelState);
 
-			user ??= await GetUserAsync(user);
-			var (success, message) = OnCreate(ref item, user);
+			var (success, message) = OnCreate(ref item);
 			if (!success) return BadRequest(message);
-
-			item.GetType().GetProperty("Id")?.SetValue(item, 0);
+			await TraceCreationAsync(item, user);
 
 			DbSet.Add(item);
 			await DbContext.SaveChangesAsync();
-			OnCreated(item, user);
+			OnCreated(item);
 
 			return Created(item);
 
@@ -69,10 +73,8 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	}
 
-	// GET All
-	[HttpGet]
-	[EnableQuery(AllowedQueryOptions = CollectionQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5, MaxNodeCount = 100, MaxOrderByNodeCount = 10)]
-	public virtual ActionResult<IQueryable<T>> Get() {
+	// GET Items
+	protected virtual ActionResult<IQueryable<T>> GetItems() {
 
 		try {
 
@@ -88,19 +90,8 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	}
 
-	// GET By Id
-	[HttpGet]
-	[EnableQuery(AllowedQueryOptions = SingleItemQueryOptions, MaxExpansionDepth = 5, MaxAnyAllExpressionDepth = 5)]
-	public virtual ActionResult<SingleResult<T>> Get(int key) {
-
-		if (key < 0) return BadRequest("Ivalid key.");
-		var result = GetBy(i => i.Id == key);
-		return result;
-
-	}
-
-	// GET By Predicate
-	protected virtual ActionResult<SingleResult<T>> GetBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate) {
+	// GET Item
+	protected virtual ActionResult<SingleResult<T>> GetItem(System.Linq.Expressions.Expression<Func<T, bool>> predicate) {
 
 		try {
 
@@ -116,48 +107,38 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	}
 
-	// PUT
-	[HttpPut]
-	public virtual async Task<IActionResult> PutAsync(int key, [FromBody] T item, [FromQuery] int? user) {
+	// PUT Item
+	protected virtual async Task<ActionResult> PutItemAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate, T item, int? user) {
 
-		if (key < 0) return BadRequest("Ivalid key.");
-		if (!ModelState.IsValid) return BadRequest(ModelState);
-		var result = await PutByAsync(i => i.Id == key, item, user);
-		return result;
-
-	}
-
-	// PUT By
-	protected virtual async Task<ActionResult> PutByAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate, T item, int? user) {
-
+		if (!AllowPut) return StatusCode(405);
 		if (item == null) return BadRequest("Invalid data.");
 
 		try {
 
-			user ??= await GetUserAsync(user);
 			var record = await DbSet.AsNoTracking().FirstOrDefaultAsync(predicate);
 
 			if (record == null) {
 
-				var (success, message) = OnCreate(ref item, user);
+				if (!AllowUpsert) return StatusCode(405);
+				var (success, message) = OnCreate(ref item);
 				if (!success) return BadRequest(message);
+				await TraceCreationAsync(item, user);
 
-				item.Id = 0;
 				DbSet.Add(item);
 				await DbContext.SaveChangesAsync();
-				OnCreated(item, user);
+				OnCreated(item);
 
 				return Created(item);
 
 			} else {
 
-				var (success, message) = OnUpdate(ref item, record, user);
+				var (success, message) = OnUpdate(ref item);
 				if (!success) return BadRequest(message);
+				await TraceUpdateAsync(record, item, user);
 
-				item.Id = record.Id;
 				DbSet.Update(item);
 				await DbContext.SaveChangesAsync();
-				OnUpdated(item, user);
+				OnUpdated(item);
 
 				return Ok(item);
 
@@ -172,20 +153,10 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	}
 
-	// PATCH
-	[HttpPatch]
-	public virtual async Task<IActionResult> PatchAsync(int key, [FromBody] Delta<T> item, [FromQuery] int? user) {
+	// PATCH Item
+	protected virtual async Task<IActionResult> PatchItemAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate, Delta<T> item, int? user) {
 
-		if (key <= 0) return BadRequest("Invalid key.");
-		if (!ModelState.IsValid) return BadRequest(ModelState);
-		var result = await PatchByAsync(i => i.Id == key, item, user);
-		return result;
-
-	}
-
-	// PATCH By
-	protected virtual async Task<IActionResult> PatchByAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate, Delta<T> item, int? user) {
-
+		if (!AllowPatch) return StatusCode(405);
 		if (item == null) return BadRequest("Invalid data.");
 		if (!item.GetChangedPropertyNames().Any()) return BadRequest("Invalid data.");
 
@@ -194,16 +165,13 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 			var record = await DbSet.FirstOrDefaultAsync(predicate);
 			if (record is null) return NotFound("Item not exists.");
 
-			user ??= await GetUserAsync(user);
-			var (success, message) = OnUpdate(ref record, record, user);
+			var (success, message) = OnUpdate(ref record);
 			if (!success) return BadRequest(message);
-
-			item.TrySetPropertyValue("Id", record.Id);
-			item.Patch(record);
+			await TraceUpdateAsync(record, user);
 
 			DbSet.Update(record);
 			await DbContext.SaveChangesAsync();
-			OnUpdated(record, user);
+			OnUpdated(record);
 
 			return Ok(record);
 
@@ -216,36 +184,32 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	}
 
-	// DELETE
-	[HttpDelete]
-	public virtual async Task<IActionResult> DeleteAsync(int key, [FromQuery] int? user) {
+	// DELETE Item
+	protected virtual async Task<IActionResult> DeleteItemAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate, int? user) {
 
-		if (key <= 0) return BadRequest("Invalid key.");
-		var result = await DeleteByAsync(i => i.Id == key, user);
-		return result;
-
-	}
-
-	// DELETE By
-	protected virtual async Task<IActionResult> DeleteByAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate, int? user) {
+		if (!AllowDelete) return StatusCode(405);
 
 		try {
 
 			var record = await DbSet.FirstOrDefaultAsync(predicate);
 			if (record is null) return NotFound("Item not exists.");
 
-			user ??= await GetUserAsync(user);
-			var (success, message) = OnDelete(ref record, user);
+			var (success, message) = OnDelete(ref record);
 			if (!success) return BadRequest(message);
 
 			if (SoftDeletable) {
+
+				await TraceDeletionAsync(record, user);
 				DbSet.Update(record);
+
 			} else {
+
 				DbSet.Remove(record);
+
 			}
 
 			await DbContext.SaveChangesAsync();
-			OnDeleted(record, user);
+			OnDeleted(record);
 
 			return NoContent();
 
@@ -258,13 +222,61 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	}
 
-	// Get User
-	protected async Task<int?> GetUserAsync(int? user) {
+	// Trace Creation
+	protected async Task TraceCreationAsync(T item, int? user) {
 
-		if (user is not null and > 0) return user;
+		if (item == null) return;
+		if (user is null or <= 0) user = await GetUserAsync();
+
+		item.GetType().GetProperty("Id")?.SetValue(item, 0);
+		item.GetType().GetProperty("CreatedBy")?.SetValue(item, user);
+		item.GetType().GetProperty("CreatedOn")?.SetValue(item, DateTime.UtcNow);
+
+	}
+
+	// Trace Update
+	protected async Task TraceUpdateAsync(T record, int? user) {
+
+		if (record == null) return;
+		if (user is null or <= 0) user = await GetUserAsync();
+
+		record.GetType().GetProperty("UpdatedBy")?.SetValue(record, user);
+		record.GetType().GetProperty("UpdatedOn")?.SetValue(record, DateTime.UtcNow);
+
+	}
+
+	// Trace Update
+	protected async Task TraceUpdateAsync(T record, T item, int? user) {
+
+		if (item == null) return;
+		if (user is null or <= 0) user = await GetUserAsync();
+
+		var id = (int)(record.GetType().GetProperty("Id")?.GetValue(record) ?? 0);
+
+		item.GetType().GetProperty("Id")?.SetValue(item, id);
+		item.GetType().GetProperty("UpdatedBy")?.SetValue(item, user);
+		item.GetType().GetProperty("UpdatedOn")?.SetValue(item, DateTime.UtcNow);
+
+	}
+
+	// Trace Deletion
+	protected async Task TraceDeletionAsync(T record, int? user) {
+
+		if (record == null) return;
+		if (user is null or <= 0) user = await GetUserAsync();
+
+		record.GetType().GetProperty("Deleted")?.SetValue(record, true);
+		record.GetType().GetProperty("DeletedBy")?.SetValue(record, user);
+		record.GetType().GetProperty("DeletedOn")?.SetValue(record, DateTime.UtcNow);
+
+	}
+
+	// Get User
+	protected async Task<int> GetUserAsync() {
+
 		var guid = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier")?.Value;
 		var record = await DbContext.Set<User>().AsNoTracking().FirstOrDefaultAsync(u => u.Guid == guid);
-		return record?.Id;
+		return record?.Id ?? 1;
 
 	}
 

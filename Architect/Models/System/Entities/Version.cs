@@ -1,4 +1,4 @@
-﻿namespace Hephaestus.Architect.System.Models;
+﻿namespace Hephaestus.Architect.Models;
 
 public class Version {
 

@@ -1,4 +1,4 @@
-﻿namespace Hephaestus.Architect.Application.Models;
+﻿namespace Hephaestus.Architect.Models;
 
 public abstract class BaseEntity : IEntity {
 

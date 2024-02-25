@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Components
+﻿@namespace Hephaestus.Frontend.Components
 
 <RadzenCard Variant="Variant.Filled" ContextMenu=@(args => ShowContextMenu(args)) Style=@($"background-image: url({ButtonStains[Code]});") class=@($"cardbutton{(Active ? "" : " disabled")}") @onclick="OnClick">
 	<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Start" Gap="1rem" Style="height: 100%">
@@ -10,7 +10,7 @@
 @code {
 
 	[Parameter, EditorRequired]
-	public string Code { get; set; } = string.Empty;
+	public string Code { get; set; } = default!;
 
 	[Parameter]
 	public bool Favorite { get; set; } = false;

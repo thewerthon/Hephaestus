@@ -1,8 +1,8 @@
-﻿namespace Hephaestus.Architect.System.Models;
+﻿namespace Hephaestus.Architect.Models;
 
-public class Language : BaseKey, ISeed<BaseKey> {
+public class Language : BaseTypeKey, ITypeSeed<BaseTypeKey> {
 
-	public static IEnumerable<BaseKey> Seed { get; } = [
+	public static IEnumerable<BaseTypeKey> Seed { get; } = [
 
 		new Language { Key = "pt", Value = "Português (BR)", Value_en = "Portuguese (BR)", Value_es = "Portugués (BR)" },
 		new Language { Key = "en", Value = "Inglês (EUA)",   Value_en = "English (US)",    Value_es = "Inglés (EUA)" },

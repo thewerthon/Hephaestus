@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.OutputCaching;
 
-namespace Hephaestus.Backend.Application.Controllers;
+namespace Hephaestus.Backend.Policies;
 
 public class CachePolicy : IOutputCachePolicy {
 

@@ -1,4 +1,4 @@
-﻿namespace Hephaestus.Backend.Application.Database;
+﻿namespace Hephaestus.Backend.Database;
 
 public class DatabaseContext(DbContextOptions<DatabaseContext> options) : DbContext(options) {
 

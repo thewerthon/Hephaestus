@@ -1,11 +1,11 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Hephaestus.Frontend.Application.Models;
+namespace Hephaestus.Frontend.Models;
 
 public class GraphUser {
 
 	[JsonPropertyName("id")]
-	public string Guid { get; set; } = string.Empty;
+	public string Guid { get; set; } = default!;
 
 	[JsonPropertyName("displayName")]
 	public string? Name { get; set; }

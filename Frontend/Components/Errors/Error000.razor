@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Components
+﻿@namespace Hephaestus.Frontend.Components
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Vertical" Gap="0px" class="rz-pt-10">
@@ -25,13 +25,13 @@
 	public string State { get; set; } = "hover-enlarge";
 
 	[Parameter]
-	public string Morph { get; set; } = string.Empty;
+	public string Morph { get; set; } = default!;
 
 	[Parameter]
-	public string ErrorTitle { get; set; } = string.Empty;
+	public string ErrorTitle { get; set; } = default!;
 
 	[Parameter]
-	public string ErrorDescription { get; set; } = string.Empty;
+	public string ErrorDescription { get; set; } = default!;
 
 	protected override void OnInitialized() {
 

@@ -1,8 +1,8 @@
-﻿namespace Hephaestus.Architect.System.Models;
+﻿namespace Hephaestus.Architect.Models;
 
-public class Role : BaseKey, ISeed<BaseKey> {
+public class Role : BaseTypeKey, ITypeSeed<BaseTypeKey> {
 
-	public static IEnumerable<BaseKey> Seed { get; } = [
+	public static IEnumerable<BaseTypeKey> Seed { get; } = [
 
 		new Role { Key = "System.Admin",        Value = "Administrador",            Value_en = "Administrator",           Value_es = "Administrador" },
 		new Role { Key = "System.Member",       Value = "Moderador",                Value_en = "Moderator",               Value_es = "Moderador" },

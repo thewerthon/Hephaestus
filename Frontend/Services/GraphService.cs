@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
-namespace Hephaestus.Frontend.Application.Services;
+namespace Hephaestus.Frontend.Services;
 
 public class GraphService : AuthorizationMessageHandler {
 

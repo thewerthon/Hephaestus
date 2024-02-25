@@ -7,7 +7,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.Reflection;
 
-namespace Hephaestus.Backend.Application.Controllers;
+namespace Hephaestus.Backend.Controllers;
 
 public class ExportController : Controller {
 

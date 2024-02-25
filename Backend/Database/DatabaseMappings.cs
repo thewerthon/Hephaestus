@@ -1,4 +1,4 @@
-﻿namespace Hephaestus.Backend.Application.Database;
+﻿namespace Hephaestus.Backend.Database;
 
 public static class DatabaseMappings {
 
@@ -13,6 +13,7 @@ public static class DatabaseMappings {
 		new(name: "Languages", type: typeof(Language), map: typeof(LanguageMap)),
 
 		// Entities
+		new(name: "Tests", type: typeof(Test), map: typeof(TestMap)),
 		new(name: "Users", type: typeof(User), map: typeof(UserMap)),
 		new(name: "Versions", type: typeof(Version), map: typeof(VersionMap)),
 		new(name: "Preferences", type: typeof(Preferences), map: typeof(PreferencesMap)),

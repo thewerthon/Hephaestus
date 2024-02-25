@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Components
+﻿@namespace Hephaestus.Frontend.Components
 
 <RadzenPanelMenuItem Text="@AppNames[Code]" Image="@MenuImages[Code]" Path="@AppPaths[Code]" Visible="@Visible" Click="@Click">
 	@ChildContent
@@ -7,7 +7,7 @@
 @code {
 
 	[Parameter, EditorRequired]
-	public string Code { get; set; } = string.Empty;
+	public string Code { get; set; } = default!;
 
 	[Parameter]
 	public bool Visible { get; set; } = true;

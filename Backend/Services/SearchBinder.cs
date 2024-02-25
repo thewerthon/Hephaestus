@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.OData.UriParser;
 using Microsoft.OData.Edm;
 
-namespace Hephaestus.Backend.Application.Services;
+namespace Hephaestus.Backend.Services;
 
 public partial class SearchBinder : ISearchBinder {
 

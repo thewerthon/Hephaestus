@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
-namespace Hephaestus.Frontend.Application.Models;
+namespace Hephaestus.Frontend.Models;
 
 public class RemoteUser : RemoteUserAccount {
 
