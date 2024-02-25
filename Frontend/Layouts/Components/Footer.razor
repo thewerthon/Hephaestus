@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Layouts.Components
+﻿@namespace Hephaestus.Frontend.Layouts.Components
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <RadzenStack AlignItems="Radzen.AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0" class="rz-pt-2 rz-pb-4">
@@ -16,8 +16,8 @@
 	public bool InSidebar { get; set; } = true;
 
 	private string copyRgt = "Ⓒ";
-	private string appName = string.Empty;
-	private string curVers = string.Empty;
+	private string appName = default!;
+	private string curVers = default!;
 	private string curYear = DateTime.Now.Year.ToString();
 
 	protected override void OnInitialized() {

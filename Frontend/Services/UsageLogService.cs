@@ -1,11 +1,7 @@
-﻿using System;
+﻿namespace Hephaestus.Frontend.Services;
 
-namespace Hephaestus.Frontend.Application.Services;
+public class UsageLogService(ILocalStorageService storage, IHttpClientFactory client, IJSRuntime runtime) {
 
-public class UsageLogService(UserService user, VersionService version, ILocalStorageService storage, IHttpClientFactory client, IJSRuntime runtime) {
-
-	private readonly UserService UserService = user;
-	private readonly VersionService VersionService = version;
 	private readonly ILocalStorageService LocalStorage = storage;
 	private readonly IHttpClientFactory ClientFactory = client;
 	private readonly IJSRuntime JSRuntime = runtime;
@@ -60,15 +56,10 @@ public class UsageLogService(UserService user, VersionService version, ILocalSto
 
 	private async Task GetDefaultInfoAsync() {
 
-		DefaultInfo = await JSRuntime.InvokeAsync<UsageLog>("getBrowserInfo");
+		DefaultInfo = await JSRuntime.InvokeAsync<UsageLog>("getUsageLogInfo");
 
 		DefaultInfo.Id = 0;
 		DefaultInfo.DateTime = DateTime.UtcNow;
-		DefaultInfo.AppBuild = VersionService.LocalVersion.Build;
-		DefaultInfo.AppVersion = VersionService.LocalVersion.Name;
-		DefaultInfo.User = UserService.CurrentUser.Id;
-		DefaultInfo.UserTheme = UserService.Preferences.Theme;
-		DefaultInfo.UserLanguage = UserService.Preferences.Language;
 
 	}
 

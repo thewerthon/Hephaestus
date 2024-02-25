@@ -1,4 +1,4 @@
-﻿namespace Hephaestus.Frontend.Application.Services;
+﻿namespace Hephaestus.Frontend.Services;
 
 public class VariablesService {
 

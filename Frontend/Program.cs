@@ -1,4 +1,4 @@
-using Hephaestus.Frontend.Application;
+using Hephaestus.Frontend;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -8,7 +8,7 @@ using System.Globalization;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 // Application
-builder.RootComponents.Add<Application>("#app");
+builder.RootComponents.Add<Application>("#application");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 // Radzen Components
@@ -56,12 +56,11 @@ builder.Services.AddLocalization();
 var host = builder.Build();
 
 // Get Culture
-CultureInfo culture;
 var js = host.Services.GetRequiredService<IJSRuntime>();
 var lang = await js.InvokeAsync<string>("getLanguage");
 
 // Set Culture
-culture = new CultureInfo(lang);
+var culture = new CultureInfo(lang);
 CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;
 

@@ -1,4 +1,4 @@
-﻿@namespace Hephaestus.Frontend.Application.Layouts.TopBar
+﻿@namespace Hephaestus.Frontend.Layouts.TopBar
 @inherits Microsoft.AspNetCore.Components.ComponentBase
 
 <RadzenButton Variant="Variant.Text" ContextMenu=@(args => ShowContextMenu(args)) class="topbar-icon" title="@AppTexts["0015"]" Click="@(() => ToggleThemeAsync())">
@@ -7,8 +7,8 @@
 
 @code {
 
-	private string anim = string.Empty;
-	private string theme = string.Empty;
+	private string anim = default!;
+	private string theme = default!;
 
 	protected override async Task OnInitializedAsync() {
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 
 // WebApplication
 var builder = WebApplication.CreateBuilder(args);
+var environment = builder.Environment.EnvironmentName;
 
 // Identity Service
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -48,9 +49,14 @@ builder.Services.AddRouting(options => {
 
 // Controllers
 builder.Services.AddControllers(options => {
-	var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-	options.Filters.Add(new AuthorizeFilter(policy));
+
+	if (environment != "Test") {
+		var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+		options.Filters.Add(new AuthorizeFilter(policy));
+	}
+
 }).AddOData(options => {
+
 	options.EnableAttributeRouting = true;
 	options.EnableNoDollarQueryOptions = true;
 	options.RouteOptions.EnableKeyAsSegment = false;
@@ -64,6 +70,7 @@ builder.Services.AddControllers(options => {
 	options.AddRouteComponents("odata", models.GetEdmModel(), services => {
 		services.AddSingleton<ISearchBinder, SearchBinder>();
 	}).EnableQueryFeatures().TimeZone = TimeZoneInfo.Utc;
+
 });
 
 // Output Cache
@@ -104,3 +111,5 @@ app.MapFallbackToFile("{**slug}", "index.html");
 
 // Run App
 app.Run();
+
+public partial class Program { }

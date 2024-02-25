@@ -1,0 +1,13 @@
+{
+	"profiles": {
+		"Hephaestus": {
+			"commandName": "Project",
+			"dotnetRunMessages": false,
+			"launchBrowser": false,
+			"applicationUrl": "https://localhost:7153",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		}
+	}
+}

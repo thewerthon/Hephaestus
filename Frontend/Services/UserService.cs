@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Hephaestus.Frontend.Application.Services;
+namespace Hephaestus.Frontend.Services;
 
 public class UserService(IHttpClientFactory client, ILocalStorageService storage, IJSRuntime runtime) {
 

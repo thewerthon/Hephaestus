@@ -1,0 +1,18 @@
+﻿@page "/login"
+@layout LoginLayout
+@attribute [AllowAnonymous]
+@namespace Hephaestus.Frontend.Pages
+@inject NavigationManager NavigationManager
+
+<PageTitle>@(AppNames["0008"])</PageTitle>
+<RadzenButton Text="@AppTexts["0039"]" Click="@DoLogin" />
+
+@code {
+
+	private void DoLogin() {
+
+		NavigationManager.NavigateToLogin("authentication/login");
+
+	}
+
+}
