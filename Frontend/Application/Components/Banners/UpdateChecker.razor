@@ -1,0 +1,86 @@
+﻿@namespace Hephaestus.Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+
+<NavigationLock OnBeforeInternalNavigation="@OnBeforeInternalNavigationAsync" />
+<RadzenAlert Title="@AppTexts["0008"]" Icon="downloading" AlertStyle="AlertStyle.Secondary" Variant="Variant.Flat" Shade="Shade.Lighter" AllowClose="@(!VersionService.UpdateForced)" Close="@BannerDismiss" Visible="@(DisplayBanner && VersionService.UpdateAvailable && !VersionService.UpdateDismissed)" class="home-banner">
+	@if (VersionService.ServerVersion != null) {
+		<p class="m-0">@($"{AppTexts["0013"]} {VersionService.ServerVersion.Name}:")</p>
+		<pre class="text-wrap" style="margin: 0 0 4px 0;">@(string.IsNullOrEmpty(VersionService.ServerVersion.Notes) ? AppTexts["0038"] : VersionService.ServerVersion.Notes)</pre>
+		<RadzenStack Orientation="Orientation.Horizontal" Wrap="FlexWrap.Wrap" Gap="10px" class="rz-pt-3">
+			<RadzenButton Text="@AppTexts["0066"]" ButtonStyle="ButtonStyle.Success" Shade="Shade.Dark" Click="@Update" Style="text-wrap: nowrap" />
+			<RadzenButton Text="@AppTexts["0067"]" ButtonStyle="ButtonStyle.Success" Shade="Shade.Lighter" Click="BannerDismiss" Disabled="VersionService.UpdateForced" Style="text-wrap: nowrap" class="desktop-only" />
+		</RadzenStack>
+	}
+</RadzenAlert>
+
+@code {
+
+	/// <summary>
+	/// Defines whether the component should check for updates.
+	/// Defaults to true.
+	/// </summary>
+	[Parameter]
+	public bool CheckUpdates { get; set; } = true;
+
+	/// <summary>
+	/// Defines whether the update banner will be displayed.
+	/// Defaults to false.
+	/// </summary>
+	[Parameter]
+	public bool DisplayBanner { get; set; } = false;
+
+	/// <summary>
+	/// Defines whether the component should block user navigation until updating.
+	/// Defaults to false.
+	/// </summary>
+	[Parameter]
+	public bool BlockNavigation { get; set; } = false;
+
+	protected override async Task OnInitializedAsync() {
+
+		if (CheckUpdates) await VersionService.CheckForUpdatesAsync();
+
+	}
+
+	private async Task OnBeforeInternalNavigationAsync(LocationChangingContext locationChangingContext) {
+
+		if (BlockNavigation && VersionService.UpdateAvailable && VersionService.UpdateForced) {
+
+			var result = await DialogService.Confirm(AppTexts["0011"], AppTexts["0009"], new ConfirmOptions() {
+					OkButtonText = AppButtons["Update"],
+					CancelButtonText = AppButtons["Cancel"],
+					AutoFocusFirstElement = false,
+					CloseDialogOnOverlayClick = true,
+					CloseDialogOnEsc = true
+				});
+
+			if (result ?? false) {
+
+				await JSRuntime.InvokeVoidAsync("update");
+
+			} else {
+
+				locationChangingContext.PreventNavigation();
+
+			}
+
+		}
+
+	}
+
+	private async Task Update() {
+
+		await JSRuntime.InvokeVoidAsync("update");
+
+	}
+
+	private void BannerDismiss() {
+
+		if ((!VersionService.UpdateForced)) {
+			VersionService.UpdateDismissed = true;
+			DisplayBanner = false;
+		}
+
+	}
+
+}
