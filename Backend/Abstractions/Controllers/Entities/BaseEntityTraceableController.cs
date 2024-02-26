@@ -19,10 +19,10 @@ public abstract class BaseEntityTraceableController<T>(DatabaseContext context) 
 	protected override void PrepareUpdate(ref T record, ref Delta<T> item, int? user) {
 
 		item.TrySetPropertyValue("Id", record.Id);
-		record.CreatedBy ??= user;
-		record.CreatedOn ??= DateTime.UtcNow;
-		record.UpdatedBy = user;
-		record.UpdatedOn = DateTime.UtcNow;
+		item.TrySetPropertyValue("CreatedBy", record.CreatedBy ?? user);
+		item.TrySetPropertyValue("CreatedOn", record.CreatedOn ?? DateTime.UtcNow);
+		item.TrySetPropertyValue("UpdatedBy", user);
+		item.TrySetPropertyValue("UpdatedOn", DateTime.UtcNow);
 
 	}
 
