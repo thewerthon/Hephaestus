@@ -4,14 +4,15 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 // Architect
-global using Hephaestus.Architect.Interfaces;
-global using Hephaestus.Architect.Models;
+global using Hephaestus.Architect.Abstractions.Interfaces;
+global using Hephaestus.Architect.Application.Models;
 
 // Backend
-global using Hephaestus.Backend.Database;
-global using Hephaestus.Backend.Mappings;
-global using Hephaestus.Backend.Policies;
-global using Hephaestus.Backend.Services;
+global using Hephaestus.Backend.Abstractions.Controllers;
+global using Hephaestus.Backend.Application.Database;
+global using Hephaestus.Backend.Application.Mappings;
+global using Hephaestus.Backend.Application.Policies;
+global using Hephaestus.Backend.Application.Services;
 
 // Alias
-global using Version = Hephaestus.Architect.Models.Version;
+global using Version = Hephaestus.Architect.Application.Models.Version;

@@ -1,0 +1,14 @@
+﻿@namespace Hephaestus.Frontend.Application.Components
+
+<RadzenText Text="@AppNames[Code]" TextStyle="TextStyle.Overline" TagName="TagName.P" class="app-sidebar-group" />
+@ChildContent
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string Code { get; set; } = default!;
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+}

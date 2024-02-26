@@ -37,16 +37,16 @@
 @inject IJSRuntime JSRuntime
 
 // Architect Models
-@using Hephaestus.Architect.Models
-@using Version = Hephaestus.Architect.Models.Version
+@using Hephaestus.Architect.Application.Models
+@using Version = Hephaestus.Architect.Application.Models.Version
 
 // Frontend Components
-@using Hephaestus.Frontend.Layouts
-@using Hephaestus.Frontend.Components
-@using Hephaestus.Frontend.Resources
+@using Hephaestus.Frontend.Application.Layouts
+@using Hephaestus.Frontend.Application.Components
+@using Hephaestus.Frontend.Application.Resources
 
 // Frontend Services
-@using Hephaestus.Frontend.Services
+@using Hephaestus.Frontend.Application.Services
 @inject CursorService CursorService
 @inject UsageLogService UsageLogService
 @inject VariablesService VariablesService
@@ -61,7 +61,7 @@
 @inject IStringLocalizer<ButtonStains> ButtonStains
 
 // Localization Services
-@using Hephaestus.Frontend.Localization
+@using Hephaestus.Frontend.Application.Localization
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<AppInfo> AppInfo
 @inject IStringLocalizer<AppRoles> AppRoles
