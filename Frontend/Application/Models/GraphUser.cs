@@ -8,7 +8,7 @@ public class GraphUser {
 	public string Guid { get; set; } = default!;
 
 	[JsonPropertyName("displayName")]
-	public string? Name { get; set; }
+	public string Name { get; set; } = default!;
 
 	[JsonPropertyName("givenName")]
 	public string? FirstName { get; set; }

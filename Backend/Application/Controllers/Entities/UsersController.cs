@@ -27,4 +27,20 @@ public class UsersController(DatabaseContext context) : BaseEntityTraceableContr
 
 	}
 
+	protected override (bool Success, string? Message) OnCreate(ref User item) {
+
+		item.Name_en ??= item.Name;
+		item.Name_es ??= item.Name;
+		return (true, null);
+
+	}
+
+	protected override (bool Success, string? Message) OnUpdate(ref User item, ref User record) {
+
+		item.Name_en ??= record.Name_en ?? item.Name;
+		item.Name_es ??= record.Name_es ?? item.Name;
+		return (true, null);
+
+	}
+
 }

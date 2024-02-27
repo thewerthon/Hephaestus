@@ -4,9 +4,16 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<TargetFramework>net8.0</TargetFramework>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyName>$(SolutionName).$(MSBuildProjectName)</AssemblyName>
 		<RootNamespace>$(SolutionName).$(MSBuildProjectName)</RootNamespace>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Migrations\**" />
+	  <Content Remove="Migrations\**" />
+	  <EmbeddedResource Remove="Migrations\**" />
+	  <None Remove="Migrations\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="Evaluator" />

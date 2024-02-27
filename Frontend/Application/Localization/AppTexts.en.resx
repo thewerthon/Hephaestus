@@ -329,4 +329,28 @@ Click the button below to check out everything new in SCP 2.0!</value>
     <value>Force restore the application?&lt;br/&gt;
 This can resolve performance and connectivity issues.</value>
   </data>
+  <data name="0068" xml:space="preserve">
+    <value>Favorite Functions</value>
+  </data>
+  <data name="0069" xml:space="preserve">
+    <value>Favorite</value>
+  </data>
+  <data name="0070" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="0071" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="0072" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="0073" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="0074" xml:space="preserve">
+    <value>Favorites limit reached.</value>
+  </data>
+  <data name="0075" xml:space="preserve">
+    <value>Add favorites functions to see them here:</value>
+  </data>
 </root>

@@ -329,4 +329,28 @@ Clique no botão abaixo para para conferir tudo que há de novo no SCP 2.0!</val
   <data name="0067" xml:space="preserve">
     <value>Lembrar Depois</value>
   </data>
+  <data name="0068" xml:space="preserve">
+    <value>Funções Favoritas</value>
+  </data>
+  <data name="0069" xml:space="preserve">
+    <value>Favoritar</value>
+  </data>
+  <data name="0070" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="0071" xml:space="preserve">
+    <value>Informação</value>
+  </data>
+  <data name="0072" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="0073" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="0074" xml:space="preserve">
+    <value>Limite de favoritos atingido.</value>
+  </data>
+  <data name="0075" xml:space="preserve">
+    <value>Adicione funções favoritas para vê-las aqui:</value>
+  </data>
 </root>

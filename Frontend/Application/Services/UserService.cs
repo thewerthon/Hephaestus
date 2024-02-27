@@ -393,4 +393,40 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 
 	}
 
+	public async Task AddFavoriteAsync(string code, bool save = true) {
+
+		if (!(Preferences.Favorites?.Contains(code) ?? false)) {
+
+			if (!(Preferences.Favorites?.Length >= 45)) {
+
+				Preferences.Favorites = $"{Preferences.Favorites ?? string.Empty} {code}".Trim();
+				LocalPreferences.Favorites = Preferences.Favorites;
+				await SavePreferencesAsync(true, save);
+
+			}
+
+		}
+
+	}
+
+	public async Task RemoveFavoriteAsync(string code, bool save = true) {
+
+		if (Preferences.Favorites?.Contains(code) ?? false) {
+
+			Preferences.Favorites = Preferences.Favorites?.Replace(code, string.Empty).Replace("  ", " ").Trim();
+			LocalPreferences.Favorites = Preferences.Favorites;
+			await SavePreferencesAsync(true, save);
+
+		}
+
+	}
+
+	public async Task SetFavoritesOrderAsync(string order, bool save = true) {
+
+		Preferences.Favorites = order.Trim();
+		LocalPreferences.Favorites = Preferences.Favorites;
+		await SavePreferencesAsync(true, save);
+
+	}
+
 }

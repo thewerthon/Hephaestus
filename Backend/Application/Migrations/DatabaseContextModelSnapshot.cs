@@ -84,6 +84,10 @@ namespace Hephaestus.Backend.Application.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Favorites")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
                     b.Property<int?>("FeatureAlert")
                         .HasColumnType("int");
 
@@ -459,28 +463,28 @@ namespace Hephaestus.Backend.Application.Migrations
                         {
                             Id = 1,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 72, DateTimeKind.Utc).AddTicks(6870),
+                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2567),
                             Name = "Test 1",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 72, DateTimeKind.Utc).AddTicks(6873)
+                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2570)
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 72, DateTimeKind.Utc).AddTicks(6874),
+                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2572),
                             Name = "Test 2",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 72, DateTimeKind.Utc).AddTicks(6875)
+                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2572)
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 72, DateTimeKind.Utc).AddTicks(6876),
+                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2574),
                             Name = "Test 3",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 72, DateTimeKind.Utc).AddTicks(6876)
+                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2574)
                         });
                 });
 
@@ -673,6 +677,14 @@ namespace Hephaestus.Backend.Application.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
 
+                    b.Property<string>("Name_en")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("Name_es")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
                     b.Property<string>("Office")
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
@@ -719,60 +731,68 @@ namespace Hephaestus.Backend.Application.Migrations
                             Id = 1,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 74, DateTimeKind.Utc).AddTicks(8588),
+                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(580),
                             Email = "sistema@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000000",
                             Hidden = true,
                             Name = "Sistema",
+                            Name_en = "System",
+                            Name_es = "Sistema",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 74, DateTimeKind.Utc).AddTicks(8589)
+                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(582)
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 74, DateTimeKind.Utc).AddTicks(8592),
+                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(585),
                             Email = "usuario-portal@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000001",
                             Hidden = true,
                             Name = "Usuário do Portal",
+                            Name_en = "Portal User",
+                            Name_es = "Usuario del Portal",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 74, DateTimeKind.Utc).AddTicks(8592)
+                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(585)
                         },
                         new
                         {
                             Id = 3,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 74, DateTimeKind.Utc).AddTicks(8594),
+                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(588),
                             Email = "usuario-externo@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000002",
                             Hidden = true,
                             Name = "Usuário Externo",
+                            Name_en = "External User",
+                            Name_es = "Usuario Externo",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 26, 15, 32, 17, 74, DateTimeKind.Utc).AddTicks(8595)
+                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(588)
                         },
                         new
                         {
                             Id = 4,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 26, 12, 32, 17, 74, DateTimeKind.Local).AddTicks(8599),
+                            CreatedOn = new DateTime(2024, 2, 27, 17, 0, 26, 182, DateTimeKind.Local).AddTicks(593),
                             Email = "autobot@siw.ind.br",
                             Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
                             Hidden = true,
                             Name = "Autobot",
+                            Name_en = "Autobot",
+                            Name_es = "Autobot",
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 26, 12, 32, 17, 74, DateTimeKind.Local).AddTicks(8608)
+                            UpdatedOn = new DateTime(2024, 2, 27, 17, 0, 26, 182, DateTimeKind.Local).AddTicks(604)
                         });
                 });
 

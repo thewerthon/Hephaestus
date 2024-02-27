@@ -17,4 +17,7 @@ public class Preferences : BaseEntity {
 
 	public int? FeatureAlert { get; set; } = 0;
 
+	[MaxLength(64)]
+	public string? Favorites { get; set; }
+
 }

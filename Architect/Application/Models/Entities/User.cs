@@ -1,6 +1,6 @@
 ﻿namespace Hephaestus.Architect.Application.Models;
 
-public class User : BaseEntityTraceable, IEntityActivable, IEntityHideable {
+public class User : BaseEntityTraceable, ILocalizableName, IEntityActivable, IEntityHideable {
 
 	[Required]
 	[MinLength(36)]
@@ -10,7 +10,15 @@ public class User : BaseEntityTraceable, IEntityActivable, IEntityHideable {
 	[Required]
 	[MinLength(3)]
 	[MaxLength(64)]
-	public string? Name { get; set; }
+	public string Name { get; set; } = default!;
+
+	[MinLength(3)]
+	[MaxLength(64)]
+	public string? Name_en { get; set; }
+
+	[MinLength(3)]
+	[MaxLength(64)]
+	public string? Name_es { get; set; }
 
 	[MinLength(3)]
 	[MaxLength(32)]

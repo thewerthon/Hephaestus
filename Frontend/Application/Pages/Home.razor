@@ -2,36 +2,80 @@
 @page "/inicio"
 @page "/home"
 
+@implements IDisposable
 @namespace Hephaestus.Frontend.Application.Pages
 
 <PageNavigation Code="0100" Title="@($"{AppTexts[VariablesService.SaudationCode()]}, {UserService.CurrentUser.FirstName}.")" Subtitle="@AppTexts["0054"]">
 
 	<FeatureAlert />
 
+	@{
+
+		var favorites = UserService.Preferences.Favorites?.Split(" ") ?? [];
+		var nullorempty = String.IsNullOrEmpty(UserService.Preferences.Favorites);
+		var quantity = favorites.Count();
+
+		if (!nullorempty && quantity > 0) {
+
+			<PageNavigationGroup Text="@AppTexts["0068"]">
+				<div class="favbutton-container">
+					@foreach (var favorite in favorites) {
+						<PageNavigationItem Code="@favorite" Callback="FavoritesRefresh" />
+					}
+				</div>
+			</PageNavigationGroup>
+
+		} else {
+
+			<PageNavigationGroup Text="@AppTexts["0075"]">
+				<PageNavigationItemBlank />
+				<PageNavigationItemBlank />
+				<PageNavigationItemBlank />
+				<PageNavigationItemBlank />
+			</PageNavigationGroup>
+
+		}
+
+	}
+
 	<PageNavigationGroup Text="@AppTexts["0059"]">
-		<PageNavigationItem Code="0130" />
-		<PageNavigationItem Code="0110" />
-		<PageNavigationItem Code="0120" />
-		<PageNavigationItem Code="0150" />
-	</PageNavigationGroup>
-
-	<PageNavigationGroup Text="@AppNames["1000"]">
-		<PageNavigationItem Code="1100" />
-		<PageNavigationItem Code="1200" />
-		<PageNavigationItem Code="1300" />
-		<PageNavigationItem Code="1400" />
-		<PageNavigationItem Code="1500" />
-		<PageNavigationItem Code="1600" />
-		<PageNavigationItem Code="1700" />
-		<PageNavigationItem Code="1800" />
-		<PageNavigationItem Code="1900" />
-	</PageNavigationGroup>
-
-	<PageNavigationGroup Text="@AppNames["2000"]">
-		<PageNavigationItem Code="2100" />
-		<PageNavigationItem Code="2200" />
-		<PageNavigationItem Code="2400" />
-		<PageNavigationItem Code="2600" />
+		<PageNavigationItem Code="0110" Callback="FavoritesRefresh" />
+		<PageNavigationItem Code="0120" Callback="FavoritesRefresh" />
+		<PageNavigationItem Code="0130" Callback="FavoritesRefresh" />
 	</PageNavigationGroup>
 
 </PageNavigation>
+
+@code {
+
+	public static event EventHandler<string>? FavoritesReorder;
+	protected override void OnInitialized() { FavoritesReorder += OnFavoritesReorder!; }
+	public void Dispose() { FavoritesReorder -= OnFavoritesReorder!; }
+
+	[JSInvokable]
+	public static void TriggerFavoritesReorder(string order) {
+
+		FavoritesReorder?.Invoke(null, order);
+
+	}
+
+	protected override void OnAfterRender(bool firstRender) {
+
+		if (firstRender) JSRuntime.InvokeVoidAsync("enableFavoritesSorting");
+
+	}
+
+	private void OnFavoritesReorder(object sender, string order) {
+
+		_ = UserService.SetFavoritesOrderAsync(order, true);
+
+	}
+
+	private void FavoritesRefresh() {
+
+		StateHasChanged();
+		JSRuntime.InvokeVoidAsync("enableFavoritesSorting");
+
+	}
+
+}
