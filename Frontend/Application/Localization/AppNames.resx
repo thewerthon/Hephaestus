@@ -295,25 +295,25 @@
     <value>Apontamentos</value>
   </data>
   <data name="1611" xml:space="preserve">
-    <value>Início</value>
+    <value>Apontamento de Início</value>
   </data>
   <data name="1612" xml:space="preserve">
-    <value>Consumo</value>
+    <value>Apontamento de Consumo</value>
   </data>
   <data name="1613" xml:space="preserve">
-    <value>Produto</value>
+    <value>Apontamento de Produto</value>
   </data>
   <data name="1614" xml:space="preserve">
-    <value>Paradas</value>
+    <value>Apontamento de Paradas</value>
   </data>
   <data name="1615" xml:space="preserve">
-    <value>Retrabalhos</value>
+    <value>Apontamento de Retrabalhos</value>
   </data>
   <data name="1616" xml:space="preserve">
-    <value>Perdas</value>
+    <value>Apontamento de Perdas</value>
   </data>
   <data name="1617" xml:space="preserve">
-    <value>Fim</value>
+    <value>Apontamento de Fim</value>
   </data>
   <data name="1620" xml:space="preserve">
     <value>Etiquetas</value>
@@ -331,13 +331,13 @@
     <value>Inspeções</value>
   </data>
   <data name="1711" xml:space="preserve">
-    <value>Produtos</value>
+    <value>Inspeções de Produtos</value>
   </data>
   <data name="1712" xml:space="preserve">
-    <value>Processos</value>
+    <value>Inspeções de Processos</value>
   </data>
   <data name="1713" xml:space="preserve">
-    <value>Periódicas</value>
+    <value>Inspeções Periódicas</value>
   </data>
   <data name="1720" xml:space="preserve">
     <value>Não Conformidades</value>
@@ -346,31 +346,31 @@
     <value>Bloqueios</value>
   </data>
   <data name="1731" xml:space="preserve">
-    <value>Produtos</value>
+    <value>Bloqueios de Produtos</value>
   </data>
   <data name="1732" xml:space="preserve">
-    <value>Processos</value>
+    <value>Bloqueios de Processos</value>
   </data>
   <data name="1740" xml:space="preserve">
     <value>Liberações</value>
   </data>
   <data name="1741" xml:space="preserve">
-    <value>Produtos</value>
+    <value>Liberações de Produtos</value>
   </data>
   <data name="1742" xml:space="preserve">
-    <value>Bloqueios</value>
+    <value>Liberações de Processos</value>
   </data>
   <data name="1750" xml:space="preserve">
     <value>Padrões de Inspeção</value>
   </data>
   <data name="1751" xml:space="preserve">
-    <value>Produtos</value>
+    <value>Padrões de Produtos</value>
   </data>
   <data name="1752" xml:space="preserve">
-    <value>Processos</value>
+    <value>Padrões de Processos</value>
   </data>
   <data name="1753" xml:space="preserve">
-    <value>Periódicas</value>
+    <value>Padrões Periódicos</value>
   </data>
   <data name="1760" xml:space="preserve">
     <value>Parâmetros</value>

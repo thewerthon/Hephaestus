@@ -214,13 +214,13 @@
     <value>Procesos</value>
   </data>
   <data name="1230" xml:space="preserve">
-    <value>Hojas de Datos</value>
+    <value>Hojas Técnicas</value>
   </data>
   <data name="1240" xml:space="preserve">
     <value>Documentación</value>
   </data>
   <data name="1250" xml:space="preserve">
-    <value>Entrenamientos</value>
+    <value>Capacitaciones</value>
   </data>
   <data name="1300" xml:space="preserve">
     <value>Suministros</value>
@@ -232,7 +232,7 @@
     <value>Ordenes de compra</value>
   </data>
   <data name="1400" xml:space="preserve">
-    <value>Depósito</value>
+    <value>Almacén</value>
   </data>
   <data name="1410" xml:space="preserve">
     <value>Movimientos</value>
@@ -256,10 +256,10 @@
     <value>Salida Manual</value>
   </data>
   <data name="1417" xml:space="preserve">
-    <value>Transferir</value>
+    <value>Transferencia</value>
   </data>
   <data name="1418" xml:space="preserve">
-    <value>Desecho</value>
+    <value>Eliminación</value>
   </data>
   <data name="1420" xml:space="preserve">
     <value>Etiquetas</value>
@@ -295,25 +295,25 @@
     <value>Registros</value>
   </data>
   <data name="1611" xml:space="preserve">
-    <value>Comenzar</value>
+    <value>Registro de Inicio</value>
   </data>
   <data name="1612" xml:space="preserve">
-    <value>Consumo</value>
+    <value>Registro de Consumo</value>
   </data>
   <data name="1613" xml:space="preserve">
-    <value>Producción</value>
+    <value>Registro de Producción</value>
   </data>
   <data name="1614" xml:space="preserve">
-    <value>Paradas</value>
+    <value>Registro de Paradas</value>
   </data>
   <data name="1615" xml:space="preserve">
-    <value>Reprocesos</value>
+    <value>Registro de Retrabajos</value>
   </data>
   <data name="1616" xml:space="preserve">
-    <value>Pérdidas</value>
+    <value>Registro de Pérdidas</value>
   </data>
   <data name="1617" xml:space="preserve">
-    <value>Fin</value>
+    <value>Registro de Fin</value>
   </data>
   <data name="1620" xml:space="preserve">
     <value>Etiquetas</value>
@@ -331,13 +331,13 @@
     <value>Inspecciones</value>
   </data>
   <data name="1711" xml:space="preserve">
-    <value>Productos</value>
+    <value>Inspecciones de Productos</value>
   </data>
   <data name="1712" xml:space="preserve">
-    <value>Procesos</value>
+    <value>Inspecciones de Procesos</value>
   </data>
   <data name="1713" xml:space="preserve">
-    <value>Periódico</value>
+    <value>Inspecciones Periódicas</value>
   </data>
   <data name="1720" xml:space="preserve">
     <value>No Conformidades</value>
@@ -346,31 +346,31 @@
     <value>Bloqueos</value>
   </data>
   <data name="1731" xml:space="preserve">
-    <value>Productos</value>
+    <value>Bloqueos de Productos</value>
   </data>
   <data name="1732" xml:space="preserve">
-    <value>Procesos</value>
+    <value>Bloqueos de Procesos</value>
   </data>
   <data name="1740" xml:space="preserve">
-    <value>Lanzamientos</value>
+    <value>Liberaciones</value>
   </data>
   <data name="1741" xml:space="preserve">
-    <value>Productos</value>
+    <value>Liberaciones de Productos</value>
   </data>
   <data name="1742" xml:space="preserve">
-    <value>Procesos</value>
+    <value>Liberaciones de Procesos</value>
   </data>
   <data name="1750" xml:space="preserve">
     <value>Estándares de Inspección</value>
   </data>
   <data name="1751" xml:space="preserve">
-    <value>Productos</value>
+    <value>Estándares de Productos</value>
   </data>
   <data name="1752" xml:space="preserve">
-    <value>Procesos</value>
+    <value>Estándares de Procesos</value>
   </data>
   <data name="1753" xml:space="preserve">
-    <value>Periódico</value>
+    <value>Estándares Periódicos</value>
   </data>
   <data name="1760" xml:space="preserve">
     <value>Parámetros</value>

@@ -238,22 +238,22 @@
     <value>/warehouse/movements</value>
   </data>
   <data name="1411" xml:space="preserve">
-    <value>/warehouse/movements/invoice/receipt</value>
+    <value>/warehouse/movements/input/invoice</value>
   </data>
   <data name="1412" xml:space="preserve">
-    <value>/warehouse/movements/invoice/separation</value>
+    <value>/warehouse/movements/output/invoice</value>
   </data>
   <data name="1413" xml:space="preserve">
-    <value>/warehouse/movements/order/receipt</value>
+    <value>/warehouse/movements/input/operation</value>
   </data>
   <data name="1414" xml:space="preserve">
-    <value>/warehouse/movements/order/separation</value>
+    <value>/warehouse/movements/output/operation</value>
   </data>
   <data name="1415" xml:space="preserve">
-    <value>/warehouse/movements/manual/input</value>
+    <value>/warehouse/movements/input/manual</value>
   </data>
   <data name="1416" xml:space="preserve">
-    <value>/warehouse/movements/manual/output</value>
+    <value>/warehouse/movements/output/manual</value>
   </data>
   <data name="1417" xml:space="preserve">
     <value>/warehouse/movements/transfer</value>
@@ -292,28 +292,28 @@
     <value>/production</value>
   </data>
   <data name="1610" xml:space="preserve">
-    <value>/production/records</value>
+    <value>/production/registers</value>
   </data>
   <data name="1611" xml:space="preserve">
-    <value>/production/records/start</value>
+    <value>/production/registers/start</value>
   </data>
   <data name="1612" xml:space="preserve">
-    <value>/production/records/consumption</value>
+    <value>/production/registers/consumption</value>
   </data>
   <data name="1613" xml:space="preserve">
-    <value>/production/records/production</value>
+    <value>/production/registers/production</value>
   </data>
   <data name="1614" xml:space="preserve">
-    <value>/production/records/breakings</value>
+    <value>/production/registers/breakings</value>
   </data>
   <data name="1615" xml:space="preserve">
-    <value>/production/records/reworks</value>
+    <value>/production/registers/reworks</value>
   </data>
   <data name="1616" xml:space="preserve">
-    <value>/production/records/losses</value>
+    <value>/production/registers/losses</value>
   </data>
   <data name="1617" xml:space="preserve">
-    <value>/production/records/end</value>
+    <value>/production/registers/end</value>
   </data>
   <data name="1620" xml:space="preserve">
     <value>/production/labels</value>
@@ -373,13 +373,13 @@
     <value>/quality/patterns/periodical</value>
   </data>
   <data name="1760" xml:space="preserve">
-    <value>/quality/patterns/parameters</value>
+    <value>/quality/parameters</value>
   </data>
   <data name="1770" xml:space="preserve">
-    <value>/quality/patterns/certificates</value>
+    <value>/quality/certificates</value>
   </data>
   <data name="1780" xml:space="preserve">
-    <value>/quality/patterns/documentation</value>
+    <value>/quality/documentation</value>
   </data>
   <data name="1800" xml:space="preserve">
     <value>/fiscal</value>

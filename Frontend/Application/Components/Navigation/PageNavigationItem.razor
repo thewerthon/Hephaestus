@@ -46,7 +46,7 @@
 
 	private async Task AddFavoriteAsync() {
 
-		if (UserService.Preferences.Favorites?.Length >= 45) {
+		if (UserService.Preferences.Favorites?.Length >= 99) {
 
 			NotificationService.Notify(NotificationSeverity.Warning, AppTexts["0072"], AppTexts["0074"]);
 

@@ -238,28 +238,28 @@
     <value>/almacen/movimientos</value>
   </data>
   <data name="1411" xml:space="preserve">
-    <value>/almacen/movimientos/notafiscal/recibo</value>
+    <value>/almacen/movimientos/entrada/factura</value>
   </data>
   <data name="1412" xml:space="preserve">
-    <value>/almacen/movimientos/notafiscal/separacion</value>
+    <value>/almacen/movimientos/salida/factura</value>
   </data>
   <data name="1413" xml:space="preserve">
-    <value>/almacen/movimientos/orden/recibo</value>
+    <value>/almacen/movimientos/entrada/operacion</value>
   </data>
   <data name="1414" xml:space="preserve">
-    <value>/almacen/movimientos/orden/separacion</value>
+    <value>/almacen/movimientos/salida/operacion</value>
   </data>
   <data name="1415" xml:space="preserve">
-    <value>/almacen/movimientos/manual/entrada</value>
+    <value>/almacen/movimientos/entrada/manual</value>
   </data>
   <data name="1416" xml:space="preserve">
-    <value>/almacen/movimientos/manual/salida</value>
+    <value>/almacen/movimientos/salida/manual</value>
   </data>
   <data name="1417" xml:space="preserve">
     <value>/almacen/movimientos/transferencia</value>
   </data>
   <data name="1418" xml:space="preserve">
-    <value>/almacen/movimientos/descarte</value>
+    <value>/almacen/movimientos/eliminacion</value>
   </data>
   <data name="1420" xml:space="preserve">
     <value>/almacen/etiquetas</value>
@@ -280,7 +280,7 @@
     <value>/planeamiento/ordenes/operacion</value>
   </data>
   <data name="1530" xml:space="preserve">
-    <value>/planeamiento/stock</value>
+    <value>/planeamiento/inventario</value>
   </data>
   <data name="1540" xml:space="preserve">
     <value>/planeamiento/ordenes/venta</value>
@@ -364,13 +364,13 @@
     <value>/calidad/estandares</value>
   </data>
   <data name="1751" xml:space="preserve">
-    <value>/calidad/patrones/productos</value>
+    <value>/calidad/estandares/productos</value>
   </data>
   <data name="1752" xml:space="preserve">
-    <value>/calidad/patrones/procesos</value>
+    <value>/calidad/estandares/procesos</value>
   </data>
   <data name="1753" xml:space="preserve">
-    <value>/calidad/patrones/periodicas</value>
+    <value>/calidad/estandares/periodicos</value>
   </data>
   <data name="1760" xml:space="preserve">
     <value>/calidad/parametros</value>

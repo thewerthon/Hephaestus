@@ -199,7 +199,7 @@
     <value>/comercial</value>
   </data>
   <data name="1110" xml:space="preserve">
-    <value>/comercial/ordens/compra</value>
+    <value>/comercial/ordens/venda</value>
   </data>
   <data name="1120" xml:space="preserve">
     <value>/comercial/precos</value>
@@ -238,22 +238,22 @@
     <value>/almoxarifado/movimentos</value>
   </data>
   <data name="1411" xml:space="preserve">
-    <value>/almoxarifado/movimentos/notafiscal/recebimento</value>
+    <value>/almoxarifado/movimentos/entrada/nota</value>
   </data>
   <data name="1412" xml:space="preserve">
-    <value>/almoxarifado/movimentos/notafiscal/separacao</value>
+    <value>/almoxarifado/movimentos/saida/nota</value>
   </data>
   <data name="1413" xml:space="preserve">
-    <value>/almoxarifado/movimentos/ordem/devolucao</value>
+    <value>/almoxarifado/movimentos/entrada/operacao</value>
   </data>
   <data name="1414" xml:space="preserve">
-    <value>/almoxarifado/movimentos/ordem/separacao</value>
+    <value>/almoxarifado/movimentos/saida/operacao</value>
   </data>
   <data name="1415" xml:space="preserve">
-    <value>/almoxarifado/movimentos/manual/entrada</value>
+    <value>/almoxarifado/movimentos/entrada/manual</value>
   </data>
   <data name="1416" xml:space="preserve">
-    <value>/almoxarifado/movimentos/manual/saida</value>
+    <value>/almoxarifado/movimentos/saida/manual</value>
   </data>
   <data name="1417" xml:space="preserve">
     <value>/almoxarifado/movimentos/tranferencia</value>
@@ -370,7 +370,7 @@
     <value>/qualidade/padroes/processos</value>
   </data>
   <data name="1753" xml:space="preserve">
-    <value>/qualidade/padroes/periodicas</value>
+    <value>/qualidade/padroes/periodicos</value>
   </data>
   <data name="1760" xml:space="preserve">
     <value>/qualidade/parametros</value>

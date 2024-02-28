@@ -544,9 +544,14 @@ a:focus {
 	.navbutton {
 		width: 100%;
 	}
-
+	
 	.favbutton-blank {
 		width: 100%;
+	}
+}
+
+@media (pointer: coarse) {
+	.favbutton-blank {
 		background-image: url("/images/stains/touch.svg");
 	}
 }

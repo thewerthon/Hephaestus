@@ -292,28 +292,28 @@
     <value>Production</value>
   </data>
   <data name="1610" xml:space="preserve">
-    <value>Records</value>
+    <value>Registers</value>
   </data>
   <data name="1611" xml:space="preserve">
-    <value>Start</value>
+    <value>Start Register</value>
   </data>
   <data name="1612" xml:space="preserve">
-    <value>Consumption</value>
+    <value>Consumption Register</value>
   </data>
   <data name="1613" xml:space="preserve">
-    <value>Production</value>
+    <value>Production Register</value>
   </data>
   <data name="1614" xml:space="preserve">
-    <value>Breakings</value>
+    <value>Breakings Register</value>
   </data>
   <data name="1615" xml:space="preserve">
-    <value>Reworks</value>
+    <value>Reworks Register</value>
   </data>
   <data name="1616" xml:space="preserve">
-    <value>Losses</value>
+    <value>Losses Register</value>
   </data>
   <data name="1617" xml:space="preserve">
-    <value>End</value>
+    <value>End Register</value>
   </data>
   <data name="1620" xml:space="preserve">
     <value>Labels</value>
@@ -331,13 +331,13 @@
     <value>Inspections</value>
   </data>
   <data name="1711" xml:space="preserve">
-    <value>Products</value>
+    <value>Products Inspections</value>
   </data>
   <data name="1712" xml:space="preserve">
-    <value>Processes</value>
+    <value>Processes Inspections</value>
   </data>
   <data name="1713" xml:space="preserve">
-    <value>Periodical</value>
+    <value>Periodical Inspections</value>
   </data>
   <data name="1720" xml:space="preserve">
     <value>Non-Conformities</value>
@@ -346,31 +346,31 @@
     <value>Blockings</value>
   </data>
   <data name="1731" xml:space="preserve">
-    <value>Products</value>
+    <value>Products Blockings</value>
   </data>
   <data name="1732" xml:space="preserve">
-    <value>Processes</value>
+    <value>Processes Blockings</value>
   </data>
   <data name="1740" xml:space="preserve">
     <value>Clearances</value>
   </data>
   <data name="1741" xml:space="preserve">
-    <value>Products</value>
+    <value>Products Clearances</value>
   </data>
   <data name="1742" xml:space="preserve">
-    <value>Processes</value>
+    <value>Processes Clearances</value>
   </data>
   <data name="1750" xml:space="preserve">
     <value>Inspections Standards</value>
   </data>
   <data name="1751" xml:space="preserve">
-    <value>Products</value>
+    <value>Products Patterns</value>
   </data>
   <data name="1752" xml:space="preserve">
-    <value>Processes</value>
+    <value>Processes Patterns</value>
   </data>
   <data name="1753" xml:space="preserve">
-    <value>Periodical</value>
+    <value>Periodical Patterns</value>
   </data>
   <data name="1760" xml:space="preserve">
     <value>Parameters</value>

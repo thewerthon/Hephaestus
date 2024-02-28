@@ -397,7 +397,7 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 
 		if (!(Preferences.Favorites?.Contains(code) ?? false)) {
 
-			if (!(Preferences.Favorites?.Length >= 45)) {
+			if (!(Preferences.Favorites?.Length >= 99)) {
 
 				Preferences.Favorites = $"{Preferences.Favorites ?? string.Empty} {code}".Trim();
 				LocalPreferences.Favorites = Preferences.Favorites;
