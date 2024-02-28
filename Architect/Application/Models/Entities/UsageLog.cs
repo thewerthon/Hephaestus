@@ -9,7 +9,7 @@ public class UsageLog : BaseEntity {
 	[MaxLength(32)]
 	public string Action { get; set; } = default!;
 
-	[MaxLength(255)]
+	[MaxLength(256)]
 	public string? Details { get; set; }
 
 	public int? AppBuild { get; set; }

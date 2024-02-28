@@ -329,9 +329,6 @@ Para navegar entre las diferentes áreas del sistema y aprovechar sus caracterí
     <value>¿Forzar restauración de la aplicación?&lt;br/&gt;
 Esto puede resolver problemas de rendimiento y conectividad.</value>
   </data>
-  <data name="0068" xml:space="preserve">
-    <value>Funciones Favoritas</value>
-  </data>
   <data name="0069" xml:space="preserve">
     <value>Favorito</value>
   </data>
@@ -347,10 +344,19 @@ Esto puede resolver problemas de rendimiento y conectividad.</value>
   <data name="0073" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="0076" xml:space="preserve">
+    <value>Añade favoritos para verlos aquí</value>
+  </data>
   <data name="0074" xml:space="preserve">
-    <value>Límite de favoritos alcanzado.</value>
+    <value>Límite de módulos favoritos alcanzado.</value>
   </data>
   <data name="0075" xml:space="preserve">
-    <value>Añade funciones favoritas para verlos aquí:</value>
+    <value>Límite de funciones favoritas alcanzado.</value>
+  </data>
+  <data name="0068" xml:space="preserve">
+    <value>Módulos Favoritos</value>
+  </data>
+  <data name="0077" xml:space="preserve">
+    <value>Funciones Favoritas</value>
   </data>
 </root>

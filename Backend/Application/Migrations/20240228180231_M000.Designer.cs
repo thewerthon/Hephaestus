@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hephaestus.Backend.Application.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240227200026_M000")]
+    [Migration("20240228180231_M000")]
     partial class M000
     {
         /// <inheritdoc />
@@ -87,7 +87,11 @@ namespace Hephaestus.Backend.Application.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Favorites")
+                    b.Property<string>("FavoriteFunctions")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<string>("FavoriteModules")
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
 
@@ -466,28 +470,28 @@ namespace Hephaestus.Backend.Application.Migrations
                         {
                             Id = 1,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2567),
+                            CreatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Test 1",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2570)
+                            UpdatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2572),
+                            CreatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Test 2",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2572)
+                            UpdatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2574),
+                            CreatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Test 3",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2574)
+                            UpdatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -569,8 +573,8 @@ namespace Hephaestus.Backend.Application.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PlatformLanguage")
                         .HasMaxLength(8)
@@ -734,7 +738,7 @@ namespace Hephaestus.Backend.Application.Migrations
                             Id = 1,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(580),
+                            CreatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "sistema@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000000",
                             Hidden = true,
@@ -744,14 +748,14 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(582)
+                            UpdatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(585),
+                            CreatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "usuario-portal@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000001",
                             Hidden = true,
@@ -761,14 +765,14 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(585)
+                            UpdatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(588),
+                            CreatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "usuario-externo@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000002",
                             Hidden = true,
@@ -778,14 +782,14 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(588)
+                            UpdatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTime(2024, 2, 27, 17, 0, 26, 182, DateTimeKind.Local).AddTicks(593),
+                            CreatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "autobot@siw.ind.br",
                             Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
                             Hidden = true,
@@ -795,7 +799,7 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTime(2024, 2, 27, 17, 0, 26, 182, DateTimeKind.Local).AddTicks(604)
+                            UpdatedOn = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

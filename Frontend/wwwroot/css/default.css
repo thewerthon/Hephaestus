@@ -507,13 +507,6 @@ a:focus {
 	pointer-events: none;
 }
 
-.favbutton-container {
-	gap: inherit;
-	display: inherit;
-	flex-wrap: inherit;
-	flex-direction: inherit;
-}
-
 .favbutton-blank {
 	width: 260px;
 	height: 110px;
@@ -538,6 +531,14 @@ a:focus {
 .favbutton-dragging * {
 	visibility: hidden;
 	pointer-events: none;
+}
+
+.favmodules-container,
+.favfunctions-container {
+	gap: inherit;
+	display: inherit;
+	flex-wrap: inherit;
+	flex-direction: inherit;
 }
 
 @media (max-width: 615px) {

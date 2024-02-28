@@ -1,7 +1,7 @@
-function getFavoritesOrder() {
+function getFavoritesOrder(container) {
 
 	const codes = [];
-	const favorites = document.getElementsByClassName("favbutton-container");
+	const favorites = document.getElementsByClassName(container);
 
 	for (let i = 0; i < favorites.length; i++) {
 
@@ -18,9 +18,9 @@ function getFavoritesOrder() {
 
 }
 
-function enableFavoritesSorting() {
+function enableFavoritesSorting(container) {
 
-	const favorites = document.getElementsByClassName("favbutton-container");
+	const favorites = document.getElementsByClassName(container);
 	Array.prototype.map.call(favorites, (list) => { Array.prototype.map.call(list.children, (item) => { enableFavoriteDragging(item) }); });
 
 }
@@ -68,9 +68,12 @@ function handleFavoriteDragOver(item) {
 }
 
 function handleFavoriteDragEnd(item) {
-
+	
+	const modules = getFavoritesOrder('favmodules-container');
+	const functions = getFavoritesOrder('favfunctions-container');
+	
 	this.innerHTML = favoriteInnerContent;
 	item.target.classList.remove('favbutton-dragging');
-	DotNet.invokeMethodAsync("Hephaestus.Frontend", "TriggerFavoritesReorder", getFavoritesOrder())
+	DotNet.invokeMethodAsync("Hephaestus.Frontend", "TriggerFavoritesReorder", modules, functions)
 
 }

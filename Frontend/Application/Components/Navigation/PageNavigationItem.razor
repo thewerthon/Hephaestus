@@ -16,6 +16,9 @@
 	public bool Enabled { get; set; } = true;
 
 	[Parameter]
+	public bool IsModuleButton { get; set; } = false;
+
+	[Parameter]
 	public EventCallback Callback { get; set; }
 
 	private void OnClick() {
@@ -26,7 +29,9 @@
 
 	private void ShowContextMenu(MouseEventArgs args) {
 
-		var favorited = UserService.Preferences.Favorites?.Contains(Code) ?? false;
+		var favorited = IsModuleButton
+			? UserService.Preferences.FavoriteModules?.Contains(Code) ?? false
+			: UserService.Preferences.FavoriteFunctions?.Contains(Code) ?? false;
 
 		ContextMenuService.Open(args,
 		new List<ContextMenuItem> {
@@ -46,14 +51,31 @@
 
 	private async Task AddFavoriteAsync() {
 
-		if (UserService.Preferences.Favorites?.Length >= 99) {
+		if (IsModuleButton) {
 
-			NotificationService.Notify(NotificationSeverity.Warning, AppTexts["0072"], AppTexts["0074"]);
+			if ((UserService.Preferences.FavoriteModules?.Length ?? 0) < Preferences.FavoriteModulesMaxLength - 1) {
+
+				await UserService.AddFavoriteModuleAsync(Code, true);
+				await Callback.InvokeAsync();
+
+			} else {
+
+				NotificationService.Notify(NotificationSeverity.Warning, AppTexts["0072"], AppTexts["0074"]);
+
+			}
 
 		} else {
 
-			await UserService.AddFavoriteAsync(Code, true);
-			await Callback.InvokeAsync();
+			if ((UserService.Preferences.FavoriteFunctions?.Length ?? 0) < Preferences.FavoriteFunctionsMaxLength - 1) {
+
+				await UserService.AddFavoriteFunctionAsync(Code, true);
+				await Callback.InvokeAsync();
+
+			} else {
+
+				NotificationService.Notify(NotificationSeverity.Warning, AppTexts["0072"], AppTexts["0075"]);
+
+			}
 
 		}
 
@@ -61,8 +83,17 @@
 
 	private async Task RemoveFavoriteAsync() {
 
-		await UserService.RemoveFavoriteAsync(Code, true);
-		await Callback.InvokeAsync();
+		if (IsModuleButton) {
+
+			await UserService.RemoveFavoriteModuleAsync(Code, true);
+			await Callback.InvokeAsync();
+
+		} else {
+
+			await UserService.RemoveFavoriteFunctionAsync(Code, true);
+			await Callback.InvokeAsync();
+
+		}
 
 	}
 

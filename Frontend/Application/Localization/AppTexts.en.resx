@@ -329,9 +329,6 @@ Click the button below to check out everything new in SCP 2.0!</value>
     <value>Force restore the application?&lt;br/&gt;
 This can resolve performance and connectivity issues.</value>
   </data>
-  <data name="0068" xml:space="preserve">
-    <value>Favorite Functions</value>
-  </data>
   <data name="0069" xml:space="preserve">
     <value>Favorite</value>
   </data>
@@ -347,10 +344,19 @@ This can resolve performance and connectivity issues.</value>
   <data name="0073" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="0076" xml:space="preserve">
+    <value>Add favorites to see them here</value>
+  </data>
   <data name="0074" xml:space="preserve">
-    <value>Favorites limit reached.</value>
+    <value>Favorite modules limit reached.</value>
   </data>
   <data name="0075" xml:space="preserve">
-    <value>Add favorites functions to see them here:</value>
+    <value>Favorite functions limit achieved.</value>
+  </data>
+  <data name="0068" xml:space="preserve">
+    <value>Favorite Modules</value>
+  </data>
+  <data name="0077" xml:space="preserve">
+    <value>Favorite Functions</value>
   </data>
 </root>

@@ -248,32 +248,32 @@ ul.rz-profile-menu {
 	opacity: .1
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-primary .rzi {
-	color: var(--rz-primary-light);
+.rz-button.rz-variant-text.rz-primary .rzi {
+	color: var(--rz-on-primary-dark);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-secondary .rzi {
-	color: var(--rz-secondary-light);
+.rz-button.rz-variant-text.rz-secondary .rzi {
+	color: var(--rz-on-secondary-dark);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-success .rzi {
-	color: var(--rz-success-light);
+.rz-button.rz-variant-text.rz-success .rzi {
+	color: var(--rz-on-success-dark);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-danger .rzi {
-	color: var(--rz-danger-light);
+.rz-button.rz-variant-text.rz-danger .rzi {
+	color: var(--rz-on-danger-dark);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-warning .rzi {
-	color: var(--rz-warning-light);
+.rz-button.rz-variant-text.rz-warning .rzi {
+	color: var(--rz-on-warning-dark);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-info .rzi {
-	color: var(--rz-info-light);
+.rz-button.rz-variant-text.rz-info .rzi {
+	color: var(--rz-on-info-dark);
 }
 
 .rz-button.rz-variant-text.rz-dark .rzi {
-	color: var(--rz-white);
+	color: var(--rz-on-primary-dark);
 }
 
 .rz-button.rz-variant-text.rz-light .rzi {
@@ -320,10 +320,46 @@ ul.rz-profile-menu {
 	backdrop-filter: blur(10px);
 }
 
+.rz-growl-icon-close {
+	font-size: 18px;
+}
+
 .rz-alert {
 	gap: 0px;
 	padding: 16px 18px!important;
 	border-radius: 16px;
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-primary .rzi {
+	color: var(--rz-primary-light);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-secondary .rzi {
+	color: var(--rz-secondary-light);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-success .rzi {
+	color: var(--rz-success-light);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-danger .rzi {
+	color: var(--rz-danger-light);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-warning .rzi {
+	color: var(--rz-warning-light);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-info .rzi {
+	color: var(--rz-info-light);
+}
+
+.rz-alert .rz-button.rz-variant-text.rz-dark .rzi {
+	color: var(--rz-white);
+}
+
+.rz-alert .rz-button.rz-variant-text.rz-light .rzi {
+	color: var(--rz-white);
 }
 
 .rz-alert .rz-button .rzi {

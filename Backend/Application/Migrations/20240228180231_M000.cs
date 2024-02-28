@@ -154,7 +154,8 @@ namespace Hephaestus.Backend.Application.Migrations
                     Theme = table.Column<string>(type: "varchar(5)", nullable: true),
                     Language = table.Column<string>(type: "varchar(2)", nullable: true),
                     FeatureAlert = table.Column<int>(type: "int", nullable: true),
-                    Favorites = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true)
+                    FavoriteModules = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
+                    FavoriteFunctions = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -216,7 +217,7 @@ namespace Hephaestus.Backend.Application.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Action = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Details = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Details = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     AppBuild = table.Column<int>(type: "int", nullable: true),
                     AppVersion = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
                     PlatformName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
@@ -317,21 +318,21 @@ namespace Hephaestus.Backend.Application.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "Department", "Email", "FirstName", "Guid", "Hidden", "LastName", "Name", "Name_en", "Name_es", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
-                values: new object[] { 1, true, null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(580), null, "sistema@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", true, null, "Sistema", "System", "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(582) });
+                values: new object[] { 1, true, null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "sistema@siw.ind.br", null, "00000000-0000-0000-0000-000000000000", true, null, "Sistema", "System", "Sistema", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Preferences",
-                columns: new[] { "Id", "Favorites", "FeatureAlert", "Language", "Theme", "User" },
-                values: new object[] { 1, null, 0, "pt", "auto", 1 });
+                columns: new[] { "Id", "FavoriteFunctions", "FavoriteModules", "FeatureAlert", "Language", "Theme", "User" },
+                values: new object[] { 1, null, null, 0, "pt", "auto", 1 });
 
             migrationBuilder.InsertData(
                 table: "Tests",
                 columns: new[] { "Id", "CreatedBy", "CreatedOn", "Name", "Name_en", "Name_es", "UpdatedBy", "UpdatedOn" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2567), "Test 1", null, null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2570) },
-                    { 2, 1, new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2572), "Test 2", null, null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2572) },
-                    { 3, 1, new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2574), "Test 3", null, null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 179, DateTimeKind.Utc).AddTicks(2574) }
+                    { 1, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test 1", null, null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test 2", null, null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test 3", null, null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -339,19 +340,19 @@ namespace Hephaestus.Backend.Application.Migrations
                 columns: new[] { "Id", "Active", "Country", "CreatedBy", "CreatedOn", "Department", "Email", "FirstName", "Guid", "Hidden", "LastName", "Name", "Name_en", "Name_es", "Office", "Photo", "Role", "Title", "UpdatedBy", "UpdatedOn" },
                 values: new object[,]
                 {
-                    { 2, true, null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(585), null, "usuario-portal@siw.ind.br", null, "00000000-0000-0000-0000-000000000001", true, null, "Usuário do Portal", "Portal User", "Usuario del Portal", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(585) },
-                    { 3, true, null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(588), null, "usuario-externo@siw.ind.br", null, "00000000-0000-0000-0000-000000000002", true, null, "Usuário Externo", "External User", "Usuario Externo", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 2, 27, 20, 0, 26, 182, DateTimeKind.Utc).AddTicks(588) },
-                    { 4, true, null, 1, new DateTime(2024, 2, 27, 17, 0, 26, 182, DateTimeKind.Local).AddTicks(593), null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", true, null, "Autobot", "Autobot", "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 2, 27, 17, 0, 26, 182, DateTimeKind.Local).AddTicks(604) }
+                    { 2, true, null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "usuario-portal@siw.ind.br", null, "00000000-0000-0000-0000-000000000001", true, null, "Usuário do Portal", "Portal User", "Usuario del Portal", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, true, null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "usuario-externo@siw.ind.br", null, "00000000-0000-0000-0000-000000000002", true, null, "Usuário Externo", "External User", "Usuario Externo", null, "images/users/unknown.jpg", "System.User", null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, true, null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "autobot@siw.ind.br", null, "8c4e35a5-2f64-4c28-8644-672f037272c5", true, null, "Autobot", "Autobot", "Autobot", null, "images/users/unknown.jpg", "System.Admin", null, 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Preferences",
-                columns: new[] { "Id", "Favorites", "FeatureAlert", "Language", "Theme", "User" },
+                columns: new[] { "Id", "FavoriteFunctions", "FavoriteModules", "FeatureAlert", "Language", "Theme", "User" },
                 values: new object[,]
                 {
-                    { 2, null, 0, "pt", "auto", 2 },
-                    { 3, null, 0, "pt", "auto", 3 },
-                    { 4, null, 0, "pt", "auto", 4 }
+                    { 2, null, null, 0, "pt", "auto", 2 },
+                    { 3, null, null, 0, "pt", "auto", 3 },
+                    { 4, null, null, 0, "pt", "auto", 4 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -330,7 +330,7 @@ Clique no botão abaixo para para conferir tudo que há de novo no SCP 2.0!</val
     <value>Lembrar Depois</value>
   </data>
   <data name="0068" xml:space="preserve">
-    <value>Funções Favoritas</value>
+    <value>Módulos Favoritos</value>
   </data>
   <data name="0069" xml:space="preserve">
     <value>Favoritar</value>
@@ -348,9 +348,15 @@ Clique no botão abaixo para para conferir tudo que há de novo no SCP 2.0!</val
     <value>Erro</value>
   </data>
   <data name="0074" xml:space="preserve">
-    <value>Limite de favoritos atingido.</value>
+    <value>Limite de módulos favoritos atingido.</value>
   </data>
   <data name="0075" xml:space="preserve">
-    <value>Adicione funções favoritas para vê-las aqui:</value>
+    <value>Limite de funções favoritas atingido.</value>
+  </data>
+  <data name="0076" xml:space="preserve">
+    <value>Adicione favoritos para vê-los aqui</value>
+  </data>
+  <data name="0077" xml:space="preserve">
+    <value>Funções Favoritas</value>
   </data>
 </root>

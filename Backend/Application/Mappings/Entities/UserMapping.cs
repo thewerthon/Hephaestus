@@ -43,9 +43,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new User {
@@ -60,9 +60,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new User {
@@ -77,9 +77,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new User {
@@ -94,9 +94,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.Now,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.Now
+				UpdatedOn = new DateTime(2024, 01, 01)
 			}
 
 		]);
