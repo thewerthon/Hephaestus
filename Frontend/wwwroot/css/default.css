@@ -139,10 +139,6 @@
 		grid-template-areas: 'rz-header rz-header rz-header' 'rz-sidebar rz-body rz-body';
 	}
 
-	.app-sidebar {
-		padding-top: 25px;
-	}
-
 	.app-header-logo {
 		visibility: visible !important;
 	}
@@ -155,10 +151,6 @@
 @media (display-mode: standalone) {
 	.app-layout {
 		grid-template-areas: 'rz-header rz-header rz-header' 'rz-sidebar rz-body rz-body';
-	}
-
-	.app-sidebar {
-		padding-top: 25px;
 	}
 
 	.app-header-logo {
@@ -533,12 +525,18 @@ a:focus {
 	pointer-events: none;
 }
 
+.favblank-container,
 .favmodules-container,
 .favfunctions-container {
 	gap: inherit;
 	display: inherit;
 	flex-wrap: inherit;
 	flex-direction: inherit;
+	width: 100%;
+}
+
+.favblank-container {
+	width: 820px;
 }
 
 @media (max-width: 615px) {

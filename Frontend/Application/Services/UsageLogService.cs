@@ -56,9 +56,12 @@ public class UsageLogService(ILocalStorageService storage, IHttpClientFactory cl
 
 	private async Task GetDefaultInfoAsync() {
 
+		var version = new Version();
 		DefaultInfo = await JSRuntime.InvokeAsync<UsageLog>("getUsageLogInfo");
 
 		DefaultInfo.Id = 0;
+		DefaultInfo.AppBuild = version.Build;
+		DefaultInfo.AppVersion = version.Name;
 		DefaultInfo.DateTime = DateTime.UtcNow;
 
 	}

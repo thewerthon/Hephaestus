@@ -17,7 +17,7 @@ window.addEventListener("appinstalled", () => {
 function onLoad() {
 	
 	document.getElementById("loader").remove()
-	document.addEventListener('contextmenu', event => event.preventDefault());
+	document.addEventListener("contextmenu", event => event.preventDefault());
 	
 }
 

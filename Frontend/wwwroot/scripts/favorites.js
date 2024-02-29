@@ -31,14 +31,14 @@ function enableFavoriteDragging(item) {
 	item.ondragstart = handleFavoriteDragStart;
 	item.ondragover = handleFavoriteDragOver;
 	item.ondragend = handleFavoriteDragEnd;
-	item.setAttribute('draggable', true)
+	item.setAttribute("draggable", true)
 
 }
 
 function handleFavoriteDrag(item) {
 
 	const selectedItem = item.target, list = selectedItem.parentNode, x = event.clientX, y = event.clientY;
-	selectedItem.classList.add('favbutton-dragging');
+	selectedItem.classList.add("favbutton-dragging");
 
 	let swapItem = document.elementFromPoint(x, y) === null ? selectedItem : document.elementFromPoint(x, y);
 
@@ -52,7 +52,7 @@ function handleFavoriteDrag(item) {
 }
 
 function handleFavoriteDragStart(item) {
-
+	
 	item.dropEffect = "move";
 	favoriteInnerContent = this.innerHTML;
 
@@ -69,11 +69,11 @@ function handleFavoriteDragOver(item) {
 
 function handleFavoriteDragEnd(item) {
 	
-	const modules = getFavoritesOrder('favmodules-container');
-	const functions = getFavoritesOrder('favfunctions-container');
+	const modules = getFavoritesOrder("favmodules-container");
+	const functions = getFavoritesOrder("favfunctions-container");
 	
 	this.innerHTML = favoriteInnerContent;
-	item.target.classList.remove('favbutton-dragging');
+	item.target.classList.remove("favbutton-dragging");
 	DotNet.invokeMethodAsync("Hephaestus.Frontend", "TriggerFavoritesReorder", modules, functions)
 
 }

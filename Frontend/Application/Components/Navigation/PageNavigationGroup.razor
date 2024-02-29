@@ -2,7 +2,7 @@
 
 <RadzenText Text=@($"{Text}:") Style="width: 100%" class="rz-mt-2 rz-mb-0" />
 
-<RadzenRow Gap="20px" RowGap="20px" Style="@Style" class="@Class">
+<RadzenRow Gap="20px" RowGap="20px" Style="width: 100%">
 	@ChildContent
 </RadzenRow>
 
@@ -13,11 +13,5 @@
 
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
-
-	[Parameter]
-	public string Style { get; set; } = "width: 100%";
-
-	[Parameter]
-	public string Class { get; set; } = default!;
 
 }
