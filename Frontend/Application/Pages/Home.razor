@@ -2,36 +2,98 @@
 @page "/inicio"
 @page "/home"
 
+@implements IDisposable
 @namespace Hephaestus.Frontend.Application.Pages
 
-<PageNavigation Code="0100" Title="@($"{AppTexts[VariablesService.SaudationCode()]}, {UserService.CurrentUser.FirstName}.")" Subtitle="@AppTexts["0054"]">
+<PageNavigation Code="0100" Title="@($"{AppTexts[VariablesService.SaudationCode()]}, {UserService.CurrentUser.FirstName}.")" Subtitle="@AppTexts["0054"]" Favoritable="false">
 
 	<FeatureAlert />
 
-	<PageNavigationGroup Text="@AppTexts["0059"]">
-		<PageNavigationItem Code="0130" />
-		<PageNavigationItem Code="0110" />
-		<PageNavigationItem Code="0120" />
-		<PageNavigationItem Code="0150" />
-	</PageNavigationGroup>
+	@{
 
-	<PageNavigationGroup Text="@AppNames["1000"]">
-		<PageNavigationItem Code="1100" />
-		<PageNavigationItem Code="1200" />
-		<PageNavigationItem Code="1300" />
-		<PageNavigationItem Code="1400" />
-		<PageNavigationItem Code="1500" />
-		<PageNavigationItem Code="1600" />
-		<PageNavigationItem Code="1700" />
-		<PageNavigationItem Code="1800" />
-		<PageNavigationItem Code="1900" />
-	</PageNavigationGroup>
+		var favmodules = UserService.Preferences.FavoriteModules ?? string.Empty;
+		var favfunctions = UserService.Preferences.FavoriteFunctions ?? string.Empty;
 
-	<PageNavigationGroup Text="@AppNames["2000"]">
-		<PageNavigationItem Code="2100" />
-		<PageNavigationItem Code="2200" />
-		<PageNavigationItem Code="2400" />
-		<PageNavigationItem Code="2600" />
-	</PageNavigationGroup>
+		if (!String.IsNullOrEmpty(favmodules) || !String.IsNullOrEmpty(favfunctions)) {
+
+			if (!String.IsNullOrEmpty(favmodules)) {
+
+				<PageNavigationGroup Text="@AppTexts["0068"]">
+					<div class="favmodules-container">
+						@foreach (var favorite in favmodules.Split(" ")) {
+							<PageNavigationItem Code="@favorite" IsModuleButton="true" Callback="FavoritesRefresh" />
+						}
+					</div>
+				</PageNavigationGroup>
+
+			}
+
+			if (!String.IsNullOrEmpty(favfunctions)) {
+
+				<PageNavigationGroup Text="@AppTexts["0077"]">
+					<div class="favfunctions-container">
+						@foreach (var favorite in favfunctions.Split(" ")) {
+							<PageNavigationItem Code="@favorite" Callback="FavoritesRefresh" />
+						}
+					</div>
+				</PageNavigationGroup>
+
+			}
+
+		} else {
+
+			<PageNavigationGroup Text="@AppTexts["0076"]" Style="width: 820px">
+				<PageNavigationItemBlank />
+				<PageNavigationItemBlank />
+				<PageNavigationItemBlank />
+				<PageNavigationItemBlank Class="desktop-only" />
+				<PageNavigationItemBlank Class="desktop-only" />
+				<PageNavigationItemBlank Class="desktop-only" />
+			</PageNavigationGroup>
+
+		}
+
+	}
 
 </PageNavigation>
+
+@code {
+
+	protected override void OnAfterRender(bool firstRender) {
+
+		if (firstRender) EnableFavoritesSorting();
+
+	}
+
+	private void EnableFavoritesSorting() {
+
+		JSRuntime.InvokeVoidAsync("enableFavoritesSorting", "favmodules-container");
+		JSRuntime.InvokeVoidAsync("enableFavoritesSorting", "favfunctions-container");
+
+	}
+
+	public static event EventHandler<(string modules, string functions)>? FavoritesReorder;
+	protected override void OnInitialized() { FavoritesReorder += OnFavoritesReorder!; }
+	public void Dispose() { FavoritesReorder -= OnFavoritesReorder!; }
+
+	[JSInvokable]
+	public static void TriggerFavoritesReorder(string modules, string functions) {
+
+		FavoritesReorder?.Invoke(null, (modules, functions));
+
+	}
+
+	private void OnFavoritesReorder(object sender, (string modules, string functions) args) {
+
+		_ = UserService.SetFavoritesOrderAsync(args.modules, args.functions, true);
+
+	}
+
+	private void FavoritesRefresh() {
+
+		StateHasChanged();
+		EnableFavoritesSorting();
+
+	}
+
+}

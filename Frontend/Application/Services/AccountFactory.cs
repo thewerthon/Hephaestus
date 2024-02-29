@@ -36,7 +36,11 @@ public class AccountFactory(IAccessTokenProviderAccessor accessor, UserService s
 
 			}
 
-			_ = UsageLogService.LogLoginAsync();
+			if (!NavigationManager.Uri.Contains("auth")) {
+
+				_ = UsageLogService.LogLoginAsync();
+
+			}
 
 		}
 

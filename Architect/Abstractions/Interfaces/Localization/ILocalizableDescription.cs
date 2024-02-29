@@ -2,13 +2,13 @@
 
 public interface ILocalizableDescription {
 
-	[MaxLength(255)]
+	[MaxLength(256)]
 	public string? Description { get; set; }
 
-	[MaxLength(255)]
+	[MaxLength(256)]
 	public string? Description_en { get; set; }
 
-	[MaxLength(255)]
+	[MaxLength(256)]
 	public string? Description_es { get; set; }
 
 	public string? GetLocalizedDescription(string locale) {

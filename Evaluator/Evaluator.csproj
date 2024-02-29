@@ -2,12 +2,12 @@
 
 	<PropertyGroup>
 		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<TargetFramework>net8.0</TargetFramework>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyName>$(SolutionName).$(MSBuildProjectName)</AssemblyName>
 		<RootNamespace>$(SolutionName).$(MSBuildProjectName)</RootNamespace>
-		<IsTestProject>true</IsTestProject>
-		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<ItemGroup>

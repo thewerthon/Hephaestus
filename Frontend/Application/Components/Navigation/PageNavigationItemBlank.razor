@@ -1,0 +1,13 @@
+﻿@namespace Hephaestus.Frontend.Application.Components
+
+<RadzenCard Variant="Variant.Filled" Style="@Style" class=@($"favbutton-blank {Class}") />
+
+@code {
+
+	[Parameter]
+	public string Class { get; set; } = default!;
+
+	[Parameter]
+	public string Style { get; set; } = default!;
+
+}

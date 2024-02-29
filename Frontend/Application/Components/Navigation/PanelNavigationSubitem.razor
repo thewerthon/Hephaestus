@@ -1,8 +1,6 @@
 ﻿@namespace Hephaestus.Frontend.Application.Components
 
-<RadzenPanelMenuItem Text="@AppNames[Code]" Icon="@MenuIcons[Code]" Path="@AppPaths[Code]" Visible="@Visible" Click="@Click">
-	@ChildContent
-</RadzenPanelMenuItem>
+<RadzenPanelMenuItem Text="@AppNames[Code]" Icon="@MenuIcons[Code]" Path="@AppPaths[Code]" Visible="@Visible" Click="@Click" />
 
 @code {
 
@@ -14,8 +12,5 @@
 
 	[Parameter]
 	public EventCallback<MenuItemEventArgs> Click { get; set; }
-
-	[Parameter]
-	public RenderFragment? ChildContent { get; set; }
 
 }

@@ -22,27 +22,27 @@ public class TestMapping : IEntityTypeConfiguration<Test> {
 				Id = 1,
 				Name = "Test 1",
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new Test {
 				Id = 2,
 				Name = "Test 2",
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new Test {
 				Id = 3,
 				Name = "Test 3",
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 		]);

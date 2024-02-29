@@ -35,60 +35,68 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Id = 1,
 				Guid = "00000000-0000-0000-0000-000000000000",
 				Name = "Sistema",
+				Name_en = "System",
+				Name_es = "Sistema",
 				Email = "sistema@siw.ind.br",
 				Photo = "images/users/unknown.jpg",
 				Role = "System.Admin",
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new User {
 				Id = 2,
 				Guid = "00000000-0000-0000-0000-000000000001",
 				Name = "Usuário do Portal",
+				Name_en = "Portal User",
+				Name_es = "Usuario del Portal",
 				Email = "usuario-portal@siw.ind.br",
 				Photo = "images/users/unknown.jpg",
 				Role = "System.User",
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new User {
 				Id = 3,
 				Guid = "00000000-0000-0000-0000-000000000002",
 				Name = "Usuário Externo",
+				Name_en = "External User",
+				Name_es = "Usuario Externo",
 				Email = "usuario-externo@siw.ind.br",
 				Photo = "images/users/unknown.jpg",
 				Role = "System.User",
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.UtcNow
+				UpdatedOn = new DateTime(2024, 01, 01)
 			},
 
 			new User {
 				Id = 4,
 				Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
 				Name = "Autobot",
+				Name_en = "Autobot",
+				Name_es = "Autobot",
 				Email = "autobot@siw.ind.br",
 				Photo = "images/users/unknown.jpg",
 				Role = "System.Admin",
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = DateTime.Now,
+				CreatedOn = new DateTime(2024, 01, 01),
 				UpdatedBy = 1,
-				UpdatedOn = DateTime.Now
+				UpdatedOn = new DateTime(2024, 01, 01)
 			}
 
 		]);

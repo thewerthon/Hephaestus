@@ -248,28 +248,28 @@ ul.rz-profile-menu {
 	opacity: .1
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-primary .rzi {
-	color: var(--rz-primary-dark);
+.rz-button.rz-variant-text.rz-primary .rzi {
+	color: var(--rz-primary);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-secondary .rzi {
-	color: var(--rz-secondary-dark);
+.rz-button.rz-variant-text.rz-secondary .rzi {
+	color: var(--rz-secondary);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-success .rzi {
-	color: var(--rz-success-dark);
+.rz-button.rz-variant-text.rz-success .rzi {
+	color: var(--rz-success);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-danger .rzi {
-	color: var(--rz-danger-dark);
+.rz-button.rz-variant-text.rz-danger .rzi {
+	color: var(--rz-danger);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-warning .rzi {
-	color: var(--rz-warning-dark);
+.rz-button.rz-variant-text.rz-warning .rzi {
+	color: var(--rz-warning);
 }
 
-.rz-button:not(:hover).rz-variant-text.rz-info .rzi {
-	color: var(--rz-info-dark);
+.rz-button.rz-variant-text.rz-info .rzi {
+	color: var(--rz-info);
 }
 
 .rz-button.rz-variant-text.rz-dark .rzi {
@@ -320,10 +320,46 @@ ul.rz-profile-menu {
 	backdrop-filter: blur(10px);
 }
 
+.rz-growl-icon-close {
+	font-size: 18px;
+}
+
 .rz-alert {
 	gap: 0px;
 	padding: 16px 18px!important;
 	border-radius: 16px;
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-primary .rzi {
+	color: var(--rz-primary-darker);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-secondary .rzi {
+	color: var(--rz-secondary-darker);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-success .rzi {
+	color: var(--rz-success-darker);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-danger .rzi {
+	color: var(--rz-danger-darker);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-warning .rzi {
+	color: var(--rz-warning-darker);
+}
+
+.rz-alert .rz-button:not(:hover).rz-variant-text.rz-info .rzi {
+	color: var(--rz-info-darker);
+}
+
+.rz-alert .rz-button.rz-variant-text.rz-dark .rzi {
+	color: var(--rz-primary);
+}
+
+.rz-alert .rz-button.rz-variant-text.rz-light .rzi {
+	color: var(--rz-white);
 }
 
 .rz-alert .rz-button .rzi {

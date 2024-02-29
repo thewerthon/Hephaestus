@@ -1,8 +1,8 @@
 ﻿@namespace Hephaestus.Frontend.Application.Components
 
-<RadzenCard Variant="Variant.Filled" ContextMenu=@(args => ShowContextMenu(args)) Style=@($"background-image: url({ButtonStains[Code]});") class=@($"cardbutton{(Active ? "" : " disabled")}") @onclick="OnClick">
+<RadzenCard Variant="Variant.Filled" ContextMenu=@(args => ShowContextMenu(args)) Style=@($"background-image: url({ButtonStains[Code]});") class=@($"navbutton{(Enabled ? "" : " disabled")}") code="@Code" @onclick="OnClick">
 	<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Start" Gap="1rem" Style="height: 100%">
-		<LordIcon Icon="@ButtonAnims[Code]" State="default" Anim="state" Trigger="hover-click" Stroke="bold" Size="70px" Target=".cardbutton" />
+		<LordIcon Icon="@ButtonAnims[Code]" State="default" Anim="state" Trigger="hover-click" Stroke="bold" Size="70px" Target=".navbutton" />
 		<RadzenText Text="@AppNames[Code]" Style="font-size: 18px" class="rz-m-0" />
 	</RadzenStack>
 </RadzenCard>
@@ -13,31 +13,87 @@
 	public string Code { get; set; } = default!;
 
 	[Parameter]
-	public bool Favorite { get; set; } = false;
+	public bool Enabled { get; set; } = true;
 
 	[Parameter]
-	public bool Active { get; set; } = true;
+	public bool IsModuleButton { get; set; } = false;
 
-	void ShowContextMenu(MouseEventArgs args) {
-
-		ContextMenuService.Open(args,
-		new List<ContextMenuItem> {
-			new ContextMenuItem(){ Text = "Favoritar", Value = 1, Icon = "star" },
-			new ContextMenuItem(){ Text = "Remover", Value = 2, Icon = "star_outline" } }, OnMenuItemClick);
-
-	}
-
-	void OnMenuItemClick(MenuItemEventArgs args) {
-
-		if (!args.Value.Equals(3) && !args.Value.Equals(4)) {
-			ContextMenuService.Close();
-		}
-
-	}
+	[Parameter]
+	public EventCallback Callback { get; set; }
 
 	private void OnClick() {
 
 		NavigationManager.NavigateTo(AppPaths[Code]);
+
+	}
+
+	private void ShowContextMenu(MouseEventArgs args) {
+
+		var favorited = IsModuleButton
+			? UserService.Preferences.FavoriteModules?.Contains(Code) ?? false
+			: UserService.Preferences.FavoriteFunctions?.Contains(Code) ?? false;
+
+		ContextMenuService.Open(args,
+		new List<ContextMenuItem> {
+			new ContextMenuItem(){ Text = AppTexts["0069"], Value = 1, Icon = "star", Disabled=(favorited) },
+			new ContextMenuItem(){ Text = AppTexts["0070"], Value = 2, Icon = "star_outline", Disabled=(!favorited) }}, OnContextMenuClick);
+
+	}
+
+	private void OnContextMenuClick(MenuItemEventArgs args) {
+
+		_ = args.Value switch {
+			1 => AddFavoriteAsync(),
+			_ => RemoveFavoriteAsync()
+		}; ContextMenuService.Close();
+
+	}
+
+	private async Task AddFavoriteAsync() {
+
+		if (IsModuleButton) {
+
+			if ((UserService.Preferences.FavoriteModules?.Length ?? 0) < Preferences.FavoriteModulesMaxLength - 1) {
+
+				await UserService.AddFavoriteModuleAsync(Code, true);
+				await Callback.InvokeAsync();
+
+			} else {
+
+				NotificationService.Notify(NotificationSeverity.Warning, AppTexts["0072"], AppTexts["0074"]);
+
+			}
+
+		} else {
+
+			if ((UserService.Preferences.FavoriteFunctions?.Length ?? 0) < Preferences.FavoriteFunctionsMaxLength - 1) {
+
+				await UserService.AddFavoriteFunctionAsync(Code, true);
+				await Callback.InvokeAsync();
+
+			} else {
+
+				NotificationService.Notify(NotificationSeverity.Warning, AppTexts["0072"], AppTexts["0075"]);
+
+			}
+
+		}
+
+	}
+
+	private async Task RemoveFavoriteAsync() {
+
+		if (IsModuleButton) {
+
+			await UserService.RemoveFavoriteModuleAsync(Code, true);
+			await Callback.InvokeAsync();
+
+		} else {
+
+			await UserService.RemoveFavoriteFunctionAsync(Code, true);
+			await Callback.InvokeAsync();
+
+		}
 
 	}
 

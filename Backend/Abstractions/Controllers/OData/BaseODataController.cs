@@ -37,7 +37,7 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 	// Virtual Action Methods
 	protected virtual (bool Success, string? Message) OnCreate(ref T item) { return (true, null); }
-	protected virtual (bool Success, string? Message) OnUpdate(ref T item) { return (true, null); }
+	protected virtual (bool Success, string? Message) OnUpdate(ref T item, ref T record) { return (true, null); }
 	protected virtual (bool Success, string? Message) OnDelete(ref T item) { return (true, null); }
 	protected virtual void OnCreated(T item) { }
 	protected virtual void OnUpdated(T item) { }
@@ -134,7 +134,7 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 
 			} else {
 
-				var (success, message) = OnUpdate(ref item);
+				var (success, message) = OnUpdate(ref item, ref record);
 				if (!success) return BadRequest(message);
 
 				user = await GetUserAsync(user);
@@ -169,7 +169,7 @@ public abstract class BaseODataController<T> : ODataController where T : class {
 			var record = await DbSet.FirstOrDefaultAsync(predicate);
 			if (record is null) return NotFound("Item does not exist.");
 
-			var (success, message) = OnUpdate(ref record);
+			var (success, message) = OnUpdate(ref record, ref record);
 			if (!success) return BadRequest(message);
 
 			user = await GetUserAsync(user);

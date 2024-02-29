@@ -393,4 +393,70 @@ public class UserService(IHttpClientFactory client, ILocalStorageService storage
 
 	}
 
+	public async Task AddFavoriteModuleAsync(string code, bool save = true) {
+
+		if (!(Preferences.FavoriteModules?.Contains(code) ?? false)) {
+
+			if ((Preferences.FavoriteModules?.Length ?? 0) < Preferences.FavoriteModulesMaxLength - 1) {
+
+				Preferences.FavoriteModules = $"{Preferences.FavoriteModules ?? string.Empty} {code}".Trim();
+				LocalPreferences.FavoriteModules = Preferences.FavoriteModules;
+				await SavePreferencesAsync(true, save);
+
+			}
+
+		}
+
+	}
+
+	public async Task AddFavoriteFunctionAsync(string code, bool save = true) {
+
+		if (!(Preferences.FavoriteFunctions?.Contains(code) ?? false)) {
+
+			if ((Preferences.FavoriteFunctions?.Length ?? 0) < Preferences.FavoriteFunctionsMaxLength - 1) {
+
+				Preferences.FavoriteFunctions = $"{Preferences.FavoriteFunctions ?? string.Empty} {code}".Trim();
+				LocalPreferences.FavoriteFunctions = Preferences.FavoriteFunctions;
+				await SavePreferencesAsync(true, save);
+
+			}
+
+		}
+
+	}
+
+	public async Task RemoveFavoriteModuleAsync(string code, bool save = true) {
+
+		if (Preferences.FavoriteModules?.Contains(code) ?? false) {
+
+			Preferences.FavoriteModules = Preferences.FavoriteModules?.Replace(code, string.Empty).Replace("  ", " ").Trim();
+			LocalPreferences.FavoriteModules = Preferences.FavoriteModules;
+			await SavePreferencesAsync(true, save);
+
+		}
+
+	}
+
+	public async Task RemoveFavoriteFunctionAsync(string code, bool save = true) {
+
+		if (Preferences.FavoriteFunctions?.Contains(code) ?? false) {
+
+			Preferences.FavoriteFunctions = Preferences.FavoriteFunctions?.Replace(code, string.Empty).Replace("  ", " ").Trim();
+			LocalPreferences.FavoriteFunctions = Preferences.FavoriteFunctions;
+			await SavePreferencesAsync(true, save);
+
+		}
+
+	}
+
+	public async Task SetFavoritesOrderAsync(string modules, string functions, bool save = true) {
+
+		Preferences.FavoriteModules = modules.Trim();
+		Preferences.FavoriteFunctions = functions.Trim();
+		LocalPreferences.FavoriteModules = Preferences.FavoriteModules;
+		LocalPreferences.FavoriteFunctions = Preferences.FavoriteFunctions;
+		await SavePreferencesAsync(true, save);
+
+	}
+
 }

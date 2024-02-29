@@ -17,4 +17,12 @@ public class Preferences : BaseEntity {
 
 	public int? FeatureAlert { get; set; } = 0;
 
+	[MaxLength(64)]
+	public string? FavoriteModules { get; set; }
+	public static readonly int FavoriteModulesMaxLength = 25;
+
+	[MaxLength(128)]
+	public string? FavoriteFunctions { get; set; }
+	public static readonly int FavoriteFunctionsMaxLength = 75;
+
 }
