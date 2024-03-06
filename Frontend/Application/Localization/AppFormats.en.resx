@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="DateShort" xml:space="preserve">
+    <value>MM/dd/yyyy</value>
   </data>
-  <data name="Value" xml:space="preserve">
-    <value>Value</value>
+  <data name="DateMedium" xml:space="preserve">
+    <value>MMMM d, yyyy</value>
+  </data>
+  <data name="DateLong" xml:space="preserve">
+    <value>MMMM d, yyyy</value>
+  </data>
+  <data name="DateFull" xml:space="preserve">
+    <value>dddd, MMMM d, yyyy</value>
+  </data>
+  <data name="DateTimeFull" xml:space="preserve">
+    <value>dddd, MMMM d, yyyy \a\t HH:mm tt</value>
+  </data>
+  <data name="DateTimeLong" xml:space="preserve">
+    <value>MMMM d, yyyy \a\t HH:mm tt</value>
+  </data>
+  <data name="DateTimeMedium" xml:space="preserve">
+    <value>MMMM d, yyyy \a\t HH:mm tt</value>
+  </data>
+  <data name="DateTimeShort" xml:space="preserve">
+    <value>MM/dd/yyyy HH:mm tt</value>
+  </data>
+  <data name="TimeShort" xml:space="preserve">
+    <value>HH:mm tt</value>
+  </data>
+  <data name="TimeMedium" xml:space="preserve">
+    <value>HH:mm tt</value>
+  </data>
+  <data name="TimeLong" xml:space="preserve">
+    <value>HH:mm:ss</value>
+  </data>
+  <data name="TimeFull" xml:space="preserve">
+    <value>HH:mm:ss</value>
   </data>
 </root>

@@ -359,4 +359,145 @@ This can resolve performance and connectivity issues.</value>
   <data name="0077" xml:space="preserve">
     <value>Favorite Functions</value>
   </data>
+  <data name="0078" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="0079" xml:space="preserve">
+    <value>Columns</value>
+  </data>
+  <data name="0080" xml:space="preserve">
+    <value>columns selected</value>
+  </data>
+  <data name="0081" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="0082" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="0083" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="0084" xml:space="preserve">
+    <value>Select...</value>
+  </data>
+  <data name="0085" xml:space="preserve">
+    <value>No value</value>
+  </data>
+  <data name="0086" xml:space="preserve">
+    <value>Starts with</value>
+  </data>
+  <data name="0087" xml:space="preserve">
+    <value>Ends with</value>
+  </data>
+  <data name="0088" xml:space="preserve">
+    <value>Contains</value>
+  </data>
+  <data name="0089" xml:space="preserve">
+    <value>Does not contain</value>
+  </data>
+  <data name="0090" xml:space="preserve">
+    <value>Equals</value>
+  </data>
+  <data name="0091" xml:space="preserve">
+    <value>Not equals</value>
+  </data>
+  <data name="0092" xml:space="preserve">
+    <value>Greater than</value>
+  </data>
+  <data name="0093" xml:space="preserve">
+    <value>Greater than or equals</value>
+  </data>
+  <data name="0094" xml:space="preserve">
+    <value>Less than</value>
+  </data>
+  <data name="0095" xml:space="preserve">
+    <value>Less than or equals</value>
+  </data>
+  <data name="0096" xml:space="preserve">
+    <value>Is empty</value>
+  </data>
+  <data name="0097" xml:space="preserve">
+    <value>Is not empty</value>
+  </data>
+  <data name="0098" xml:space="preserve">
+    <value>Is null</value>
+  </data>
+  <data name="0099" xml:space="preserve">
+    <value>Is not null</value>
+  </data>
+  <data name="0100" xml:space="preserve">
+    <value>And</value>
+  </data>
+  <data name="0101" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="0102" xml:space="preserve">
+    <value>Page {0}</value>
+  </data>
+  <data name="0103" xml:space="preserve">
+    <value>items per page</value>
+  </data>
+  <data name="0104" xml:space="preserve">
+    <value>Go to page {0}.</value>
+  </data>
+  <data name="0105" xml:space="preserve">
+    <value>Page {0} of {1} ({2} items)</value>
+  </data>
+  <data name="0106" xml:space="preserve">
+    <value>Next page</value>
+  </data>
+  <data name="0107" xml:space="preserve">
+    <value>Go to next page.</value>
+  </data>
+  <data name="0108" xml:space="preserve">
+    <value>Previous page</value>
+  </data>
+  <data name="0109" xml:space="preserve">
+    <value>Go to previous page.</value>
+  </data>
+  <data name="0110" xml:space="preserve">
+    <value>First page</value>
+  </data>
+  <data name="0111" xml:space="preserve">
+    <value>Go to first page.</value>
+  </data>
+  <data name="0112" xml:space="preserve">
+    <value>Last page</value>
+  </data>
+  <data name="0113" xml:space="preserve">
+    <value>Go to last page.</value>
+  </data>
+  <data name="0114" xml:space="preserve">
+    <value> filter operator </value>
+  </data>
+  <data name="0115" xml:space="preserve">
+    <value> second filter operator </value>
+  </data>
+  <data name="0116" xml:space="preserve">
+    <value> filter value </value>
+  </data>
+  <data name="0117" xml:space="preserve">
+    <value> second filter value </value>
+  </data>
+  <data name="0118" xml:space="preserve">
+    <value> logical filter operator </value>
+  </data>
+  <data name="0119" xml:space="preserve">
+    <value>select visible columns</value>
+  </data>
+  <data name="0120" xml:space="preserve">
+    <value>Expand group</value>
+  </data>
+  <data name="0121" xml:space="preserve">
+    <value>Expand child item</value>
+  </data>
+  <data name="0122" xml:space="preserve">
+    <value>Remove group</value>
+  </data>
+  <data name="0123" xml:space="preserve">
+    <value>Drag columns here to group</value>
+  </data>
+  <data name="0124" xml:space="preserve">
+    <value>There are no records to display.</value>
+  </data>
 </root>

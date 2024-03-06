@@ -1,0 +1,113 @@
+﻿@namespace Hephaestus.Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+@typeparam TEntity
+
+<RadzenStack>
+
+	<!-- Header -->
+	<RadzenRow AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceAround">
+		<RadzenColumn>
+			<RadzenText Text="Usuários Cadastrados" TextStyle="TextStyle.H5" TagName="TagName.H5" style="margin: 0" />
+		</RadzenColumn>
+		<RadzenColumn>
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+				<RadzenButton Icon="add_circle_outline" Text="Add" Variant="Variant.Flat" />
+			</RadzenStack>
+		</RadzenColumn>
+	</RadzenRow>
+
+	<!-- DataGrid -->
+	<RadzenRow>
+		<RadzenColumn SizeMD=12>
+			<RadzenDataGrid @ref="grid" Data="@data" Count="@count" LoadData="@GridLoadData" TItem="TEntity"
+											AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" AllowGrouping="true"
+											AllowRowSelectOnRowClick="true" ShowCellDataAsTooltip="true" ShowColumnTitleAsTooltip="true" AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="false" Responsive="false"
+											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@(new int[]{10, 15, 20, 50, 100})
+											AllColumnsText=@AppTexts["0078"] ColumnsText=@AppTexts["0079"] ColumnsShowingText=@AppTexts["0080"]
+											FilterText=@AppTexts["0081"] ApplyFilterText=@AppTexts["0082"] ClearFilterText=@AppTexts["0083"] EnumFilterSelectText=@AppTexts["0084"] EnumNullFilterText=@AppTexts["0085"]
+											StartsWithText=@AppTexts["0086"] EndsWithText=@AppTexts["0087"] ContainsText=@AppTexts["0088"] DoesNotContainText=@AppTexts["0089"] EqualsText=@AppTexts["0090"] NotEqualsText=@AppTexts["0091"]
+											GreaterThanText=@AppTexts["0092"] GreaterThanOrEqualsText=@AppTexts["0093"] LessThanText=@AppTexts["0094"] LessThanOrEqualsText=@AppTexts["0095"]
+											IsEmptyText=@AppTexts["0096"] IsNotEmptyText=@AppTexts["0097"] IsNullText=@AppTexts["0098"] IsNotNullText=@AppTexts["0099"]
+											AndOperatorText=@AppTexts["0100"] OrOperatorText=@AppTexts["0101"]
+											PageTitleFormat=@AppTexts["0102"] PageSizeText=@AppTexts["0103"]
+											PageAriaLabelFormat=@AppTexts["0104"] PagingSummaryFormat=@AppTexts["0105"]
+											NextPageTitle=@AppTexts["0106"] NextPageAriaLabel=@AppTexts["0107"]
+											PrevPageTitle=@AppTexts["0108"] PrevPageAriaLabel=@AppTexts["0109"]
+											FirstPageTitle=@AppTexts["0110"] FirstPageAriaLabel=@AppTexts["0111"]
+											LastPageTitle=@AppTexts["0112"] LastPageAriaLabel=@AppTexts["0113"]
+											FilterOperatorArialLabel=@AppTexts["0114"] SecondFilterOperatorArialLabel=@AppTexts["0115"]
+											FilterValueArialLabel=@AppTexts["0116"] SecondFilterValueArialLabel=@AppTexts["0117"]
+											LogicalOperatorArialLabel=@AppTexts["0118"] SelectVisibleColumnsArialLabel=@AppTexts["0119"]
+											ExpandGroupAriaLabel=@AppTexts["0120"] ExpandChildItemAriaLabel=@AppTexts["0121"] RemoveGroupArialLabel=@AppTexts["0122"]
+											GroupPanelText=@AppTexts["0123"] EmptyText=@AppTexts["0124"] FilterDateFormat=@AppFormats["DateTimeShort"]>
+
+				<Columns>
+
+					<RadzenDataGridColumn TItem="User" Property="Photo" Title=@AppColumns["Photo"] Filterable="false" Sortable="false" Resizable="false" Reorderable="false" Pickable="false" Groupable="false" MinWidth="64px" Width="64px" TextAlign="TextAlign.Center" Visible="true">
+						<Template Context="user"><RadzenImage Path="@user.Photo" Style="width:32px;height:32px" class="rounded-circle" /></Template>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["Id"] Title=@AppColumns["Id"] Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["Name"] Title=@AppColumns["Name"] Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["Country"] Title=@AppColumns["Country"] Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["Office"] Title=@AppColumns["Office"] Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["Department"] Title=@AppColumns["Department"] Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["Title"] Title=@AppColumns["Title"] Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["Email"] Title=@AppColumns["Email"] Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@($"RoleData.{@AppFields["Value"]}") Title=@AppColumns["Role"] Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@($"HiddenData.{@AppFields["Value"]}") Title=@AppColumns["Hidden"] FilterProperty="Hidden" Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@($"ActiveData.{@AppFields["Value"]}") Title=@AppColumns["Active"] Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@($"CreatedByData.{@AppFields["Name"]}") Title=@AppColumns["CreatedBy"] Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["CreatedOn"] Title=@AppColumns["CreatedOn"] FormatString="{0:dd \d\e MMMM \d\e yyyy hh:mm HH:mm z}" Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@($"UpdatedByData.{@AppFields["Name"]}") Title=@AppColumns["UpdatedBy"] Visible="false" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["UpdatedOn"] Title=@AppColumns["UpdatedOn"] Visible="true" />
+					<RadzenDataGridColumn TItem="User" Property=@AppFields["LocalUpdatedOn"] Title=@AppColumns["LocalUpdatedOn"] Visible="true" />
+
+				</Columns>
+
+			</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
+</RadzenStack>
+
+@code {
+
+	[Parameter]
+	public string Name { get; set; } = $"DataGrid_{typeof(TEntity).Name}s";
+
+	[Parameter]
+	public string Title { get; set; } = $"Data Grid of {typeof(TEntity).Name}s";
+
+	[Parameter]
+	public string SourceTable { get; set; } = $"{typeof(TEntity).Name}s";
+
+	[Parameter]
+	public string SourceExpand { get; set; } = default!;
+
+	[Parameter]
+	public string SourceFilter { get; set; } = default!;
+
+	[Parameter]
+	public string SourceOrder { get; set; } = default!;
+
+	protected RadzenDataGrid<TEntity>? grid;
+	protected IEnumerable<TEntity>? data;
+	protected int count;
+
+	protected async Task GridLoadData(LoadDataArgs args) {
+
+		try {
+
+			var result = await DatabaseService.GetItemsAsync<TEntity>(table: SourceTable, expand: SourceExpand, filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
+			data = result.Value.AsODataEnumerable();
+			count = result.Count;
+
+		} catch (Exception) {
+
+			NotificationService.Notify(new NotificationMessage() { Severity = NotificationSeverity.Error, Summary = $"Error", Detail = $"Unable to load Users" });
+
+		}
+
+	}
+
+
+}

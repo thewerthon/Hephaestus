@@ -3,7 +3,7 @@
 public class UsageLog : BaseEntity {
 
 	[Required]
-	public DateTime DateTime { get; set; }
+	public DateTimeOffset DateTime { get; set; }
 
 	[Required]
 	[MaxLength(32)]

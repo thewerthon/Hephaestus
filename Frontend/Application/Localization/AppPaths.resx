@@ -184,13 +184,13 @@
     <value>/sistema</value>
   </data>
   <data name="0210" xml:space="preserve">
-    <value>/sistema/usuarios</value>
+    <value>/sistema/configuracoes/usuarios</value>
   </data>
   <data name="0220" xml:space="preserve">
-    <value>/sistema/permissoes</value>
+    <value>/sistema/configuracoes/permissoes</value>
   </data>
   <data name="0230" xml:space="preserve">
-    <value>/sistema/cadastros</value>
+    <value>/sistema/configuracoes/cadastros</value>
   </data>
   <data name="1000" xml:space="preserve">
     <value>/</value>

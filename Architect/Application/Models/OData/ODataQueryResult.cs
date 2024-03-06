@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Hephaestus.Architect.Application.Models;
+﻿namespace Hephaestus.Architect.Application.Models;
 
 public class ODataQueryResult<T> {
 

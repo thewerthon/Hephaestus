@@ -184,13 +184,13 @@
     <value>/system</value>
   </data>
   <data name="0210" xml:space="preserve">
-    <value>/system/users</value>
+    <value>/system/settings/users</value>
   </data>
   <data name="0220" xml:space="preserve">
-    <value>/system/permissions</value>
+    <value>/system/settings/permissions</value>
   </data>
   <data name="0230" xml:space="preserve">
-    <value>/system/registers</value>
+    <value>/system/settings/registers</value>
   </data>
   <data name="1000" xml:space="preserve">
     <value>/</value>

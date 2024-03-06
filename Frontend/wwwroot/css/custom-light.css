@@ -162,12 +162,12 @@
 }
 
 :root {
+	--rz-grid-border-radius: 10px;
 	--rz-grid-header-line-height: 1.5rem;
 	--rz-grid-header-cell-border: var(--rz-border-normal);
 	--rz-grid-header-cell-border-bottom: var(--rz-border-normal);
 	--rz-grid-right-cell-border: var(--rz-border-disabled);
 	--rz-grid-bottom-cell-border: var(--rz-border-disabled);
-	--rz-grid-border-radius: var(--rz-button-border-radius);
 	--rz-grid-stripe-background-color: var(--rz-base-100);
 }
 

@@ -15,6 +15,10 @@ public class TestMapping : IEntityTypeConfiguration<Test> {
 		builder.HasOne(x => x.CreatedByData).WithMany().HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.Restrict);
 		builder.HasOne(x => x.UpdatedByData).WithMany().HasForeignKey(x => x.UpdatedBy).OnDelete(DeleteBehavior.Restrict);
 
+		// Tracing Formats
+		builder.Property(x => x.CreatedOn).HasColumnType("datetimeoffset(0)");
+		builder.Property(x => x.UpdatedOn).HasColumnType("datetimeoffset(0)");
+
 		// Data Seed
 		builder.HasData([
 
@@ -22,27 +26,27 @@ public class TestMapping : IEntityTypeConfiguration<Test> {
 				Id = 1,
 				Name = "Test 1",
 				CreatedBy = 1,
-				CreatedOn = new DateTime(2024, 01, 01),
+				CreatedOn = DateTimeOffset.UtcNow,
 				UpdatedBy = 1,
-				UpdatedOn = new DateTime(2024, 01, 01)
+				UpdatedOn = DateTimeOffset.UtcNow
 			},
 
 			new Test {
 				Id = 2,
 				Name = "Test 2",
 				CreatedBy = 1,
-				CreatedOn = new DateTime(2024, 01, 01),
+				CreatedOn = DateTimeOffset.UtcNow,
 				UpdatedBy = 1,
-				UpdatedOn = new DateTime(2024, 01, 01)
+				UpdatedOn = DateTimeOffset.UtcNow
 			},
 
 			new Test {
 				Id = 3,
 				Name = "Test 3",
 				CreatedBy = 1,
-				CreatedOn = new DateTime(2024, 01, 01),
+				CreatedOn = DateTimeOffset.UtcNow,
 				UpdatedBy = 1,
-				UpdatedOn = new DateTime(2024, 01, 01)
+				UpdatedOn = DateTimeOffset.UtcNow
 			},
 
 		]);

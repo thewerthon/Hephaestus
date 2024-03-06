@@ -10,7 +10,7 @@ public class EntityTests(ApplicationFactory app) {
 	public async Task PostAndDeleteAsync() {
 
 		// Arrange
-		var time = DateTime.UtcNow;
+		var time = DateTimeOffset.UtcNow;
 		var sample = new Test() { Id = 0, Name = "Post Test" };
 
 		// Post Act
@@ -104,7 +104,7 @@ public class EntityTests(ApplicationFactory app) {
 	public async Task PutAsync(int id) {
 
 		// Arrange
-		var time = DateTime.UtcNow;
+		var time = DateTimeOffset.UtcNow;
 		var sample = new Test() { Id = id - 1, Name = "Put Test" };
 
 		// Act
@@ -135,7 +135,7 @@ public class EntityTests(ApplicationFactory app) {
 	public async Task PatchAsync(int id) {
 
 		// Arrange
-		var time = DateTime.UtcNow;
+		var time = DateTimeOffset.UtcNow;
 		var sample = new Test() { Id = id - 1, Name = "Patch Test" };
 
 		// Act
@@ -166,7 +166,7 @@ public class EntityTests(ApplicationFactory app) {
 	public async Task UpsertAndDeleteAsync(int id) {
 
 		// Arrange
-		var time = DateTime.UtcNow;
+		var time = DateTimeOffset.UtcNow;
 		var sample = new Test() { Id = id - 1, Name = "Upsert Test" };
 
 		// Act

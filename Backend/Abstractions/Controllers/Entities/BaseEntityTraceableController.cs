@@ -9,9 +9,9 @@ public abstract class BaseEntityTraceableController<T>(DatabaseContext context) 
 
 		item.Id = 0;
 		item.CreatedBy = user;
-		item.CreatedOn = DateTime.UtcNow;
+		item.CreatedOn = DateTimeOffset.UtcNow;
 		item.UpdatedBy = user;
-		item.UpdatedOn = DateTime.UtcNow;
+		item.UpdatedOn = DateTimeOffset.UtcNow;
 
 	}
 
@@ -20,9 +20,9 @@ public abstract class BaseEntityTraceableController<T>(DatabaseContext context) 
 
 		item.TrySetPropertyValue("Id", record.Id);
 		item.TrySetPropertyValue("CreatedBy", record.CreatedBy ?? user);
-		item.TrySetPropertyValue("CreatedOn", record.CreatedOn ?? DateTime.UtcNow);
+		item.TrySetPropertyValue("CreatedOn", record.CreatedOn ?? DateTimeOffset.UtcNow);
 		item.TrySetPropertyValue("UpdatedBy", user);
-		item.TrySetPropertyValue("UpdatedOn", DateTime.UtcNow);
+		item.TrySetPropertyValue("UpdatedOn", DateTimeOffset.UtcNow);
 
 	}
 
@@ -31,9 +31,9 @@ public abstract class BaseEntityTraceableController<T>(DatabaseContext context) 
 
 		item.Id = record.Id;
 		item.CreatedBy = record.CreatedBy ?? user;
-		item.CreatedOn = record.CreatedOn ?? DateTime.UtcNow;
+		item.CreatedOn = record.CreatedOn ?? DateTimeOffset.UtcNow;
 		item.UpdatedBy = user;
-		item.UpdatedOn = DateTime.UtcNow;
+		item.UpdatedOn = DateTimeOffset.UtcNow;
 
 	}
 

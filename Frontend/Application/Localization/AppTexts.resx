@@ -359,4 +359,148 @@ Clique no botão abaixo para para conferir tudo que há de novo no SCP 2.0!</val
   <data name="0077" xml:space="preserve">
     <value>Funções Favoritas</value>
   </data>
+  <data name="0078" xml:space="preserve">
+    <value>Todas</value>
+  </data>
+  <data name="0079" xml:space="preserve">
+    <value>Colunas</value>
+  </data>
+  <data name="0080" xml:space="preserve">
+    <value>colunas selecionadas</value>
+  </data>
+  <data name="0081" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
+  <data name="0082" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="0083" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="0084" xml:space="preserve">
+    <value>Selecionar...</value>
+  </data>
+  <data name="0085" xml:space="preserve">
+    <value>Sem valor</value>
+  </data>
+  <data name="0086" xml:space="preserve">
+    <value>Começa com</value>
+  </data>
+  <data name="0087" xml:space="preserve">
+    <value>Termina com</value>
+  </data>
+  <data name="0088" xml:space="preserve">
+    <value>Contém</value>
+  </data>
+  <data name="0089" xml:space="preserve">
+    <value>Não contém</value>
+  </data>
+  <data name="0090" xml:space="preserve">
+    <value>É igual</value>
+  </data>
+  <data name="0091" xml:space="preserve">
+    <value>Não é igual</value>
+  </data>
+  <data name="0092" xml:space="preserve">
+    <value>Maior que</value>
+  </data>
+  <data name="0093" xml:space="preserve">
+    <value>Maior que ou igual</value>
+  </data>
+  <data name="0094" xml:space="preserve">
+    <value>Menor que</value>
+  </data>
+  <data name="0095" xml:space="preserve">
+    <value>Menor que ou igual</value>
+  </data>
+  <data name="0096" xml:space="preserve">
+    <value>Está vazio</value>
+  </data>
+  <data name="0097" xml:space="preserve">
+    <value>Não está vazio</value>
+  </data>
+  <data name="0098" xml:space="preserve">
+    <value>Está nulo</value>
+  </data>
+  <data name="0099" xml:space="preserve">
+    <value>Não está nulo</value>
+  </data>
+  <data name="0100" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="0101" xml:space="preserve">
+    <value>Ou</value>
+  </data>
+  <data name="0102" xml:space="preserve">
+    <value>Página {0}</value>
+  </data>
+  <data name="0103" xml:space="preserve">
+    <value>itens por página</value>
+  </data>
+  <data name="0104" xml:space="preserve">
+    <value>Ir para página {0}.</value>
+  </data>
+  <data name="0105" xml:space="preserve">
+    <value>Página {0} de {1} ({2} itens)</value>
+  </data>
+  <data name="0106" xml:space="preserve">
+    <value>Próxima página</value>
+  </data>
+  <data name="0107" xml:space="preserve">
+    <value>Ir para próxima página.</value>
+  </data>
+  <data name="0108" xml:space="preserve">
+    <value>Página anterior</value>
+  </data>
+  <data name="0109" xml:space="preserve">
+    <value>Ir para página anterior.</value>
+  </data>
+  <data name="0110" xml:space="preserve">
+    <value>Primeira página</value>
+  </data>
+  <data name="0111" xml:space="preserve">
+    <value>Ir para primeira página.</value>
+  </data>
+  <data name="0112" xml:space="preserve">
+    <value>Última página</value>
+  </data>
+  <data name="0113" xml:space="preserve">
+    <value>Ir para última página.</value>
+  </data>
+  <data name="0114" xml:space="preserve">
+    <value> operador de filtro </value>
+  </data>
+  <data name="0115" xml:space="preserve">
+    <value> segundo operador de filtro </value>
+  </data>
+  <data name="0116" xml:space="preserve">
+    <value> valor do filtro </value>
+  </data>
+  <data name="0117" xml:space="preserve">
+    <value> segundo valor do filtro </value>
+  </data>
+  <data name="0118" xml:space="preserve">
+    <value> operador lógico do filtro </value>
+  </data>
+  <data name="0119" xml:space="preserve">
+    <value>selecionar colunas visíveis</value>
+  </data>
+  <data name="0120" xml:space="preserve">
+    <value>Expandir grupo</value>
+  </data>
+  <data name="0121" xml:space="preserve">
+    <value>Expandir subitem</value>
+  </data>
+  <data name="0122" xml:space="preserve">
+    <value>Remover grupo</value>
+  </data>
+  <data name="0123" xml:space="preserve">
+    <value>Arraste colunas aqui para agrupar</value>
+  </data>
+  <data name="0124" xml:space="preserve">
+    <value>Não há registros para exibir.</value>
+  </data>
+  <data name="0125" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

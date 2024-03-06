@@ -28,6 +28,10 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 		builder.HasOne(x => x.CreatedByData).WithMany().HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.Restrict);
 		builder.HasOne(x => x.UpdatedByData).WithMany().HasForeignKey(x => x.UpdatedBy).OnDelete(DeleteBehavior.Restrict);
 
+		// Tracing Formats
+		builder.Property(x => x.CreatedOn).HasColumnType("datetimeoffset(0)");
+		builder.Property(x => x.UpdatedOn).HasColumnType("datetimeoffset(0)");
+
 		// Data Seed
 		builder.HasData([
 
@@ -43,9 +47,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = new DateTime(2024, 01, 01),
+				CreatedOn = DateTimeOffset.UtcNow,
 				UpdatedBy = 1,
-				UpdatedOn = new DateTime(2024, 01, 01)
+				UpdatedOn = DateTimeOffset.UtcNow
 			},
 
 			new User {
@@ -60,9 +64,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = new DateTime(2024, 01, 01),
+				CreatedOn = DateTimeOffset.UtcNow,
 				UpdatedBy = 1,
-				UpdatedOn = new DateTime(2024, 01, 01)
+				UpdatedOn = DateTimeOffset.UtcNow
 			},
 
 			new User {
@@ -77,9 +81,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = new DateTime(2024, 01, 01),
+				CreatedOn = DateTimeOffset.UtcNow,
 				UpdatedBy = 1,
-				UpdatedOn = new DateTime(2024, 01, 01)
+				UpdatedOn = DateTimeOffset.UtcNow
 			},
 
 			new User {
@@ -94,9 +98,9 @@ public class UserMapping : IEntityTypeConfiguration<User> {
 				Hidden = true,
 				Active = true,
 				CreatedBy = 1,
-				CreatedOn = new DateTime(2024, 01, 01),
+				CreatedOn = DateTimeOffset.UtcNow,
 				UpdatedBy = 1,
-				UpdatedOn = new DateTime(2024, 01, 01)
+				UpdatedOn = DateTimeOffset.UtcNow
 			}
 
 		]);

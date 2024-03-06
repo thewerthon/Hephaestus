@@ -16,7 +16,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Radzen.Blazor" Version="4.25.9" IncludeAssets="all" />
+		<PackageReference Include="Radzen.Blazor" Version="4.25.11" IncludeAssets="all" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.5.0" IncludeAssets="all" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" IncludeAssets="all" />
