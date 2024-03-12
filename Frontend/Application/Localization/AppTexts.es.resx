@@ -405,13 +405,13 @@ Esto puede resolver problemas de rendimiento y conectividad.</value>
     <value>Mayor que</value>
   </data>
   <data name="0093" xml:space="preserve">
-    <value>Mayor que o igual</value>
+    <value>Mayor o igual</value>
   </data>
   <data name="0094" xml:space="preserve">
     <value>Menos que</value>
   </data>
   <data name="0095" xml:space="preserve">
-    <value>Menos que o igual</value>
+    <value>Menos o igual</value>
   </data>
   <data name="0096" xml:space="preserve">
     <value>Está vacío</value>

@@ -1,0 +1,16 @@
+﻿@namespace Hephaestus.Frontend.Abstractions.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+@typeparam TItem
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string Property { get; set; } = default!;
+
+	[Parameter, EditorRequired]
+	public bool Visible { get; set; } = true;
+
+	[Parameter, EditorRequired]
+	public int? Order { get; set; } = default;
+
+}

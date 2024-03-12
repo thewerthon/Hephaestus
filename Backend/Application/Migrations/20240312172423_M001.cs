@@ -11,45 +11,45 @@ namespace Hephaestus.Backend.Application.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTimeOffset>(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedOn",
                 table: "Users",
-                type: "datetimeoffset(0)",
+                type: "datetime2(0)",
                 nullable: true,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<DateTimeOffset>(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedOn",
                 table: "Users",
-                type: "datetimeoffset(0)",
+                type: "datetime2(0)",
                 nullable: true,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<DateTimeOffset>(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "DateTime",
                 table: "UsageLogs",
-                type: "datetimeoffset(0)",
+                type: "datetime2(0)",
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2");
 
-            migrationBuilder.AlterColumn<DateTimeOffset>(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedOn",
                 table: "Tests",
-                type: "datetimeoffset(0)",
+                type: "datetime2(0)",
                 nullable: true,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<DateTimeOffset>(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedOn",
                 table: "Tests",
-                type: "datetimeoffset(0)",
+                type: "datetime2(0)",
                 nullable: true,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
@@ -60,49 +60,49 @@ namespace Hephaestus.Backend.Application.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7038), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7040), new TimeSpan(0, 0, 0, 0, 0)) });
+                values: new object[] { new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.UpdateData(
                 table: "Tests",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7042), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7043), new TimeSpan(0, 0, 0, 0, 0)) });
+                values: new object[] { new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.UpdateData(
                 table: "Tests",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7044), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7044), new TimeSpan(0, 0, 0, 0, 0)) });
+                values: new object[] { new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5087), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5088), new TimeSpan(0, 0, 0, 0, 0)) });
+                values: new object[] { new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5091), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5092), new TimeSpan(0, 0, 0, 0, 0)) });
+                values: new object[] { new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5094), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5094), new TimeSpan(0, 0, 0, 0, 0)) });
+                values: new object[] { new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 4,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5096), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5097), new TimeSpan(0, 0, 0, 0, 0)) });
+                values: new object[] { new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified) });
         }
 
         /// <inheritdoc />
@@ -113,8 +113,8 @@ namespace Hephaestus.Backend.Application.Migrations
                 table: "Users",
                 type: "datetime2",
                 nullable: true,
-                oldClrType: typeof(DateTimeOffset),
-                oldType: "datetimeoffset(0)",
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2(0)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<DateTime>(
@@ -122,8 +122,8 @@ namespace Hephaestus.Backend.Application.Migrations
                 table: "Users",
                 type: "datetime2",
                 nullable: true,
-                oldClrType: typeof(DateTimeOffset),
-                oldType: "datetimeoffset(0)",
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2(0)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<DateTime>(
@@ -131,16 +131,16 @@ namespace Hephaestus.Backend.Application.Migrations
                 table: "UsageLogs",
                 type: "datetime2",
                 nullable: false,
-                oldClrType: typeof(DateTimeOffset),
-                oldType: "datetimeoffset(0)");
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2(0)");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedOn",
                 table: "Tests",
                 type: "datetime2",
                 nullable: true,
-                oldClrType: typeof(DateTimeOffset),
-                oldType: "datetimeoffset(0)",
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2(0)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<DateTime>(
@@ -148,8 +148,8 @@ namespace Hephaestus.Backend.Application.Migrations
                 table: "Tests",
                 type: "datetime2",
                 nullable: true,
-                oldClrType: typeof(DateTimeOffset),
-                oldType: "datetimeoffset(0)",
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2(0)",
                 oldNullable: true);
 
             migrationBuilder.UpdateData(

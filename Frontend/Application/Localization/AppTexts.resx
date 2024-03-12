@@ -405,13 +405,13 @@ Clique no botão abaixo para para conferir tudo que há de novo no SCP 2.0!</val
     <value>Maior que</value>
   </data>
   <data name="0093" xml:space="preserve">
-    <value>Maior que ou igual</value>
+    <value>Maior ou igual</value>
   </data>
   <data name="0094" xml:space="preserve">
     <value>Menor que</value>
   </data>
   <data name="0095" xml:space="preserve">
-    <value>Menor que ou igual</value>
+    <value>Menor ou igual</value>
   </data>
   <data name="0096" xml:space="preserve">
     <value>Está vazio</value>

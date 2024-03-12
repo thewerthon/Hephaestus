@@ -1,0 +1,20 @@
+﻿@namespace Hephaestus.Frontend.Abstractions.Components
+@inherits DataGridColumn<TItem>
+@typeparam TItem
+
+<RadzenDataGridColumn TItem=TItem Property=@($"{Property}.{AppFields["Name"]}") Title=@AppColumns[Property.Replace("Data", string.Empty)] Visible=@Visible OrderIndex=@Order>
+	<Template Context="item">
+		@{
+			var image = PropertyAccess.GetValue(item, $"{Property}.Photo").ToString();
+			var name = PropertyAccess.GetValue(item, $"{Property}.{AppFields["Name"]}");
+			<div style="display: flex; align-items: center; gap: 8px">
+				<div>
+					<RadzenImage Path=@image Style="width:24px;height:24px" title=@name class="rounded-circle" />
+				</div>
+				<div style="overflow: hidden; text-overflow: ellipsis">
+					<span title=@name>@name</span>
+				</div>
+			</div>
+		}
+	</Template>
+</RadzenDataGridColumn>

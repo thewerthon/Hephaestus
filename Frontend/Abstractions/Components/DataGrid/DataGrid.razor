@@ -1,5 +1,6 @@
-﻿@namespace Hephaestus.Frontend.Application.Components
+﻿@namespace Hephaestus.Frontend.Abstractions.Components
 @inherits Microsoft.AspNetCore.Components.ComponentBase
+@using System.Text.Json
 @typeparam TEntity
 
 <RadzenStack>
@@ -19,10 +20,10 @@
 	<!-- DataGrid -->
 	<RadzenRow>
 		<RadzenColumn SizeMD=12>
-			<RadzenDataGrid @ref="grid" Data="@data" Count="@count" LoadData="@GridLoadData" TItem="TEntity"
+			<RadzenDataGrid @ref="grid" Data="@data" Count="@count" IsLoading=@loading LoadData="@GridLoadData" TItem="TEntity" @bind-Settings=@Settings
 											AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" AllowGrouping="true"
 											AllowRowSelectOnRowClick="true" ShowCellDataAsTooltip="true" ShowColumnTitleAsTooltip="true" AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="false" Responsive="false"
-											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@(new int[]{10, 15, 20, 50, 100})
+											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@pagesizes
 											AllColumnsText=@AppTexts["0078"] ColumnsText=@AppTexts["0079"] ColumnsShowingText=@AppTexts["0080"]
 											FilterText=@AppTexts["0081"] ApplyFilterText=@AppTexts["0082"] ClearFilterText=@AppTexts["0083"] EnumFilterSelectText=@AppTexts["0084"] EnumNullFilterText=@AppTexts["0085"]
 											StartsWithText=@AppTexts["0086"] EndsWithText=@AppTexts["0087"] ContainsText=@AppTexts["0088"] DoesNotContainText=@AppTexts["0089"] EqualsText=@AppTexts["0090"] NotEqualsText=@AppTexts["0091"]
@@ -42,26 +43,7 @@
 											GroupPanelText=@AppTexts["0123"] EmptyText=@AppTexts["0124"] FilterDateFormat=@AppFormats["DateTimeShort"]>
 
 				<Columns>
-
-					<RadzenDataGridColumn TItem="User" Property="Photo" Title=@AppColumns["Photo"] Filterable="false" Sortable="false" Resizable="false" Reorderable="false" Pickable="false" Groupable="false" MinWidth="64px" Width="64px" TextAlign="TextAlign.Center" Visible="true">
-						<Template Context="user"><RadzenImage Path="@user.Photo" Style="width:32px;height:32px" class="rounded-circle" /></Template>
-					</RadzenDataGridColumn>
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["Id"] Title=@AppColumns["Id"] Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["Name"] Title=@AppColumns["Name"] Visible="true" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["Country"] Title=@AppColumns["Country"] Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["Office"] Title=@AppColumns["Office"] Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["Department"] Title=@AppColumns["Department"] Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["Title"] Title=@AppColumns["Title"] Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["Email"] Title=@AppColumns["Email"] Visible="true" />
-					<RadzenDataGridColumn TItem="User" Property=@($"RoleData.{@AppFields["Value"]}") Title=@AppColumns["Role"] Visible="true" />
-					<RadzenDataGridColumn TItem="User" Property=@($"HiddenData.{@AppFields["Value"]}") Title=@AppColumns["Hidden"] FilterProperty="Hidden" Visible="true" />
-					<RadzenDataGridColumn TItem="User" Property=@($"ActiveData.{@AppFields["Value"]}") Title=@AppColumns["Active"] Visible="true" />
-					<RadzenDataGridColumn TItem="User" Property=@($"CreatedByData.{@AppFields["Name"]}") Title=@AppColumns["CreatedBy"] Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["CreatedOn"] Title=@AppColumns["CreatedOn"] FormatString="{0:dd \d\e MMMM \d\e yyyy hh:mm HH:mm z}" Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@($"UpdatedByData.{@AppFields["Name"]}") Title=@AppColumns["UpdatedBy"] Visible="false" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["UpdatedOn"] Title=@AppColumns["UpdatedOn"] Visible="true" />
-					<RadzenDataGridColumn TItem="User" Property=@AppFields["LocalUpdatedOn"] Title=@AppColumns["LocalUpdatedOn"] Visible="true" />
-
+					@ChildContent
 				</Columns>
 
 			</RadzenDataGrid>
@@ -72,7 +54,7 @@
 @code {
 
 	[Parameter]
-	public string Name { get; set; } = $"DataGrid_{typeof(TEntity).Name}s";
+	public string Name { get; set; } = $"{typeof(TEntity).Name}s";
 
 	[Parameter]
 	public string Title { get; set; } = $"Data Grid of {typeof(TEntity).Name}s";
@@ -89,13 +71,20 @@
 	[Parameter]
 	public string SourceOrder { get; set; } = default!;
 
-	protected RadzenDataGrid<TEntity>? grid;
-	protected IEnumerable<TEntity>? data;
-	protected int count;
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
 
-	protected async Task GridLoadData(LoadDataArgs args) {
+	private RadzenDataGrid<TEntity>? grid;
+	private IEnumerable<TEntity>? data;
+	private bool loading;
+	private int count;
+
+	private async Task GridLoadData(LoadDataArgs args) {
 
 		try {
+
+			loading = true;
+			await Task.Yield();
 
 			var result = await DatabaseService.GetItemsAsync<TEntity>(table: SourceTable, expand: SourceExpand, filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
 			data = result.Value.AsODataEnumerable();
@@ -105,9 +94,63 @@
 
 			NotificationService.Notify(new NotificationMessage() { Severity = NotificationSeverity.Error, Summary = $"Error", Detail = $"Unable to load Users" });
 
+		} finally {
+
+			loading = false;
+
 		}
 
 	}
 
+	private int pagesize = 10;
+	private IEnumerable<int> pagesizes = new int[] { 10, 15, 20, 50, 100 };
+	private DataGridSettings? settings;
+
+	private DataGridSettings Settings {
+		get { return settings ?? default!; }
+		set {
+			if (settings != value) {
+				settings = value;
+				InvokeAsync(SaveStateAsync);
+			}
+		}
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender) {
+
+		if (firstRender) await LoadStateAsync();
+
+	}
+
+	private async Task LoadStateAsync() {
+
+		var result = await JSRuntime.InvokeAsync<string>("window.localStorage.getItem", $"DataGridSettings_{Name}");
+
+		if (!string.IsNullOrEmpty(result) && result != "null") {
+
+			settings = JsonSerializer.Deserialize<DataGridSettings>(result);
+
+			if (settings is not null && settings.PageSize.HasValue) {
+
+				pagesize = settings.PageSize.Value;
+				await Task.Yield();
+
+			}
+
+		}
+
+	}
+
+	private async Task SaveStateAsync() {
+
+		await JSRuntime.InvokeVoidAsync("window.localStorage.setItem", $"DataGridSettings_{Name}", JsonSerializer.Serialize<DataGridSettings>(Settings));
+
+	}
+
+	private void LoadSettings(DataGridLoadSettingsEventArgs args) {
+
+		if (Settings != null) args.Settings = Settings;
+
+	}
 
 }

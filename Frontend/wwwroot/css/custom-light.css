@@ -1,5 +1,5 @@
 :root {
-	--rz-icon-size: 24px;
+	--rz-icon-size: 20px;
 	--rz-base-50: #ffffff;
 	--rz-base-100: #f6f7fa;
 	--rz-base-200: #e9edf0;
@@ -93,6 +93,7 @@
 }
 
 :root {
+	--rz-profile-menu-item-icon-font-size: 24px;
 	--rz-profile-menu-item-hover-background-color: var(--rz-primary);
 }
 
@@ -189,6 +190,12 @@
 	--rz-notification-warning-icon-color: var(--rz-on-warning-lighter);
 }
 
+:root {
+	--rz-dropdown-trigger-icon-width: 20px;
+    --rz-dropdown-trigger-icon-height: 20px;
+    --rz-dropdown-trigger-icon-margin: 0 2px 0 0;
+}
+
 .rz-body {
 	background-color: var(--rz-body-background-color);
 }
@@ -228,7 +235,8 @@ ul.rz-profile-menu {
 	overflow: hidden
 }
 
-.rz-spinner-button {
+.rz-spinner-button,
+.rz-calendar-button {
 	position: absolute;
 }
 
@@ -362,10 +370,6 @@ ul.rz-profile-menu {
 	color: var(--rz-white);
 }
 
-.rz-alert .rz-button .rzi {
-	font-size: 20px;
-}
-
 .rz-sidebar .rz-navigation-item-wrapper a {
 	height: 45px !important;
 }
@@ -373,7 +377,7 @@ ul.rz-profile-menu {
 .rz-sidebar .rzi.rz-navigation-item-icon-children {
 	width: 45px;
 	height: 45px;
-	font-size: 20px;
+	font-size: 18px;
 	color: #788396;
 }
 
@@ -382,7 +386,7 @@ ul.rz-profile-menu {
 }
 
 .rz-profile-menu .rzi.rz-navigation-item-icon-children {
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .logo {

@@ -12,7 +12,7 @@ public class UsageLogMapping : IEntityTypeConfiguration<UsageLog> {
 		builder.Property(x => x.Id).ValueGeneratedOnAdd().UseIdentityColumn();
 
 		// Formats
-		builder.Property(x => x.DateTime).HasColumnType("datetimeoffset(0)");
+		builder.Property(x => x.DateTime).HasColumnType("datetime2(0)");
 
 		// Relationships
 		builder.HasOne(x => x.UserData).WithMany().HasForeignKey(x => x.User).OnDelete(DeleteBehavior.Restrict);

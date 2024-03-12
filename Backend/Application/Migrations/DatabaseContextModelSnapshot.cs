@@ -432,8 +432,8 @@ namespace Hephaestus.Backend.Application.Migrations
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("CreatedOn")
-                        .HasColumnType("datetimeoffset(0)");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2(0)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -451,8 +451,8 @@ namespace Hephaestus.Backend.Application.Migrations
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("datetimeoffset(0)");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2(0)");
 
                     b.HasKey("Id");
 
@@ -467,28 +467,28 @@ namespace Hephaestus.Backend.Application.Migrations
                         {
                             Id = 1,
                             CreatedBy = 1,
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7038), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Test 1",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7040), new TimeSpan(0, 0, 0, 0, 0))
+                            UpdatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = 1,
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7042), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Test 2",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7043), new TimeSpan(0, 0, 0, 0, 0))
+                            UpdatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = 1,
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7044), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Test 3",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 896, DateTimeKind.Unspecified).AddTicks(7044), new TimeSpan(0, 0, 0, 0, 0))
+                            UpdatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -566,8 +566,8 @@ namespace Hephaestus.Backend.Application.Migrations
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
 
-                    b.Property<DateTimeOffset>("DateTime")
-                        .HasColumnType("datetimeoffset(0)");
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2(0)");
 
                     b.Property<string>("Details")
                         .HasMaxLength(256)
@@ -646,8 +646,8 @@ namespace Hephaestus.Backend.Application.Migrations
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("CreatedOn")
-                        .HasColumnType("datetimeoffset(0)");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2(0)");
 
                     b.Property<string>("Department")
                         .HasMaxLength(32)
@@ -706,8 +706,8 @@ namespace Hephaestus.Backend.Application.Migrations
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("datetimeoffset(0)");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2(0)");
 
                     b.HasKey("Id");
 
@@ -735,7 +735,7 @@ namespace Hephaestus.Backend.Application.Migrations
                             Id = 1,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5087), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "sistema@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000000",
                             Hidden = true,
@@ -745,14 +745,14 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5088), new TimeSpan(0, 0, 0, 0, 0))
+                            UpdatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5091), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "usuario-portal@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000001",
                             Hidden = true,
@@ -762,14 +762,14 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5092), new TimeSpan(0, 0, 0, 0, 0))
+                            UpdatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5094), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "usuario-externo@siw.ind.br",
                             Guid = "00000000-0000-0000-0000-000000000002",
                             Hidden = true,
@@ -779,14 +779,14 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.User",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5094), new TimeSpan(0, 0, 0, 0, 0))
+                            UpdatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
                             Active = true,
                             CreatedBy = 1,
-                            CreatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5096), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "autobot@siw.ind.br",
                             Guid = "8c4e35a5-2f64-4c28-8644-672f037272c5",
                             Hidden = true,
@@ -796,7 +796,7 @@ namespace Hephaestus.Backend.Application.Migrations
                             Photo = "images/users/unknown.jpg",
                             Role = "System.Admin",
                             UpdatedBy = 1,
-                            UpdatedOn = new DateTimeOffset(new DateTime(2024, 3, 6, 18, 41, 42, 899, DateTimeKind.Unspecified).AddTicks(5097), new TimeSpan(0, 0, 0, 0, 0))
+                            UpdatedOn = new DateTime(2024, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

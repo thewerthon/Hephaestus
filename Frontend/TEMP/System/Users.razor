@@ -7,6 +7,22 @@
 
 <DataGrid TEntity="User" SourceTable="Users" SourceExpand="RoleData,HiddenData,ActiveData,CreatedByData,UpdatedByData" SourceFilter="Hidden eq false">
 
+	<DataGridColumn_Image TItem=User Property="Photo" TitleProperty="Name" Visible=true Order=0 />
+
+	<DataGridColumn_Identifier TItem=User Property="Id" Visible=false Order=1 />
+	<DataGridColumn_Default TItem=User Property="Name" Visible=true Order=2 />
+	<DataGridColumn_Default TItem=User Property="Country" Visible=false Order=3 />
+	<DataGridColumn_Default TItem=User Property="Office" Visible=false Order=4 />
+	<DataGridColumn_Default TItem=User Property="Department" Visible=false Order=5 />
+	<DataGridColumn_Default TItem=User Property="Title" Visible=false Order=6 />
+	<DataGridColumn_Default TItem=User Property="Email" Visible=true Order=7 />
+
+	<DataGridColumn_Expand TItem=User Property="RoleData" ChildProperty="Value" Visible=true Order=8 />
+	<DataGridColumn_Expand TItem=User Property="HiddenData" ChildProperty="Value" Visible=true Order=9 />
+	<DataGridColumn_Expand TItem=User Property="ActiveData" ChildProperty="Value" Visible=true Order=10 />
+
+	<DataGridColumn_Trace TItem=User CreatedVisible=true />
+
 </DataGrid>
 
 @code {

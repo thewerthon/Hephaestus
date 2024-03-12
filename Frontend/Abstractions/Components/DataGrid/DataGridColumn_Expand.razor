@@ -1,0 +1,12 @@
+﻿@namespace Hephaestus.Frontend.Abstractions.Components
+@inherits DataGridColumn<TItem>
+@typeparam TItem
+
+<RadzenDataGridColumn TItem=TItem Property=@($"{Property}.{AppFields[ChildProperty]}") Title=@AppColumns[Property.Replace("Data", string.Empty)] Visible=@Visible OrderIndex=@Order />
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string ChildProperty { get; set; } = default!;
+
+}

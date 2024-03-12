@@ -130,27 +130,57 @@
     <value>dddd, d \d\e MMMM \d\e yyyy</value>
   </data>
   <data name="DateTimeShort" xml:space="preserve">
-    <value>dd/MM/yyyy hh:mm</value>
+    <value>dd/MM/yyyy HH:mm</value>
   </data>
   <data name="DateTimeMedium" xml:space="preserve">
-    <value>d MMMM yyyy \à\s hh\hmm</value>
+    <value>d MMMM yyyy \à\s HH\hmm</value>
   </data>
   <data name="DateTimeLong" xml:space="preserve">
-    <value>d \d\e MMMM \d\e yyyy \à\s hh\hmm</value>
+    <value>d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
   </data>
   <data name="DateTimeFull" xml:space="preserve">
-    <value>dddd, d \d\e MMMM \d\e yyyy \à\s hh\hmm</value>
+    <value>dddd, d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
   </data>
   <data name="TimeShort" xml:space="preserve">
-    <value>hh:mm</value>
+    <value>HH:mm</value>
   </data>
   <data name="TimeMedium" xml:space="preserve">
-    <value>hh:mm</value>
+    <value>HH:mm</value>
   </data>
   <data name="TimeLong" xml:space="preserve">
-    <value>hh:mm:ss</value>
+    <value>HH:mm:ss</value>
   </data>
   <data name="TimeFull" xml:space="preserve">
-    <value>hh:mm:ss</value>
+    <value>HH:mm:ss</value>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>Nulo</value>
+  </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>N/D</value>
+  </data>
+  <data name="IdentifierShort" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="IdentifierMedium" xml:space="preserve">
+    <value>000000</value>
+  </data>
+  <data name="IdentifierLong" xml:space="preserve">
+    <value>00000000</value>
+  </data>
+  <data name="IdentifierFull" xml:space="preserve">
+    <value>0000000000</value>
+  </data>
+  <data name="IntegerShort" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="IntegerMedium" xml:space="preserve">
+    <value>000</value>
+  </data>
+  <data name="IntegerLong" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="IntegerFull" xml:space="preserve">
+    <value>00000</value>
   </data>
 </root>

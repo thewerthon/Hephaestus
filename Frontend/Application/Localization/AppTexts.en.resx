@@ -405,13 +405,13 @@ This can resolve performance and connectivity issues.</value>
     <value>Greater than</value>
   </data>
   <data name="0093" xml:space="preserve">
-    <value>Greater than or equals</value>
+    <value>Greater or equals</value>
   </data>
   <data name="0094" xml:space="preserve">
-    <value>Less than</value>
+    <value>Lesser than</value>
   </data>
   <data name="0095" xml:space="preserve">
-    <value>Less than or equals</value>
+    <value>Lesser or equals</value>
   </data>
   <data name="0096" xml:space="preserve">
     <value>Is empty</value>
