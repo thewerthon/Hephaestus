@@ -405,6 +405,10 @@
     <value>/lordicon/menus/book.json</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="1790" xml:space="preserve">
+    <value>/lordicon/menus/caliper.json</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="1800" xml:space="preserve">
     <value>/lordicon/menus/fiscal.json</value>
     <comment>@Invariant</comment>
@@ -531,10 +535,6 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>/lordicon/menus/technology.json</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1790" xml:space="preserve">
-    <value>/lordicon/menus/caliper.json</value>
     <comment>@Invariant</comment>
   </data>
 </root>

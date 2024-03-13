@@ -162,11 +162,35 @@
   <data name="0014" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="0100" xml:space="preserve">
+    <value>Homepage</value>
+  </data>
+  <data name="0110" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="0120" xml:space="preserve">
+    <value>Dashboards</value>
+  </data>
+  <data name="0130" xml:space="preserve">
+    <value>Flows</value>
+  </data>
   <data name="0140" xml:space="preserve">
     <value>System Settings</value>
   </data>
+  <data name="0150" xml:space="preserve">
+    <value>Tutorials</value>
+  </data>
   <data name="0200" xml:space="preserve">
     <value>System Module</value>
+  </data>
+  <data name="0210" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="0220" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="0230" xml:space="preserve">
+    <value>Registers</value>
   </data>
   <data name="1000" xml:space="preserve">
     <value>Main Modules</value>
@@ -209,6 +233,9 @@
   </data>
   <data name="1400" xml:space="preserve">
     <value>Warehouse Module</value>
+  </data>
+  <data name="1410" xml:space="preserve">
+    <value>Warehouse Movements</value>
   </data>
   <data name="1411" xml:space="preserve">
     <value>Receipt by Invoice</value>
@@ -264,6 +291,9 @@
   <data name="1600" xml:space="preserve">
     <value>Production Module</value>
   </data>
+  <data name="1610" xml:space="preserve">
+    <value>Production Registers</value>
+  </data>
   <data name="1611" xml:space="preserve">
     <value>Start Register</value>
   </data>
@@ -297,6 +327,9 @@
   <data name="1700" xml:space="preserve">
     <value>Quality Module</value>
   </data>
+  <data name="1710" xml:space="preserve">
+    <value>Quality Inspections</value>
+  </data>
   <data name="1711" xml:space="preserve">
     <value>Products Inspections</value>
   </data>
@@ -309,17 +342,26 @@
   <data name="1720" xml:space="preserve">
     <value>Non-Conformities</value>
   </data>
+  <data name="1730" xml:space="preserve">
+    <value>Quality Blockings</value>
+  </data>
   <data name="1731" xml:space="preserve">
     <value>Products Blockings</value>
   </data>
   <data name="1732" xml:space="preserve">
     <value>Processes Blockings</value>
   </data>
+  <data name="1740" xml:space="preserve">
+    <value>Quality Clearances</value>
+  </data>
   <data name="1741" xml:space="preserve">
     <value>Products Clearances</value>
   </data>
   <data name="1742" xml:space="preserve">
     <value>Processes Clearances</value>
+  </data>
+  <data name="1750" xml:space="preserve">
+    <value>Inspection Standards</value>
   </data>
   <data name="1751" xml:space="preserve">
     <value>Products Patterns</value>
@@ -338,6 +380,9 @@
   </data>
   <data name="1780" xml:space="preserve">
     <value>Documentation</value>
+  </data>
+  <data name="1790" xml:space="preserve">
+    <value>Equipments</value>
   </data>
   <data name="1800" xml:space="preserve">
     <value>Fiscal Module</value>
@@ -437,50 +482,5 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>Technology</value>
-  </data>
-  <data name="0100" xml:space="preserve">
-    <value>Homepage</value>
-  </data>
-  <data name="0110" xml:space="preserve">
-    <value>Reports</value>
-  </data>
-  <data name="0120" xml:space="preserve">
-    <value>Dashboards</value>
-  </data>
-  <data name="0150" xml:space="preserve">
-    <value>Tutorials</value>
-  </data>
-  <data name="0130" xml:space="preserve">
-    <value>Flows</value>
-  </data>
-  <data name="0230" xml:space="preserve">
-    <value>Registers</value>
-  </data>
-  <data name="0220" xml:space="preserve">
-    <value>Permissions</value>
-  </data>
-  <data name="0210" xml:space="preserve">
-    <value>Users</value>
-  </data>
-  <data name="1410" xml:space="preserve">
-    <value>Warehouse Movements</value>
-  </data>
-  <data name="1610" xml:space="preserve">
-    <value>Production Registers</value>
-  </data>
-  <data name="1710" xml:space="preserve">
-    <value>Quality Inspections</value>
-  </data>
-  <data name="1730" xml:space="preserve">
-    <value>Quality Blockings</value>
-  </data>
-  <data name="1740" xml:space="preserve">
-    <value>Quality Clearances</value>
-  </data>
-  <data name="1750" xml:space="preserve">
-    <value>Inspection Standards</value>
-  </data>
-  <data name="1790" xml:space="preserve">
-    <value>Equipments</value>
   </data>
 </root>

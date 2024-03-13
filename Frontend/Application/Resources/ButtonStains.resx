@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="0100" xml:space="preserve">
+    <value>/images/stains/01.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="0110" xml:space="preserve">
     <value>/images/stains/04.svg</value>
     <comment>@Invariant</comment>
@@ -137,6 +141,10 @@
     <value>/images/stains/03.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="0200" xml:space="preserve">
+    <value>/images/stains/02.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="0210" xml:space="preserve">
     <value>/images/stains/12.svg</value>
     <comment>@Invariant</comment>
@@ -149,12 +157,20 @@
     <value>/images/stains/01.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="1100" xml:space="preserve">
+    <value>/images/stains/03.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="1110" xml:space="preserve">
     <value>/images/stains/14.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1120" xml:space="preserve">
     <value>/images/stains/09.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="1200" xml:space="preserve">
+    <value>/images/stains/04.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1210" xml:space="preserve">
@@ -177,12 +193,20 @@
     <value>/images/stains/01.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="1300" xml:space="preserve">
+    <value>/images/stains/05.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="1310" xml:space="preserve">
     <value>/images/stains/12.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1320" xml:space="preserve">
     <value>/images/stains/05.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="1400" xml:space="preserve">
+    <value>/images/stains/06.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1410" xml:space="preserve">
@@ -233,6 +257,10 @@
     <value>/images/stains/05.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="1500" xml:space="preserve">
+    <value>/images/stains/07.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="1510" xml:space="preserve">
     <value>/images/stains/15.svg</value>
     <comment>@Invariant</comment>
@@ -251,6 +279,10 @@
   </data>
   <data name="1550" xml:space="preserve">
     <value>/images/stains/14.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="1600" xml:space="preserve">
+    <value>/images/stains/08.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1610" xml:space="preserve">
@@ -294,6 +326,10 @@
     <comment>@Invariant</comment>
   </data>
   <data name="1640" xml:space="preserve">
+    <value>/images/stains/09.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="1700" xml:space="preserve">
     <value>/images/stains/09.svg</value>
     <comment>@Invariant</comment>
   </data>
@@ -369,6 +405,14 @@
     <value>/images/stains/01.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="1790" xml:space="preserve">
+    <value>/images/stains/13.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="1800" xml:space="preserve">
+    <value>/images/stains/10.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="1810" xml:space="preserve">
     <value>/images/stains/06.svg</value>
     <comment>@Invariant</comment>
@@ -381,11 +425,19 @@
     <value>/images/stains/15.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="1900" xml:space="preserve">
+    <value>/images/stains/11.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="1910" xml:space="preserve">
     <value>/images/stains/07.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="1920" xml:space="preserve">
+    <value>/images/stains/12.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="2100" xml:space="preserve">
     <value>/images/stains/12.svg</value>
     <comment>@Invariant</comment>
   </data>
@@ -405,6 +457,10 @@
     <value>/images/stains/12.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="2200" xml:space="preserve">
+    <value>/images/stains/13.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="2210" xml:space="preserve">
     <value>/images/stains/10.svg</value>
     <comment>@Invariant</comment>
@@ -419,6 +475,14 @@
   </data>
   <data name="2240" xml:space="preserve">
     <value>/images/stains/02.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="2300" xml:space="preserve">
+    <value>/images/stains/14.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="2400" xml:space="preserve">
+    <value>/images/stains/15.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2410" xml:space="preserve">
@@ -445,6 +509,14 @@
     <value>/images/stains/13.svg</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="2500" xml:space="preserve">
+    <value>/images/stains/01.svg</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="2600" xml:space="preserve">
+    <value>/images/stains/02.svg</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="2610" xml:space="preserve">
     <value>/images/stains/02.svg</value>
     <comment>@Invariant</comment>
@@ -457,84 +529,12 @@
     <value>/images/stains/08.svg</value>
     <comment>@Invariant</comment>
   </data>
-  <data name="0100" xml:space="preserve">
-    <value>/images/stains/01.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="0200" xml:space="preserve">
-    <value>/images/stains/02.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1100" xml:space="preserve">
-    <value>/images/stains/03.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1200" xml:space="preserve">
-    <value>/images/stains/04.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1300" xml:space="preserve">
-    <value>/images/stains/05.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1400" xml:space="preserve">
-    <value>/images/stains/06.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1500" xml:space="preserve">
-    <value>/images/stains/07.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1600" xml:space="preserve">
-    <value>/images/stains/08.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1700" xml:space="preserve">
-    <value>/images/stains/09.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1800" xml:space="preserve">
-    <value>/images/stains/10.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1900" xml:space="preserve">
-    <value>/images/stains/11.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="2100" xml:space="preserve">
-    <value>/images/stains/12.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="2200" xml:space="preserve">
-    <value>/images/stains/13.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="2300" xml:space="preserve">
-    <value>/images/stains/14.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="2400" xml:space="preserve">
-    <value>/images/stains/15.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="2500" xml:space="preserve">
-    <value>/images/stains/01.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="2600" xml:space="preserve">
-    <value>/images/stains/02.svg</value>
-    <comment>@Invariant</comment>
-  </data>
   <data name="2700" xml:space="preserve">
     <value>/images/stains/03.svg</value>
     <comment>@Invariant</comment>
   </data>
   <data name="2800" xml:space="preserve">
     <value>/images/stains/04.svg</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1790" xml:space="preserve">
-    <value>/images/stains/13.svg</value>
     <comment>@Invariant</comment>
   </data>
 </root>

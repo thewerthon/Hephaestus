@@ -1,11 +1,11 @@
-﻿@namespace Hephaestus.Frontend.Abstractions.Components
+﻿@namespace Hephaestus.Frontend.Application.Components
 @inherits DataGridColumn<TItem>
 @typeparam TItem
 
 <RadzenDataGridColumn TItem=TItem Property=@AppFields[Property] Title=@AppColumns[Property] Visible=@Visible OrderIndex=@Order>
 	<Template Context="item">
 		@{
-			var content = PropertyAccess.GetValue(item, Property) is int value ? value.ToString(AppFormats["IdentifierShort"]) : string.Empty;
+			var content = PropertyAccess.GetValue(item, Property) is DateTime value ? value.ToLocalTime().ToString(AppFormats["DateTimeShort"]) : string.Empty;
 			<span class="rz-cell-data" title=@content>@content</span>
 		}
 	</Template>

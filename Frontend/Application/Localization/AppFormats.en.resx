@@ -117,17 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DateShort" xml:space="preserve">
-    <value>MM/dd/yyyy</value>
-  </data>
-  <data name="DateMedium" xml:space="preserve">
-    <value>MMMM d, yyyy</value>
+  <data name="DateFull" xml:space="preserve">
+    <value>dddd, MMMM d, yyyy</value>
   </data>
   <data name="DateLong" xml:space="preserve">
     <value>MMMM d, yyyy</value>
   </data>
-  <data name="DateFull" xml:space="preserve">
-    <value>dddd, MMMM d, yyyy</value>
+  <data name="DateMedium" xml:space="preserve">
+    <value>MMMM d, yyyy</value>
+  </data>
+  <data name="DateShort" xml:space="preserve">
+    <value>MM/dd/yyyy</value>
   </data>
   <data name="DateTimeFull" xml:space="preserve">
     <value>dddd, MMMM d, yyyy \a\t hh:mm tt</value>
@@ -140,24 +140,6 @@
   </data>
   <data name="DateTimeShort" xml:space="preserve">
     <value>MM/dd/yyyy hh:mm tt</value>
-  </data>
-  <data name="TimeShort" xml:space="preserve">
-    <value>hh:mm tt</value>
-  </data>
-  <data name="TimeMedium" xml:space="preserve">
-    <value>hh:mm tt</value>
-  </data>
-  <data name="TimeLong" xml:space="preserve">
-    <value>hh:mm:ss</value>
-  </data>
-  <data name="TimeFull" xml:space="preserve">
-    <value>hh:mm:ss</value>
-  </data>
-  <data name="Null" xml:space="preserve">
-    <value>Null</value>
-  </data>
-  <data name="NotAvailable" xml:space="preserve">
-    <value>N/A</value>
   </data>
   <data name="IdentifierFull" xml:space="preserve">
     <value>0000000000</value>
@@ -182,5 +164,23 @@
   </data>
   <data name="IntegerShort" xml:space="preserve">
     <value>00</value>
+  </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>Null</value>
+  </data>
+  <data name="TimeFull" xml:space="preserve">
+    <value>hh:mm:ss</value>
+  </data>
+  <data name="TimeLong" xml:space="preserve">
+    <value>hh:mm:ss</value>
+  </data>
+  <data name="TimeMedium" xml:space="preserve">
+    <value>hh:mm tt</value>
+  </data>
+  <data name="TimeShort" xml:space="preserve">
+    <value>hh:mm tt</value>
   </data>
 </root>

@@ -117,38 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Id" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="Guid" xml:space="preserve">
-    <value>Guid</value>
-  </data>
-  <data name="Omie" xml:space="preserve">
-    <value>Omie ID</value>
-  </data>
-  <data name="Code" xml:space="preserve">
-    <value>Código</value>
-  </data>
-  <data name="Order" xml:space="preserve">
-    <value>Ordem</value>
-  </data>
-  <data name="Key" xml:space="preserve">
-    <value>Chave</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="Value" xml:space="preserve">
-    <value>Valor</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>Detalhes</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Descrição</value>
+  <data name="Active" xml:space="preserve">
+    <value>Ativo</value>
   </data>
   <data name="Annotations" xml:space="preserve">
     <value>Anotações</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
   </data>
   <data name="Comments" xml:space="preserve">
     <value>Comentários</value>
@@ -156,17 +132,47 @@
   <data name="Country" xml:space="preserve">
     <value>País</value>
   </data>
-  <data name="Office" xml:space="preserve">
-    <value>Escritório</value>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Criado Por</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Criado Em</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Departamento</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Título</value>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalhes</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="Guid" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Oculto</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Chave</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value>Escritório</value>
+  </data>
+  <data name="Omie" xml:space="preserve">
+    <value>Omie ID</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Ordem</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Foto</value>
@@ -174,22 +180,16 @@
   <data name="Role" xml:space="preserve">
     <value>Função</value>
   </data>
-  <data name="Hidden" xml:space="preserve">
-    <value>Oculto</value>
-  </data>
-  <data name="Active" xml:space="preserve">
-    <value>Ativo</value>
-  </data>
-  <data name="CreatedBy" xml:space="preserve">
-    <value>Criado Por</value>
-  </data>
-  <data name="CreatedOn" xml:space="preserve">
-    <value>Criado Em</value>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
   </data>
   <data name="UpdatedBy" xml:space="preserve">
     <value>Atualizado Por</value>
   </data>
   <data name="UpdatedOn" xml:space="preserve">
     <value>Atualizado Em</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Valor</value>
   </data>
 </root>

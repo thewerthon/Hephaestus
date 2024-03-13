@@ -155,6 +155,9 @@ Unsaved data will be lost.</value>
     <value>An app update is required to proceed.&lt;br/&gt;
 Do you want to update now?</value>
   </data>
+  <data name="0012" xml:space="preserve">
+    <value>Check out the News</value>
+  </data>
   <data name="0013" xml:space="preserve">
     <value>News in</value>
   </data>
@@ -197,6 +200,9 @@ Do you want to update now?</value>
   <data name="0026" xml:space="preserve">
     <value>Install Application</value>
   </data>
+  <data name="0027" xml:space="preserve">
+    <value>Restore Application</value>
+  </data>
   <data name="0028" xml:space="preserve">
     <value>About System</value>
   </data>
@@ -205,6 +211,10 @@ Do you want to update now?</value>
   </data>
   <data name="0030" xml:space="preserve">
     <value>Log Out</value>
+  </data>
+  <data name="0031" xml:space="preserve">
+    <value>Force restore the application?&lt;br/&gt;
+This can resolve performance and connectivity issues.</value>
   </data>
   <data name="0032" xml:space="preserve">
     <value>Confirm exit from the application?&lt;br/&gt;
@@ -309,12 +319,9 @@ Do you wish to continue?</value>
     <value>Welcome!</value>
   </data>
   <data name="0065" xml:space="preserve">
-    <value>Welcome to the new Production Control System! We are happy to have you here.
-To navigate between the different areas of the system and take advantage of its features, use the side menu.
+    <value>Welcome to the new Production Control System! We are glad to see you here.
+To navigate between the different areas of the system and explore all its features, use the side menu.
 Click the button below to check out everything new in SCP 2.0!</value>
-  </data>
-  <data name="0012" xml:space="preserve">
-    <value>Check out the News</value>
   </data>
   <data name="0066" xml:space="preserve">
     <value>Update now</value>
@@ -322,12 +329,8 @@ Click the button below to check out everything new in SCP 2.0!</value>
   <data name="0067" xml:space="preserve">
     <value>Remember Later</value>
   </data>
-  <data name="0027" xml:space="preserve">
-    <value>Restore Application</value>
-  </data>
-  <data name="0031" xml:space="preserve">
-    <value>Force restore the application?&lt;br/&gt;
-This can resolve performance and connectivity issues.</value>
+  <data name="0068" xml:space="preserve">
+    <value>Favorite Modules</value>
   </data>
   <data name="0069" xml:space="preserve">
     <value>Favorite</value>
@@ -344,17 +347,14 @@ This can resolve performance and connectivity issues.</value>
   <data name="0073" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="0076" xml:space="preserve">
-    <value>Add favorites to see them here</value>
-  </data>
   <data name="0074" xml:space="preserve">
     <value>Favorite modules limit reached.</value>
   </data>
   <data name="0075" xml:space="preserve">
     <value>Favorite functions limit achieved.</value>
   </data>
-  <data name="0068" xml:space="preserve">
-    <value>Favorite Modules</value>
+  <data name="0076" xml:space="preserve">
+    <value>Add favorites to see them here</value>
   </data>
   <data name="0077" xml:space="preserve">
     <value>Favorite Functions</value>

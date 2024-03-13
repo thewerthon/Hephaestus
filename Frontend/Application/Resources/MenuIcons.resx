@@ -429,6 +429,10 @@
     <value>book</value>
     <comment>@Invariant</comment>
   </data>
+  <data name="1790" xml:space="preserve">
+    <value>straighten</value>
+    <comment>@Invariant</comment>
+  </data>
   <data name="1810" xml:space="preserve">
     <value>receipt_long</value>
     <comment>@Invariant</comment>
@@ -515,10 +519,6 @@
   </data>
   <data name="2630" xml:space="preserve">
     <value>cleaning_services</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="1790" xml:space="preserve">
-    <value>straighten</value>
     <comment>@Invariant</comment>
   </data>
 </root>

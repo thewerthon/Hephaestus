@@ -117,70 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DateShort" xml:space="preserve">
-    <value>dd/MM/yyyy</value>
-  </data>
-  <data name="DateMedium" xml:space="preserve">
-    <value>d MMMM yyyy</value>
+  <data name="DateFull" xml:space="preserve">
+    <value>dddd, d \d\e MMMM \d\e yyyy</value>
   </data>
   <data name="DateLong" xml:space="preserve">
     <value>d \d\e MMMM \d\e yyyy</value>
   </data>
-  <data name="DateFull" xml:space="preserve">
-    <value>dddd, d \d\e MMMM \d\e yyyy</value>
+  <data name="DateMedium" xml:space="preserve">
+    <value>d MMMM yyyy</value>
   </data>
-  <data name="DateTimeShort" xml:space="preserve">
-    <value>dd/MM/yyyy HH:mm</value>
-  </data>
-  <data name="DateTimeMedium" xml:space="preserve">
-    <value>d MMMM yyyy \à\s HH\hmm</value>
-  </data>
-  <data name="DateTimeLong" xml:space="preserve">
-    <value>d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
+  <data name="DateShort" xml:space="preserve">
+    <value>dd/MM/yyyy</value>
   </data>
   <data name="DateTimeFull" xml:space="preserve">
     <value>dddd, d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
   </data>
-  <data name="TimeShort" xml:space="preserve">
-    <value>HH:mm</value>
+  <data name="DateTimeLong" xml:space="preserve">
+    <value>d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
   </data>
-  <data name="TimeMedium" xml:space="preserve">
-    <value>HH:mm</value>
+  <data name="DateTimeMedium" xml:space="preserve">
+    <value>d MMMM yyyy \à\s HH\hmm</value>
   </data>
-  <data name="TimeLong" xml:space="preserve">
-    <value>HH:mm:ss</value>
-  </data>
-  <data name="TimeFull" xml:space="preserve">
-    <value>HH:mm:ss</value>
-  </data>
-  <data name="Null" xml:space="preserve">
-    <value>Nulo</value>
-  </data>
-  <data name="NotAvailable" xml:space="preserve">
-    <value>N/D</value>
-  </data>
-  <data name="IdentifierShort" xml:space="preserve">
-    <value>0000</value>
-  </data>
-  <data name="IdentifierMedium" xml:space="preserve">
-    <value>000000</value>
-  </data>
-  <data name="IdentifierLong" xml:space="preserve">
-    <value>00000000</value>
+  <data name="DateTimeShort" xml:space="preserve">
+    <value>dd/MM/yyyy HH:mm</value>
   </data>
   <data name="IdentifierFull" xml:space="preserve">
     <value>0000000000</value>
   </data>
-  <data name="IntegerShort" xml:space="preserve">
-    <value>00</value>
+  <data name="IdentifierLong" xml:space="preserve">
+    <value>00000000</value>
   </data>
-  <data name="IntegerMedium" xml:space="preserve">
-    <value>000</value>
+  <data name="IdentifierMedium" xml:space="preserve">
+    <value>000000</value>
   </data>
-  <data name="IntegerLong" xml:space="preserve">
+  <data name="IdentifierShort" xml:space="preserve">
     <value>0000</value>
   </data>
   <data name="IntegerFull" xml:space="preserve">
     <value>00000</value>
+  </data>
+  <data name="IntegerLong" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="IntegerMedium" xml:space="preserve">
+    <value>000</value>
+  </data>
+  <data name="IntegerShort" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>N/D</value>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>Nulo</value>
+  </data>
+  <data name="TimeFull" xml:space="preserve">
+    <value>HH:mm:ss</value>
+  </data>
+  <data name="TimeLong" xml:space="preserve">
+    <value>HH:mm:ss</value>
+  </data>
+  <data name="TimeMedium" xml:space="preserve">
+    <value>HH:mm</value>
+  </data>
+  <data name="TimeShort" xml:space="preserve">
+    <value>HH:mm</value>
   </data>
 </root>

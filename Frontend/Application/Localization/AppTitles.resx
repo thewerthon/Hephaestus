@@ -381,6 +381,9 @@
   <data name="1780" xml:space="preserve">
     <value>Documentação</value>
   </data>
+  <data name="1790" xml:space="preserve">
+    <value>Equipamentos</value>
+  </data>
   <data name="1800" xml:space="preserve">
     <value>Módulo Fiscal</value>
   </data>
@@ -479,8 +482,5 @@
   </data>
   <data name="2800" xml:space="preserve">
     <value>Módulo de Tecnologia</value>
-  </data>
-  <data name="1790" xml:space="preserve">
-    <value>Equipamentos</value>
   </data>
 </root>
