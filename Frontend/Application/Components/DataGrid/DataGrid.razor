@@ -3,7 +3,7 @@
 @using System.Text.Json
 @typeparam TEntity
 
-<RadzenStack>
+<RadzenStack Style="height: 100%">
 
 	<!-- Header -->
 	<RadzenRow AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceAround">
@@ -18,12 +18,12 @@
 	</RadzenRow>
 
 	<!-- DataGrid -->
-	<RadzenRow>
+	<RadzenRow Style="height: 100%">
 		<RadzenColumn SizeMD=12>
-			<RadzenDataGrid @ref="grid" Data="@data" Count="@count" IsLoading=@loading LoadData="@GridLoadData" TItem="TEntity" @bind-Settings=@Settings
+			<RadzenDataGrid @ref="grid" Data="@data" Count="@count" IsLoading=@loading LoadData="@GridLoadData" TItem="TEntity" @bind-Settings=@Settings Style="height: 100%"
 											AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" AllowGrouping="true"
 											AllowRowSelectOnRowClick="true" ShowCellDataAsTooltip="true" ShowColumnTitleAsTooltip="true" AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="false" Responsive="false"
-											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@pagesizes
+											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@pagesizes PageSize=@pagesize
 											AllColumnsText=@AppTexts["0078"] ColumnsText=@AppTexts["0079"] ColumnsShowingText=@AppTexts["0080"]
 											FilterText=@AppTexts["0081"] ApplyFilterText=@AppTexts["0082"] ClearFilterText=@AppTexts["0083"] EnumFilterSelectText=@AppTexts["0084"] EnumNullFilterText=@AppTexts["0085"]
 											StartsWithText=@AppTexts["0086"] EndsWithText=@AppTexts["0087"] ContainsText=@AppTexts["0088"] DoesNotContainText=@AppTexts["0089"] EqualsText=@AppTexts["0090"] NotEqualsText=@AppTexts["0091"]
@@ -102,8 +102,8 @@
 
 	}
 
-	private int pagesize = 10;
-	private IEnumerable<int> pagesizes = new int[] { 10, 15, 20, 50, 100 };
+	private int pagesize = 25;
+	private IEnumerable<int> pagesizes = new int[] { 25, 50, 75, 100 };
 	private DataGridSettings? settings;
 
 	private DataGridSettings Settings {

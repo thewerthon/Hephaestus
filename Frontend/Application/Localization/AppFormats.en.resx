@@ -121,7 +121,7 @@
     <value>dddd, MMMM d, yyyy</value>
   </data>
   <data name="DateLong" xml:space="preserve">
-    <value>MMMM d, yyyy</value>
+    <value>ddd, MMMM d, yyyy</value>
   </data>
   <data name="DateMedium" xml:space="preserve">
     <value>MMMM d, yyyy</value>
@@ -133,7 +133,7 @@
     <value>dddd, MMMM d, yyyy \a\t hh:mm tt</value>
   </data>
   <data name="DateTimeLong" xml:space="preserve">
-    <value>MMMM d, yyyy \a\t hh:mm tt</value>
+    <value>ddd, MMMM d, yyyy \a\t hh:mm tt</value>
   </data>
   <data name="DateTimeMedium" xml:space="preserve">
     <value>MMMM d, yyyy \a\t hh:mm tt</value>

@@ -1,0 +1,21 @@
+﻿@namespace Hephaestus.Frontend.Application.Components
+@inherits DataGridColumn<TItem>
+@typeparam TItem
+
+<RadzenDataGridColumn Property=@GetProperty() Title=@GetTitle() Width=@GetWidth() MinWidth=@GetWidth() Visible=@Visible OrderIndex=@Order UniqueID=@Property Filterable=false Sortable=false Groupable=false TItem=TItem>
+	<Template Context="Item">
+		@{
+			var image = PropertyAccess.GetValue(Item, Property).ToString();
+			var title = AltProperty is null ? string.Empty : PropertyAccess.GetValue(Item, AppFields[AltProperty]).ToString();
+			<div style="text-align:center">
+				<RadzenImage Path=@image Style="width:32px;height:32px" title=@title class="rounded-circle" />
+			</div>
+		}
+	</Template>
+</RadzenDataGridColumn>
+
+@code {
+
+	protected override string GetWidth() => Width ?? "64px";
+
+}

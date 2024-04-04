@@ -1,0 +1,21 @@
+﻿@namespace Hephaestus.Frontend.Application.Components
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+@typeparam TItem
+
+<DataGridColumn_User TItem=@TItem Order=@Order Visible=@CreatedVisible Property="CreatedByData" />
+<DataGridColumn_DtTm TItem=@TItem Order=@Order Visible=@CreatedVisible Property="CreatedOn" />
+<DataGridColumn_User TItem=@TItem Order=@Order Visible=@UpdatedVisible Property="UpdatedByData" />
+<DataGridColumn_DtTm TItem=@TItem Order=@Order Visible=@UpdatedVisible Property="UpdatedOn" />
+
+@code {
+
+	[Parameter, EditorRequired]
+	public int? Order { get; set; } = 99;
+
+	[Parameter]
+	public bool CreatedVisible { get; set; } = false;
+
+	[Parameter]
+	public bool UpdatedVisible { get; set; } = true;
+
+}

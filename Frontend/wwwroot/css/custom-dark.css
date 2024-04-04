@@ -73,6 +73,11 @@
 }
 
 :root {
+	--rz-layout-body-margin: 0;
+    --rz-layout-body-padding: 2rem;	
+}
+
+:root {
 	--rz-button-border-radius: 8px;
 	--rz-button-hover-shadow: none;
 	--rz-button-focus-shadow: none;
@@ -170,6 +175,8 @@
 	--rz-grid-right-cell-border: var(--rz-border-disabled);
 	--rz-grid-bottom-cell-border: var(--rz-border-disabled);
 	--rz-grid-stripe-background-color: var(--rz-base-900);
+	--rz-grid-loading-indicator-background-color: #ffffff00;
+	--rz-grid-loading-indicator-color: var(--rz-base-600);
 }
 
 :root {
@@ -288,6 +295,34 @@ ul.rz-profile-menu {
 	color: var(--rz-white);
 }
 
+.rz-button-xs .rzi {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.rz-button-sm .rzi {
+	width: 24px;
+	height: 24px;
+	font-size: 24px;
+	line-height: 24px;
+}
+
+.rz-button-md .rzi {
+	width: 24px;
+	height: 24px;
+	font-size: 24px;
+	line-height: 24px;
+}
+
+.rz-button-lg .rzi {
+	width: 24px;
+	height: 24px;
+	font-size: 24px;
+	line-height: 24px;
+}
+
 .rz-navigation-item-wrapper {
 	border-radius: 4px;
 }
@@ -387,6 +422,26 @@ ul.rz-profile-menu {
 
 .rz-profile-menu .rzi.rz-navigation-item-icon-children {
 	font-size: 18px;
+}
+
+.rz-navigation-item .rzi {
+	font-size: 24px;
+}
+
+.rz-grid-table {
+	border-bottom: var(--rz-border-disabled);
+}
+
+.rz-column-drag {
+	font-size: 15px;	
+}
+
+.rz-column-resizer:after {
+	width: 0px;
+}
+
+.rz-sortable-column .rzi-sort:before {
+	font-size: 15px;
 }
 
 .logo {

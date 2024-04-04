@@ -7,10 +7,50 @@
 	[Parameter, EditorRequired]
 	public string Property { get; set; } = default!;
 
+	[Parameter]
+	public string? AltProperty { get; set; } = default;
+
+	[Parameter]
+	public ColumnFormat Format { get; set; } = default;
+
+	[Parameter]
+	public string? Width { get; set; } = default;
+
 	[Parameter, EditorRequired]
 	public bool Visible { get; set; } = true;
 
 	[Parameter, EditorRequired]
 	public int? Order { get; set; } = default;
+
+	protected virtual string GetTitle() {
+
+		var value = Property;
+		var parts = value.Split(".");
+
+		return value.Contains(".") ? AppColumns[parts[0].Replace("Data", string.Empty)] : AppColumns[value];
+
+	}
+
+	protected virtual string GetProperty() {
+
+		var value = Property;
+		var parts = value.Split(".");
+
+		return value.Contains(".") ? $"{parts[0]}.{AppFields[parts[1]]}" : AppFields[value];
+
+	}
+
+	protected virtual string GetAltProperty() {
+
+		var value = AltProperty ?? Property;
+		var parts = value.Split(".");
+
+		return value.Contains(".") ? $"{parts[0]}.{AppFields[parts[1]]}" : AppFields[value];
+
+	}
+
+	protected virtual string GetFormat() => string.Empty;
+
+	protected virtual string GetWidth() => "200px";
 
 }

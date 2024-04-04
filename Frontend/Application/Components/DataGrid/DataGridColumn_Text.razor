@@ -1,0 +1,27 @@
+﻿@namespace Hephaestus.Frontend.Application.Components
+@inherits DataGridColumn<TItem>
+@typeparam TItem
+
+<RadzenDataGridColumn Property=@GetProperty() Title=@GetTitle() MinWidth=@GetWidth() Visible=@Visible OrderIndex=@Order UniqueID=@Property TItem=TItem>
+	<Template Context="Item">
+		@{
+			var title = PropertyAccess.GetValue(Item, GetAltProperty());
+			var content = PropertyAccess.GetValue(Item, GetProperty());
+			<span class="rz-cell-data" title=@title>@content</span>
+		}
+	</Template>
+</RadzenDataGridColumn>
+
+@code {
+
+	protected override string GetWidth() => Format switch {
+
+		ColumnFormat.Short => Width ?? "100px",
+		ColumnFormat.Medium => Width ?? "200px",
+		ColumnFormat.Long => Width ?? "400px",
+		ColumnFormat.Full => Width ?? "800px",
+		_ => Width ?? "200px"
+
+	};
+
+}

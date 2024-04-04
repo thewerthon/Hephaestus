@@ -121,10 +121,10 @@
     <value>dddd, d \d\e MMMM \d\e yyyy</value>
   </data>
   <data name="DateLong" xml:space="preserve">
-    <value>d \d\e MMMM \d\e yyyy</value>
+    <value>ddd, d \d\e MMMM \d\e yyyy</value>
   </data>
   <data name="DateMedium" xml:space="preserve">
-    <value>d MMMM yyyy</value>
+    <value>d \d\e MMMM \d\e yyyy</value>
   </data>
   <data name="DateShort" xml:space="preserve">
     <value>dd/MM/yyyy</value>
@@ -133,10 +133,10 @@
     <value>dddd, d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
   </data>
   <data name="DateTimeLong" xml:space="preserve">
-    <value>d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
+    <value>ddd, d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
   </data>
   <data name="DateTimeMedium" xml:space="preserve">
-    <value>d MMMM yyyy \à\s HH\hmm</value>
+    <value>d \d\e MMMM \d\e yyyy \à\s HH\hmm</value>
   </data>
   <data name="DateTimeShort" xml:space="preserve">
     <value>dd/MM/yyyy HH:mm</value>

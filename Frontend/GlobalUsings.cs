@@ -17,6 +17,7 @@ global using Blazored.SessionStorage;
 global using Hephaestus.Architect.Application.Models;
 
 // Frontend
+global using Hephaestus.Frontend.Application.Enums;
 global using Hephaestus.Frontend.Application.Models;
 global using Hephaestus.Frontend.Application.Services;
 
