@@ -203,6 +203,11 @@
     --rz-dropdown-trigger-icon-margin: 0 2px 0 0;
 }
 
+:root {
+	--rz-grid-filter-color: #c8d1dc;
+	--rz-grid-header-filter-icon-active-color: var(--rz-grid-header-color);
+}
+
 .rz-body {
 	background-color: var(--rz-body-background-color);
 }
