@@ -16,14 +16,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Radzen.Blazor" Version="4.29.2" IncludeAssets="all" />
+		<PackageReference Include="Radzen.Blazor" Version="4.29.6" IncludeAssets="all" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.5.0" IncludeAssets="all" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" IncludeAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" IncludeAssets="all" />
-		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.3" IncludeAssets="all" />
-		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.3" IncludeAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.3" IncludeAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.3" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.4" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.4" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" IncludeAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.4" PrivateAssets="all" />
 	</ItemGroup>
 
 	<ItemGroup>

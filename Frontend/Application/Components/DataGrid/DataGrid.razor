@@ -20,10 +20,12 @@
 	<!-- DataGrid -->
 	<RadzenRow Style="height: 100%">
 		<RadzenColumn SizeMD=12>
-			<RadzenDataGrid @ref="grid" Data="@data" Count="@count" IsLoading=@loading LoadData="@GridLoadData" TItem="TEntity" @bind-Settings=@Settings Style="height: 100%"
-											AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowColumnPicking="true" AllowColumnReorder="true" AllowColumnResize="true" AllowGrouping="true"
-											AllowRowSelectOnRowClick="true" ShowCellDataAsTooltip="true" ShowColumnTitleAsTooltip="true" AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="false" Responsive="false"
-											AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PagerAlwaysVisible="true" PageSizeOptions=@pagesizes PageSize=@pagesize
+			<RadzenDataGrid @ref=grid Data=@data Count=@count IsLoading=@loading LoadData=@GridLoadData TItem=TEntity @bind-Settings=@Settings Style="height: 100%"
+											AllowFiltering=true FilterMode=FilterMode.Advanced AllowColumnPicking=true AllowColumnReorder=true AllowColumnResize=true AllowGrouping=true GridLines=DataGridGridLines.Default
+											AllowRowSelectOnRowClick=true ShowCellDataAsTooltip=true ShowColumnTitleAsTooltip=true AllowMultiColumnSorting=true ShowMultiColumnSortingIndex=false Responsive=false
+											AllowFilterDateInput=true GotoFirstPageOnSort=false LogicalFilterOperator=LogicalFilterOperator.And ShowExpandColumn=true ShowGroupExpandColumn=true ShowEmptyMessage=true
+											AllowAlternatingRows=true AllowCompositeDataCells=false AllowPickAllColumns=true ColumnsPickerAllowFiltering=false FilterCaseSensitivity=FilterCaseSensitivity.CaseInsensitive
+											AllowPaging=true AllowVirtualization=false AllowSorting=true ShowPagingSummary=true PagerAlwaysVisible=true PagerHorizontalAlign=HorizontalAlign.Center PageSizeOptions=@pagesizes PageSize=@pagesize
 											AllColumnsText=@AppTexts["0078"] ColumnsText=@AppTexts["0079"] ColumnsShowingText=@AppTexts["0080"]
 											FilterText=@AppTexts["0081"] ApplyFilterText=@AppTexts["0082"] ClearFilterText=@AppTexts["0083"] EnumFilterSelectText=@AppTexts["0084"] EnumNullFilterText=@AppTexts["0085"]
 											StartsWithText=@AppTexts["0086"] EndsWithText=@AppTexts["0087"] ContainsText=@AppTexts["0088"] DoesNotContainText=@AppTexts["0089"] EqualsText=@AppTexts["0090"] NotEqualsText=@AppTexts["0091"]
@@ -40,7 +42,7 @@
 											FilterValueArialLabel=@AppTexts["0116"] SecondFilterValueArialLabel=@AppTexts["0117"]
 											LogicalOperatorArialLabel=@AppTexts["0118"] SelectVisibleColumnsArialLabel=@AppTexts["0119"]
 											ExpandGroupAriaLabel=@AppTexts["0120"] ExpandChildItemAriaLabel=@AppTexts["0121"] RemoveGroupArialLabel=@AppTexts["0122"]
-											GroupPanelText=@AppTexts["0123"] EmptyText=@AppTexts["0124"] FilterDateFormat=@AppFormats["DateTimeShort"]>
+											GroupPanelText=@AppTexts["0123"] EmptyText=@AppTexts["0124"] FilterDateFormat=@AppFormats["DateTimeShort"] KeyProperty="Id">
 
 				<Columns>
 					@ChildContent
@@ -85,6 +87,8 @@
 
 			loading = true;
 			await Task.Yield();
+
+			Console.WriteLine(args.Filter);
 
 			var result = await DatabaseService.GetItemsAsync<TEntity>(table: SourceTable, expand: SourceExpand, filter: $"{args.Filter}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null);
 			data = result.Value.AsODataEnumerable();

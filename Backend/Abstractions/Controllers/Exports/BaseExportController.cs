@@ -13,73 +13,91 @@ public abstract class BaseExportController : Controller {
 
 	public IQueryable ApplyQuery<T>(IQueryable<T> items, IQueryCollection? query = null, bool keyless = false) where T : class {
 
-		if (query != null) {
+		if (query is not null) {
 
 			if (query.ContainsKey("$expand")) {
+
 				var propertiesToExpand = query["$expand"].ToString().Split(',');
+
 				foreach (var p in propertiesToExpand) {
 					items = items.Include(p);
 				}
+
 			}
 
 			var filter = query.ContainsKey("$filter") ? query["$filter"].ToString() : null;
 
 			if (!string.IsNullOrEmpty(filter)) {
-				if (keyless) {
-					items = items.ToList().AsQueryable();
-				}
 
+				if (keyless) items = items.ToList().AsQueryable();
 				items = items.Where(filter);
+
 			}
 
 			if (query.ContainsKey("$orderBy")) {
+
 				items = items.OrderBy(query["$orderBy"].ToString());
+
 			}
 
 			if (query.ContainsKey("$skip")) {
+
 				items = items.Skip(int.Parse(query["$skip"].ToString()));
+
 			}
 
 			if (query.ContainsKey("$top")) {
+
 				items = items.Take(int.Parse(query["$top"].ToString()));
+
 			}
 
 			if (query.ContainsKey("$select")) {
+
 				return items.Select($"new ({query["$select"]})");
+
 			}
+
 		}
 
 		return items;
+
 	}
 
 	public FileStreamResult ToCSV(IQueryable query, string? fileName = null) {
+
+		var builder = new StringBuilder();
 		var columns = GetProperties(query.ElementType);
 
-		var sb = new StringBuilder();
-
 		foreach (var item in query) {
+
 			var row = new List<string>();
 
 			foreach (var column in columns) {
+
 				row.Add($"{GetValue(item, column.Key)}".Trim());
+
 			}
 
-			sb.AppendLine(string.Join(",", [.. row]));
+			builder.AppendLine(string.Join(",", [.. row]));
+
 		}
 
-
-		var result = new FileStreamResult(new MemoryStream(UTF8Encoding.Default.GetBytes($"{string.Join(",", columns.Select(c => c.Key))}{System.Environment.NewLine}{sb}")), "text/csv") {
+		var result = new FileStreamResult(new MemoryStream(UTF8Encoding.Default.GetBytes($"{string.Join(",", columns.Select(c => c.Key))}{Environment.NewLine}{builder}")), "text/csv") {
 			FileDownloadName = (!string.IsNullOrEmpty(fileName) ? fileName : "Export") + ".csv"
 		};
 
 		return result;
+
 	}
 
 	public FileStreamResult ToExcel(IQueryable query, string? fileName = null) {
-		var columns = GetProperties(query.ElementType);
+
 		var stream = new MemoryStream();
+		var columns = GetProperties(query.ElementType);
 
 		using (var document = SpreadsheetDocument.Create(stream, SpreadsheetDocumentType.Workbook)) {
+
 			var workbookPart = document.AddWorkbookPart();
 			workbookPart.Workbook = new Workbook();
 
@@ -90,28 +108,33 @@ public abstract class BaseExportController : Controller {
 			GenerateWorkbookStylesPartContent(workbookStylesPart);
 
 			var sheets = workbookPart.Workbook.AppendChild(new Sheets());
-			var sheet = new Sheet() { Id = workbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Sheet1" };
-			sheets.Append(sheet);
+			var sheet = new Sheet() { Id = workbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Data" };
 
+			sheets.Append(sheet);
 			workbookPart.Workbook.Save();
 
 			var sheetData = worksheetPart.Worksheet.AppendChild(new SheetData());
-
 			var headerRow = new Row();
 
 			foreach (var column in columns) {
+
 				headerRow.Append(new Cell() {
+
 					CellValue = new CellValue(column.Key),
 					DataType = new EnumValue<CellValues>(CellValues.String)
+
 				});
+
 			}
 
 			sheetData.AppendChild(headerRow);
 
 			foreach (var item in query) {
+
 				var row = new Row();
 
 				foreach (var column in columns) {
+
 					var value = GetValue(item, column.Key);
 					var stringValue = $"{value}".Trim();
 
@@ -124,57 +147,69 @@ public abstract class BaseExportController : Controller {
 					var typeCode = Type.GetTypeCode(underlyingType);
 
 					if (typeCode == TypeCode.DateTime) {
+
 						if (!string.IsNullOrWhiteSpace(stringValue)) {
+
 							cell.CellValue = new CellValue() { Text = ((DateTime)value!).ToOADate().ToString(System.Globalization.CultureInfo.InvariantCulture) };
 							cell.DataType = new EnumValue<CellValues>(CellValues.Number);
 							cell.StyleIndex = (UInt32Value)1U;
+
 						}
+
 					} else if (typeCode == TypeCode.Boolean) {
+
 						cell.CellValue = new CellValue(stringValue.ToLowerInvariant());
 						cell.DataType = new EnumValue<CellValues>(CellValues.Boolean);
+
 					} else if (IsNumeric(typeCode)) {
-						if (value != null) {
-							stringValue = Convert.ToString(value, CultureInfo.InvariantCulture);
-						}
+
+						if (value != null) stringValue = Convert.ToString(value, CultureInfo.InvariantCulture);
 
 						cell.CellValue = new CellValue(stringValue!);
 						cell.DataType = new EnumValue<CellValues>(CellValues.Number);
+
 					} else {
+
 						cell.CellValue = new CellValue(stringValue!);
 						cell.DataType = new EnumValue<CellValues>(CellValues.String);
+
 					}
 
 					row.Append(cell);
 				}
 
 				sheetData.AppendChild(row);
+
 			}
 
-
 			workbookPart.Workbook.Save();
+
 		}
 
-		if (stream?.Length > 0) {
-			stream.Seek(0, SeekOrigin.Begin);
-		}
-
+		if (stream?.Length > 0) stream.Seek(0, SeekOrigin.Begin);
 		var result = new FileStreamResult(stream!, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
 			FileDownloadName = (!string.IsNullOrEmpty(fileName) ? fileName : "Export") + ".xlsx"
 		};
 
 		return result;
+
 	}
 
 	public static object? GetValue(object target, string name) {
+
 		return target.GetType().GetProperty(name)?.GetValue(target);
+
 	}
 
 	public static IEnumerable<KeyValuePair<string, Type>> GetProperties(Type type) {
+
 		return type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
 						.Where(p => p.CanRead && IsSimpleType(p.PropertyType)).Select(p => new KeyValuePair<string, Type>(p.Name, p.PropertyType));
+
 	}
 
 	public static bool IsSimpleType(Type type) {
+
 		var underlyingType = type.IsGenericType &&
 				type.GetGenericTypeDefinition() == typeof(Nullable<>) ?
 				Nullable.GetUnderlyingType(type) : type;
@@ -188,16 +223,20 @@ public abstract class BaseExportController : Controller {
 			TypeCode.Boolean or TypeCode.Byte or TypeCode.Char or TypeCode.DateTime or TypeCode.Decimal or TypeCode.Double or TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64 or TypeCode.SByte or TypeCode.Single or TypeCode.String or TypeCode.UInt16 or TypeCode.UInt32 or TypeCode.UInt64 => true,
 			_ => false,
 		};
+
 	}
 
 	private static bool IsNumeric(TypeCode typeCode) {
+
 		return typeCode switch {
 			TypeCode.Decimal or TypeCode.Double or TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64 or TypeCode.UInt16 or TypeCode.UInt32 or TypeCode.UInt64 => true,
 			_ => false,
 		};
+
 	}
 
 	private static void GenerateWorkbookStylesPartContent(WorkbookStylesPart workbookStylesPart1) {
+
 		var stylesheet1 = new Stylesheet() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "x14ac x16r2 xr" } };
 		stylesheet1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
 		stylesheet1.AddNamespaceDeclaration("x14ac", "http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac");

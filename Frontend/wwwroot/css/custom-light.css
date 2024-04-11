@@ -74,7 +74,7 @@
 
 :root {
 	--rz-layout-body-margin: 0;
-    --rz-layout-body-padding: 2rem;	
+	--rz-layout-body-padding: 2rem;
 }
 
 :root {
@@ -175,7 +175,7 @@
 	--rz-grid-right-cell-border: var(--rz-border-disabled);
 	--rz-grid-bottom-cell-border: var(--rz-border-disabled);
 	--rz-grid-stripe-background-color: var(--rz-base-100);
-    --rz-grid-loading-indicator-background-color: #ffffff00;
+	--rz-grid-loading-indicator-background-color: #ffffff00;
 	--rz-grid-loading-indicator-color: var(--rz-base-300);
 }
 
@@ -199,8 +199,8 @@
 
 :root {
 	--rz-dropdown-trigger-icon-width: 20px;
-    --rz-dropdown-trigger-icon-height: 20px;
-    --rz-dropdown-trigger-icon-margin: 0 2px 0 0;
+	--rz-dropdown-trigger-icon-height: 20px;
+	--rz-dropdown-trigger-icon-margin: 0 2px 0 0;
 }
 
 :root {
@@ -344,8 +344,13 @@ ul.rz-profile-menu {
 	border-bottom: var(--rz-border-normal);
 }
 
+.rz-datatable-data tr:last-child>td,
+.rz-grid-table tr:last-child>td {
+	border-bottom: var(--rz-grid-bottom-cell-border);
+}
+
 .rz-datatable-emptymessage {
-	padding-right: 60px !important;
+	border: none !important;
 	text-align: center;
 	height: 70px;
 }
@@ -374,7 +379,7 @@ ul.rz-profile-menu {
 
 .rz-alert {
 	gap: 0px;
-	padding: 16px 18px!important;
+	padding: 16px 18px !important;
 	border-radius: 16px;
 }
 
@@ -433,12 +438,8 @@ ul.rz-profile-menu {
 	font-size: 24px;
 }
 
-.rz-grid-table {
-	border-bottom: var(--rz-border-disabled);
-}
-
 .rz-column-drag {
-	font-size: 15px;	
+	font-size: 15px;
 }
 
 .rz-column-resizer:after {
