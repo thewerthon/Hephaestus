@@ -6,7 +6,7 @@ on:
       - main
   release:
     types:
-      - created
+      - published
 
 jobs:
   create_badges:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v1
         
       - name: Generate Badges
-        uses: thewerthon/RepoBadges@v1.0.0
+        uses: thewerthon/RepoBadges@v1.0.1
         id: badges
         with:
           debug: true
